@@ -13,54 +13,66 @@
         </style>
         <h3 class="card-title-left" style="color:black">المتداول حاليا  </h3>
         <!-- general form elements -->
-        <div class="card card-primary">
-            <div class="card-header">
 {{--                @dd($user_deals->services)--}}
 
-                @foreach($user_deals as $t)
+                @foreach($user_deals->sortBy('net_price') as $t)
+            <div class="card card-primary">
+                <div class="card card-primary">
+                    <div class="card-header">
 
                     <!--  User service -->
-                            <a href=""  class="link-success link text-decoration-none">
-                                <div class="card mb-3 bg-primary text-white fs-3">
+{{--                            <a href=""  class="link-success link text-decoration-none">--}}
+{{--                                <div class="card mb-3 bg-success text-white fs-3">--}}
+                    </div>
                                     <div class="card-body">
-                                         <span class="text-dark fw-bold">  اﻻسم : {{$t->name}}  </span>
+                                         <span class="text-dark fw-bold">  المسلسل : {{$t->id}}  </span>
+                                        <br>
+                                          <span class="text-dark fw-bold">  اﻻسم : {{$t->name}}  </span>
+                                        <br>
 
+                                         <span class="text-dark fw-bold">   الوصف : {{$t->description}}  </span>
+                                        <br>
 
-                                    </div>
-
-                                    <div class="card-body">
-                                        <span class="text-dark fw-bold">   الوصف : {{$t->description}}  </span>
-                                    </div>
-
-                                    <div class="card-body">
-                                        <span class="text-dark fw-bold">     نوع المعدن : {{$t-> serviceType->type}}  </span>
-                                    </div>
-
-
-
-                                    <div class="card-body">
+                                         <span class="text-dark fw-bold">     نوع المعدن : {{$t-> serviceType->type}}  </span>
+                                        <br>
                                         <span class="text-dark fw-bold">   الكميه : {{$t->quantity}}  </span>
-                                    </div>
+                                        <br>
 
-                                    <div class="card-body">
-                                        <span class="text-dark fw-bold">   اللينك : {{$t->url}}  </span>
-                                    </div>
 
-                                    <div class="card-body">
-                                        <span class="text-dark fw-bold">   المطلوب : {{$t->net_price}}  </span>
-                                    </div>
+                                         <span class="text-dark fw-bold">   اللينك : {{$t->url}}  </span>
+                                        <br>
 
-                                    <div class="card-body">
-                                        <span class="text-dark fw-bold"> العمله : {{$t->currency}} </span>
-                                    </div>
+                                         <span class="text-dark fw-bold">   المطلوب : {{$t->net_price}}  </span>
+                                        <br>
+
+                                         <span class="text-dark fw-bold"> العمله : {{$t->currency}} </span>
+                                        <br>
 
                                          <span class="text-dark fw-bold"> تاريخ نشر التداول : {{$t->created_at}} </span>
-                                 </div>
+                                        <br>
+
                             </a>
                          <br>
+{{--                                        <input hidden name="id" value="{{$t->id}}">--}}
 
-                        <a href="{{route('user.buy',$t->id)}}"> <input  type="submit" class="btn btn-success" value="شراء"> </a>
-                        <a href="{{route('user.sell',$t->id)}}"> <input type="submit" class="btn btn-success" value="بيع"> </a>
+                                        <form action="{{route('user.buy')}}" method="GET">
+                                            @csrf
+                                            <input hidden name="id"     value="{{$t->id}}">
+                                            <button  class="btn btn-success" type="submit"   onclick="window.location.href='{{route('user.buy')}}'">  شراء </button>
+
+                                        </form>
+
+                                        <button class="btn btn-warning" onclick="window.location.href='{{route('user.sell')}}'">بيع</button>
+
+
+{{--                    <form action="{{route('user.sell')}}" method="GET">--}}
+{{--                        @csrf--}}
+{{--                         <input  name="" type="submit" class="btn btn-danger" value="{{$t->id}}">--}}
+{{--                    </form>--}}
+                    </div>
+                    </div>
+                     </div>
+{{--                 <div class="text-dark fw-bold">--}}
 
                 @endforeach
 

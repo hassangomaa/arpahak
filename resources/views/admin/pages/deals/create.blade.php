@@ -20,14 +20,14 @@
                     <div class="form-group">
                         <div class="col-lg-6">
                             <div class="mb-3">
-                                <label for="type">نوع التداول <span class="text-danger">*</span> </label>
+                                <label for="type">اسم الخدمه<span class="text-danger">*</span> </label>
                                 <input type="text" class="form-control" id="type" name="name"  required placeholder="عمليه بيع / عمليه شراء ">
                             </div>
                         </div>
 
                         <div class="col-lg-6">
                             <div class="mb-3">
-                                <label for="type">الوصف <span class="text-danger">*</span> </label>
+                                <label for="type">الوصف للخدمه <span class="text-danger">*</span> </label>
                                 <input type="text" class="form-control" id="" name="description"  required placeholder="اضافه وصف  مناسب يزيد من فرصه التداول.">
                             </div>
                         </div>
@@ -76,11 +76,6 @@
                             </select>
                         </div>
                     </div>
-
-
-
-
-
                 </div>
                 <!-- /.card-body -->
 

@@ -48,20 +48,20 @@ Route::group(['middleware'=> ['verified','auth','disable_back']],function(){
     Route::get('/youtube/video/{id}',[SocialApiController::class,'youtube_video'])->name('youtube.video');
     Route::get('/facebook/{id}',[SocialApiController::class,'facebook'])->name('facebook');
     Route::get('/tiktok/{id}',[SocialApiController::class,'tiktok'])->name('tiktok');
-    //----------------Metals And Trends-------------//
-    Route::get('/my_deals',[UserServiceController::class,'index'])->name('user.deals');
-    Route::get('/my_deals/buy/{id}',[UserServiceController::class,'BuyForm'])->name('user.buy');
-    Route::post('/my_deals/buy/store',[UserServiceController::class,'BuyStore'])->name('user.buy.store');
-    Route::get('/my_deals/sell/{id}',[UserServiceController::class,'SellForm'])->name('user.sell');
-    Route::post('/my_deals/sell/store',[UserServiceController::class,'SellStore'])->name('user.sell.store');
- //    Route::get('/deals',[\App\Http\Controllers\MetalController::class,'show'])->name('show.metals');
- //    Route::get('/deals',[\App\Http\Controllers\MetalController::class,'show'])->name('show.metals');
-
     Route::get('/my_tasks',[HomeController::class,'myTasks'])->name('user.tasks');
     Route::get('/new/order',[UserServiceController::class,'create'])->name('add.order');
     Route::post('/new/order',[UserServiceController::class,'store'])->name('store.order');
     Route::get('/add_image',[ImageController::class,'create'])->name('add.image');
     Route::post('/add_image',[ImageController::class,'store'])->name('store.image');
+    //----------------Metals And Trends-------------//
+    Route::get('/my_deals',[UserServiceController::class,'index'])->name('user.deals');
+    Route::get('/my_deals/buy/',[UserServiceController::class,'BuyForm'])->name('user.buy');
+    Route::post('/my_deals/buy/store',[UserServiceController::class,'BuyStore'])->name('user.buy.store');
+    Route::get('/my_deals/sell/',[UserServiceController::class,'SellForm'])->name('user.sell');
+    Route::post('/my_deals/sell/store',[UserServiceController::class,'SellStore'])->name('user.sell.store');
+    //    Route::get('/deals',[\App\Http\Controllers\MetalController::class,'show'])->name('show.metals');
+    //    Route::get('/deals',[\App\Http\Controllers\MetalController::class,'show'])->name('show.metals');
+
 });
 
 

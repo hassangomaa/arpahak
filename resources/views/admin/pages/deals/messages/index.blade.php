@@ -19,9 +19,10 @@
                     <thead>
                     <tr>
                         <th style="width: 10px">المسلسل</th>
-                        <th>الاسم  </th>
-                        <th> نوع التداول</th>
-                        <th>المعدن</th>
+                        <th>اسم المتداول  </th>
+                        <th>تاريخ عمل الطلب </th>
+                        <th> اسم الخدمه</th>
+                        <th>وصف الخدمه</th>
                         <th>السعر</th>
                          <th>العمله</th>
                          <th>الحاله</th>
@@ -37,6 +38,7 @@
 
  {{--                            <td><?php echo $message->userService->user->name ?></td>--}}
                             <td><?php echo $message->user->name ?></td>
+                            <td><?php echo $message->service->created_at ?></td>
                             <td><?php echo $message->service->name ?></td>
                             <td><?php echo $message->service->description ?></td>
                             <td><?php echo $message->service->net_price ?></td>
