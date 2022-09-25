@@ -7,6 +7,7 @@ use App\Models\Service;
 use App\Models\ServiceType;
 use App\Models\UserService;
 use Illuminate\Http\Request;
+use App\Models\Metal;
 use Illuminate\Support\Facades\DB;
 
 class MetalMessageController extends Controller
@@ -22,10 +23,18 @@ class MetalMessageController extends Controller
     public function create()
     {
         //
-//        $data = Service::all();
-        $service = ServiceType::all();//////////////////////////
-//        return view('admin.pages.deals.create',compact('data','service'));
-        return view('admin.pages.deals.create',compact('service'));
+        $metals = Metal::all();
+        return view('admin.pages.deals.create',compact('metals'));
+
+    }
+
+    public function getMetalPrice($id)
+    {
+        
+        $metal = Metal::find($id);
+        return response()->json([
+            'price' => $metal->price,
+        ]);
 
     }
 
@@ -42,7 +51,17 @@ class MetalMessageController extends Controller
             'currency'=>'string|required',
             'service_type_id'=>'numeric|required',
         ]);
+//        dd($request);
 
+//        $message = [];
+//        $message->name = $request->name;
+//        $message->description = $request->description;
+//        $message->url = $request->url;
+//        $message->quantity = $request->quantity;
+//        $message->net_price = $request->net_price;
+//        $message->commission = $request->commission;
+//        $message->currency = $request->currency;
+//        $message->service_type_id = $request->service_type_id;
             Service::create($request->all());
              return redirect()->route('show.metal.messages')->with('success','تم ارسال الحل للمختصين لمراجعته وسيقوم أحد ممثلي خدمة العملاء بالتواصل معك.');
 

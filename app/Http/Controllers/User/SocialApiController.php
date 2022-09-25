@@ -21,7 +21,6 @@ class SocialApiController extends Controller
     public function tiktok($id){
         $link_url = Link::select('link_url')->where('link_id','=',$id)->get();
         $url_id = explode("/", $link_url[0]->link_url);
-
         return view('users.social_api.tiktok',compact('link_url','url_id'));
     }
 }

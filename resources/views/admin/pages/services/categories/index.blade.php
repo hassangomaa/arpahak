@@ -1,31 +1,33 @@
-@extends('admin.layouts.app')
-
+@extends('users.layout.master')
 @section('content')
-    <br>
-    <br>
-
-    <!--table of users-->
-    <div class="col-md">
-        <div class="card">
-            <div class="card-header">
-                <i class="fas fa-table me-1"></i>
-               الأقسام الحالية
-
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body p-0">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th style="width: 10px">المسلسل</th>
-                        <th>الأسم</th>
-                        <th>تعديل</th>
-                        <th>حذف</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-
-                    @foreach($categories as $c)
+@include('admin.includes.head')
+@include('admin.includes.sidebar')
+<main class="main" id="main" >
+    <div class="container" dir="rtl">
+      <section class="section register  d-flex flex-column align-items-center justify-content-center pb-4">
+        <div class="container">
+            
+            <div class="row">
+              <div class="col-12">
+                <div class="card recent-sales overflow-auto">
+    
+                  
+    
+                  <div class="card-body pt-4">
+                    
+                    <table class="table text-center" style="
+                    overflow-x: auto;
+                    white-space: nowrap;vertical-align: middle;">
+                        <thead>
+                        <tr>
+                            <th style="width: 10px">المسلسل</th>
+                            <th> الاسم</th>
+                            <th>تعديل </th>
+                            <th>حذف </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($categories as $c)
                         <tr>
                             <td><?php echo $c->category_id?></td>
                             <td><?php echo $c->name?></td>
@@ -33,35 +35,38 @@
                             <td>
 
                                 <input type="hidden" name="link_id" value='link_id'>
-                                <a href="{{route('edit.service.category',$c->category_id)}}" class="btn btn-info" name="edit" value="edit"><i class="fas fa-pen"></i></a>
+                                <a href="{{route('edit.service.category',$c->category_id)}}" class="btn btn-info" name="edit" value="edit"><i class="bi bi-pencil"></i></a>
 
                             </td>
 
                             <td>
 
-                                <a href="{{route('destroy.service.category',$c->category_id)}}" class="btn btn-secondary" name="delete" value="delete"><i class="far fa-trash-alt"></i></a>
+                                <a href="{{route('destroy.service.category',$c->category_id)}}" class="btn btn-secondary" name="delete" value="delete"><i class="bi bi-trash"></i></a>
                                 </form>
 
                             </td>
                         </tr>
                     @endforeach
 
-
-                    </tbody>
-                </table>
-                @if(session()->has('success'))
-                    <div class="alert alert-success">
-                        {{ session()->get('success') }}
-                    </div>
-                @elseif(session()->has('danger'))
-                    <div class="alert alert-danger">
-                        {{ session()->get('danger') }}
-                    </div>
-                @endif
+                    
+                        
+                    
+                    
+                        </tbody>
+                    </table>
+                    
+    
+                  </div>
+    
+                </div>
+              </div>
             </div>
-            <!-- /.card-body -->
+            
+            
         </div>
+      </section>
     </div>
-    <!-- /.card -->
+  </main><!-- End #main -->
 
 @endsection
+

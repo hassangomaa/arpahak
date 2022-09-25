@@ -1,52 +1,59 @@
-@extends('admin.layouts.app')
-
+@extends('admin.layouts.master')
 @section('content')
-
-    <br>
-    <br>
-
-    <!--table of users-->
-    <div class="col-md">
-        <div class="card">
-            <div class="card-header">
-                <i class="fas fa-table me-1"></i>
-               الصور المقبولة
-
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body p-0">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th style="width: 10px">المسلسل</th>
-                        <th>العنوان</th>
-                        <th>السعر</th>
-                        <th>الصورة</th>
-                        <th>حذف</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-
-                    @foreach($accepted_images as $image)
+@include('admin.includes.head')
+@include('admin.includes.sidebar')
+<main class="main" id="main" >
+    <div class="container" dir="rtl">
+      <section class="section register  d-flex flex-column align-items-center justify-content-center pb-4">
+        <div class="container">
+            
+            <div class="row">
+              <div class="col-12">
+                <div class="card recent-sales overflow-auto">
+    
+                  
+    
+                  <div class="card-body pt-4">
+                    
+                    <table class="table text-center" style="
+                    overflow-x: auto;
+                    white-space: nowrap;vertical-align: middle;">
+                        <thead>
                         <tr>
-                            <td><?php echo $image->id?></td>
-                            <td><?php echo $image->title?></td>
-                            <td>{{ $image->price }}</td>
-                            <td><img src="{{ url('public/Image/'.$image->image) }}" style="height: 175px; width: 250px;"></td>
-
-                            {{--                            <input type="hidden" name="link_id" value='link_id'>--}}
-
-                            <td>
-                                <a href="{{route('image.destroy',$image->id)}}" class="btn btn-secondary" name="delete" value="delete"><i class="far fa-trash-alt"></i></a>
-                            </td>
+                            <th style="width: 10px">المسلسل</th>
+                            <th style="width: 10px">رقم المستخدم</th>
+                            <th>العنوان </th>
+                            <th>السعر </th>
+                            <th> الرابط</th>
+                            <th>حذف</th>
                         </tr>
-                    @endforeach
-
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach ($images as $image)
+                        <tr>
+                            <td>{{$image->id}}</td>
+                            <td>{{$image->user_id}}</td>
+                            <td>{{$image->title}}</td>
+                            <td>{{$image->price}}</td>
+                            <td><a href="{{asset('public/Image/'.$image->image)}}" target="_blank">الرابط</a></td>
+                            <td><a href="{{route('delete.image',$image->id)}}" class="btn btn-danger" name="edit" value="edit"><i class="bi bi-trash"></i></a></td>
+                        </tr>
+                            
+                        @endforeach
+                        </tbody>
+                    </table>
+                    
+    
+                  </div>
+    
+                </div>
+              </div>
             </div>
-            <!-- /.card-body -->
+
         </div>
+      </section>
     </div>
-    <!-- /.card -->
+  </main><!-- End #main -->
+
 @endsection
+

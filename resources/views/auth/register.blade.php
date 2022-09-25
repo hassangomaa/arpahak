@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+@include('layouts.header')
+
     <br>
     <br>
     <!--body content start-->
@@ -95,7 +97,7 @@
                                             <select class="form-control" name="country" >
                                                 <option name="country" value="Country">اختر البلد...</option>
                                                 @foreach($countries as $country)
-                                                    <option id="country" name="country" value="{{$country->country_arName}}">{{ $country->country_arName }}</option>
+                                                <option id="country" name="country" value="{{$country->country_arName}}">{{ $country->country_arName }}</option>
                                                 @endforeach
                                             </select>
                                             <div class="help-block with-errors"></div>

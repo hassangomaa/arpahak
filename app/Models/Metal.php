@@ -9,10 +9,14 @@ class Metal extends Model
 {
     use HasFactory;
     protected $table = 'metals';
-    protected $guarded =[
-
+    protected $fillable =[
+        'id',
+        'name',
+        'sell_price',
+        'buy_price',
     ];
 
+    public $timestamps = false;
 
 //    protected $fillable =[
 //

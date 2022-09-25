@@ -1,84 +1,90 @@
-@extends('users.layout.app')
+@extends('users.layout.master')
 @section('content')
-    <br>
-    <div class="container">
-        <style>
-            .container{
-                margin-left: 3000px;
-            }
-            .card-primary:not(.card-outline)>.card-header {
-                background-color: #e9ecef;
-                border-bottom: 0;
-            }
-        </style>
-        <h3 class="card-title-left" style="color:black">المتداول حاليا  </h3>
-        <!-- general form elements -->
-{{--                @dd($user_deals->services)--}}
-
-                @foreach($user_deals->sortBy('net_price') as $t)
-            <div class="card card-primary">
-                <div class="card card-primary">
-                    <div class="card-header">
-
-                    <!--  User service -->
-{{--                            <a href=""  class="link-success link text-decoration-none">--}}
-{{--                                <div class="card mb-3 bg-success text-white fs-3">--}}
-                    </div>
-                                    <div class="card-body">
-                                         <span class="text-dark fw-bold">  المسلسل : {{$t->id}}  </span>
-                                        <br>
-                                          <span class="text-dark fw-bold">  اﻻسم : {{$t->name}}  </span>
-                                        <br>
-
-                                         <span class="text-dark fw-bold">   الوصف : {{$t->description}}  </span>
-                                        <br>
-
-                                         <span class="text-dark fw-bold">     نوع المعدن : {{$t-> serviceType->type}}  </span>
-                                        <br>
-                                        <span class="text-dark fw-bold">   الكميه : {{$t->quantity}}  </span>
-                                        <br>
-
-
-                                         <span class="text-dark fw-bold">   اللينك : {{$t->url}}  </span>
-                                        <br>
-
-                                         <span class="text-dark fw-bold">   المطلوب : {{$t->net_price}}  </span>
-                                        <br>
-
-                                         <span class="text-dark fw-bold"> العمله : {{$t->currency}} </span>
-                                        <br>
-
-                                         <span class="text-dark fw-bold"> تاريخ نشر التداول : {{$t->created_at}} </span>
-                                        <br>
-
-                            </a>
-                         <br>
-{{--                                        <input hidden name="id" value="{{$t->id}}">--}}
-
-                                        <form action="{{route('user.buy')}}" method="GET">
-                                            @csrf
-                                            <input hidden name="id"     value="{{$t->id}}">
-                                            <button  class="btn btn-success" type="submit"   onclick="window.location.href='{{route('user.buy')}}'">  شراء </button>
-
-                                        </form>
-
-                                        <button class="btn btn-warning" onclick="window.location.href='{{route('user.sell')}}'">بيع</button>
+@include('users.includes.head')
+@include('users.includes.sidebar')
+<main class="main" id="main" >
+    <div class="container" dir="rtl">
+      <section class="section register  d-flex flex-column align-items-center justify-content-center pb-4">
+        <div class="container">
+            
+            <div class="row">
+              <div class="col-12">
+                <div class="card recent-sales overflow-auto">
+    
+                  
+    
+                  <div class="card-body pt-4">
+                    
+                    <table class="table text-center" style="
+                    overflow-x: auto;
+                    white-space: nowrap;vertical-align: middle;">
+                        <thead>
+                        <tr>
+                            <th style="width: 10px">المسلسل</th>
+                            <th>نوع الخدمه</th>
+                            <th>نوع المعدن</th>
+                            <th> الوصف</th>
+                            <th>الرابط</th>
+                            <th>الكمية</th>
+                            <th>  الحاله</th>
+                            <th>  العموله</th>
+                            <th>  العملة</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($trades as $trade)
+                        <tr>
+                            <td>{{$trade->id}}</td>
+                            <td>
+                                @if ($trade->trade_type == 1)
+                                بيع
+                                @endif
+                                @if ($trade->trade_type == 2)
+                                شراء
+                                @endif
+                            </td>
+                            <td>
+                                <?php
+                                    foreach ($metals as $m)
+                                        if($trade->metal_type == $m->id)
+                                            echo $m->name
+                                        ?>
+                            </td>
+                            <td>{{$trade->description}}</td>
+                            <td><a href="{{$trade->link}}">الرابط</a></td>
+                            <td>{{$trade->quantity}}</td>
+                            <td>{{$trade->status}}</td>
+                            <td>{{$trade->commission}}</td>
+                            <td>{{$trade->currency}}</td>
 
 
-{{--                    <form action="{{route('user.sell')}}" method="GET">--}}
-{{--                        @csrf--}}
-{{--                         <input  name="" type="submit" class="btn btn-danger" value="{{$t->id}}">--}}
-{{--                    </form>--}}
-                    </div>
-                    </div>
-                     </div>
-{{--                 <div class="text-dark fw-bold">--}}
 
-                @endforeach
+                            
+                        </tr>
+                            
+                        @endforeach
+    
+                        
+    
 
+                    
+                        
+                    
+                    
+                        </tbody>
+                    </table>
+                    
+    
+                  </div>
+    
+                </div>
+              </div>
             </div>
+
         </div>
+      </section>
     </div>
+  </main><!-- End #main -->
 
 @endsection
 

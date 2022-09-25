@@ -322,7 +322,7 @@ a, i, .btn, .btn span, button, img, span, .nav-link, .dropdown-item, .social-ico
 /* ------------------------
     Page Title
 ------------------------*/
-.page-title {display: block; padding: 200px 0 250px; z-index: 1}
+.page-title {display: block; padding: 200px 0 250px; z-index: 1 ; }
 .page-title h1{font-size: 50px; color: #1c1d3e; line-height: 60px; font-weight: 700; margin-bottom: 20px;}
 .page-title p{margin-bottom: 0; color: #1c1d3e;}
 .breadcrumb {padding: 0; background:none; display: inline-block; border-radius: 0; margin: 0; text-transform: capitalize; color: #1c1d3e; font-weight: 700;}

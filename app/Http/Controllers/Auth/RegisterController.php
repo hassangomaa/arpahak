@@ -82,8 +82,10 @@ class RegisterController extends Controller
             'remember_token' => $data['_token'],
             'gender' => $data['gender'],
             'country' => $data['country'],
-
         ]);
+        $this->middleware('auth');
+        $this->middleware('signed')->only('verify');
+        $this->middleware('throttle:6,1')->only('verify', 'resend');
 
     }
 

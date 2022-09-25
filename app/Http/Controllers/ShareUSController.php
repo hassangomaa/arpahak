@@ -107,6 +107,5 @@ class ShareUSController extends Controller
     {
         ShareUS::where('id','=',$id)->delete();
         return redirect()->back()->with('success','تم حذف الرسالة.');
-
     }
 }

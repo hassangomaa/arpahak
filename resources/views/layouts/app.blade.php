@@ -56,10 +56,40 @@
     <link href="{{URL::asset('css/color-customize/color-customizer.css')}}" rel="stylesheet" type="text/css" />
 
     <!-- inject css end -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+   
+    @yield('body_style')
+    <style>
+        .cards-wrapper
+        {
+            display: flex
+        }
+        #mobile-steps-div
+        {
+            display: block;
+        }
+        #setps-div
+        {
+            display: none;
+        }
+    @media (min-width: 992px) {
+        #mobile-steps-div
+        {
+            display: none;
+        }
+        #setps-div
+        {
+            display: flex;
+        }
+    }
+    
+</style>
+
 
 </head>
 
-<body data-bs-spy="scroll" data-bs-target="#navbarNav">
+<body data-bs-spy="scroll" data-bs-target="#navbarNav" style="padding: 0;" >
 
 <!-- page wrapper start -->
 
@@ -81,14 +111,12 @@
     </div>
 
     <!-- preloader end -->
-@include('layouts.header')
 
 
 
 @yield('content')
 
 
-@include('layouts.footer')
 <!--back-to-top start-->
 
 <div class="scroll-top"><a class="smoothscroll" href="#top"><i class="flaticon-go-up-in-web"></i></a></div>
@@ -137,6 +165,8 @@
 
 <!-- inject js end -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script src="@yield('js_file')"></script>
 
 </body>
 

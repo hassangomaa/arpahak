@@ -3,19 +3,14 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\ServiceCategoryController;
+use App\Models\Image;
 use App\Models\Count_Click;
 use App\Models\Link;
-use App\Models\Metal;
-use App\Models\Service;
-use App\Models\ServiceCategory;
-use App\Models\ServiceType;
 use App\Models\User;
+use App\Models\trade;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
- use Illuminate\Support\Facades\DB;
-
 
 class HomeController extends Controller
 {
@@ -36,8 +31,16 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $images = Image::where('user_id', Auth::id())->get()->count();
+        $trades = trade::where('user_id', Auth::id())->get()->count();
+        
+        return view('users.dashboard',compact('images','trades'));
+    }
 
-        return view('users.home');
+    public function dashboard()
+    {
+
+        return view('users.dashboard');
     }
 
 
@@ -103,29 +106,8 @@ class HomeController extends Controller
         return view('users.pages.tasks.index',compact('user_tasks'));
     }
 
-
-//public function myDeals(){
-//        // التداول هو عنصر من   السيرفس كاتيجوري
-//    // السيرفس تايب بيع / شراء دهب نحاس المنيوم 6 عنصر ك ادمن
-////        $user_deals =  DB::table('service_types')->where('category_id',6);
-////        $user_deals =  ServiceType::where('category_id','=',6)->get();
-//
-//
-//
-//    ///NOTE :
-//    ///     get the metal  from service_types where category_id = 6 from Services to connect price/quantitiy...
-//    $user_deals =  Service::where('service_type_id','=',7)->get();
-//
-//
-//
-//
-//
-//        return view('users.pages.deals.index',compact('user_deals'));
-//    }
-
-
-
-
-
-
+    public function services()
+    {
+        return view('services');
+    }
 }

@@ -1,44 +1,43 @@
-@extends('admin.layouts.app')
-
+@extends('users.layout.master')
 @section('content')
-
-    <br>
-    <br>
-
-    <!--table of users-->
-    <div class="col-md">
-        <div class="card">
-            <div class="card-header">
-                <i class="fas fa-table me-1"></i>
-                رسائل المتداولين
-
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body p-0">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th style="width: 10px">المسلسل</th>
-                        <th>اسم المتداول  </th>
-                        <th>تاريخ عمل الطلب </th>
-                        <th> اسم الخدمه</th>
-                        <th>وصف الخدمه</th>
-                        <th>السعر</th>
-                         <th>العمله</th>
-                         <th>الحاله</th>
-                        <th>قبول</th>
-                        <th>حذف</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-
-                    @foreach($messages as $message)
+@include('admin.includes.head')
+@include('admin.includes.sidebar')
+<main class="main" id="main" >
+    <div class="container" dir="rtl">
+      <section class="section register  d-flex flex-column align-items-center justify-content-center pb-4">
+        <div class="container">
+            
+            <div class="row">
+              <div class="col-12">
+                <div class="card recent-sales overflow-auto">
+    
+                  
+    
+                  <div class="card-body pt-4">
+                    
+                    <table class="table" style="
+                    overflow-x: auto;
+                    white-space: nowrap;">
+                        <thead>
+                        <tr>
+                            <th style="width: 10px">المسلسل</th>
+                            <th>الاسم  </th>
+                            <th> نوع التداول</th>
+                            <th>المعدن</th>
+                            <th>السعر</th>
+                            <th>العمله</th>
+                            <th>الحاله</th>
+                            <th>قبول</th>
+                            <th>حذف</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($messages as $message)
                         <tr>
                             <td><?php echo $message->id ?></td>
 
  {{--                            <td><?php echo $message->userService->user->name ?></td>--}}
                             <td><?php echo $message->user->name ?></td>
-                            <td><?php echo $message->service->created_at ?></td>
                             <td><?php echo $message->service->name ?></td>
                             <td><?php echo $message->service->description ?></td>
                             <td><?php echo $message->service->net_price ?></td>
@@ -62,11 +61,25 @@
                          </tr>
                     @endforeach
 
-                    </tbody>
-                </table>
+                    
+                        
+                    
+                    
+                        </tbody>
+                    </table>
+                    
+    
+                  </div>
+    
+                </div>
+              </div>
             </div>
-            <!-- /.card-body -->
+            
+            
         </div>
+      </section>
     </div>
-    <!-- /.card -->
+  </main><!-- End #main -->
+
 @endsection
+

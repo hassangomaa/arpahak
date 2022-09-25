@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('content')
+@include('layouts.header')
+
     <!--page title start-->
 
     <section class="page-title overflow-hidden position-relative" data-bg-color="#fbf3ed">
@@ -158,4 +160,6 @@
     </div>
 
     <!--body content end-->
+    @include('layouts.footer')
+
 @endsection

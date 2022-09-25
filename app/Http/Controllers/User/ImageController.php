@@ -5,6 +5,8 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class ImageController extends Controller
 {
@@ -20,10 +22,35 @@ class ImageController extends Controller
     }
 
     public function acceptedImages(){
-        $accepted_images = Image::where('confirmed','=',1)->get();
-        return view('admin.pages.images.accepted',compact('accepted_images'));
+        $images = Image::where('confirmed','=',1)->get();
+        return view('admin.pages.images.accepted',compact('images'));
     }
 
+    public function getImages()
+    {
+        $images = Image::where('user_id', Auth::id())->get();
+        return view('users.pages.images.index',compact('images'));
+    }
+
+    public function pendingImages()
+    {
+        $images = Image::where('confirmed',0)->get();
+        return view('admin.pages.images.index',compact('images'));
+    }
+    public function acceptImage($id)
+    {
+        $image = Image::find($id);
+        $image->confirmed = 1 ; 
+        $image->save();
+        return redirect()->back();
+    }
+    public function declineImage($id)
+    {
+        $image = Image::find($id);
+        $image->confirmed = 2 ; 
+        $image->save();
+        return redirect()->back();
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -44,15 +71,14 @@ class ImageController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-           'title'=>'required|string',
-           'image'=>'required',
-           'price'=>'nullable|numeric|min:0',
+            'title'=>'required|string',
+            'image'=>'required',
+            'price'=>'nullable|numeric|min:0',
         ]);
-
         $data = new Image();
         $data->title = $request->title;
         $data->user_id = auth()->user()->id;
-        $data->price = $request->price ?? 0;
+        $data->price = $request->price ;
         if($request->file('image')){
             $file= $request->file('image');
             $filename= date('YmdHi').$file->getClientOriginalName();
@@ -109,8 +135,8 @@ class ImageController extends Controller
      */
     public function destroy($id)
     {
-        Image::where('id','=', $id) -> delete();
+        Image::find($id)->delete();
         session() -> flash('success', trans('تم حذف الصورة'));
-        return redirect() -> route('confirm.images');
+        return redirect()->back();
     }
 }

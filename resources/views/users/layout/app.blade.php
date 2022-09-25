@@ -37,7 +37,7 @@
     <!-- Custom style for RTL -->
     <link rel="stylesheet" href="{{URL::asset('dist/css/custom.css')}}">
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini layout-fixed" >
     @include('users.includes.header')
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -78,12 +78,6 @@
                             <p>المهام</p>
                         </a>
                     </li>
-                     <li class="nav-item has-treeview">
-                        <a href="{{route('user.deals')}}" class="nav-link">
-                            <i class="nav-icon fas fa-book"></i>
-                            <p>التداول </p>
-                        </a>
-                    </li>
 
                     <li class="nav-item has-treeview">
                         <a href="{{route('add.image')}}" class="nav-link">
@@ -96,6 +90,12 @@
                         <a href="{{route('add.order')}}" class="nav-link">
                             <i class="nav-icon fas fa-book"></i>
                             <p>اضافة طلب</p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="{{route('MyOrders')}}" class="nav-link">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p> عرض الطلبات</p>
                         </a>
                     </li>
 

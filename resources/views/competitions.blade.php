@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('content')
+@include('layouts.header')
+
     <!--page title start-->
 
     <section class="page-title overflow-hidden position-relative" data-bg-color="#fbf3ed">
@@ -7,7 +9,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-7 col-md-12">
-                    <h1 class="title">المسابقات</h1>
+                    <h1 class="title"style="margin-top: -4rem;">المسابقات</h1>
                     <p>يمكن من خلال منصتنا عرض مسابقات للجميع و أختيار افضل متسابق.</p>
                 </div>
             </div>
@@ -20,7 +22,7 @@
 
     <!--body content start-->
 
-    <div class="page-content">
+    <div class="page-content"style="margin-top: -5rem; z-index:999;position:relative;">
 
 
 
@@ -28,6 +30,8 @@
 
         <section class="contact-1">
             <div class="container">
+
+
 
                 <br>
                 <br>
@@ -43,7 +47,9 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-responsive table-bordered table-striped" >
+                                <table class="table table-dark table-striped"style="
+                                overflow-x: auto;
+                                white-space: nowrap;" >
                                     <thead>
                                         <tr>
                                             <th style="width: 10px">كود</th>
@@ -72,7 +78,8 @@
                         </div>
                         <!-- /.card-body -->
                     </div>
-                </div>
+                </div> 
+                
                 <!-- /.card -->
                 <br>
 
@@ -209,4 +216,6 @@
     </div>
 
     <!--body content end-->
+    @include('layouts.footer')
+
 @endsection

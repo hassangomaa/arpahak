@@ -7,6 +7,8 @@ use App\Models\Image;
 use App\Models\Link;
 use App\Models\ShareUS;
 use App\Models\User;
+use App\Models\trade;
+use App\Models\UserService;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
@@ -16,7 +18,10 @@ class AdminController extends Controller
 {
     public function index(){
         $count_users = User::where('role_id','=',2)->count();
-        return view('admin.index',compact('count_users'));
+        $images = Image::all()->count();
+        $orders = UserService::all()->count();
+        $trades = trade::all()->count();
+        return view('admin.dashboard',compact('count_users','images','orders','trades'));
     }
 
 

@@ -1,6 +1,6 @@
 <!--footer start-->
 
-<footer class="footer footer-1 position-relative" data-bg-img="images/bg/05.png">
+<footer class="footer footer-1 position-relative" data-bg-img="images/bg/05.png" style="margin-top: unset;padding-top:unset">
 {{--    <div class="subscribe-box">--}}
 {{--        <div class="container">--}}
 {{--            <div class="row subscribe-inner align-items-center">--}}

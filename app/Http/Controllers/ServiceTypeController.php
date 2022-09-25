@@ -5,18 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\ServiceCategory;
 use App\Models\ServiceType;
 use Illuminate\Http\Request;
- use Illuminate\Support\Facades\DB;
 
- class ServiceTypeController extends Controller
+class ServiceTypeController extends Controller
 {
 
     public function index()
     {
-        $types = ServiceType::where('category_id',6)->get();
+        $types = ServiceType::all();
         $categories_names = ServiceCategory::select('category_id','name')->get();
         return view('admin.pages.services.types.index',compact('types','categories_names'));
-
-
     }
 
 
@@ -46,7 +43,6 @@ use Illuminate\Http\Request;
         }
         $service_type->save();
 
-//        dd("HELLO!");
         return redirect()->back()->with('success','تم أضافة النوع بنجاح.');
     }
 
@@ -59,41 +55,15 @@ use Illuminate\Http\Request;
 
     public function edit($id)
     {
-//        $types = ServiceType::all();
-        $categories_names = ServiceCategory::select('category_id','name')->get();
-//        $sub_categories = ServiceType::where('id',$id)->get();
         $sub_categories = ServiceType::where('id',$id)->get();
         $category = ServiceCategory::where('category_id',$id)->get();
-//        dd($categories_names); social/ tdaol
-        return view('admin.pages.services.types.edit',compact('categories_names','sub_categories','category'));
-
+        return view('admin.pages.services.types.edit',compact('sub_categories','category'));
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request, ServiceType $serviceType)
     {
         //
-//            dd($request);
-        $request -> validate([
-            'category_id' => 'required',
-            'type' => 'required|string',
-            'status' => 'required',
-        ]);
-        DB::table('service_types')
-            ->where('id', (int) $id )
-            ->update([
-                'type' =>      $request->type ,
-                'category_id' =>        $request->category_id,
-                'status' =>  $request->status ,
-            ]);
-        session() -> flash('success', trans('تم تعديل المسابقة'));
-
-//        $types = ServiceType::all();
-//        $categories_names = ServiceCategory::select('category_id','name')->get();
-//        return view('admin.pages.services.types.index',compact('types','categories_names'));
-
-
-          return redirect() -> route('edit.service.subCategory',(int)$id);
     }
 
 

@@ -2,109 +2,52 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Service;
-use App\Models\ServiceCategory;
-use App\Models\ServiceType;
 use App\Models\UserService;
+use App\Models\Service;
+use App\Models\ServiceType;
+use App\Models\ServiceCategory;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Metal;
+use Illuminate\Support\Facades\Auth;
+
 
 class UserServiceController extends Controller
 {
 
     public function index()
     {
-         // التداول هو عنصر من   السيرفس كاتيجوري
-        // السيرفس تايب  دهب نحاس المنيوم
-        //السيرفس نفسها بيع / شراء سعر و كميه و ....
-
-//        $user_deals =  DB::table('service_types')->where('category_id',6);
-//        $user_deals =  ServiceType::where('category_id','=',6)->get();
-        ///NOTE :
-        ///     get the metal  from service_types where category_id = 6 from Services to connect price/quantitiy...
-//        $user_deals =  Service::where('service_type_id','=',7)->get();
-        $user_deals =  Service::all();
-        $data =  UserService::all();
-        return view('users.pages.deals.index',compact('user_deals','data'));
-     }
+        $orders = UserService::where('user_id', Auth::id())->get();
+        $services = Service::all();
+        return view('users.pages.orders.index',compact('orders','services'));
+    }
 
 
     public function create()
     {
-        return view('users.pages.orders.create');
-    }
-
-
-    public function BuyForm(Request $request)
-    {
-
-//        dd($request);
-
-//         $data =  Service::find($request->id);
-         $data =  Service::find($request->id);
-
-
-        return view('users.pages.deals.BuyForm',compact('data'));
-
-    }
-
-    public function SellForm()
-    {
-//            $data =  Service::where('service_type_id','=',$id)->get();
-//        return view('users.pages.deals.SellForm',compact('data'));
-        $data = Service::all();
-        $service =  ServiceType::select('type','status')->where('category_id','=', 6)->get();
-/*ADD IMAGE
- * $data= new Service();
-        if($request->file('image')){
-            $file= $request->file('image');
-            $filename= date('YmdHi').$file->getClientOriginalName();
-            $file-> move(public_path('public/Image'), $filename);
-            $data['image']= $filename;
-        }
-        $data->save();
-*/
-        return view('users.pages.deals.SellForm',compact('service','data'));
-    }
-
-
-    public function BuyStore(Request $request)
-    {
-
-//        return "HOLAA!";
-
-
-//        dd($request);
-
-        UserService::create($request->validate([
-            'user_id'=>'string|required',
-            'service_id'=>'numeric|required',
-            'attachment'=>'string|required',
-            'paid_money'=>'string|required',
-            'remain_money'=>'numeric|required',
-        ]));
-        return redirect()->back()->with('success_message','تم ارسال الحل للمختصين لمراجعته وسيقوم أحد ممثلي خدمة العملاء بالتواصل معك.');
-
-    }
-
-
-
-    public function SellStore(Request $request)
-    {
-        UserService::create($request->validate([
-            'user_id'=>'string|required',
-            'service_id'=>'numeric|required',
-            'attachment'=>'string|required',
-            'paid_money'=>'string|required',
-            'remain_money'=>'numeric|required',
-        ]));
-        return redirect()->back()->with('success_message','تم ارسال الحل للمختصين لمراجعته وسيقوم أحد ممثلي خدمة العملاء بالتواصل معك.');
+        $categories_names = ServiceCategory::select('category_id','name')->get();
+        return view('users.pages.orders.create',compact('categories_names'));
     }
 
 
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'service_id'=>'integer|required',
+            'attachment'=>'integer|required',
+        ]);
+        $newService = new UserService();
+        $newService->service_id = $request->service_id;
+        $newService->user_id = Auth::id();
+        $newService->attachment = $request->attachment;
+        $newService->paid_money = 50;
+        $newService->remain_money = 0;
+        $newService->status = "قيد التنفيذ";
+        $newService->save();
+        return redirect()->back()->with('success','تم أضافة الطلب بنجاح.');
 
-            return redirect()->back()->with('success','تم ارسال الحل للمختصين لمراجعته وسيقوم أحد ممثلي خدمة العملاء بالتواصل معك.');
+        
+
 
     }
 
@@ -129,5 +72,18 @@ class UserServiceController extends Controller
     public function destroy(UserService $userService)
     {
 
+    }
+
+    public function addTrade()
+    {
+        $metals = Metal::all();
+        return view('users.pages.deals.create',compact('metals'));
+    }
+    public function GetServices($TypeId)
+    {
+        $services = Service::where('service_type_id','=',$TypeId)->get();
+        return response()->json([
+            'services' => $services,
+        ]);
     }
 }

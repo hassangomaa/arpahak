@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('content')
+@include('layouts.header')
+
     <div class="page-content">
 
 

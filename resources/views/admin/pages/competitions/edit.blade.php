@@ -1,58 +1,74 @@
-@extends('admin.layouts.app')
-
+@extends('admin.layouts.master')
 @section('content')
-
-    <br>
+@include('admin.includes.head')
+@include('admin.includes.sidebar')
+<main class="main" id="main">
     <div class="container">
-        <style>
-            .container{
-                margin-left: 3000px;
-            }
-        </style>
-        <!-- general form elements -->
-        <div class="card card-primary">
-            <div class="card-header">
-                <h3 class="card-title-left">تعديل المسابقة</h3>
-            </div>
-            <!-- /.card-header -->
-            <!-- form start -->
-            <form  method="POST" action="{{route('competition.update',$competition[0]->id)}}">
-                @csrf
+      <section class="section register d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+          <div class="row justify-content-center" dir="rtl">
+            <div class="col-lg-12 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+              
+              <div class="card mb-3">
+
                 <div class="card-body">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="title" name="title" placeholder="العنوان" value="{{old('title', $competition[0]->title)}}" required>
-                    </div>
 
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="price" name="price" placeholder="سعر المسابقة" value="{{old('price', $competition[0]->price)}}" required>
-                    </div>
+                  <div class="pt-4 pb-2">
+                    <h5 class="card-title text-center pb-0 fs-4">اضافة  مهمة</h5>
+                    <p class="text-center small">قم بادخال البيانات</p>
+                  </div>
 
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="time" name="time" placeholder="مدة المسابقة" value="{{old('time', $competition[0]->time)}}" required>
+                  <form class="row g-3 needs-validation" enctype="multipart/form-data" method="POST" action="{{route('competition.update',$competition[0]->id)}}">
+                    @csrf
+                    <div class="row">
+                        <div class=" col-12">
+                            <div class="form-group">
+                                <label  class="form-label">العنوان <span class="text-danger"> *</span> </label>
+                                <input type="text" class="form-control" id="title" name="title" placeholder="العنوان" value="{{old('title', $competition[0]->title)}}" required>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label  class="form-label">السعر  <span class="text-danger"> *</span> </label>
+                                <input type="text" class="form-control" id="price" name="price" placeholder="سعر المسابقة" value="{{old('price', $competition[0]->price)}}" required>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        <textarea id="description" name="description" class="form-control" placeholder="الوصف" rows="4" required="required" data-error="برجاء ترك لنا الوصف." value="{{old('description', $competition[0]->description)}}"></textarea>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label  class="form-label"> مدة الماسبقة <span class="text-danger"> *</span> </label>
+                                <input type="text" class="form-control" id="time" name="time" placeholder="مدة المسابقة" value="{{old('time', $competition[0]->time)}}" required>
+                            </div>
+                        </div>
+                        <div class=" col-12">
+                            <div class="form-group">
+                                <label  class="form-label"> الوصف <span class="text-danger"> *</span> </label>
+                                <textarea id="description" name="description" class="form-control" placeholder="الوصف" rows="4" required="required" data-error="برجاء ترك لنا الوصف." value="{{old('description', $competition[0]->description)}}"></textarea>
+                            </div>
+                        </div>
                     </div>
+                    <div class="row mt-3 justify-content-center">
+                        <div class="col-6 ">
+                            <button class="btn btn-primary  w-100" type="submit"> تعديل </button>
+                        </div>
+                    </div>
+                    
+                    
+                  </form>
 
                 </div>
-                <!-- /.card-body -->
-
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">تعديل</button>
-                </div>
-                @if(session()->has('success'))
-                    <div class="alert alert-success">
-                        {{ session()->get('success') }}
-                    </div>
-                @elseif(session()->has('danger'))
-                    <div class="alert alert-danger">
-                        {{ session()->get('danger') }}
-                    </div>
-                @endif
-            </form>
-
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- /.card -->
+
+      </section>
+
     </div>
+  </main>
+
+
+
 @endsection

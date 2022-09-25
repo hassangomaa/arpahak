@@ -101,6 +101,7 @@
                         </ul>
                     </li>
 
+
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-book"></i>
@@ -132,39 +133,6 @@
                         </ul>
                     </li>
 
-                     <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-book"></i>
-                            <p>
-                                المتداول
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <!--      ## add to the service type   -->
-                                <a href="{{route('add.services')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>اضافة عنصر تداول</p>
-                                </a>
-                            </li>
-                        <li class="nav-item">
-                                <!--  return Sub Category  -->
-                                <a href="{{route('show.metals')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>التداوﻻت الحالية</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('show.metal.messages')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>رسائل المتداوليين</p>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </li>
-
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-book"></i>
@@ -189,7 +157,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="{{route('show.competition.messages')}}" class="nav-link">
+                                <a href="{{route('add.service')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>أضافة خدمة</p>
                                 </a>
@@ -210,7 +178,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="{{route('add.new.competition')}}" class="nav-link">
+                                <a href="{{route('services.list')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>الخدمات الحالية</p>
                                 </a>
@@ -254,6 +222,83 @@
 
                         </ul>
                     </li>
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p>
+                                المتداول
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <!--      ## add to the service type   -->
+                                <a href="{{route('add.services')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>اضافة عنصر تداول</p>
+                                </a>
+                            </li>
+                        <li class="nav-item">
+                                <!--  return Sub Category  -->
+                                <a href="{{route('show.metals')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>التداوﻻت الحالية</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('show.metal.messages')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>رسائل المتداوليين</p>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p>
+                                الطلبات
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item has-treeview">
+                                <a href="{{route('ShowOrders')}}" class="nav-link">
+                                    <i class="nav-icon fas fa-book"></i>
+                                    <p>
+                                        عرض الطلبات المعلقة
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item has-treeview">
+                                <a href="{{route('ShowAcceptedOrders')}}" class="nav-link">
+                                    <i class="nav-icon fas fa-book"></i>
+                                    <p>
+                                        عرض الطلبات المقبولة
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item has-treeview">
+                                <a href="{{route('ShowDeclinedOrders')}}" class="nav-link">
+                                    <i class="nav-icon fas fa-book"></i>
+                                    <p>
+                                        عرض الطلبات المرفوضة
+                                    </p>
+                                </a>
+                            </li>
+{{--                            <li class="nav-item">--}}
+{{--                                <a href="" class="nav-link">--}}
+{{--                                    <i class="far fa-circle nav-icon"></i>--}}
+{{--                                    <p>الصور المرفوضة</p>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+
+                        </ul>
+                    </li>
+                    
+                    
+                    
 
                     <li class="nav-item has-treeview">
                         <a href="{{route('users')}}" class="nav-link">

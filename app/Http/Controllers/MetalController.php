@@ -14,17 +14,56 @@ class MetalController extends Controller
      */
     public function index()
     {
-        //
+        $metals = Metal::all();
+        return view('admin.pages.deals.metals.index',compact('metals'));
     }
 
 ////User ONLY!
-    public function addMetal($id)
+    public function addMetal()
     {
-        //
+        return view('admin.pages.deals.metals.create');
+    }
+    public function storeMetal(Request $request)
+    {
+        $this->validate($request,[
+            'metal_name'=>'required',
+            'sell_price'=>'required',
+            'buy_price'=>'required',
+        ]);
+        Metal::create(
+            [
+                'name' => $request->metal_name,
+                'sell_price' => $request->sell_price,
+                'buy_price' => $request->buy_price,
+            ]
+            );
+        return redirect()->back();
+    }
+    
+    public function editmetalpage($id)
+    {
         $metal = Metal::find($id);
-//        $metal->std()->sync(auth()->user()->id);///Store The Enroll process
-
-        return redirect('users.pages.deals');
+        return view('admin.pages.deals.metals.edit',compact('metal'));
+    }
+    public function editMetal($id,Request $request)
+    {
+        $this->validate($request,[
+            'metal_name'=>'required',
+            'sell_price'=>'required',
+            'buy_price'=>'required',
+        ]);
+        $metal = Metal::find($id);
+        $metal->name = $request->metal_name;
+        $metal->sell_price = $request->sell_price;
+        $metal->buy_price = $request->buy_price;
+        $metal->save();
+        return redirect()->route('show.metal');
+    }
+    
+    public function destroy($id)
+    {
+        $metal = Metal::find($id)->delete();
+        return redirect()->back();
     }
 
 
@@ -91,8 +130,5 @@ class MetalController extends Controller
      * @param  \App\Models\Metal  $metal
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Metal $metal)
-    {
-        //
-    }
+    
 }

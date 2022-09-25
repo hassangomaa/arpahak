@@ -1,8 +1,8 @@
 
 <header id="site-header" class="header header-1">
-    <div class="container-fluid">
+    <div >
         <div id="header-wrap" class="box-shadow">
-            <div class="row">
+            <div class="row container-fluid">
                 <div class="col-lg-12">
                     <!-- Navbar -->
                     <nav class="navbar navbar-expand-lg">
@@ -18,8 +18,11 @@
                             <!-- Left nav -->
                             <ul class="nav navbar-nav mx-auto">
                                 <!-- Home -->
-                                <li class="nav-item"> <a class="nav-link @if(Route::current()->getName() == 'index') active @endif" href="{{route('index')}}">الرئيسية</a></li>
+                                <li class="nav-item"> <a class="nav-link @if(Route::current()->getName() == 'index') active @endif" href="{{route('homepage')}}">الرئيسية</a></li>
+                                <li class="nav-item"> <a class="nav-link @if(Route::current()->getName() == 'index') active @endif" href="{{route('ads')}}">الاعلانات</a></li>
                                 <li class="nav-item"> <a class="nav-link @if(Route::current()->getName() == 'show.competitions') active @endif" href="{{route('show.competitions')}}">المسابقات</a></li>
+                                <li class="nav-item"> <a class="nav-link @if(Route::current()->getName() == 'home.services') active @endif" href="{{route('home.services')}}">الخدمات</a></li>
+                                <li class="nav-item"> <a class="nav-link @if(Route::current()->getName() == 'home.trading') active @endif" href="{{route('home.trading')}}">التداول</a></li>
                                 <li class="nav-item"> <a class="nav-link @if(Route::current()->getName() == 'gallery') active @endif" href="{{route('gallery')}}"> معرض الصور</a></li>
                                 <li class="nav-item"> <a class="nav-link @if(Route::current()->getName() == 'share.us') active @endif"  href="{{route('share.us')}}">كن شريك</a></li>
 {{--                                <li class="nav-item"> <a class="nav-link @if(Route::current()->getName() == 'trading') active @endif"  href="{{route('trading')}}">التداول</a></li>--}}
