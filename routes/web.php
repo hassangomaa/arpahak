@@ -123,6 +123,23 @@ Route::group(['middleware'=> ['verified','auth','disable_back']],function(){
     Route::get('/post-ad',[AdsController::class,'create'])->name('post.ad');
     Route::post('/post-ad',[AdsController::class,'store'])->name('store.ad');
 
+    //----------------------Payment ---------------------//
+    Route::get('/payment/vodafone-cash/{id}',[vodafoneController::class,'pay_page'])->name('vodafone-cash');
+    Route::post('/payment/vodafone-cash/image',[vodafoneController::class,'uploadFile'])->name('vodafone-image');
+    Route::get('/payment/bank-transfer/{id}',[bankController::class,'pay_page'])->name('bank-transfer');
+    Route::post('/payment/bank-transfer/image',[bankController::class,'uploadFile'])->name('bank-image');
+
+    //-------------Payments NEW----------////
+    Route::get('paypal/{id}', [\App\Http\Controllers\PaymentController::class, 'pay_page'])->name('paypal-form');
+    Route::post('pay', [\App\Http\Controllers\PaymentController::class, 'pay'])->name('payment.paypal');
+    Route::get('success', [\App\Http\Controllers\PaymentController::class, 'success']);
+    Route::get('error', [\App\Http\Controllers\PaymentController::class, 'error']);
+////////////////////////////////////////PAY pallllll$$$$$
+/////
+//    Route::get('create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
+//    Route::get('process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');
+//    Route::get('success-transaction', [PayPalController::class, 'successTransaction'])->name('successTransaction');
+//    Route::get('cancel-transaction', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');
 
 
 
@@ -234,23 +251,6 @@ Route::group(['middleware'=>['verified','checkUserRole','auth','disable_back'],'
 //    Route::get('/delete_metal_message/{id}',[\App\Http\Controllers\MetalMessageController::class,'destroy'])->name('competition.message.destroy');
 
 
-    //----------------------Payment ---------------------//
-    Route::get('/payment/vodafone-cash/{id}',[vodafoneController::class,'pay_page'])->name('vodafone-cash');
-    Route::post('/payment/vodafone-cash/image',[vodafoneController::class,'uploadFile'])->name('vodafone-image');
-    Route::get('/payment/bank-transfer/{id}',[bankController::class,'pay_page'])->name('bank-transfer');
-    Route::post('/payment/bank-transfer/image',[bankController::class,'uploadFile'])->name('bank-image');
-
-            //-------------Payments NEW----------////
-    Route::get('paypal/{id}', [\App\Http\Controllers\PaymentController::class, 'pay_page'])->name('paypal-form');
-    Route::post('pay', [\App\Http\Controllers\PaymentController::class, 'pay'])->name('payment.paypal');
-    Route::get('success', [\App\Http\Controllers\PaymentController::class, 'success']);
-    Route::get('error', [\App\Http\Controllers\PaymentController::class, 'error']);
-////////////////////////////////////////PAY pallllll$$$$$
-/////
-//    Route::get('create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
-//    Route::get('process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');
-//    Route::get('success-transaction', [PayPalController::class, 'successTransaction'])->name('successTransaction');
-//    Route::get('cancel-transaction', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');
 
 
     //----------------------ads ---------------------//
