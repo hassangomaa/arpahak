@@ -21,11 +21,9 @@
                         <thead>
                         <tr>
                             <th style="width: 10px">المسلسل</th>
-                            <th>الاسم  </th>
-                            <th> نوع التداول</th>
-                            <th>المعدن</th>
-                            <th>السعر</th>
-                            <th>العمله</th>
+                            <th> العمليه  </th>
+                            <th>اﻻيميل الشخصي للمستخدم  </th>
+                            <th>الصوره للايصال  </th>
                             <th>الحاله</th>
                             <th>قبول</th>
                             <th>حذف</th>
@@ -35,23 +33,22 @@
                             @foreach($messages as $message)
                         <tr>
                             <td><?php echo $message->id ?></td>
+                            <td><?php echo $message->type ?></td>
+                            <td><?php echo $message->created_by ?></td>
+                            <td><a href="/<?php echo $message->path ?>"> link </a>  </td>
+                            <td>  <?php echo $message->status ?></td>
 
- {{--                            <td><?php echo $message->userService->user->name ?></td>--}}
-                            <td><?php echo $message->user->name ?></td>
-                            <td><?php echo $message->service->name ?></td>
-                            <td><?php echo $message->service->description ?></td>
-                            <td><?php echo $message->service->net_price ?></td>
-                            <td><?php echo $message->service->currency ?></td>
-                            <td><?php echo $message->status ?></td>
+                             <td><?php echo $message->name ?></td>
+
                              <td>
-                                <form action="{{route('metal.message.update',$message->id)}}" method="POST">
+                                <form action="{{route('update.traders.messages',$message->id)}}" method="POST">
                                   @csrf
                                     <input  type="submit" class="btn btn-success"  name="accept" value="قبول"  قبول >
                                 </form>
                             </td>
 
                              <td>
-                                <form action="{{route('metal.message.update',$message->id)}}" method="POST">
+                                <form action="{{route('destroy.traders.messages',$message->id)}}" method="POST">
                                     @csrf
                                     <input  type="submit" class="btn btn-danger"  name="delete" value="حذف"   >
                                 </form>

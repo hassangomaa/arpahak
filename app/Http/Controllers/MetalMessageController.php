@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\MetalMessage;
+use App\Models\Postimage;
 use App\Models\Service;
 use App\Models\ServiceType;
 use App\Models\UserService;
@@ -15,7 +16,7 @@ class MetalMessageController extends Controller
 
     public function index()
     {
-        $messages =UserService::all();
+        $messages = Postimage::all();
         return view('admin.pages.deals.messages.index',compact('messages'));
     }
 
@@ -91,7 +92,7 @@ class MetalMessageController extends Controller
 //            'type' => 'required|string',
 //            'status' => 'required',
         ]);
-        DB::table('user_services')
+        DB::table('postimages')
             ->where('id', (int) $id )
             ->update([
                   'status' =>  'تم القبول' ,
@@ -103,7 +104,7 @@ class MetalMessageController extends Controller
     public function destroy($id)
     {
 //        dd($id);
-        UserService::where('id',$id)->delete();
+        Postimage::where('id',$id)->delete();
         return redirect()->back()->with('success','تم حذف الرسالة.');
 
     }

@@ -20,7 +20,8 @@
                            <h5>خطوات الدفع :</h5>
                         </div>
                         <div class="col-12">
-                            <h6>١ - تحويل المبلغ المطلوب علي الرقم 01012345678 .</h6>
+                            <h6>١ - تحويل المبلغ المطلوب علي الرقم :</h6>
+                            <h4>01066065572</h4>
                             <h6>٢ - الأحتفاظ بصورة الوصل .</h6>
                             <h6>٣ - رفع صورة الوصل هنا .</h6>
                         </div>
@@ -29,8 +30,11 @@
                                 @csrf
                                 <div class="form-group">
                                     <label  class="form-label">الصورة <span class="text-danger"> *</span> </label>
+                                    <input hidden type="text" class="form-control"  name="email" value="{{Auth::user()->email}}" >
+                                    <input hidden type="text" class="form-control"  name="type" value="vodafone" >
                                     <input type="file" class="form-control" id="image" name="image" required>
                                 </div>
+{{--
                                 <div class="row mt-3 justify-content-center">
                                     <div class="col-6 ">
                                         <button class="btn btn-primary  w-100" type="submit"> رفع الصورة </button>

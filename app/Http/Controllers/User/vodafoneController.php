@@ -25,7 +25,12 @@ class vodafoneController extends Controller
             $filename= date('YmdHi').$file->getClientOriginalName();
             $file-> move(public_path('uploads/vodafone/'), $filename);
             $data['image']= $filename;
+            $data['created_by']= $request->email ;
+            $data['path']= public_path('uploads/vodafone/').$filename ;
+            $data['status']= 'pending' ;
+            $data['type']= 'vodafone' ;
         }
+
         $data->save();
 
         return redirect()->back();
