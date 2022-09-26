@@ -25,7 +25,8 @@
                             <h6>٣ - رفع صورة الوصل هنا .</h6>
                         </div>
                         <div class="col-12">
-                            <form action="#">
+                            <form action="{{route('vodafone-image')}}" method="post" enctype="multipart/form-data">
+                                @csrf
                                 <div class="form-group">
                                     <label  class="form-label">الصورة <span class="text-danger"> *</span> </label>
                                     <input type="file" class="form-control" id="image" name="image" required>

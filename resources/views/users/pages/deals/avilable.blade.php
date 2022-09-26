@@ -34,32 +34,7 @@
                         </thead>
                         <tbody>
                             @foreach ($trades as $trade)
-                            <!-- Modal -->
-                              <div class="modal fade" dir="ltr" id="test{{$trade->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                      <div class="row">
-                                        <div class="col-12 mb-3">
-                                          <h4 class="text-center">اختر احدي طرق الدفع</h4>
-                                        </div>
-                                        <div class="col-12 mb-3">
-                                          <a class="btn btn-primary col-12" style="background: #F2BA36; border:none;" href="#" role="button"><img src="{{asset('images/payments-logo/paypal.png')}}" width="20%" class="img-fluid" alt=""></a>
-                                        </div>
-                                        <div class="col-12 mb-3">
-                                          <a class="btn btn-primary col-12" style="background: white; border-color:black;" href="{{route('vodafone-cash',$trade->id)}}" role="button"><img src="{{asset('images/payments-logo/vodafone.PNG')}}" width="20%" class="img-fluid" alt=""></a>
-                                        </div>
-                                        <div class="col-12 mb-3">
-                                          <a class="btn btn-primary col-12" style="background: white; border-color:black;" href="{{route('bank-transfer',$trade->id)}}" role="button"><img src="{{asset('images/payments-logo/NBE.svg')}}" width="20%" class="img-fluid" alt=""> </a>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
+
                               
                         <tr>
                             <td>{{$trade->id}}</td>
@@ -102,7 +77,33 @@
 
                             
                         </tr>
-                            
+                        <!-- Modal -->
+                        <div class="modal fade" dir="rtl" id="test{{$trade->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-12 mb-3">
+                                                <h4 class="text-center">اختر احدي طرق الدفع</h4>
+                                            </div>
+                                            <div class="col-12 mb-3">
+                                              <a class="btn btn-primary col-12" href="{{route('paypal-form',$trade->id)}}" style="background: #F2BA36; border:none;" role="button">
+                                                     <img src="{{asset('images/payments-logo/paypal.png')}}" width="20%" class="me img-fluid" alt=""></a>
+                                             </div>
+                                            <div class="col-12 mb-3">
+                                                <a class="btn btn-primary col-12" style="background: white; border-color:black;" href="{{route('vodafone-cash',$trade->id)}}" role="button"><img src="{{asset('images/payments-logo/vodafone.PNG')}}" width="20%" class="img-fluid" alt=""></a>
+                                            </div>
+                                            <div class="col-12 mb-3">
+                                                <a class="btn btn-primary col-12" style="background: white; border-color:black;" href="{{route('bank-transfer',$trade->id)}}" role="button"><img src="{{asset('images/payments-logo/NBE.svg')}}" width="20%" class="img-fluid" alt=""> </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         @endforeach
     
                         

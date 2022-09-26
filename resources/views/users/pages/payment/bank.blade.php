@@ -20,12 +20,17 @@
                            <h5>خطوات الدفع :</h5>
                         </div>
                         <div class="col-12">
-                            <h6>١ - تحويل المبلغ المطلوب علي  الحساب رقم 8879465131568 .</h6>
+                            <h6>١ - تحويل المبلغ المطلوب علي  الحساب رقم :</h6>
+                            <h4 > 11305641894 </h4>
+                            <br>
+                            <br>
+                            <br>
                             <h6>٢ - الأحتفاظ بصورة الوصل .</h6>
                             <h6>٣ - رفع صورة الوصل هنا .</h6>
                         </div>
                         <div class="col-12">
-                            <form action="#">
+                            <form action="{{route('bank-image')}}" method="post" enctype="multipart/form-data">
+                                @csrf
                                 <div class="form-group">
                                     <label  class="form-label">الصورة <span class="text-danger"> *</span> </label>
                                     <input type="file" class="form-control" id="image" name="image" required>
