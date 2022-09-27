@@ -36,6 +36,8 @@
     <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css">
     <!-- Custom style for RTL -->
     <link rel="stylesheet" href="{{URL::asset('dist/css/custom.css')}}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     @include('admin.includes.header')

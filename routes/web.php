@@ -61,6 +61,12 @@ Route::group(['name'=>'guests'],function (){
 
     Route::get('/team',[LandingController::class,'team'])->name('team');
     Route::get('/privacy_policy',[LandingController::class,'privacyAndPolicy'])->name('privacy.policy');
+    /////////////-----------------country City with Ajax-------------------------//////////////
+    Route::get('country-state-city','CountryStateCityController@index');
+    Route::post('get-states-by-country','CountryStateCityController@getState');
+    Route::post('get-cities-by-state','CountryStateCityController@getCity');
+
+
 
 });
 
