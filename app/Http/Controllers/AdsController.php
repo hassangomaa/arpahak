@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ads;
  use App\Models\Country;
- use App\Models\City;
+ use App\Models\city;
 use App\Models\User;
 use App\Models\ads_category;
 use App\Models\ads_images;
@@ -24,7 +24,7 @@ class AdsController extends Controller
     public function create()
     {
         $countries = Country::all();
-        $cities = City::all();
+        $cities = city::all();
         $category = ads_category::all();
         $user_role = User::find(Auth::id())->role_id;
         if($user_role == 1)
@@ -129,6 +129,7 @@ class AdsController extends Controller
         $images = Ads::find($id)->getimages->first();
         $ad = Ads::find($id);
         $related_ads = Ads::where('category_id',$ad->category_id)->get();
+//        dd($ad);
         return view('ad',compact('ad','city','userinfo','category','images','related_ads'));
     }
 }   

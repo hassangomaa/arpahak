@@ -64,8 +64,8 @@
                                 <input type="file" class="form-control" id="image" name="image[]" required>
                             </div>
                         </div>
-                        
-                            
+
+
 
                         </div>
                         <div class="col-lg-6 col-sm-12 col-12">
@@ -113,7 +113,7 @@
                         </div>
                     </div>
                 </form>
-                
+
                 </div>
               </div>
             </div>

@@ -29,7 +29,7 @@ class Ads extends Model
 
     public function getcity()
     {
-        return $this->hasOne(city::class,'value','city');
+        return $this->hasOne(city::class,'name_ar','city');
     }
     public function getcategory()
     {

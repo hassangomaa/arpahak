@@ -75,7 +75,7 @@
                         </div>
                         <div class="col-lg-6 col-sm-6 col-12">
                             <span style="color: black; font-weight:600;letter-spacing:0;">المحافظه  </span>
-                            <span style="float: left;">{{$city->name}}</span>        
+                            <span style="float: left;">{{$city->name_ar}}</span>
                         </div>
                         <div class="col-lg-6 col-sm-6 col-12">
                             <span style="color: black; font-weight:600;letter-spacing:0;">الزيارات  </span>
@@ -141,7 +141,7 @@
                 <h4 style="font-weight:700; color:black;margin-bottom:0;">{{$ad->price}} EGP</h4>
                 <small class="small-text muted">  {{$ad->title}} </small>
                 <div class="col-12">
-                    <small class="small-text muted">{{$city->name}}</small>
+                    <small class="small-text muted">{{$city->name_ar}}</small>
                     <small class="small-text muted" style="float: right;">@php
                         $today = date('Y-m-d');
                         $diff = strtotime($today) - strtotime($ad->created_at);

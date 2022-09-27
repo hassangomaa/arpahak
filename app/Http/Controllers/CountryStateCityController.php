@@ -16,7 +16,7 @@ class CountryStateCityController extends Controller
     }
     public function getCity(Request $request)
     {
-        $data['cities'] = \App\Models\City::where("country_id",$request->country_id)
+        $data['cities'] = \App\Models\city::where("country_id",$request->country_id)
             ->get(["name","id"]);
         return response()->json($data);
     }
