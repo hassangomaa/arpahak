@@ -34,8 +34,7 @@
                                     <input hidden type="text" class="form-control"  name="type" value="vodafone" >
                                     <input type="file" class="form-control" id="image" name="image" required>
                                 </div>
-{{--
-                                <div class="row mt-3 justify-content-center">
+                                 <div class="row mt-3 justify-content-center">
                                     <div class="col-6 ">
                                         <button class="btn btn-primary  w-100" type="submit"> رفع الصورة </button>
                                     </div>
@@ -53,6 +52,14 @@
       </section>
     </div>
   </main><!-- End #main -->
-
+@if(session()->has('success'))
+    <div class="alert alert-success">
+        {{ session()->get('success') }}
+    </div>
+@elseif(session()->has('danger'))
+    <div class="alert alert-danger">
+        {{ session()->get('danger') }}
+    </div>
+@endif
 @endsection
 

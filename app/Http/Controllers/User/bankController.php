@@ -22,10 +22,18 @@ class bankController extends Controller
         if($request->file('image')){
             $file= $request->file('image');
             $filename= date('YmdHi').$file->getClientOriginalName();
-            $file-> move(public_path('uploads/bank/'), $filename);
+            $file-> move(public_path('public/Image/bank/'), $filename);
             $data['image']= $filename;
-        }
+            $data['created_by']= $request->email ;
+            $data['path']= public_path('public/Image/bank/').$filename ;
+            $data['status']= 'pending' ;
+            $data['type']= 'Bank-Alahly' ;        }
         $data->save();
+
+        if($data->save()){
+            return redirect()->back()->with('success','تم إرسال الصورة للمختصين للمراجعة.');
+
+        }
 
         return redirect()->back();
 

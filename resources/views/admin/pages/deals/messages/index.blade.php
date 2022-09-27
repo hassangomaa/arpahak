@@ -35,26 +35,31 @@
                             <td><?php echo $message->id ?></td>
                             <td><?php echo $message->type ?></td>
                             <td><?php echo $message->created_by ?></td>
-                            <td><a href="/<?php echo $message->path ?>"> link </a>  </td>
-                            <td>  <?php echo $message->status ?></td>
-
+                            @if($message->type=='vodafone')
+                                <td><a href="{{asset('public/Image/vodafone/'.$message->image)}} "target="_blank">الرابط</a></td>
+                            @else($message->type== 'Bank-Alahly' )
+                            <td><a href="{{asset('public/Image/bank/'.$message->image)}} "target="_blank">الرابط</a></td>
+                            @endif
+                            <td>@if ($message->status=='pending')
+                                    قيد الانتظار
+                                @endif
+                                @if ($message->status=='تم القبول')
+                                    مقبول
+                                @endif
+                            </td>
                              <td><?php echo $message->name ?></td>
-
                              <td>
                                 <form action="{{route('update.traders.messages',$message->id)}}" method="POST">
                                   @csrf
                                     <input  type="submit" class="btn btn-success"  name="accept" value="قبول"  قبول >
                                 </form>
                             </td>
-
                              <td>
                                 <form action="{{route('destroy.traders.messages',$message->id)}}" method="POST">
                                     @csrf
                                     <input  type="submit" class="btn btn-danger"  name="delete" value="حذف"   >
                                 </form>
                             </td>
-
-
                          </tr>
                     @endforeach
 
