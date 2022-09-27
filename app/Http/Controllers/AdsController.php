@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ads;
-use App\Models\city;
-use App\Models\Country;
+ use App\Models\Country;
+ use App\Models\City;
 use App\Models\User;
 use App\Models\ads_category;
 use App\Models\ads_images;
@@ -24,7 +24,7 @@ class AdsController extends Controller
     public function create()
     {
         $countries = Country::all();
-        $cities = city::all();
+        $cities = City::all();
         $category = ads_category::all();
         $user_role = User::find(Auth::id())->role_id;
         if($user_role == 1)

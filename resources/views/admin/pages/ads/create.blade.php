@@ -68,11 +68,11 @@
                         <div class="col-lg-6 col-sm-12 col-12">
                             <div class="form-group">
                                 <label  class="form-label"> الدوله  <span class="text-danger"> *</span> </label>
-                                <select class="form-control" name="city" >
-                                    <option value=""> اختر  </option>
+                                <select class="form-control" name="country_id" id="country-dropdown" >
+                                    <option value="0"> اختر  </option>
                                     @foreach ($countries as $country)
                                         <option value="{{$country->id}}">
-                                            {{$country->name}}
+                                            {{$country->name_ar}}
                                         </option>
                                     @endforeach
 
@@ -81,11 +81,11 @@
 
                             <div class="form-group">
                                 <label  class="form-label"> المحافظة  <span class="text-danger"> *</span> </label>
-                                <select class="form-control" name="city" >
-                                    <option value=""> اختر المحافظة </option>
-                                        @foreach ($cities as $city)
-                                            <option value="{{$city->value}}">{{$city->name}}</option>
-                                        @endforeach
+                                <select class="form-control" name="city_id" id="city-dropdown">
+                                    <option value="0"> اختر المحافظة </option>
+{{--                                        @foreach ($cities as $city)--}}
+{{--                                            <option value="{{$city->value}}">{{$city->name_ar}}</option>--}}
+{{--                                        @endforeach--}}
                                 </select>
                             </div>
                         </div>
@@ -134,50 +134,54 @@
 
     </div>
   </main>
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
-<script>
-    $(document).ready(function() {
-        $('#country-dropdown').on('change', function() {
-            var country_id = this.value;
-            $("#state-dropdown").html('');
+{{-- AJAX CDN --}}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#country-dropdown').change(function(){
+            let id = $(this).val();
+
+            $('select[name="city_id"]').empty();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN':'{{csrf_token()}}'
+                }
+            });
+            // alert(id);
+            //call country on region selected
             $.ajax({
-                url:"{{url('get-states-by-country')}}",
-                type: "POST",
-                data: {
-                    country_id: country_id,
-                    _token: '{{csrf_token()}}'
-                },
-                dataType : 'json',
-                success: function(result){
-                    $('#state-dropdown').html('<option value="">Select State</option>');
-                    $.each(result.states,function(key,value){
-                        $("#state-dropdown").append('<option value="'+value.id+'">'+value.name+'</option>');
+                dataType: "json",
+                url: "/get-city/"+id,
+                type: "GET",
+                {{--_token: '{{csrf_token()}}',--}}
+                success: function (data) {
+                    // alert(data);
+                    console.log(data);
+                    $('select[name="city_id"]').empty();
+                    $.each(data, function(key,data){
+                        $('select[name="city_id"]').append('<option value="'+ data.id +'">'+ data.name_ar +'</option>');
                     });
-                    $('#city-dropdown').html('<option value="">Select State First</option>');
+                },
+                error: function(error) {
+                    console.log(error);
                 }
             });
         });
-        $('#state-dropdown').on('change', function() {
-            var state_id = this.value;
-            $("#city-dropdown").html('');
-            $.ajax({
-                url:"{{url('get-cities-by-state')}}",
-                type: "POST",
-                data: {
-                    state_id: state_id,
-                    _token: '{{csrf_token()}}'
-                },
-                dataType : 'json',
-                success: function(result){
-                    $('#city-dropdown').html('<option value="">Select City</option>');
-                    $.each(result.cities,function(key,value){
-                        $("#city-dropdown").append('<option value="'+value.id+'">'+value.name+'</option>');
-                    });
-                }
-            });
-        });
+
+
     });
 </script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 
 
 @endsection

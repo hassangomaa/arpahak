@@ -14,9 +14,9 @@ use App\Http\Controllers\MetalMessageController;
 use App\Http\Controllers\TradeController;
 use App\Http\Controllers\AdsController;
 use App\Http\Controllers\AdCategoryController;
+use App\Http\Controllers\CountryStateCityController;
 
-
-
+use App\Http\Controllers\LocationController;
 
 
 
@@ -62,11 +62,11 @@ Route::group(['name'=>'guests'],function (){
     Route::get('/team',[LandingController::class,'team'])->name('team');
     Route::get('/privacy_policy',[LandingController::class,'privacyAndPolicy'])->name('privacy.policy');
     /////////////-----------------country City with Ajax-------------------------//////////////
-    Route::get('country-state-city','CountryStateCityController@index');
-    Route::post('get-states-by-country','CountryStateCityController@getState');
-    Route::post('get-cities-by-state','CountryStateCityController@getCity');
-
-
+//    Route::get('country-state-city','CountryStateCityController@index');
+//    Route::post('/get-city',CountryStateCityController::class,'index');
+////    Route::post('get-cities-by-state','CountryStateCityController@getCity');
+//
+//
 
 });
 
@@ -128,6 +128,7 @@ Route::group(['middleware'=> ['verified','auth','disable_back']],function(){
             //----------------ads-------------//
     Route::get('/post-ad',[AdsController::class,'create'])->name('post.ad');
     Route::post('/post-ad',[AdsController::class,'store'])->name('store.ad');
+    Route::get('/get-city/{id}',[LocationController::class,'getCities'])->name('location.city');
 
     //----------------------Payment ---------------------//
     Route::get('/payment/vodafone-cash/{id}',[vodafoneController::class,'pay_page'])->name('vodafone-cash');
