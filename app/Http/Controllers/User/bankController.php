@@ -15,6 +15,12 @@ class bankController extends Controller
         return view('users.pages.payment.bank');
     }
 
+    public function pay_page_charge()
+    {
+
+        return view('users.pages.payment.bank');
+    }
+
     public function uploadFile(Request $request)
     {
         $data= new Postimage();
@@ -24,10 +30,15 @@ class bankController extends Controller
             $filename= date('YmdHi').$file->getClientOriginalName();
             $file-> move(public_path('uploads/bank/'), $filename);
             $data['image']= $filename;
-        }
+            $data['created_by']= $request->email ;
+            $data['path']= public_path('uploads/vodafone/').$filename ;
+            $data['status']= 'في اﻻنتظار' ;
+            $data['type']= 'البنك اﻻهلي المركزي' ;        }
+
+
         $data->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('success','تم الارسال سيتم فحص اﻻيصال اوﻻ, ثم اضافه الرصيد الي المحفظه, شكرا ﻻستخدامكم ارباحك');
 
     }
 }

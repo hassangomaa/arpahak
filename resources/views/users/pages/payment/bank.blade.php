@@ -33,6 +33,8 @@
                                 @csrf
                                 <div class="form-group">
                                     <label  class="form-label">الصورة <span class="text-danger"> *</span> </label>
+                                    <input hidden type="text" class="form-control"  name="email" value="{{Auth::user()->email}}" >
+                                    <input hidden type="text" class="form-control"  name="type" value="البنك اﻻهلي المركزي" >
                                     <input type="file" class="form-control" id="image" name="image" required>
                                 </div>
                                 <div class="row mt-3 justify-content-center">

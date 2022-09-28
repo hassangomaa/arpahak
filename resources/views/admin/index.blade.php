@@ -14,7 +14,7 @@
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3><?php echo $count_users?></h3>
+                            <h3><?php echo $count_users ?></h3>
 
                             <p>المستخدمين</p>
                         </div>

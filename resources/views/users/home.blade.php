@@ -12,7 +12,7 @@
         <div class="alert alert-warning mt-4" role="alert">
             سيتم أضافة المبالغ الى رصيدك بعد المراجعة والتأكد من إنجاز المهام
         </div>
-                    <h2 class="h2" id="balance"> الرصيد : 0$</h2>
+                    <h2 class="h2" id="balance"> الرصيد :  {{Auth::user()->balance }}$</h2>
 {{--        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">--}}
 {{--            <h1 class="h2">قائمة المهام</h1>--}}
 {{--            <h2 class="h2" id="ajax"> الرصيد : 0$</h2>--}}

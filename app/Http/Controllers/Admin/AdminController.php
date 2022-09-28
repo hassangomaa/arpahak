@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\DB;
 class AdminController extends Controller
 {
     public function index(){
-        $count_users = User::where('role_id','=',2)->count();
+        $count_users= User::count() + 1000;
+        ;
         $images = Image::all()->count();
         $orders = UserService::all()->count();
         $trades = trade::all()->count();
@@ -29,6 +30,23 @@ class AdminController extends Controller
     public function users(){
         $users = User::where('role_id','=',2)->get();
         return view('admin.pages.users.users',compact('users'));
+    }
+
+    public function users_charge(){
+        $users = User::where('role_id','=',2)->get();
+        return view('admin.pages.users.charge',compact('users'));
+    }
+  public function users_charge_update(Request $request){
+//        dd($request);
+
+//        $user = User::find($id);
+        $Views = User::find($request->id)->increment('balance',$request->balance);
+
+//      $user->id=$request->id ;
+//        $user->balance->inc=$request->balance ;
+//        $user->save();
+
+        return redirect()->back()->with('success','تم اﻻيداع بنجاح, شكرا لكم.');
     }
 
 

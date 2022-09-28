@@ -132,12 +132,15 @@ Route::group(['middleware'=> ['verified','auth','disable_back']],function(){
 
     //----------------------Payment ---------------------//
     Route::get('/payment/vodafone-cash/{id}',[vodafoneController::class,'pay_page'])->name('vodafone-cash');
+    Route::get('/payment/vodafone-cash',[vodafoneController::class,'pay_page_charge'])->name('vodafone-cash-charge');
     Route::post('/payment/vodafone-cash/image',[vodafoneController::class,'uploadFile'])->name('vodafone-image');
     Route::get('/payment/bank-transfer/{id}',[bankController::class,'pay_page'])->name('bank-transfer');
+    Route::get('/payment/bank-transfer',[bankController::class,'pay_page_charge'])->name('bank-transfer-charge');
     Route::post('/payment/bank-transfer/image',[bankController::class,'uploadFile'])->name('bank-image');
 
     //-------------Payments NEW----------////
     Route::get('paypal/{id}', [\App\Http\Controllers\PaymentController::class, 'pay_page'])->name('paypal-form');
+    Route::get('paypal', [\App\Http\Controllers\PaymentController::class, 'pay_page'])->name('paypal-form-charge');
     Route::post('pay', [\App\Http\Controllers\PaymentController::class, 'pay'])->name('payment.paypal');
     Route::get('success', [\App\Http\Controllers\PaymentController::class, 'success']);
     Route::get('error', [\App\Http\Controllers\PaymentController::class, 'error']);
@@ -159,6 +162,8 @@ Route::group(['middleware'=>['verified','checkUserRole','auth','disable_back'],'
     //-------------Dashboard------------------//
     Route::get('/dashboard',[AdminController::class,'index'])->name('admin.dashboard');
     Route::get('/users',[AdminController::class,'users'])->name('users');
+    Route::get('/users/charge',[AdminController::class,'users_charge'])->name('users.charge');
+    Route::post('/users/charge/update',[AdminController::class,'users_charge_update'])->name('users.charge.update');
     Route::get('/logout',[AdminController::class, 'logout'])->name('admin.logout');
 
 

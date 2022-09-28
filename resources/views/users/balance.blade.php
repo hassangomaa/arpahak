@@ -14,7 +14,7 @@
                 المهام
             </div>  -->
             <div class="card-body text-center ">
-                <p class="h4 fs-1">الرصيد الكلى</p>
+                <p class="h4 fs-1">   {{Auth::user()->balance }}$ الرصيد الكلى</p>
 {{--                <span class="fs-1 fw-bold">$<?php if($price_sum == ''){echo "";}else{ echo $price_sum;}?></span>--}}
 
 

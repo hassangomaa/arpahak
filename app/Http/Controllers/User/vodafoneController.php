@@ -16,6 +16,12 @@ class vodafoneController extends Controller
         return view('users.pages.payment.vodafone');
     }
 
+    public function pay_page_charge()
+    {
+
+        return view('users.pages.payment.vodafone');
+    }
+
     public function uploadFile(Request $request)
     {
         $data= new Postimage();
@@ -27,8 +33,8 @@ class vodafoneController extends Controller
             $data['image']= $filename;
             $data['created_by']= $request->email ;
             $data['path']= public_path('uploads/vodafone/').$filename ;
-            $data['status']= 'pending' ;
-            $data['type']= 'vodafone' ;
+            $data['status']= 'في اﻻنتظار' ;
+            $data['type']= 'فودافون كاش' ;
         }
 
         $data->save();

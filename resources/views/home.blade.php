@@ -326,12 +326,12 @@
                             <div class="step-num-box">
                                 <div class="step-icon"><span><i class="la la la-user-check"></i></span>
                                 </div>
+                                <div class="step-desc">
+                                    <h3 style="color: #0b0b0b">عدد الزوار</h3>
+                                 </div>
                                 <div class="step-num">{{$wordlist}} </div>
                             </div>
-                            <div class="step-desc">
-                                <h4 style="color: white">عدد الزوار</h4>
-                                <p class="mb-0"></p>
-                            </div>
+
                         </div>
                     </div>
                 </div>
