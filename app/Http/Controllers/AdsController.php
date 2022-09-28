@@ -131,13 +131,14 @@ class AdsController extends Controller
     public function getAd($id)
     {
         $Views = ads::find($id)->increment('views',1);
-        $city = Ads::find($id)->getcity;
+//        $city = Ads::find($id)->getcity;
+        $cities = city::all();
         $userinfo = Ads::find($id)->user;
         $category = Ads::find($id)->getcategory;
         $images = Ads::find($id)->getimages->first();
         $ad = Ads::find($id);
         $related_ads = Ads::where('category_id',$ad->category_id)->get();
-//        dd($ad);
-        return view('ad',compact('ad','city','userinfo','category','images','related_ads'));
+//        dd($city);
+        return view('ad',compact('ad','cities','userinfo','category','images','related_ads'));
     }
 }   

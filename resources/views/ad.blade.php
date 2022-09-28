@@ -75,7 +75,16 @@
                         </div>
                         <div class="col-lg-6 col-sm-6 col-12">
                             <span style="color: black; font-weight:600;letter-spacing:0;">المحافظه  </span>
-                            <span style="float: left;">{{$city->name_ar}}</span>
+                            <span style="float: left;">
+                                @foreach ($cities as $city)
+                                    @if ($city->country_id == $ad->country_id)
+                                        {{--                                 @foreach ($countries as $country)--}}
+                                        @if ($city->id == $ad->city_id)
+                                            {{$city->name_ar}}
+                                        @endif
+                                    @endif
+                                @endforeach
+                            </span>
                         </div>
                         <div class="col-lg-6 col-sm-6 col-12">
                             <span style="color: black; font-weight:600;letter-spacing:0;">الزيارات  </span>

@@ -30,8 +30,9 @@ class Ads extends Model
 
     public function getcity()
     {
-        return $this->hasOne(city::class);
-//        return $this->hasOne(city::class,'name_ar','city_id');
+//        return $this->hasOne(city::class);
+                                                ///Fk:the other table (city)    ///LK: my table (ads)
+        return $this->hasOne(city::class,'name_ar','city_id');
     }
     public function getcountry()
     {
