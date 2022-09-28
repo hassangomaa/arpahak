@@ -26,9 +26,13 @@
                   <ul style="list-style: none;display:flex;">
                     <li style="display: inline-block;flex-basis:50%">
                         <i class="fas fa-map-marker-alt"style="vertical-align: middle;"></i>
+{{--                        {{ $ad->getcity }}--}}
                         @foreach ($cities as $city)
-                            @if ($city->value == $ad->city)
-                                {{$city->name}}
+                            @if ($city->country_id == $ad->country_id)
+{{--                                 @foreach ($countries as $country)--}}
+                                    @if ($city->id == $ad->city_id)
+                                        {{$city->name_ar}}
+                                    @endif
                             @endif
                         @endforeach
                     </li>

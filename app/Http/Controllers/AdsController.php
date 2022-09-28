@@ -18,8 +18,9 @@ class AdsController extends Controller
     {
         $ads = Ads::where('confirmed',1)->get();
         $cities = city::all();
+        $country = Country::all();
         $category = ads_category::all();
-        return view ('ads',compact('ads','cities','category'));
+        return view ('ads',compact('ads','cities','country','category'));
     }
     public function create()
     {
@@ -46,12 +47,18 @@ class AdsController extends Controller
             'price'     =>  'required',
             'description'   =>  'required',
             'image'     =>  'required',
-            'city'      =>  'required',
+//            'image[1]'     =>  'required',
+//            'image[2]'     =>  'required',
+//            'image[3]'     =>  'required',
+//            'image[4]'     =>  'required',
+            'city_id'      =>  'required',
+            'country_id'      =>  'required',
             'category'  =>  'required',
             'used'      =>  'required',
             'delivery' ,
 
         ]);
+//        dd($request);
         if($request->delivery == 'on')
         {
             $request->delivery = 1;
@@ -77,7 +84,8 @@ class AdsController extends Controller
                 'price'     =>  $request->price,
                 'description'   => $request->description,
                 'image'     =>  $image_name,
-                'city'      =>  $request->city,
+                'city_id'      =>  $request->city_id,
+                'country_id'      =>  $request->country_id,
                 'category_id'  =>  $request->category,
                 'views'     =>  0, 
                 'created_at'    =>  date('Y-m-d'),

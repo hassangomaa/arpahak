@@ -15,7 +15,8 @@ class Ads extends Model
         'user_id',
         'title',
         'description',
-        'city',
+        'city_id',
+        'country_id',
         'image',
         'category_id',
         'created_at',
@@ -29,7 +30,12 @@ class Ads extends Model
 
     public function getcity()
     {
-        return $this->hasOne(city::class,'name_ar','city');
+        return $this->hasOne(city::class);
+//        return $this->hasOne(city::class,'name_ar','city_id');
+    }
+    public function getcountry()
+    {
+        return $this->hasOne(Country::class,'name_ar','country_id');
     }
     public function getcategory()
     {

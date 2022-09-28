@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -14,10 +15,12 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function index(){
-        return view('index');
+        $wordlist = User::count() + 1000;
+        return view('index',compact('wordlist'));
     }
     public function home(){
-        return view('home');
+        $wordlist = User::count() + 1000;
+        return view('home',compact('wordlist'));
     }
     public function services(){
         return view('services');

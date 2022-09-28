@@ -269,7 +269,7 @@
                                 <div class="bar bar-left"></div>
                             </div>
                             <h6>كيفية عمل الموقع</h6>
-                            <h2 class="title">ثلاث خطوات بسيطة لبدء العمل لدي ارباحك</h2>
+                            <h2 class="title"> خطوات بسيطة لبدء العمل لدي ارباحك</h2>
                         </div>
                     </div>
                 </div>
@@ -286,8 +286,7 @@
                             <div class="step-num-box">
                                 <div class="step-icon"><span><i class="la la-lightbulb-o"></i></span>
                                 </div>
-                                <div class="step-num">01</div>
-                            </div>
+                             </div>
                             <div class="step-desc">
                                 <h4>تسجيل الدخول</h4>
                                 <p class="mb-0"></p>
@@ -303,8 +302,7 @@
                             <div class="step-num-box">
                                 <div class="step-icon"><span><i class="la la-rocket"></i></span>
                                 </div>
-                                <div class="step-num">02</div>
-                            </div>
+                             </div>
                             <div class="step-desc">
                                 <h4>انجاز المهام</h4>
                                 <p class="mb-0"></p>
@@ -316,10 +314,22 @@
                             <div class="step-num-box">
                                 <div class="step-icon"><span><i class="la la-check-square"></i></span>
                                 </div>
-                                <div class="step-num">03</div>
-                            </div>
+                             </div>
                             <div class="step-desc">
                                 <h4>تحصيل الاموال</h4>
+                                <p class="mb-0"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-6 ">
+                        <div class="work-process">
+                            <div class="step-num-box">
+                                <div class="step-icon"><span><i class="la la la-user-check"></i></span>
+                                </div>
+                                <div class="step-num">{{$wordlist}} </div>
+                            </div>
+                            <div class="step-desc">
+                                <h4 style="color: white">عدد الزوار</h4>
                                 <p class="mb-0"></p>
                             </div>
                         </div>
