@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Payment;
 use App\Models\trade;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Metal;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
 class TradeController extends Controller
@@ -36,25 +38,33 @@ class TradeController extends Controller
 
     public function addPayment(Request $request,$id)
     {
-
+        $trade = trade::find($id);
+        $price =(int)$trade->commission * $trade->quantity;
+        $proc_id = Str::uuid()->toString();
         $this->validate($request,[
             'email'=>'required',
+            'balance'=>'required',
                 ]);
-        $trade = trade::find($id);
+        if($request->balance < $price )
+                    return redirect()->back()->with('error','عفوا رصيدك ﻻ يكفي, برجاء شحن المحفظه اوﻻ!!');
+        else {
 //        dd($trade);
-//
-                    Payment::create(
-                       [
-                            'payment_id' =>  Str::uuid()->toString(),
-                            'payer_id'   => Auth::id(),
-                            'payer_email'  => $request->email,
-                            'amount'    => (int) $trade->commission * $trade->quantity ,
-                            'currency'  => $trade->currency,
-                            'payment_status'  =>    "في اﻻنتظار",
+                        //Decrement user balance
+                    User::find(Auth::id())->decrement('balance',$price);
+            Payment::create(
+                [
+                    'payment_id' =>  $proc_id ,
+                    'payer_id' => Auth::id(),
+                    'payer_email' => $request->email,
+                    'amount' => $price,
+                    'currency' => $trade->currency,
+                    'payment_status' => "في اﻻنتظار",
 
-                        ]
-                    );
-        return redirect()->back()->with('success','تم اضافه طلبكم بنجاح, سيقوم احد ممثلينا بالتواصل معكم. شكرا ﻻستخدامكم ارباحك');
+                ]
+            );
+            Session::put('proc_id', $proc_id);
+            return redirect()->back()->with('success', 'تم اضافه طلبكم بنجاح, سيقوم احد ممثلينا بالتواصل معكم. شكرا ﻻستخدامكم ارباحك');
+        }
     }
 
     public function acceptTrades($id)

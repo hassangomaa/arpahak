@@ -18,7 +18,7 @@
                             <!-- Left nav -->
                             <ul class="nav navbar-nav mx-auto">
                                 <!-- Home -->
-                                 <li class="nav-item"> <a class="nav-link @if(Route::current()->getName() == 'index') active @endif" href="{{route('home')}}">EGP:{{Auth::user()->balance}}</a></li>
+{{--                                 <li class="nav-item"> <a class="nav-link @if(Route::current()->getName() == 'index') active @endif" href="{{route('home')}}">EGP:{{Auth::user()->balance}}</a></li>--}}
                                 <li class="nav-item"> <a class="nav-link @if(Route::current()->getName() == 'index') active @endif" href="{{route('homepage')}}">الرئيسية</a></li>
                                 <li class="nav-item"> <a class="nav-link @if(Route::current()->getName() == 'index') active @endif" href="{{route('ads')}}">الاعلانات</a></li>
                                 <li class="nav-item"> <a class="nav-link @if(Route::current()->getName() == 'show.competitions') active @endif" href="{{route('show.competitions')}}">المسابقات</a></li>

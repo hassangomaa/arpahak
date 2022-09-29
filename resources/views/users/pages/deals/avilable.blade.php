@@ -124,6 +124,7 @@
                                                     <img src="" width="20%" class="img-fluid" alt=""> </a>
                                             </div>
                                         </div>
+                                        <input hidden type="text" name="balance" value="{{Auth::user()->balance}}">
                                         <input hidden type="text" name="email" value="{{Auth::user()->email}}">
                                         <input type="submit" class="btn btn-danger" value=" تأكيد $">
                                     </div>
@@ -164,7 +165,8 @@
     {{ \Session::forget('error') }}
 @endif
 @if(\Session::has('success'))
-    <div class="alert alert-success">{{ \Session::get('success') }}</div>
+    <div class="alert alert-success">{{ \Session::get('success') }} </div>
+    <div class="alert alert-success">{{ \Session::get('proc_id') }} رقم العمليه : </div>
     {{ \Session::forget('success') }}
 @endif
 @endsection

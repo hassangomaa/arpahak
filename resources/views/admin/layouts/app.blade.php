@@ -246,10 +246,11 @@
                                     <p>التداوﻻت الحالية</p>
                                 </a>
                             </li>
+
                             <li class="nav-item">
-                                <a href="{{route('show.metal.messages')}}" class="nav-link">
+                                <a href="{{route('show.payment.messages')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>رسائل المتداوليين</p>
+                                    <p>عمليات الشراء </p>
                                 </a>
                             </li>
 

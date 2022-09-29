@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
     use App\Models\Payment;
     use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\DB;
     use Omnipay\Omnipay;
 
 class PaymentController extends Controller
@@ -20,6 +21,39 @@ class PaymentController extends Controller
         $this->gateway->setTestMode(true);
     }
 
+
+    public function index()
+    {
+        $payments = Payment::all();
+        return view('admin.pages.payment',compact('payments') );
+    }
+    public function update(Request $request, $id)
+    {
+//        dd($id);
+
+        //go to user service and update status to
+        //
+        $request -> validate([
+//            'category_id' => 'required',
+//            'type' => 'required|string',
+//            'status' => 'required',
+        ]);
+        DB::table('payments')
+            ->where('id', (int) $id )
+            ->update([
+                'payment_status' =>  'تم القبول' ,
+            ]);
+        return redirect()->back()->with('success_message','تم قبول طلب المستخدم');
+    }
+
+
+    public function destroy($id)
+    {
+//        dd($id);
+        Payment::where('id',$id)->delete();
+        return redirect()->back()->with('success','تم حذف الرسالة.');
+
+    }
 
     public function pay_page($id)
     {

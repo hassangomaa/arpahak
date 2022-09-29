@@ -124,12 +124,15 @@
               <span>   التداولات الحالية  </span>
             </a>
           </li>
+
           <li>
-            <a class="nav-link collapsed" href="{{route('show.traders.messages')}}">
-              <i class="bi bi-chat-left-text ms-2" style="font-size: 20px;"></i>
-              <span>    رسائل المتداولين  </span>
+            <a class="nav-link collapsed" href="{{route('show.payment.messages')}}">
+              <i class="bi bi-cash-stack ms-2" style="font-size: 20px;"></i>
+              <span>  عمليات الشراء  </span>
             </a>
           </li>
+
+
         </ul>
       </li>
       <li class="nav-item">
@@ -222,7 +225,12 @@
               <span> شحن رصيد لمستخدم  </span>
             </a>
           </li>
-
+          <li>
+            <a class="nav-link collapsed" href="{{route('show.traders.messages')}}">
+              <i class="bi bi-chat-left-text ms-2" style="font-size: 20px;"></i>
+              <span>    معاملات المستخدمين  </span>
+            </a>
+          </li>
         </ul>
       </li>
       ##
