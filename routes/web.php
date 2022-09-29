@@ -110,6 +110,7 @@ Route::group(['middleware'=> ['verified','auth','disable_back']],function(){
         Route::get('/user/my-trades',[TradeController::class,'index'])->name('user.my.trades');
         Route::get('/user/get-metals-price/{id}',[MetalMessageController::class,'getMetalPrice'])->name('user.metal.price');
         Route::get('/user/available-trades',[TradeController::class,'availableTrades'])->name('avilable.trades');
+        Route::post('/user/available-trades/add/{id}',[TradeController::class,'addPayment'])->name('trades.store');
 
 
 

@@ -26,7 +26,7 @@
                             <th> الوصف</th>
                             <th>الكمية</th>
                             <th>سعر الشراء </th>
-                            <th>سعر سعر البيع </th>
+                            <th>سعر  البيع </th>
                             <th>  العملة</th>
                             <th>  شراء</th>
 
@@ -78,6 +78,7 @@
                             
                         </tr>
                         <!-- Modal -->
+                        @if(Auth::user()->balance <= $m->buy_price)
                         <div class="modal fade" dir="rtl" id="test{{$trade->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -104,6 +105,37 @@
                                 </div>
                             </div>
                         </div>
+                        @else
+                            <form method="post" action="{{route('trades.store',$trade->id)}}">
+                                @csrf
+                            <div class="modal fade" dir="rtl" id="test{{$trade->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-12 mb-3">
+                                                <h4 class="text-center">تاكيد الشراء و خصم مبلغ ..... من رصيدك</h4>
+                                            </div>
+                                            <div class="col-12 mb-3">
+                                                <a class="btn btn-primary col-12" style="background: white; border-color:black;" href="" role="button">
+                                                    <img src="" width="20%" class="img-fluid" alt=""> </a>
+                                            </div>
+                                        </div>
+                                        <input hidden type="text" name="email" value="{{Auth::user()->email}}">
+                                        <input type="submit" class="btn btn-danger" value=" تأكيد $">
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            </form>
+
+                            {{--                            <script> alert(111)</script>--}}
+
+                        @endif
+
                         @endforeach
     
                         
@@ -127,6 +159,13 @@
       </section>
     </div>
   </main><!-- End #main -->
-
+@if(\Session::has('error'))
+    <div class="alert alert-danger">{{ \Session::get('error') }}</div>
+    {{ \Session::forget('error') }}
+@endif
+@if(\Session::has('success'))
+    <div class="alert alert-success">{{ \Session::get('success') }}</div>
+    {{ \Session::forget('success') }}
+@endif
 @endsection
 
