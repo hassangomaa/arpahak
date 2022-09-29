@@ -58,12 +58,13 @@ class TradeController extends Controller
                     'payer_email' => $request->email,
                     'amount' => $price,
                     'currency' => $trade->currency,
-                    'payment_status' => "في اﻻنتظار",
+                    'payment_status' => "مشتريات",
 
                 ]
             );
             Session::put('proc_id', $proc_id);
-            return redirect()->back()->with('success', 'تم اضافه طلبكم بنجاح, سيقوم احد ممثلينا بالتواصل معكم. شكرا ﻻستخدامكم ارباحك');
+//            return redirect()->back()->with('success', 'تم اضافه طلبكم بنجاح, سيقوم احد ممثلينا بالتواصل معكم. شكرا ﻻستخدامكم ارباحك');
+            return redirect()->back()->with('success', 'تم اضافه طلبكم الي حقيبة المشتريات, قم بتأكيد الشراء اوﻻ ');
         }
     }
 

@@ -5,7 +5,9 @@
 namespace App\Http\Controllers;
 
     use App\Models\Payment;
+    use App\Models\User;
     use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\DB;
     use Omnipay\Omnipay;
 
@@ -79,11 +81,22 @@ class PaymentController extends Controller
     }
 
 
-    public function destroy_user($id)
+    public function destroy_user(Request $request,$id)
     {
-//        dd($id);
+//        dd($id);######################################################################
+
+        $payment = Payment::find($id);
+       $balance = $payment->amount + $request->balance ;
+       User::find(Auth::id())->increment('balance', $balance);
+
+//        DB::table('users')
+//            ->where('id', (int) $id )
+//            ->update([
+//                'balance' =>  'في اﻻنتظار' ,
+//            ]);
+
         Payment::where('id',$id)->delete();
-        return redirect()->back()->with('error','تم حذف الرسالة.');
+        return redirect()->back()->with('error','تم اعاده اضافه رصيدكم الي المحفظه و التراجع بنجاح.');
 
     }
 

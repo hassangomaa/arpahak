@@ -38,7 +38,7 @@
                         <div class="col-lg-6 col-12">
                             <div class="form-group">
                                 <label  class="form-label"> الرابط <span class="text-danger"> *</span> </label>
-                                <input type="url" class="form-control"  name="url"  required placeholder="ادخل الرابط ">
+                                <input type="text" class="form-control"  name="url"  required placeholder="ادخل الرابط ">
                             </div>
                         </div>
                         <div class="col-lg-6 col-12">
@@ -52,7 +52,7 @@
                         <div class="col-lg-6 col-12">
                             <div class="form-group">
                                 <label  class="form-label"> السعر <span class="text-danger"> *</span> </label>
-                                <input type="text" readonly class="form-control" value="0" id="metal_price" name="metal_price"  required >
+                                <input type="text"   class="form-control" value="0" id="metal_price" name="metal_price"  required >
                             </div>
                         </div>
                         <div class="col-lg-6 col-12">

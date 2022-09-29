@@ -153,6 +153,9 @@ Route::group(['middleware'=> ['verified','auth','disable_back']],function(){
 //    Route::get('success-transaction', [PayPalController::class, 'successTransaction'])->name('successTransaction');
 //    Route::get('cancel-transaction', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');
 
+######################################
+    Route::post('/update_payment_messages_user/{id}',[\App\Http\Controllers\PaymentController::class,'update_user'])->name('update.payment.messages.user');
+    Route::post('/destroy_payment_messages_user/{id}',[\App\Http\Controllers\PaymentController::class,'destroy_user'])->name('destroy.payment.messages.user');
 
 
 });
@@ -265,8 +268,6 @@ Route::group(['middleware'=>['verified','checkUserRole','auth','disable_back'],'
     Route::post('/destroy_order_messages/{id}',[\App\Http\Controllers\MetalMessageController::class,'destroy_order'])->name('destroy.order.messages');
     Route::post('/update_payment_messages/{id}',[\App\Http\Controllers\PaymentController::class,'update'])->name('update.payment.messages');
     Route::post('/destroy_payment_messages/{id}',[\App\Http\Controllers\PaymentController::class,'destroy'])->name('destroy.payment.messages');
-    Route::post('/update_payment_messages_user/{id}',[\App\Http\Controllers\PaymentController::class,'update_user'])->name('update.payment.messages.user');
-    Route::post('/destroy_payment_messages_user/{id}',[\App\Http\Controllers\PaymentController::class,'destroy_user'])->name('destroy.payment.messages.user');
 
     /////////////////////////-----------
     //Route::post('/update_service/{id}',[\App\Http\Controllers\ServiceController::class,'update'])->name('edit.service');

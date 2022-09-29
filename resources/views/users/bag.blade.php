@@ -32,7 +32,7 @@
                                         </thead>
                                         <tbody>
                                         @foreach($payments as $payment)
-                                            @if($payment->payer_email == Auth::user()->email and $payment->payment_status == 'مشتريات')
+{{--                                            @if($payment->payer_email == Auth::user()->email and $payment->payment_status == 'مشتريات')--}}
                                             <tr>
                                                 <td><?php echo $payment->id ?></td>
                                                 <td><?php echo $payment->payment_id ?></td>
@@ -43,20 +43,21 @@
                                                 <td>
                                                     <form action="{{route('update.payment.messages.user',$payment->id)}}" method="POST">
                                                         @csrf
-                                                        <input  type="submit" class="btn btn-success"  name="accept" value="الشراء" >
+                                                        <input  type="submit" class="btn btn-success"  name="accept" value="تأكيد" >
                                                     </form>
                                                 </td>
 
                                                 <td>
                                                     <form action="{{route('destroy.payment.messages.user',$payment->id)}}" method="POST">
                                                         @csrf
-                                                        <input  type="submit" class="btn btn-danger"  name="delete" value="حذف"   >
+                                                        <input  type="text" class="btn btn-warning"  name="balance" value="{{Auth::user()->balance}}" hidden  >
+                                                        <input  type="submit" class="btn btn-warning"  name="delete" value="تراجع"   >
                                                     </form>
                                                 </td>
 
 
                                             </tr>
-                                            @endif
+{{--                                            @endif--}}
                                         @endforeach
 
 

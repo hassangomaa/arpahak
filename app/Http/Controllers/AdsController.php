@@ -32,7 +32,7 @@ class AdsController extends Controller
         {
             return view ('admin.pages.ads.create',compact('countries','cities','category'));
         }
-        return view ('users.pages.ads.create',compact('cities','category'));
+        return view ('users.pages.ads.create',compact('countries','cities','category'));
     }
     public function store(Request $request)
     {

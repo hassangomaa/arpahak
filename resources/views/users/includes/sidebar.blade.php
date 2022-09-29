@@ -72,12 +72,7 @@
               <span>  اضافة عنصر تداول  </span>
             </a>
           </li>
-          <li>
-            <a class="nav-link collapsed" href="{{route('add.order')}}">
-              <i class="bi bi-receipt ms-2"  style="font-size: 20px;"></i>
-              <span>عرض التداولات </span>
-            </a>
-          </li>
+
           <li>
             <a class="nav-link collapsed" href="{{route('avilable.trades')}}">
               <i class="bi bi-receipt ms-2"  style="font-size: 20px;"></i>
@@ -97,12 +92,7 @@
               <span>  اضافة  اعلان  </span>
             </a>
           </li>
-          <li>
-            <a class="nav-link collapsed" href="{{route('add.order')}}">
-              <i class="bi bi-badge-ad-fill ms-2"  style="font-size: 20px;"></i>
-              <span>عرض الاعلانات </span>
-            </a>
-          </li>
+
         </ul>
       </li>
       
