@@ -83,6 +83,7 @@ Route::get('/logout',[HomeController::class, 'logout'])->name('logout');
 Route::group(['middleware'=> ['verified','auth','disable_back']],function(){
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
+    Route::get('/dashboard/bag', [HomeController::class, 'bag'])->name('bag');
 
     Route::get('/edit_password',[HomeController::class,'edit_password'])->name('edit.password');
     Route::post('/update_password',[HomeController::class,'update_password'])->name('update.password');
@@ -255,12 +256,18 @@ Route::group(['middleware'=>['verified','checkUserRole','auth','disable_back'],'
 
     Route::get('/all_trades',[\App\Http\Controllers\ServiceController::class,'show'])->name('show.trades');
     Route::get('/all_traders_messages',[\App\Http\Controllers\MetalMessageController::class,'index'])->name('show.traders.messages');
+    Route::get('/all_orders_messages',[\App\Http\Controllers\MetalMessageController::class,'index_orders'])->name('show.orders.messages');
     Route::get('/all_payment_messages',[\App\Http\Controllers\PaymentController::class,'index'])->name('show.payment.messages');
     //Route::post('/add_metal/store',[\App\Http\Controllers\MetalMessageController::class,'store'])->name('add.services.store');
     Route::post('/update_traders_messages/{id}',[\App\Http\Controllers\MetalMessageController::class,'update'])->name('update.traders.messages');
     Route::post('/destroy_traders_messages/{id}',[\App\Http\Controllers\MetalMessageController::class,'destroy'])->name('destroy.traders.messages');
-     Route::post('/update_payment_messages/{id}',[\App\Http\Controllers\PaymentController::class,'update'])->name('update.payment.messages');
+     Route::post('/update_order_messages/{id}',[\App\Http\Controllers\MetalMessageController::class,'update_order'])->name('update.order.messages');
+    Route::post('/destroy_order_messages/{id}',[\App\Http\Controllers\MetalMessageController::class,'destroy_order'])->name('destroy.order.messages');
+    Route::post('/update_payment_messages/{id}',[\App\Http\Controllers\PaymentController::class,'update'])->name('update.payment.messages');
     Route::post('/destroy_payment_messages/{id}',[\App\Http\Controllers\PaymentController::class,'destroy'])->name('destroy.payment.messages');
+    Route::post('/update_payment_messages_user/{id}',[\App\Http\Controllers\PaymentController::class,'update_user'])->name('update.payment.messages.user');
+    Route::post('/destroy_payment_messages_user/{id}',[\App\Http\Controllers\PaymentController::class,'destroy_user'])->name('destroy.payment.messages.user');
+
     /////////////////////////-----------
     //Route::post('/update_service/{id}',[\App\Http\Controllers\ServiceController::class,'update'])->name('edit.service');
     //Route::post('/destroy_service/{id}',[\App\Http\Controllers\ServiceController::class,'destroy'])->name('destroy.service');

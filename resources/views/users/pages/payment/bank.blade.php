@@ -14,14 +14,18 @@
                     <div class="row">
                         <div class="col-12 text-center">
                             <h4>خطوات الدفع عن طريق  التحويل البنكي</h4>
+{{--                            <h3>البنك اﻻهلي المصري</h3>--}}
                             <img src="{{asset('images/payments-logo/NBE.svg')}}" width="40%" class="img-fluid" alt="">
                         </div>
                         <div class="col-12">
                            <h5>خطوات الدفع :</h5>
                         </div>
                         <div class="col-12">
-                            <h6>١ - تحويل المبلغ المطلوب علي  الحساب رقم :</h6>
-                            <h4 > 11305641894 </h4>
+                            <h6>١ - تحويل المبلغ المطلوب علي  الحساب  :</h6>
+{{--                            <h4 > Name :  YASSER OMAR MOHAMED MAHMOUD </h4>--}}
+                            <h4 > Bank name :  QNB AL AHLI </h4>
+                            <h4 > EGP Account No : 11305641894 </h4>
+                            <h4 > IBAN (EGP account) : EG370037001708181130564189475 </h4>
                             <br>
                             <br>
                             <br>

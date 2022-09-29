@@ -33,12 +33,17 @@
                                 </select>
                             </div>
                         </div>
+
+
                         <div class="col-lg-6 col-12">
                             <div class="mb-3">
-                                <label for="club_id" class="form-label">النوع<span class="text-danger"> *</span> </label>
-                                <select class="form-control" onblur="test2()" name="type_id" id="type_id">
-                                    <option value="">أختر النوع</option>
-                                    
+
+                                <label for="service" class="form-label">النوع <span class="text-danger"> *</span> </label>
+                                <select onblur="test()" class="form-control" name="service_id" id="service">
+                                    <option selected value="0">أختر النوع</option>
+                                    @foreach($services_type as $service)
+                                        <option value="{{$service->id}}"> {{$service->type}} </option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -47,15 +52,19 @@
                         <div class="col-lg-6 col-12">
                             <div class="mb-3">
                                 <label for="club_id" class="form-label">الخدمه<span class="text-danger"> *</span> </label>
-                                <select class="form-control"  name="service_id" id="service_id">
-                                    <option value="">أختر الخدمه</option>
-                                    
+                                <select class="form-control"  name="services_id" id="service_id">
+                                    <option selected value="0">أختر الخدمه</option>
+                                    @foreach($services as $service1)
+                                        <option value="{{$service1->id}}"> {{$service1->name}} </option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="col-lg-6 col-12">
                             <label for="Quantity" class="form-label">الكمية<span class="text-danger"> *</span></label>
-                            <input type="text" class="form-control" id="attachment" name="attachment" placeholder="الكمية " required>
+                            <input type="text" class="form-control" id="attachment" name="quantity" placeholder="الكمية " required>
+                            <input hidden type="text" class="form-control" id="attachment" name="user_id" value="{{Auth::user()->id}}" required>
+                            <input hidden type="text" class="form-control" id="attachment" name="user_balance" value="{{Auth::user()->balance}}" required>
                         </div>
                     </div>
                     <div class="row mt-3 justify-content-center">
@@ -63,15 +72,7 @@
                             <button class="btn btn-primary  w-100" type="submit">طلب الخدمة </button>
                         </div>
                     </div>
-                    @if(session()->has('success_message'))
-                    <div class="alert alert-success">
-                        {{ session()->get('success_message') }}
-                    </div>
-                    @elseif(session()->has('danger_message'))
-                        <div class="alert alert-danger">
-                            {{ session()->get('danger_message') }}
-                        </div>
-                    @endif
+
                     
                   </form>
 
@@ -82,7 +83,15 @@
         </div>
 
       </section>
-
+        @if(session()->has('success'))
+            <div class="alert alert-success">
+                {{ session()->get('success') }}
+            </div>
+        @elseif(session()->has('error'))
+            <div class="alert alert-danger">
+                {{ session()->get('error') }}
+            </div>
+        @endif
     </div>
   </main>
   <script>

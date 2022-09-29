@@ -11,7 +11,7 @@
               <div class="card mb-3 w-100">
                 <div class="card-body">
                   <div class="pt-4 pb-2">
-                    <h5 class="card-title text-center pb-0 fs-4">اضافة  قسم</h5>
+                    <h5 class="card-title text-center pb-0 fs-4">اضافة  خدمه</h5>
                     <p class="text-center small">قم بادخال البيانات</p>
                   </div>
                   <form class="row g-3 needs-validation" enctype="multipart/form-data" method="POST" action="{{route('store.service')}}">

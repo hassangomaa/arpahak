@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Competition;
 use App\Models\CompetitionMessage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use voku\helper\ASCII;
 
 class CompetitionController extends Controller
@@ -112,8 +113,8 @@ class CompetitionController extends Controller
             ]);
 
 
-        session() -> flash('success', trans('تم تعديل المسابقة'));
-        return redirect() -> route('task.edit',(int)$id);
+//        session() -> flash('success', trans('تم تعديل المسابقة'));
+        return redirect()->back()->with('success','تم تعديل المسابقة') ;
     }
 
 

@@ -213,8 +213,7 @@
 {{--        </a>--}}
 
 {{--      </li>--}}
-      ###
-      <li class="nav-item">
+       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#users-nav" data-bs-toggle="collapse" href="{{route('users')}}">
           <i class="bi bi-people-fill ms-2"></i><span>المستخدمين</span><i class="bi bi-chevron-down me-auto"></i>
         </a>
@@ -231,9 +230,15 @@
               <span>    معاملات المستخدمين  </span>
             </a>
           </li>
+          <li>
+            <a class="nav-link collapsed" href="{{route('show.orders.messages')}}">
+              <i class="bi bi-chat-left-text ms-2" style="font-size: 20px;"></i>
+              <span>    طلبات المستخدمين  </span>
+            </a>
+          </li>
         </ul>
       </li>
-      ##
+
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('show.messages')}}">
           <i class="bi bi-chat-left-text ms-2"></i>

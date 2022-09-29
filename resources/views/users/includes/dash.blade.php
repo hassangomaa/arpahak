@@ -117,13 +117,13 @@
               <div class="col-xxl-4 col-md-4">
                 <div class="card info-card revenue-card">
                   <div class="card-body">
-                    <a href="#">
+                    <a href="{{route('bag')}}">
                       <h5 class="card-title">قائمه المشتريات</h5>
 
                       <div class="d-flex align-items-center">
 
                         <div class="ps-5">
-{{--                          <h6 id ="transaction">{{$payments}}</h6>--}}
+                          <h6 id ="transaction">{{$payments}}</h6>
                         </div>
                         <div class="card-icon rounded-circle d-flex align-items-center justify-content-center me-auto">
                           <i class="bi bi-bag"></i>
@@ -138,7 +138,8 @@
         </div>
               {{--
               <div class="col-xxl-4 col-md-4">
-                <div class="card info-card revenue-card">
+                <div class="card i
+                nfo-card revenue-card">
                   <div class="card-body">
                     <a href="#">
                       <h5 class="card-title">التداولات</h5>

@@ -6,6 +6,7 @@ use App\Models\MetalMessage;
 use App\Models\Postimage;
 use App\Models\Service;
 use App\Models\ServiceType;
+use App\Models\User;
 use App\Models\UserService;
 use Illuminate\Http\Request;
 use App\Models\Metal;
@@ -18,6 +19,14 @@ class MetalMessageController extends Controller
     {
         $messages = Postimage::all();
         return view('admin.pages.deals.messages.index',compact('messages'));
+    }
+
+   public function index_orders()
+    {
+        $messages = UserService::all();
+        $users = User::all();
+        $services = Service::all();
+        return view('admin.pages.orders.messages.index',compact('services','users','messages'));
     }
 
 
@@ -105,6 +114,35 @@ class MetalMessageController extends Controller
     {
 //        dd($id);
         Postimage::where('id',$id)->delete();
+        return redirect()->back()->with('success','تم حذف الرسالة.');
+
+    }
+
+
+    public function update_order(Request $request, $id)
+    {
+//        dd($id);
+
+        //go to user service and update status to
+        //
+        $request -> validate([
+//            'category_id' => 'required',
+//            'type' => 'required|string',
+//            'status' => 'required',
+        ]);
+        DB::table('user_services')
+            ->where('id', (int) $id )
+            ->update([
+                  'status' =>  'تم القبول' ,
+            ]);
+        return redirect()->back()->with('success_message','تم قبول طلب المستخدم');
+    }
+
+
+    public function destroy_order($id)
+    {
+//        dd($id);
+        UserService::where('id',$id)->delete();
         return redirect()->back()->with('success','تم حذف الرسالة.');
 
     }

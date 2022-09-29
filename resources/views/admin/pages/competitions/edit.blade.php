@@ -45,7 +45,7 @@
                         <div class=" col-12">
                             <div class="form-group">
                                 <label  class="form-label"> الوصف <span class="text-danger"> *</span> </label>
-                                <textarea id="description" name="description" class="form-control" placeholder="الوصف" rows="4" required="required" data-error="برجاء ترك لنا الوصف." value="{{old('description', $competition[0]->description)}}"></textarea>
+                                <textarea id="description" name="description" class="form-control" placeholder="الوصف" rows="4" required="required" data-error="برجاء ترك لنا الوصف." value="">{{old('description', $competition[0]->description)}}</textarea>
                             </div>
                         </div>
                     </div>

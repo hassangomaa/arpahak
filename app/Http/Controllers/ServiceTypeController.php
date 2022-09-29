@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ServiceCategory;
 use App\Models\ServiceType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ServiceTypeController extends Controller
 {
@@ -12,7 +13,9 @@ class ServiceTypeController extends Controller
     public function index()
     {
         $types = ServiceType::all();
-        $categories_names = ServiceCategory::select('category_id','name')->get();
+//        $categories_names = ServiceCategory::select('category_id','name')->get();
+        $categories_names = ServiceCategory::all();
+//        select('category_id','name')->get();
         return view('admin.pages.services.types.index',compact('types','categories_names'));
     }
 
@@ -56,15 +59,37 @@ class ServiceTypeController extends Controller
     public function edit($id)
     {
         $sub_categories = ServiceType::where('id',$id)->get();
-        $category = ServiceCategory::where('category_id',$id)->get();
+        $category = ServiceCategory::all();
+//        where('category_id',$id)->get();
         return view('admin.pages.services.types.edit',compact('sub_categories','category'));
     }
 
 
-    public function update(Request $request, ServiceType $serviceType)
+    public function update(Request $request, ServiceType $serviceType,$id)
     {
         //
-    }
+//        dd($request);
+                if ($request->status == null)
+                    $request->status =0;
+
+                if ($request->home_page == null)
+                    $request->home_page =0;
+
+                $request -> validate([
+//            'category_id' => 'required',
+//            'type' => 'required|string',
+//            'status' => 'required',
+        ]);
+        DB::table('service_types')
+            ->where('id', (int) $id )
+            ->update([
+                'category_id' =>  $request->category_id ,
+                'type' =>  $request->type ,
+                'status' =>  $request->status ,
+                'home_page' =>  $request->home_page ,
+            ]);
+        return redirect()->back()->with('success_message','تم قبول طلب المستخدم');
+     }
 
 
     public function destroy($id)

@@ -15,7 +15,7 @@
                 <div class="card-body">
 
                   <div class="pt-4 pb-2">
-                    <h5 class="card-title text-center pb-0 fs-4">اضافة  مهمة</h5>
+                    <h5 class="card-title text-center pb-0 fs-4">اضافة  مسابقه</h5>
                     <p class="text-center small">قم بادخال البيانات</p>
                   </div>
 
@@ -38,7 +38,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                                <label  class="form-label"> مدة الماسبقة <span class="text-danger"> *</span> </label>
+                                <label  class="form-label"> مدة المسابقه <span class="text-danger"> *</span> </label>
                                 <input type="text" class="form-control" id="time" name="time" placeholder="مدة المسابقة" required>
                             </div>
                         </div>

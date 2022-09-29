@@ -24,9 +24,12 @@ class PaymentController extends Controller
 
     public function index()
     {
-        $payments = Payment::all();
+        $payments = Payment::where('payment_status','=','في اﻻنتظار')->get();
         return view('admin.pages.payment',compact('payments') );
     }
+
+
+
     public function update(Request $request, $id)
     {
 //        dd($id);
@@ -54,6 +57,37 @@ class PaymentController extends Controller
         return redirect()->back()->with('success','تم حذف الرسالة.');
 
     }
+
+
+    public function update_user(Request $request, $id)
+    {
+//        dd($id);
+
+        //go to user service and update status to
+        //
+        $request -> validate([
+//            'category_id' => 'required',
+//            'type' => 'required|string',
+//            'status' => 'required',
+        ]);
+        DB::table('payments')
+            ->where('id', (int) $id )
+            ->update([
+                'payment_status' =>  'في اﻻنتظار' ,
+            ]);
+        return redirect()->back()->with('success','تم ايداع طلبك في قائمة اﻻنتظار');
+    }
+
+
+    public function destroy_user($id)
+    {
+//        dd($id);
+        Payment::where('id',$id)->delete();
+        return redirect()->back()->with('error','تم حذف الرسالة.');
+
+    }
+
+
 
     public function pay_page($id)
     {

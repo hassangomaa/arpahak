@@ -11,7 +11,7 @@
               <div class="card mb-3 w-100">
                 <div class="card-body">
                   <div class="pt-4 pb-2">
-                    <h5 class="card-title text-center pb-0 fs-4">اضافة  قسم</h5>
+                    <h5 class="card-title text-center pb-0 fs-4">تعديل  قسم</h5>
                     <p class="text-center small">قم بادخال البيانات</p>
                   </div>
                   <form class="row g-3 needs-validation" enctype="multipart/form-data" method="POST" action="{{route('edit.service.subCategory',$sub_categories[0]->id)}}">
@@ -25,11 +25,12 @@
                         </div>
                         <div class="col-lg-6 col-12">
                             <div class="form-group">
-                                <label  class="form-label"> الفسم <span class="text-danger"> *</span> </label>
+                                <label  class="form-label"> القسم <span class="text-danger"> *</span> </label>
                                 <select class="form-control" name="category_id" id="category_id">
-                                    <option value="">أختر القسم</option>
+{{--                                    <option selected value="0">أختر القسم</option>--}}
                                     @foreach($category as $c)
-                                        <option @if(old('category_id') == $c->category_id) selected @endif value="">{{$c->name}} </option>
+                                        <option @if(old('category_id') == $c->category_id) selected @endif value="{{$c->category_id}}">{{$c->name}} </option>
+{{--                                        <option  value="{{$c->category_id}}"> {{$c->name}} </option>--}}
                                     @endforeach
                                 </select>
                             </div>
