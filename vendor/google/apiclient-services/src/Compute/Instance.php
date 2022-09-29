@@ -120,8 +120,6 @@ class Instance extends \Google\Collection
    * @var string[]
    */
   public $resourcePolicies;
-  protected $resourceStatusType = ResourceStatus::class;
-  protected $resourceStatusDataType = '';
   /**
    * @var bool
    */
@@ -582,20 +580,6 @@ class Instance extends \Google\Collection
   public function getResourcePolicies()
   {
     return $this->resourcePolicies;
-  }
-  /**
-   * @param ResourceStatus
-   */
-  public function setResourceStatus(ResourceStatus $resourceStatus)
-  {
-    $this->resourceStatus = $resourceStatus;
-  }
-  /**
-   * @return ResourceStatus
-   */
-  public function getResourceStatus()
-  {
-    return $this->resourceStatus;
   }
   /**
    * @param bool

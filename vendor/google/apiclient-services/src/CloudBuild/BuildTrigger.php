@@ -58,8 +58,6 @@ class BuildTrigger extends \Google\Collection
   protected $gitFileSourceDataType = '';
   protected $githubType = GitHubEventsConfig::class;
   protected $githubDataType = '';
-  protected $gitlabEnterpriseEventsConfigType = GitLabEventsConfig::class;
-  protected $gitlabEnterpriseEventsConfigDataType = '';
   /**
    * @var string
    */
@@ -272,20 +270,6 @@ class BuildTrigger extends \Google\Collection
   public function getGithub()
   {
     return $this->github;
-  }
-  /**
-   * @param GitLabEventsConfig
-   */
-  public function setGitlabEnterpriseEventsConfig(GitLabEventsConfig $gitlabEnterpriseEventsConfig)
-  {
-    $this->gitlabEnterpriseEventsConfig = $gitlabEnterpriseEventsConfig;
-  }
-  /**
-   * @return GitLabEventsConfig
-   */
-  public function getGitlabEnterpriseEventsConfig()
-  {
-    return $this->gitlabEnterpriseEventsConfig;
   }
   /**
    * @param string

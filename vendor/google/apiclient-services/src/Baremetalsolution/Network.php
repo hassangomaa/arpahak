@@ -27,10 +27,6 @@ class Network extends \Google\Collection
   /**
    * @var string
    */
-  public $gatewayIp;
-  /**
-   * @var string
-   */
   public $id;
   /**
    * @var string
@@ -92,20 +88,6 @@ class Network extends \Google\Collection
   public function getCidr()
   {
     return $this->cidr;
-  }
-  /**
-   * @param string
-   */
-  public function setGatewayIp($gatewayIp)
-  {
-    $this->gatewayIp = $gatewayIp;
-  }
-  /**
-   * @return string
-   */
-  public function getGatewayIp()
-  {
-    return $this->gatewayIp;
   }
   /**
    * @param string

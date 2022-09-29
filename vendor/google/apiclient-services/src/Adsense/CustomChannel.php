@@ -20,10 +20,6 @@ namespace Google\Service\Adsense;
 class CustomChannel extends \Google\Model
 {
   /**
-   * @var bool
-   */
-  public $active;
-  /**
    * @var string
    */
   public $displayName;
@@ -36,20 +32,6 @@ class CustomChannel extends \Google\Model
    */
   public $reportingDimensionId;
 
-  /**
-   * @param bool
-   */
-  public function setActive($active)
-  {
-    $this->active = $active;
-  }
-  /**
-   * @return bool
-   */
-  public function getActive()
-  {
-    return $this->active;
-  }
   /**
    * @param string
    */

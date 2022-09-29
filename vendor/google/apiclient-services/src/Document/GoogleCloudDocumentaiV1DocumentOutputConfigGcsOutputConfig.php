@@ -22,26 +22,8 @@ class GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfig extends \Google
   /**
    * @var string
    */
-  public $fieldMask;
-  /**
-   * @var string
-   */
   public $gcsUri;
 
-  /**
-   * @param string
-   */
-  public function setFieldMask($fieldMask)
-  {
-    $this->fieldMask = $fieldMask;
-  }
-  /**
-   * @return string
-   */
-  public function getFieldMask()
-  {
-    return $this->fieldMask;
-  }
   /**
    * @param string
    */

@@ -27,6 +27,10 @@ class GoogleCloudDocumentaiV1EntityTypeMetadata extends \Google\Model
    * @var bool
    */
   public $inactive;
+  /**
+   * @var bool
+   */
+  public $prefixedNamingOnProperties;
 
   /**
    * @param GoogleCloudDocumentaiV1HumanReviewLabelingMetadata
@@ -69,6 +73,20 @@ class GoogleCloudDocumentaiV1EntityTypeMetadata extends \Google\Model
   public function getInactive()
   {
     return $this->inactive;
+  }
+  /**
+   * @param bool
+   */
+  public function setPrefixedNamingOnProperties($prefixedNamingOnProperties)
+  {
+    $this->prefixedNamingOnProperties = $prefixedNamingOnProperties;
+  }
+  /**
+   * @return bool
+   */
+  public function getPrefixedNamingOnProperties()
+  {
+    return $this->prefixedNamingOnProperties;
   }
 }
 

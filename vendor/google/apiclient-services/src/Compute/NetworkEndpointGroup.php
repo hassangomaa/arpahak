@@ -61,8 +61,6 @@ class NetworkEndpointGroup extends \Google\Model
    * @var string
    */
   public $networkEndpointType;
-  protected $pscDataType = NetworkEndpointGroupPscData::class;
-  protected $pscDataDataType = '';
   /**
    * @var string
    */
@@ -255,20 +253,6 @@ class NetworkEndpointGroup extends \Google\Model
   public function getNetworkEndpointType()
   {
     return $this->networkEndpointType;
-  }
-  /**
-   * @param NetworkEndpointGroupPscData
-   */
-  public function setPscData(NetworkEndpointGroupPscData $pscData)
-  {
-    $this->pscData = $pscData;
-  }
-  /**
-   * @return NetworkEndpointGroupPscData
-   */
-  public function getPscData()
-  {
-    return $this->pscData;
   }
   /**
    * @param string

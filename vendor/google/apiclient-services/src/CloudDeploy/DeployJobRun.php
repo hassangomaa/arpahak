@@ -31,8 +31,6 @@ class DeployJobRun extends \Google\Model
    * @var string
    */
   public $failureMessage;
-  protected $metadataType = DeployJobRunMetadata::class;
-  protected $metadataDataType = '';
 
   /**
    * @param string
@@ -75,20 +73,6 @@ class DeployJobRun extends \Google\Model
   public function getFailureMessage()
   {
     return $this->failureMessage;
-  }
-  /**
-   * @param DeployJobRunMetadata
-   */
-  public function setMetadata(DeployJobRunMetadata $metadata)
-  {
-    $this->metadata = $metadata;
-  }
-  /**
-   * @return DeployJobRunMetadata
-   */
-  public function getMetadata()
-  {
-    return $this->metadata;
   }
 }
 

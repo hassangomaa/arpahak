@@ -83,10 +83,6 @@ class Creative extends \Google\Collection
   protected $nativeType = NativeContent::class;
   protected $nativeDataType = '';
   /**
-   * @var string
-   */
-  public $renderUrl;
-  /**
    * @var string[]
    */
   public $restrictedCategories;
@@ -334,20 +330,6 @@ class Creative extends \Google\Collection
   public function getNative()
   {
     return $this->native;
-  }
-  /**
-   * @param string
-   */
-  public function setRenderUrl($renderUrl)
-  {
-    $this->renderUrl = $renderUrl;
-  }
-  /**
-   * @return string
-   */
-  public function getRenderUrl()
-  {
-    return $this->renderUrl;
   }
   /**
    * @param string[]
