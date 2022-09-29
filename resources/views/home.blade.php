@@ -321,6 +321,11 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="row">
                     <div class="col-lg-4 col-6 ">
                         <div class="work-process">
                             <div class="step-num-box">
@@ -335,7 +340,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+             </div>
         </section>
 
         <!--step end-->

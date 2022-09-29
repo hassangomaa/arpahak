@@ -61,21 +61,24 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-6 ">
-                    <div class="work-process">
-                        <div class="step-num-box">
-                            <div class="step-icon"><span><i class="la la la-user-check"></i></span>
+            </div>
+                <div class="row w-100 justify-content-center">
+                    <div class="col-lg-4 col-6 ">
+                        <div class="work-process">
+                            <div class="step-num-box">
+
+                                <div class="step-icon"><span><i class="la la la-user-check"></i></span>
+                                </div>
+                                <div class="step-desc">
+                                    <h3 style="color: white">عدد الزوار</h3>
+                                </div>
+                                <div class="step-num">{{$wordlist}} </div>
                             </div>
-                            <div class="step-num">{{$wordlist}} </div>
-                        </div>
-                        <div class="step-desc">
-                            <h4 style="color: white">عدد الزوار</h4>
-                            <p class="mb-0"></p>
+
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+         </div>
     </section>
 
 
