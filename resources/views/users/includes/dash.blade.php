@@ -8,7 +8,7 @@
     
       <section class="section dashboard">
         <div class="row">
-    
+
           <!-- Left side columns -->
           <div class="col-lg-12">
             <div class="row">
@@ -28,7 +28,9 @@
                         </div>
                       </div>
                     </a>
+
                   </div>
+
 
 
 
@@ -63,7 +65,6 @@
                       </div>
                     </div>
                   </div>
-
                 </div>
 
               </div>
@@ -90,7 +91,6 @@
                 
               </div>
 
-
               <div class="col-xxl-4 col-md-4">
                 <div class="card info-card revenue-card">
                   <div class="card-body">
@@ -111,6 +111,29 @@
     
                 </div>
                 
+              </div>
+
+
+              <div class="col-xxl-4 col-md-4">
+                <div class="card info-card revenue-card">
+                  <div class="card-body">
+                    <a href="#">
+                      <h5 class="card-title">قائمه المشتريات</h5>
+
+                      <div class="d-flex align-items-center">
+
+                        <div class="ps-5">
+{{--                          <h6 id ="transaction">{{$payments}}</h6>--}}
+                        </div>
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center me-auto">
+                          <i class="bi bi-bag"></i>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+
+                </div>
+
               </div>
         </div>
               {{--

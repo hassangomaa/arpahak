@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Image;
 use App\Models\Count_Click;
 use App\Models\Link;
+use App\Models\Payment;
 use App\Models\User;
 use App\Models\trade;
 use Illuminate\Http\Request;
@@ -33,8 +34,8 @@ class HomeController extends Controller
     {
         $images = Image::where('user_id', Auth::id())->get()->count();
         $trades = trade::where('user_id', Auth::id())->get()->count();
-        
-        return view('users.dashboard',compact('images','trades'));
+        $payments = Payment::where('status','مشتريات');
+        return view('users.dashboard',compact('images','trades','payments'));
     }
 
     public function dashboard()
