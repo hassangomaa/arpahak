@@ -26,7 +26,7 @@
                             <th>الهاتف</th>
                             <th>البريد الالكتروني</th>
                             <th>الرسالة</th>
-                            <th>حذف</th>
+                            <th>الوضع</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -40,7 +40,7 @@
                                 <td><?php echo $message->message?></td>
                                 <td>
     
-                                    <a href="{{route('show.message.destroy',$message->id)}}" class="btn btn-secondary" name="delete" value="delete"><i class="far fa-trash-alt"></i></a>
+                                    <a href="{{route('show.message.destroy',$message->id)}}" class="btn btn-danger" name="delete" value="delete"><i class="far fa-trash-alt">حذف</i></a>
                                 </td>
     
                             </tr>

@@ -104,7 +104,7 @@ class MetalMessageController extends Controller
         DB::table('postimages')
             ->where('id', (int) $id )
             ->update([
-                  'status' =>  'تم القبول' ,
+                  'status' =>  'Accepted' ,
             ]);
         return redirect()->back()->with('success_message','تم قبول طلب المستخدم');
     }
@@ -133,7 +133,7 @@ class MetalMessageController extends Controller
         DB::table('user_services')
             ->where('id', (int) $id )
             ->update([
-                  'status' =>  'تم القبول' ,
+                  'status' =>  'Accepted' ,
             ]);
         return redirect()->back()->with('success_message','تم قبول طلب المستخدم');
     }

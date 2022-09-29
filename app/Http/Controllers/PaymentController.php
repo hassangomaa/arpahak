@@ -26,7 +26,7 @@ class PaymentController extends Controller
 
     public function index()
     {
-        $payments = Payment::where('payment_status','=','في اﻻنتظار')->get();
+        $payments = Payment::where('payment_status','=','pending')->get();
         return view('admin.pages.payment',compact('payments') );
     }
 
@@ -46,7 +46,7 @@ class PaymentController extends Controller
         DB::table('payments')
             ->where('id', (int) $id )
             ->update([
-                'payment_status' =>  'تم القبول' ,
+                'payment_status' =>  'Accepted' ,
             ]);
         return redirect()->back()->with('success_message','تم قبول طلب المستخدم');
     }
@@ -75,7 +75,7 @@ class PaymentController extends Controller
         DB::table('payments')
             ->where('id', (int) $id )
             ->update([
-                'payment_status' =>  'في اﻻنتظار' ,
+                'payment_status' =>  'pending' ,
             ]);
         return redirect()->back()->with('success','تم ايداع طلبك في قائمة اﻻنتظار');
     }

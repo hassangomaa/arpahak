@@ -39,8 +39,10 @@
                                         ?>
                             </td>
                             <td>{{$order->attachment}}</td>
-                            @if($order->status == 'تم القبول')
-                                <td><button class="btn btn-success" style="size:30px" value="تم القبول"> {{$order->status}}</button>  </td>
+                            @if($order->status == 'Accepted')
+                                <td><button class="btn btn-success" style="size:30px" value="Accepted"> {{$order->status}}</button>  </td>
+                            @elseif(($order->status == 'Declined'))
+                                <td><button class="btn btn-danger">{{$order->status}} </button> </td>
                             @else
                                 <td><button class="btn btn-warning">{{$order->status}} </button> </td>
                             @endif

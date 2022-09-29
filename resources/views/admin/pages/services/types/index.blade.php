@@ -6,7 +6,7 @@
     <div class="container" dir="rtl">
       <section class="section register  d-flex flex-column align-items-center justify-content-center pb-4">
         <div class="container">
-            
+            <h2>انواع الخدمات المتاحه</h2>
             <div class="row">
               <div class="col-12">
                 <div class="card recent-sales overflow-auto">

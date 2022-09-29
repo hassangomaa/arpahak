@@ -24,7 +24,6 @@ class bankController extends Controller
     public function uploadFile(Request $request)
     {
         $data= new Postimage();
-
         if($request->file('image')){
             $file= $request->file('image');
             $filename= date('YmdHi').$file->getClientOriginalName();
@@ -32,13 +31,9 @@ class bankController extends Controller
             $data['image']= $filename;
             $data['created_by']= $request->email ;
             $data['path']= public_path('uploads/vodafone/').$filename ;
-            $data['status']= 'في اﻻنتظار' ;
-            $data['type']= 'البنك اﻻهلي المركزي' ;        }
-
-
+            $data['status']= 'pending' ;
+            $data['type']= 'البنك QNB' ;        }
         $data->save();
-
         return redirect()->back()->with('success','تم الارسال سيتم فحص اﻻيصال اوﻻ, ثم اضافه الرصيد الي المحفظه, شكرا ﻻستخدامكم ارباحك');
-
     }
 }

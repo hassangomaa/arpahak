@@ -33,7 +33,7 @@ class vodafoneController extends Controller
             $data['image']= $filename;
             $data['created_by']= $request->email ;
             $data['path']= public_path('uploads/vodafone/').$filename ;
-            $data['status']= 'في اﻻنتظار' ;
+            $data['status']= 'pending' ;
             $data['type']= 'فودافون كاش' ;
         }
 

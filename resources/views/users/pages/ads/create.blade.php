@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 @section('content')
-    @include('admin.includes.head')
-    @include('admin.includes.sidebar')
+    @include('users.includes.head')
+    @include('users.includes.sidebar')
     <main class="main" id="main">
         <div class="container">
             <section class="section register d-flex flex-column align-items-center justify-content-center py-4">
@@ -43,25 +43,25 @@
                                             <div class="col-lg-6 col-sm-12  col-12">
                                                 <div class="form-group">
                                                     <label  class="form-label"> الصورة الرئيسية <span class="text-danger"> *</span> </label>
-                                                    <input type="file" class="form-control" id="image" name="image[]" required>
+                                                    <input required type="file" class="form-control" id="image" name="image[]"  >
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-sm-12 col-12">
                                                 <div class="form-group">
                                                     <label  class="form-label">الصورة الأولي  </label>
-                                                    <input type="file" class="form-control" id="image1" name="image[]" >
+                                                    <input required type="file" class="form-control" id="image1" name="image[]" >
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-sm-12 col-12">
                                                 <div class="form-group">
                                                     <label  class="form-label">الصورة الثانية  </label>
-                                                    <input type="file" class="form-control" id="image2" name="image[]" >
+                                                    <input required type="file" class="form-control" id="image2" name="image[]" >
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-sm-12 col-12">
                                                 <div class="form-group">
                                                     <label  class="form-label">الصورة الثالثة  </label>
-                                                    <input type="file" class="form-control" id="image" name="image[]" >
+                                                    <input required type="file" class="form-control" id="image" name="image[]" >
                                                 </div>
                                             </div>
 
@@ -116,6 +116,7 @@
                                         </div>
                                         <div class="row mt-3 justify-content-center">
                                             <div class="col-6 ">
+
                                                 <button class="btn btn-primary  w-100" type="submit"> اضافة </button>
                                             </div>
                                         </div>
@@ -131,6 +132,8 @@
 
         </div>
     </main>
+
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- AJAX CDN --}}

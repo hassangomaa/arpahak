@@ -25,7 +25,7 @@
                         <div class="col-lg-6 col-sm-12 col-12">
                             <div class="form-group">
                                 <label  class="form-label"> العنوان <span class="text-danger"> *</span> </label>
-                                <input type="text" class="form-control"  name="title"  required placeholder=" العنوان">
+                                <input  type="text" class="form-control"  name="title"  required placeholder=" العنوان">
                             </div>
                         </div>
                         <div class="col-lg-6 col-sm-12 col-12">
@@ -49,19 +49,19 @@
                         <div class="col-lg-6 col-sm-12 col-12">
                             <div class="form-group">
                                 <label  class="form-label">الصورة الأولي  </label>
-                                <input type="file" class="form-control" id="image1" name="image[]" >
+                                <input required type="file" class="form-control" id="image1" name="image[]" >
                             </div>
                         </div>
                         <div class="col-lg-6 col-sm-12 col-12">
                             <div class="form-group">
                                 <label  class="form-label">الصورة الثانية  </label>
-                                <input type="file" class="form-control" id="image2" name="image[]" >
+                                <input required type="file" class="form-control" id="image2" name="image[]" >
                             </div>
                         </div>
                         <div class="col-lg-6 col-sm-12 col-12">
                             <div class="form-group">
                                 <label  class="form-label">الصورة الثالثة  </label>
-                                <input type="file" class="form-control" id="image" name="image[]" >
+                                <input required type="file" class="form-control" id="image" name="image[]" >
                             </div>
                         </div>
                         
@@ -119,6 +119,8 @@
                     </div>
                     <div class="row mt-3 justify-content-center">
                         <div class="col-6 ">
+
+
                             <button class="btn btn-primary  w-100" type="submit"> اضافة </button>
                         </div>
                     </div>
@@ -134,6 +136,7 @@
 
     </div>
   </main>
+
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 {{-- AJAX CDN --}}

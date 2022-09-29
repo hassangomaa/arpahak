@@ -58,7 +58,7 @@ class TradeController extends Controller
                     'payer_email' => $request->email,
                     'amount' => $price,
                     'currency' => $trade->currency,
-                    'payment_status' => "مشتريات",
+                    'payment_status' => "bag",
 
                 ]
             );

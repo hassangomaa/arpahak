@@ -28,6 +28,7 @@ class AdsController extends Controller
         $cities = city::all();
         $category = ads_category::all();
         $user_role = User::find(Auth::id())->role_id;
+//        dd($user_role);
         if($user_role == 1)
         {
             return view ('admin.pages.ads.create',compact('countries','cities','category'));

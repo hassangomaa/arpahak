@@ -53,7 +53,7 @@ class UserServiceController extends Controller
                 $newService->attachment = $request->quantity;
                 $newService->paid_money = $total_price;
                 $newService->remain_money = $remain;
-                $newService->status = "قيد التنفيذ";
+                $newService->status = "pending";
                 $newService->save();
                 return redirect()->back()->with('success', 'تم أضافة الطلب الي قائمه اﻻنتظار, سيقوم احد ممثلينا بالتواصل معكم.');
             }
