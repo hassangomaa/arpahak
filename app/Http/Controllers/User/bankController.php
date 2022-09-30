@@ -27,10 +27,10 @@ class bankController extends Controller
         if($request->file('image')){
             $file= $request->file('image');
             $filename= date('YmdHi').$file->getClientOriginalName();
-            $file-> move(public_path('uploads/bank/'), $filename);
+            $file-> move(public_path('uploads/payment/'), $filename);
             $data['image']= $filename;
             $data['created_by']= $request->email ;
-            $data['path']= public_path('uploads/vodafone/').$filename ;
+            $data['path']= public_path('uploads/payment/').$filename ;
             $data['status']= 'pending' ;
             $data['type']= 'البنك QNB' ;        }
         $data->save();

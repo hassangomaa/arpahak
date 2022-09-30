@@ -58,7 +58,7 @@
                               <a class="btn btn-primary col-12" style="background: white; border-color:black;" href="{{route('vodafone-cash-charge')}}" role="button"><img src="{{asset('images/payments-logo/vodafone.PNG')}}" width="20%" class="img-fluid" alt=""></a>
                             </div>
                             <div class="col-12 mb-3">
-                              <a class="btn btn-primary col-12" style="background: white; border-color:black;" href="{{route('bank-transfer-charge')}}" role="button"><img src="{{asset('images/payments-logo/NBE.svg')}}" width="20%" class="img-fluid" alt=""> </a>
+                              <a class="btn btn-primary col-12" style="background: white; border-color:black;" href="{{route('bank-transfer-charge')}}" role="button"><img src="{{asset('images/payments-logo/QNB.png')}}" width="20%" class="img-fluid" alt=""> </a>
                             </div>
                           </div>
                         </div>

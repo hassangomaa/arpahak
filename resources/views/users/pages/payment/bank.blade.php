@@ -15,7 +15,7 @@
                         <div class="col-12 text-center">
                             <h4>خطوات الدفع عن طريق  التحويل البنكي</h4>
 {{--                            <h3>البنك اﻻهلي المصري</h3>--}}
-                            <img src="{{asset('images/payments-logo/NBE.svg')}}" width="40%" class="img-fluid" alt="">
+                            <img src="{{asset('images/payments-logo/QNB.png')}}" width="40%" class="" alt="">
                         </div>
                         <div class="col-12">
                            <h5>خطوات الدفع :</h5>

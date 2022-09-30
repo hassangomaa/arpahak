@@ -5,9 +5,10 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Image;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-
-
+ use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Illuminate\Support\Facades\Response;
 class ImageController extends Controller
 {
     /**
@@ -110,10 +111,24 @@ class ImageController extends Controller
         //
 //       $images = Image::find($image);
 //                dd($image);
-
-        return view('gallery_show',compact('image'));
+          $userinfo = Image::find($image->id)->user;
+          $related_ads = Image::all();
+          return view('gallery_show',compact('image','userinfo','related_ads'));
     }
 
+    public function download (Image $image)
+    {
+//        $filepath =asset('public/Image/'.$image->image);
+//        return Response::download($filepath);
+        return Storage::download(storage_path('app/public/Image/Payment/'.$image->image),'Download');
+//        return $media ;
+
+//        return Storage::disk('local')->get('public') ;
+//        ->download($filepath);
+
+//        return Storage::download($filepath);
+
+    }
     /**
      * Show the form for editing the specified resource.
      *

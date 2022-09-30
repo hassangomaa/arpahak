@@ -29,17 +29,17 @@ class vodafoneController extends Controller
         if($request->file('image')){
             $file= $request->file('image');
             $filename= date('YmdHi').$file->getClientOriginalName();
-            $file-> move(public_path('uploads/vodafone/'), $filename);
+            $file-> move(public_path('uploads/payment/'), $filename);
             $data['image']= $filename;
             $data['created_by']= $request->email ;
-            $data['path']= public_path('uploads/vodafone/').$filename ;
+            $data['path']= public_path('uploads/payment/').$filename ;
             $data['status']= 'pending' ;
             $data['type']= 'فودافون كاش' ;
         }
 
         $data->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('success','تم الارسال سيتم فحص اﻻيصال اوﻻ, ثم اضافه الرصيد الي المحفظه, شكرا ﻻستخدامكم ارباحك');
 
     }
 }

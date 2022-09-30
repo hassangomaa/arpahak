@@ -48,6 +48,7 @@ Route::group(['name'=>'guests'],function (){
     Route::get('/competition',[CompetitionController::class,'show'])->name('show.competitions');
     Route::get('/gallery',[ImageController::class,'index'])->name('gallery');
     Route::get('/gallery_show/{image}',[ImageController::class,'show'])->name('gallery.show');
+    Route::get('/gallery_download/{image}',[ImageController::class,'download'])->name('gallery.download');
     Route::get('/ads',[AdsController::class,'index'])->name('ads');
     Route::get('/ad/{id}',[AdsController::class,'getAd'])->name('view.ad');
     Route::get('/ads/delete-ad/{id}',[AdsController::class,'declineAd'])->name('delete.ad');
