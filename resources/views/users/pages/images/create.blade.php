@@ -40,10 +40,18 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <label  class="form-label">السعر <span class="text-danger"> *</span> </label>
-                                <input type="number" value="{{old('price')}}" step="0.01" class="form-control" placeholder="السعر" id="price" name="price" min="0">
+                                <input type="number" value="{{old('price')}}" step="0.01" class="form-control" placeholder="السعر" id="price" name="price"  >
                             </div>
                         </div>
                     </div>
+                      @if(\Session::has('error'))
+                          <div class="alert alert-danger">{{ \Session::get('error') }}</div>
+                          {{ \Session::forget('error') }}
+                      @endif
+                      @if(\Session::has('success'))
+                          <div class="alert alert-success">{{ \Session::get('success') }}</div>
+                          {{ \Session::forget('success') }}
+                      @endif
                     <div class="row mt-3 justify-content-center">
                         <div class="col-6 ">
                             <button class="btn btn-primary  w-100" type="submit"> اضافة </button>

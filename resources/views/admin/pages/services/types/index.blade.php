@@ -10,11 +10,7 @@
             <div class="row">
               <div class="col-12">
                 <div class="card recent-sales overflow-auto">
-    
-                  
-    
                   <div class="card-body pt-4">
-                    
                     <table class="table text-center" style="
                     overflow-x: auto;
                     white-space: nowrap;vertical-align: middle;">
@@ -60,14 +56,7 @@
                             </td>
                         </tr>
                     @endforeach
-
-
-
-                    
-                        
-                    
-                    
-                        </tbody>
+                          </tbody>
                     </table>
                     
     

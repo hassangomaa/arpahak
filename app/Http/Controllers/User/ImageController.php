@@ -91,6 +91,12 @@ class ImageController extends Controller
             return redirect()->back()->with('success','تم إرسال الصورة للمختصين للمراجعة.');
 
         }
+        else
+        {
+            return redirect()->back()->with('error','نأسف, حدث خطأ ما اثناء اضافه الصوره.');
+
+        }
+
     }
 
     /**
@@ -102,6 +108,10 @@ class ImageController extends Controller
     public function show(Image $image)
     {
         //
+//       $images = Image::find($image);
+//                dd($image);
+
+        return view('gallery_show',compact('image'));
     }
 
     /**

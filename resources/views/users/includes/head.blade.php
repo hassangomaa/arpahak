@@ -12,3 +12,15 @@
     </nav><!-- End Icons Navigation -->
 
   </header><!-- End Header -->
+@if ($errors->any())
+    <body class="main">
+        <h2>خطا حاول مره اخري</h2>
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }} خطا حاول مره اخري</li>
+            @endforeach
+        </ul>
+    </div>
+    </body>
+@endif
