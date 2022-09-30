@@ -123,7 +123,14 @@
                       <div class="d-flex align-items-center">
 
                         <div class="ps-5">
-                          <h6 id ="transaction">{{$payments}}</h6>
+                        <?php
+                          foreach($payments as $payment)
+                            if($payment->payer_email == Auth::user()->email and $payment->payment_status == 'bag')
+                               $bag ++
+//                            endif
+//                          endforeach
+                          ?>
+                            <h6 id ="transaction">{{$bag}}</h6>
                         </div>
                         <div class="card-icon rounded-circle d-flex align-items-center justify-content-center me-auto">
                           <i class="bi bi-bag"></i>

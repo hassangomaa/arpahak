@@ -34,8 +34,9 @@ class HomeController extends Controller
     {
         $images = Image::where('user_id', Auth::id())->get()->count();
         $trades = trade::where('user_id', Auth::id())->get()->count();
-        $payments = Payment::where('payment_status','bag')->get()->count();
-        return view('users.dashboard',compact('images','trades','payments'));
+        $payments = Payment::where('payment_status','bag')->get();
+        $bag =0;
+        return view('users.dashboard',compact('images','trades','payments','bag'));
     }
 
     public function dashboard()

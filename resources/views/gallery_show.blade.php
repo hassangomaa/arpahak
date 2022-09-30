@@ -119,6 +119,8 @@
                             @endif</small>
                         <div class="">
                             <a  href="{{route('gallery.download',$image)}}">
+                                <input name="email" value="{{Auth::user()->email}}">
+                                <input name="email" value="{{Auth::user()->balance}}">
                                 <button type="submit" class="btn btn-success" ><i class="fa fa-download" aria-hidden="true"></i> تحميل الصوره </button>
                             </a>
                         </div>

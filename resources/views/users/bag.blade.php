@@ -32,7 +32,7 @@
                                         </thead>
                                         <tbody>
                                         @foreach($payments as $payment)
-{{--                                            @if($payment->payer_email == Auth::user()->email and $payment->payment_status == 'مشتريات')--}}
+                                            @if($payment->payer_email == Auth::user()->email and $payment->payment_status == 'bag')
                                             <tr>
                                                 <td><?php echo $payment->id ?></td>
                                                 <td><?php echo $payment->payment_id ?></td>
@@ -57,7 +57,7 @@
 
 
                                             </tr>
-{{--                                            @endif--}}
+                                            @endif
                                         @endforeach
 
 

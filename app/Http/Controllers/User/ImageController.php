@@ -4,9 +4,12 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Image;
+use App\Models\Payment;
 use Illuminate\Http\Request;
  use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Illuminate\Support\Facades\Response;
 class ImageController extends Controller
@@ -116,8 +119,38 @@ class ImageController extends Controller
           return view('gallery_show',compact('image','userinfo','related_ads'));
     }
 
-    public function download (Image $image)
+    public function download (Request $request, Image $image)
     {
+        $price = $image->price;
+        $proc_id = Str::uuid()->toString();
+        $this->validate($request,[
+            'email'=>'required',
+            'balance'=>'required',
+        ]);
+
+        if($request->balance < $price )
+            return redirect()->back()->with('error','عفوا رصيدك ﻻ يكفي, برجاء شحن المحفظه اوﻻ!!');
+        else {
+//        dd($trade);
+            //Decrement user balance
+            User::find(Auth::id())->decrement('balance',$price);
+            Payment::create(
+                [
+                    'payment_id' =>  $proc_id ,
+                    'payer_id' => Auth::id(),
+                    'payer_email' => $request->email,
+                    'amount' => $price,
+                    'currency' => 'EGP',
+                    'payment_status' => "bag",
+
+                ]
+            );
+            Session::put('proc_id', $proc_id);
+//            return redirect()->back()->with('success', 'تم اضافه طلبكم بنجاح, سيقوم احد ممثلينا بالتواصل معكم. شكرا ﻻستخدامكم ارباحك');
+            return redirect()->back()->with('success', 'تم اضافه طلبكم الي حقيبة المشتريات, قم بتأكيد الشراء اوﻻ ');
+        }
+
+
 //        $filepath =asset('public/Image/'.$image->image);
 //        return Response::download($filepath);
         return Storage::download(storage_path('app/public/Image/Payment/'.$image->image),'Download');

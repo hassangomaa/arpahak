@@ -47,8 +47,7 @@ Route::group(['name'=>'guests'],function (){
     Route::post('/share_us', [ShareUSController::class,'store'])->name('share.us.message');
     Route::get('/competition',[CompetitionController::class,'show'])->name('show.competitions');
     Route::get('/gallery',[ImageController::class,'index'])->name('gallery');
-    Route::get('/gallery_show/{image}',[ImageController::class,'show'])->name('gallery.show');
-    Route::get('/gallery_download/{image}',[ImageController::class,'download'])->name('gallery.download');
+
     Route::get('/ads',[AdsController::class,'index'])->name('ads');
     Route::get('/ad/{id}',[AdsController::class,'getAd'])->name('view.ad');
     Route::get('/ads/delete-ad/{id}',[AdsController::class,'declineAd'])->name('delete.ad');
@@ -128,7 +127,8 @@ Route::group(['middleware'=> ['verified','auth','disable_back']],function(){
     Route::get('/add_image',[ImageController::class,'create'])->name('add.image');
     Route::post('/add_image',[ImageController::class,'store'])->name('store.image');
     Route::get('/my_images',[ImageController::class,'getImages'])->name('myImages');
-
+    Route::get('/gallery_show/{image}',[ImageController::class,'show'])->name('gallery.show');
+    Route::get('/gallery_download/{image}',[ImageController::class,'download'])->name('gallery.download');
             //----------------ads-------------//
     Route::get('/post-ad',[AdsController::class,'create'])->name('post.ad');
     Route::post('/post-ad',[AdsController::class,'store'])->name('store.ad');
