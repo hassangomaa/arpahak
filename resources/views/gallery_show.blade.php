@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     @include('layouts.header')
-    <style>
+     <style>
         body
         {
             background-color: #F4F4F2;
@@ -117,12 +117,28 @@
                             @if ($days > 0)
                                 منذ {{$days}} ايام
                             @endif</small>
-                        <div class="">
-                            <a  href="{{route('gallery.download',$image)}}">
-                                <input name="email" value="{{Auth::user()->email}}">
-                                <input name="email" value="{{Auth::user()->balance}}">
+                        <div class="form-group">
+                            <form action="{{route('gallery.download',$image)}}" method="GET">
+
+                            <input readonly hidden name="email" value="{{Auth::user()->email}}">
+                            <input readonly hidden name="balance" value="{{Auth::user()->balance}}">
+
                                 <button type="submit" class="btn btn-success" ><i class="fa fa-download" aria-hidden="true"></i> تحميل الصوره </button>
-                            </a>
+                             </form>
+
+                        @if(\Session::has('error'))
+                                <div class="alert alert-danger">{{ \Session::get('error') }}
+                                   <h6> {{Auth::user()->balance}}:EGP </h6> </div>
+                                {{ \Session::forget('error') }}
+                            @endif
+                            @if(\Session::has('success'))
+                                <div class="alert alert-success">{{ \Session::get('success') }} </div>
+                                <div class="alert alert-success">{{ \Session::get('proc_id') }} رقم العمليه : </div>
+                                <div class="btn btn-warning" type="submit">
+                                    <a href="{{route('bag')}}">الذهاب الي حقيبه المشتريات</a>
+                                </div>
+                                {{--    {{ \Session::forget('success') }}--}}
+                            @endif
                         </div>
                     </div>
                 </div>

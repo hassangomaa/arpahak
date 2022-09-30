@@ -121,6 +121,7 @@ class ImageController extends Controller
 
     public function download (Request $request, Image $image)
     {
+//        dd($request);
         $price = $image->price;
         $proc_id = Str::uuid()->toString();
         $this->validate($request,[

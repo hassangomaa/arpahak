@@ -14,11 +14,15 @@
   </header><!-- End Header -->
 @if ($errors->any())
     <body class="main">
+    <br>
+    <br>
+    <br>
+    <br>
         <h2>خطا حاول مره اخري</h2>
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
-                <li>{{ $error }} خطا حاول مره اخري</li>
+                <li>{{ $error }} </li>
             @endforeach
         </ul>
     </div>
