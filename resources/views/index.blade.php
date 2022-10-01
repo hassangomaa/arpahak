@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('css_file')
-    {{asset('css/style6.css')}}
+    <link rel="stylesheet" href="{{asset('css/style9.css')}}">
 @endsection
 @section('js_file')
     {{asset('js/main1.js')}}
@@ -61,9 +61,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-                <div class="row w-100 justify-content-center">
-                    <div class="col-lg-4 col-6 ">
+                <div class="col-lg-4 col-6 ">
                         <div class="work-process">
                             <div class="step-num-box">
 
@@ -77,7 +75,9 @@
 
                         </div>
                     </div>
-                </div>
+                
+            </div>
+                
          </div>
     </section>
 

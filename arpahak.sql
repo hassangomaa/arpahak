@@ -1,780 +1,774 @@
--- phpMyAdmin SQL Dump
--- version 5.2.0
--- https://www.phpmyadmin.net/
+-- MySQL dump 10.13  Distrib 8.0.30, for Linux (x86_64)
 --
--- Host: localhost:3307
--- Generation Time: Sep 16, 2022 at 08:30 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
+-- Host: localhost    Database: arpahak
+-- ------------------------------------------------------
+-- Server version	8.0.30-0ubuntu0.22.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Database: `arpahak`
+-- Table structure for table `ads`
 --
 
--- --------------------------------------------------------
+DROP TABLE IF EXISTS `ads`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `ads` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `title` text NOT NULL,
+  `description` text NOT NULL,
+  `city_id` text CHARACTER SET utf8m COLLATE utf8_general_ci NOT NULL,
+  `image` text NOT NULL,
+  `category_id` int NOT NULL,
+  `created_at` date NOT NULL,
+  `views` int NOT NULL,
+  `price` int NOT NULL,
+  `confirmed` int NOT NULL,
+  `used` int NOT NULL,
+  `delivery` int NOT NULL,
+  `country_id` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ads`
+--
+
+LOCK TABLES `ads` WRITE;
+/*!40000 ALTER TABLE `ads` DISABLE KEYS */;
+INSERT INTO `ads` VALUES (8,1,'asd','adsasd','1','1663975676acce.PNG',1,'2022-09-23',70,5,1,0,1,'1'),(9,1,'اعلان تجريبي','شي','1','1663978908acce.PNG',2,'2022-09-24',2,8,1,0,1,'1'),(10,1,'اعلان تجريبي 2','اعلان تجريبي','1','1663979013acce.PNG',1,'2022-09-24',18,4,1,1,0,'1'),(11,1,'اعلان تجريبي 3','اعلان تجريبي','1','1663979053dsadaw.PNG',1,'2022-09-24',0,8,1,0,1,'1'),(12,1,'testtt','testtt','1','1663979089acce.PNG',1,'2022-09-24',2,8,1,0,1,'1'),(13,1,'aaaaaaa','ssssssssosoooooooo','8','1664364809الجامعات-المصرية-1024x575.jpg',1,'2022-09-28',7,999,1,0,1,'2'),(14,1,'test','200','9','1664366763arpahak_logo.jpeg',1,'2022-09-28',13,100,1,0,0,'2'),(15,1,'city','22222222222222222','546','1664368341Screenshot from 2022-09-27 14-25-32.png',1,'2022-09-28',4,1111,1,0,0,'38'),(16,1,'user','GAMED','8','1664368984arpahak_logo.jpeg',1,'2022-09-28',0,800,1,0,0,'2'),(17,3,'NEW','EEEEEEE','929','1664481889arpahak_logo.jpeg',1,'2022-09-29',2,100,1,0,1,'59'),(18,1,'aaa','ssssossssso','10','1664490523arpahak_logo.jpeg',1,'2022-09-29',0,666,1,1,1,'2');
+/*!40000 ALTER TABLE `ads` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ads_category`
+--
+
+DROP TABLE IF EXISTS `ads_category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `ads_category` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ads_category`
+--
+
+LOCK TABLES `ads_category` WRITE;
+/*!40000 ALTER TABLE `ads_category` DISABLE KEYS */;
+INSERT INTO `ads_category` VALUES (1,'عقارات'),(2,'سيارات'),(3,'اجهزة كهربائية'),(4,'100');
+/*!40000 ALTER TABLE `ads_category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ads_images`
+--
+
+DROP TABLE IF EXISTS `ads_images`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `ads_images` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `image1` text NOT NULL,
+  `image2` text NOT NULL,
+  `image3` text NOT NULL,
+  `ad_id` int NOT NULL,
+  PRIMARY KEY (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ads_images`
+--
+
+LOCK TABLES `ads_images` WRITE;
+/*!40000 ALTER TABLE `ads_images` DISABLE KEYS */;
+INSERT INTO `ads_images` VALUES (3,'1663975676asdqeq.PNG','1663975676das.PNG','1663975676dsada.PNG',8),(4,'1663978908asdqeq.PNG','1663978908das.PNG','1663978908dsadaw.PNG',9),(5,'1663979013asdqeq.PNG','1663979013dsadaw.PNG','1663979013das.PNG',10),(6,'1663979053acce.PNG','1663979053das.PNG','1663979053eqe.PNG',11),(7,'1663979089das.PNG','1663979089asdasd.PNG','1663979089eqe.PNG',12),(8,'1664364809الجامعات-المصرية-1024x575.jpg','1664364809الجامعات-المصرية-1024x575.jpg','1664364809الجامعات-المصرية-1024x575.jpg',13),(9,'1664366763egypt-home.jpg','1664366763arpahak_logo.jpeg','1664366763arpahak_logo.jpeg',14),(10,'1664368341Screenshot from 2022-09-27 14-24-53.png','1664368341Screenshot from 2022-09-24 12-52-28.png','1664368341Screenshot from 2022-09-27 14-18-53.png',15),(11,'1664368984Screenshot from 2022-09-24 12-52-28.png','1664368984Screenshot from 2022-09-27 14-18-53.png','1664368984Screenshot from 2022-09-27 14-24-53.png',16),(12,'1664481889Screenshot from 2022-09-27 14-24-53.png','1664481889Screenshot from 2022-09-29 14-53-30.png','1664481889Screenshot from 2022-09-29 14-53-30.png',17),(13,'1664490523arpahak_logo.jpeg','1664490523Screenshot from 2022-09-27 14-18-53.png','1664490523Screenshot from 2022-09-27 14-25-32.png',18);
+/*!40000 ALTER TABLE `ads_images` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cities`
+--
+
+DROP TABLE IF EXISTS `cities`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `cities` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `name_ar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name_en` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name_fr` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `country_id` bigint unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `cities_country_id_foreign` (`country_id`),
+  CONSTRAINT `cities_country_id_foreign` FOREIGN KEY (`country_id`) REFERENCES `countries` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=3889 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cities`
+--
+
+LOCK TABLES `cities` WRITE;
+/*!40000 ALTER TABLE `cities` DISABLE KEYS */;
+INSERT INTO `cities` VALUES (1,'سانت جوليا دي لوريا','Sant Julia de Loria','Sant Julia de Loria','06',1),(2,'أندورا لا فيلا','Andorra la Vella','Andorra la Vella','07',1),(3,'لا ماسانا','La Massana','La Massana','04',1),(4,'أوردينو','Ordino','Ordino','05',1),(5,'كانيلو','Canillo','Canillo','02',1),(6,'نزلوا','Encamp','Camper','03',1),(7,'إسكالديس أنجوردني','Escaldes-Engordany','Escaldes-Engordany','08',1),(8,'الفجيرة','Fujairah','Fujairah','04',2),(9,'أبو ظبي','Abu Dhabi','Abu Dhabi','01',2),(10,'دبي','Dubai','Dubai','03',2),(11,'رأس الخيمة','Ras Al Khaimah','Ras Al Khaimah','05',2),(12,'ام القيوين','Umm Al Quwain','Umm Al Quwain','07',2),(13,'الشارقة','Sharjah','Sharjah','06',2),(14,'عجمان','Ajman','Ajman','02',2),(15,'بكتيكا','Paktika','Paktika','29',3),(16,'فرح','Farah','Farah','06',3),(17,'هلمند','Helmand','Helmand','10',3),(18,'قندز','Kondoz','Kondoz','24',3),(19,'باميان','Bamian','Bamian','05',3),(20,'غور','Ghowr','Ghowr','09',3),(21,'لغمان','Laghman','Laghman','35',3),(23,'غزنة','Ghazni','Ghazni','08',3),(24,'ورداك','Vardak','Vardak','27',3),(25,'أوروزغان','Oruzgan','Oruzgan','39',3),(26,'زابول','Zabol','Zabol','28',3),(27,'بادغيس','Badghis','Badghis','02',3),(28,'بدخشان','Badakhshan','Badakhshan','01',3),(29,'فارياب','Faryab','Faryab','07',3),(30,'تخار','Takhar','Takhar','26',3),(31,'لوجار','Lowgar','Lowgar','17',3),(32,'هرات','Herat','Herat','11',3),(33,'دايكندي','Daykondi','Daykondi','41',3),(34,'سار بول','Sar-e Pol','Sar-e Pol','33',3),(35,'بلخ','Balkh','Balkh','30',3),(36,'كابول','Kabol','Kabol','13',3),(37,'نيمروز','Nimruz','Nimruz','19',3),(38,'قندهار','Kandahar','Kandahar','23',3),(39,'خوست','Khowst','Khowst','37',3),(41,'كابيسا','Kapisa','Kapisa','14',3),(42,'ننجرهار','Nangarhar','Nangarhar','18',3),(43,'سامانغان','Samangan','Samangan','32',3),(44,'بكتيا','Paktia','Paktia','36',3),(45,'بغلان','Baghlan','Baghlan','03',3),(46,'جوزجان','Jowzjan','Jowzjan','31',3),(47,'كونار','Konar','Konar','34',3),(48,'نورستان','Nurestan','Nurestan','38',3),(52,'بانجشير','Panjshir','Panjshir','42',3),(53,'القديس يوحنا','Saint John','Saint Jean','04',4),(54,'القديس بول','Saint Paul','Saint Paul','06',4),(55,'القديس جورج','Saint George','Saint George','03',4),(56,'القديس بطرس','Saint Peter','Saint Pierre','07',4),(57,'القديس ماري','Saint Mary','Sainte Marie','05',4),(58,'باربودا','Barbuda','Barbuda','01',4),(59,'سانت فيليب','Saint Philip','Saint philippe','08',4),(61,'فلور','Vlore','Vlore','51',6),(62,'كورتشي','Korce','Korce','46',6),(63,'شكودر','Shkoder','Shkoder','49',6),(64,'دوريس','Durres','Durres','42',6),(65,'الباسان','Elbasan','Elbasan','43',6),(66,'كوكس','Kukes','Kukes','47',6),(67,'فيير','Fier','Fier','44',6),(68,'بيرات','Berat','Berat','40',6),(69,'جيروكاستر','Gjirokaster','Gjirokaster','45',6),(70,'تيرانا','Tirane','Tirane','50',6),(71,'ليج','Lezhe','Lezhe','48',6),(72,'ديبر','Diber','Diber','41',6),(73,'Aragatsotn','Aragatsotn','Aragatsotn','01',7),(74,'أرارات','Ararat','Ararat','02',7),(75,'كوتايك','Kotayk\'','Kotayk \'','05',7),(76,'تافوش','Tavush','Tavush','09',7),(77,'سيونيك','Syunik\'','Syunik \'','08',7),(78,'Geghark\'unik \"','Geghark\'unik\'','Geghark\'unik \'','04',7),(79,'دزوتس دازور','Vayots\' Dzor','Dzor de Vayots','10',7),(80,'Lorri','Lorri','Lorri','06',7),(81,'أرمافير','Armavir','Armavir','03',7),(82,'يريفان','Yerevan','Erevan','11',7),(83,'شيراك','Shirak','Shirak','07',7),(85,'بنغيلا','Benguela','Benguela','01',9),(86,'يجي','Uige','Uige','15',9),(87,'بنغو','Bengo','Bengo','19',9),(88,'كوانزا نورتي','Cuanza Norte','Cuanza Norte','05',9),(89,'مالانج','Malanje','Malanje','12',9),(90,'كوانزا سول','Cuanza Sul','Cuanza Sul','06',9),(91,'هوامبو','Huambo','Huambo','08',9),(92,'موكسيكو','Moxico','Moxico','14',9),(93,'كواندو كوبانجو','Cuando Cubango','Cuando Cubango','04',9),(94,'بيي','Bie','Bie','02',9),(95,'هويلا','Huila','Huila','09',9),(96,'لوندا سول','Lunda Sul','Lunda Sul','18',9),(98,'زائير','Zaire','Zaïre','16',9),(99,'كونين','Cunene','Cunene','07',9),(100,'لوندا نورتي','Lunda Norte','Lunda Norte','17',9),(101,'ناميبي','Namibe','Namibe','13',9),(102,'كابيندا','Cabinda','Cabinda','03',9),(103,'بوينس آيرس','Buenos Aires','Buenos Aires','01',10),(104,'قرطبة','Cordoba','Cordoba','05',10),(105,'انتري ريوس','Entre Rios','Entre Rios','08',10),(106,'سالتا','Salta','Salta','17',10),(107,'خوخوي','Jujuy','Jujuy','10',10),(108,'لا بامبا','La Pampa','La Pampa','11',10),(109,'مندوزا','Mendoza','Mendoza','13',10),(110,'ميسيونيس','Misiones','Misiones','14',10),(111,'سانتا كروز','Santa Cruz','Santa Cruz','20',10),(112,'سانتا في','Santa Fe','Santa Fe','21',10),(113,'توكومان','Tucuman','Tucuman','24',10),(114,'كورينتس','Corrientes','Corrientes','06',10),(115,'سان خوان','San Juan','San Juan','18',10),(116,'سانتياغو ديل إستيرو','Santiago del Estero','Santiago del Estero','22',10),(117,'كاتاماركا','Catamarca','Catamarca','02',10),(118,'نيوكوين','Neuquen','Neuquen','15',10),(119,'وفي مقاطعة الاتحادية','Distrito Federal','Distrito Federal','07',10),(120,'لا ريوخا','La Rioja','La Rioja','12',10),(121,'ريو نيغرو','Rio Negro','Rio Negro','16',10),(122,'شوبوت','Chubut','Chubut','04',10),(123,'سان لويس','San Luis','San Luis','19',10),(124,'تييرا ديل فويغو','Tierra del Fuego','Terre de Feu','23',10),(125,'فورموزا','Formosa','Formose','09',10),(126,'شاكو','Chaco','Chaco','03',10),(127,'Niederosterreich','Niederosterreich','Niederosterreich','03',11),(128,'سالزبورغ','Salzburg','Salzbourg','05',11),(129,'Oberosterreich','Oberosterreich','Oberosterreich','04',11),(130,'تيرول','Tirol','Tirol','07',11),(131,'كارنتين','Karnten','Karnten','02',11),(132,'STEIERMARK','Steiermark','Steiermark','06',11),(133,'فورارلبرغ','Vorarlberg','Vorarlberg','08',11),(134,'فيينا','Wien','Wien','09',11),(135,'بورغنلاند','Burgenland','Burgenland','01',11),(136,'نيو ساوث ويلز','New South Wales','Nouvelle Galles du Sud','02',12),(137,'تسمانيا','Tasmania','Tasmanie','06',12),(138,'القسم الغربي من استراليا','Western Australia','Australie occidentale','08',12),(139,'كوينزلاند','Queensland','Queensland','04',12),(140,'فيكتوريا','Victoria','Victoria','07',12),(141,'جنوب استراليا','South Australia','Australie du Sud','05',12),(142,'الإقليم الشمالي','Northern Territory','Territoire du Nord','03',12),(143,'إقليم العاصمة الأسترالية','Australian Capital Territory','Territoire de la capitale australienne','01',12),(146,'نيفتكالا','Neftcala','Neftcala','36',14),(147,'زانلار','Xanlar','Xanlar','62',14),(148,'يفلاكس','Yevlax','Yevlax','68',14),(149,'أجداس','Agdas','Agdas','04',14),(150,'سابيراباد','Sabirabad','Sabirabad','46',14),(151,'يارديملي','Yardimli','Yardimli','66',14),(152,'Calilabad','Calilabad','Calilabad','15',14),(153,'ساتلي','Saatli','Saatli','45',14),(154,'الساقي','Saki','Saki','47',14),(155,'كوردامير','Kurdamir','Kurdamir','27',14),(156,'كازاكس','Qazax','Qazax','40',14),(157,'توفوز','Tovuz','Tovuz','58',14),(158,'سامكير','Samkir','Samkir','51',14),(159,'أغدام','Agdam','Agdam','03',14),(160,'كوبادلي','Qubadli','Qubadli','43',14),(161,'أوغوز','Oguz','Oguz','37',14),(162,'لاكين','Lacin','Lacin','28',14),(163,'كالباكار','Kalbacar','Kalbacar','26',14),(164,'Haciqabul','Haciqabul','Haciqabul','23',14),(165,'بيلاسوفار','Bilasuvar','Bilasuvar','13',14),(166,'بالاكان','Balakan','Balakan','10',14),(167,'ناخيتشيفان','Naxcivan','Naxcivan','35',14),(168,'قابالا','Qabala','Qabala','38',14),(169,'أجكابادي','Agcabadi','Agcabadi','02',14),(170,'ساماكسي','Samaxi','Samaxi','50',14),(171,'دافاسي','Davaci','Davaci','17',14),(172,'قباء','Quba','Quba','42',14),(173,'كوسار','Qusar','Qusar','44',14),(174,'إيميسلي','Imisli','Imisli','24',14),(175,'أبسيرون','Abseron','Abseron','01',14),(176,'زاكماز','Xacmaz','Xacmaz','60',14),(177,'كابرايل','Cabrayil','Cabrayil','14',14),(178,'إيسمييلي','Ismayilli','Ismayilli','25',14),(179,'غورانبوي','Goranboy','Goranboy','21',14),(180,'فضولي','Fuzuli','Fuzuli','18',14),(181,'باكي','Baki','Baki','09',14),(182,'بيلاكان','Beylaqan','Beylaqan','12',14),(183,'داسكاسان','Daskasan','Daskasan','16',14),(184,'ماسالي','Masalli','Masalli','32',14),(185,'زاكاتالا','Zaqatala','Zaqatala','70',14),(186,'نكران','Lankaran','Lankaran','29',14),(187,'ليريك','Lerik','Lerik','31',14),(188,'علي بيرملي','Ali Bayramli','Ali Bayramli','07',14),(189,'QAX','Qax','Qax','39',14),(190,'ساموكس','Samux','Samux','52',14),(191,'زارداب','Zardab','Zardab','71',14),(192,'جاداباي','Gadabay','Gadabay','19',14),(193,'أوكار','Ucar','Ucar','59',14),(194,'بردا','Barda','Barda','11',14),(195,'سيازان','Siyazan','Siyazan','53',14),(196,'كسوكافاند','Xocavand','Xocavand','65',14),(197,'زانجيلان','Zangilan','Zangilan','69',14),(198,'XIZI','Xizi','Xizi','63',14),(199,'يفلاكس','Yevlax','Yevlax','67',14),(200,'AGSU','Agsu','Agsu','06',14),(201,'كوبستان','Qobustan','Qobustan','41',14),(202,'جويكاي','Goycay','Goycay','22',14),(203,'أستارا','Astara','Astara','08',14),(204,'كسوكالي','Xocali','Xocali','64',14),(205,'زانكاندي','Xankandi','Xankandi','61',14),(206,'رواسب','Tartar','Tartre','57',14),(207,'أجستافا','Agstafa','Agstafa','05',14),(208,'ساليان','Salyan','Salyan','49',14),(209,'سوسة','Susa','Susa','55',14),(210,'غانكا','Ganca','Ganca','20',14),(211,'سامكيت','Sumqayit','Sumqayit','54',14),(212,'الساقي','Saki','Saki','48',14),(213,'نفتالان','Naftalan','Naftalan','34',14),(214,'نكران','Lankaran','Lankaran','30',14),(215,'مينغاشفير','Mingacevir','Mingacevir','33',14),(216,'سوسة','Susa','Susa','56',14),(217,'جمهورية صربسكا','Republika Srpska','Republika Srpska','02',15),(218,'اتحاد البوسنة والهرسك','Federation of Bosnia and Herzegovina','Fédération de Bosnie et Herzégovine','01',15),(220,'القديس يوسف','Saint Joseph','Saint Joseph','06',16),(221,'سانت لوسي','Saint Lucy','Sainte Lucie','07',16),(222,'سانت توماس','Saint Thomas','Saint thomas','11',16),(223,'جيمس قديس','Saint James','Saint James','04',16),(224,'القديس يوحنا','Saint John','Saint Jean','05',16),(225,'القديس بطرس','Saint Peter','Saint Pierre','09',16),(226,'كنيسة المسيح','Christ Church','Christ Church','01',16),(227,'القديس جورج','Saint George','Saint George','03',16),(228,'القديس مايكل','Saint Michael','Saint michel','08',16),(229,'القديس أندرو','Saint Andrew','Saint andrew','02',16),(230,'سانت فيليب','Saint Philip','Saint philippe','10',16),(231,'خولنا','Khulna','Khulna','82',17),(232,'راجشاهي','Rajshahi','Rajshahi','83',17),(233,'دكا','Dhaka','Dhaka','81',17),(235,'باريسال','Barisal','Barisal','85',17),(236,'سيلهيت','Sylhet','Sylhet','86',17),(237,'شيتاغونغ','Chittagong','Chittagong','84',17),(238,'فلاندر الشرقية','Oost-Vlaanderen','Oost-Vlaanderen','08',18),(239,'فلاندر الغربية','West-Vlaanderen','West-Vlaanderen','09',18),(241,'ليمبورغ','Limburg','Limbourg','05',18),(242,'أنتويرب','Antwerpen','Antwerpen','01',18),(243,'لوكسمبورغ','Luxembourg','Luxembourg','06',18),(244,'ليمبورغ','Hainaut','Hainaut','03',18),(245,'مرتبط ب','Liege','Lige','04',18),(246,'نامور','Namur','Namur','07',18),(247,'بروكسل Hoofdstedelijk Gewest','Brussels Hoofdstedelijk Gewest','Bruxelles Hoofdstedelijk Gewest','11',18),(248,'فلامس برابانت','Vlaams-Brabant','Brabant flamand','12',18),(249,'برابانت الوالون','Brabant Wallon','Brabant Wallon','10',18),(251,'موهون','Mouhoun','Mouhoun','63',19),(252,'بام','Bam','Bam','15',19),(257,'تابوا','Tapoa','Tapoa','42',19),(258,'سوم','Soum','Soum','40',19),(259,'يرابا','Leraba','Leraba','61',19),(260,'نومبيل','Noumbiel','Noumbiel','67',19),(262,'جناجنا','Gnagna','Gnagna','21',19),(265,'ياتينجا','Yatenga','Yatenga','76',19),(266,'بانوا','Banwa','Banwa','46',19),(267,'بوني','Poni','Poni','69',19),(268,'وروم','Loroum','Loroum','62',19),(269,'كوريتنجا','Kouritenga','Kouritenga','28',19),(270,'توي','Tuy','Tuy','74',19),(271,'كوسي','Kossi','Kossi','58',19),(272,'باسور','Passore','Passore','34',19),(273,'كيندوجو','Kenedougou','Kénédougou','54',19),(274,'بالة','Bale','Balle','45',19),(275,'بوغوريبا','Bougouriba','Bougouriba','48',19),(276,'هويت','Houet','Houet','51',19),(277,'جورما','Gourma','Gourma','50',19),(278,'نامنتنجا','Namentenga','Namentenga','64',19),(279,'سانماتينغا','Sanmatenga','Sanmatenga','70',19),(281,'إيوبا','Ioba','Ioba','52',19),(282,'غانزورغو','Ganzourgou','Ganzourgou','20',19),(283,'الناعوري','Naouri','Naouri','65',19),(284,'بولكيمد','Boulkiemde','Boulkiemde','19',19),(285,'زوندويجو','Zoundweogo','Zoundweogo','44',19),(286,'زوندوما','Zondoma','Zondoma','78',19),(289,'Komoe','Komoe','Komoe','55',19),(290,'ياغا','Yagha','Yagha','75',19),(291,'كوموندجاري','Komondjari','Komondjari','56',19),(292,'سورو','Sourou','Sourou','73',19),(293,'نايالا','Nayala','Nayala','66',19),(294,'سيسيلي','Sissili','Sissili','72',19),(295,'سانجوي','Sanguie','Sanguie','36',19),(296,'أودالان','Oudalan','Oudalan','33',19),(297,'كولبيلوجو','Koulpelogo','Koulpelogo','59',19),(298,'زيرو','Ziro','Ziro','77',19),(299,'كورويجو','Kourweogo','Kourweogo','60',19),(300,'أوبريتنغا','Oubritenga','Oubritenga','68',19),(301,'سينو','Seno','Seno','71',19),(302,'بازيجا','Bazega','Bazega','47',19),(303,'كاديوغو','Kadiogo','Kadiogo','53',19),(304,'كومبينغا','Kompienga','Kompienga','57',19),(305,'بولغو','Boulgou','Boulgou','49',19),(306,'لوفيتش','Lovech','Lovech','46',20),(307,'فارنا','Varna','Varna','61',20),(308,'بورغاس','Burgas','Burgas','39',20),(309,'رازغراد','Razgrad','Razgrad','52',20),(310,'بلوفديف','Plovdiv','Plovdiv','51',20),(311,'Khaskovo','Khaskovo','Khaskovo','43',20),(312,'SOFIYA','Sofiya','Sofiya','58',20),(313,'سيليسترا','Silistra','Silistra','55',20),(314,'فيدين','Vidin','Vidin','63',20),(315,'مونتانا','Montana','Montana','47',20),(316,'Mikhaylovgrad','Mikhaylovgrad','Mikhaylovgrad','33',20),(317,'جراد صوفيا','Grad Sofiya','Grad Sofiya','42',20),(318,'تارغوفيشته','Turgovishte','Turgovishte','60',20),(319,'Kurdzhali','Kurdzhali','Kurdzhali','44',20),(320,'دوبريتش','Dobrich','Dobrich','40',20),(321,'شومين','Shumen','Shumen','54',20),(322,'بلاغويفغارد','Blagoevgrad','Blagoevgrad','38',20),(323,'سموليان','Smolyan','Smolyan','57',20),(324,'ستارا زاغورا','Stara Zagora','Stara Zagora','59',20),(325,'بازارجيك','Pazardzhik','Pazardzhik','48',20),(326,'حيلة','Ruse','Ruse','53',20),(327,'فراتسا','Vratsa','Vratsa','64',20),(328,'بليفين','Pleven','Pleven','50',20),(329,'برنيك','Pernik','Pernik','49',20),(330,'كيوستينديل','Kyustendil','Kyustendil','45',20),(331,'يامبول','Yambol','Yambol','65',20),(332,'غابروفو','Gabrovo','Gabrovo','41',20),(333,'سليفن','Sliven','Sliven','56',20),(334,'فيليكو ترنوفو','Veliko Turnovo','Veliko Turnovo','62',20),(335,'جد حفص','Jidd Hafs','Jidd Hafs','05',21),(337,'المنطقة الشمالية','Al Mintaqah ash Shamaliyah','Al Mintaqah cendres Shamaliyah','10',21),(339,'المنامة','Al Manamah','Al Manamah','02',21),(340,'سترة','Sitrah','Sitrah','06',21),(341,'المنطقة الغربية','Al Mintaqah al Gharbiyah','Al Mintaqah al Gharbiyah','08',21),(342,'ولاية جزرور حوار','Mintaqat Juzur Hawar','Mintaqat Juzur Hawar','09',21),(343,'الحد','Al Hadd','Al Hadd','01',21),(344,'المنطقة الوسطى','Al Mintaqah al Wusta','Al Mintaqah al Wusta','11',21),(345,'الرفاع','Ar Rifa','Ar Rifa','13',21),(346,'مدينة','Madinat','Madinat','12',21),(347,'كاروزي','Karuzi','Karuzi','14',22),(348,'رويجي','Ruyigi','Ruyigi','21',22),(349,'بوبانزا','Bubanza','Bubanza','09',22),(350,'بوروري','Bururi','Bururi','10',22),(351,'ماكامبا','Makamba','Makamba','17',22),(352,'كاينزا','Kayanza','Kayanza','15',22),(354,'روتانا','Rutana','Rutana','20',22),(355,'مويينغا','Muyinga','Muyinga','18',22),(356,'سيبيتوكييه','Cibitoke','Cibitoke','12',22),(357,'غيتيغا','Gitega','Gitega','13',22),(358,'كانكوزا','Cankuzo','Cankuzo','11',22),(359,'بوجمبورا','Bujumbura','Bujumbura','02',22),(360,'نغوزي','Ngozi','Ngozi','19',22),(361,'كيروندو','Kirundo','Kirundo','16',22),(362,'هضبة','Plateau','Plateau','17',23),(363,'التلال','Collines','Des collines','11',23),(366,'أويمي','Oueme','Oueme','16',23),(367,'زو','Zou','Zou','18',23),(370,'Atlanyique','Atlanyique','Atlanyique','09',23),(371,'بورغو','Borgou','Borgou','10',23),(372,'مونو','Mono','Mono','15',23),(374,'كوفو','Kouffo','Kouffo','12',23),(375,'دونجا','Donga','Donga','13',23),(376,'ساحلي','Littoral','Littoral','14',23),(377,'أليبوري','Alibori','Alibori','07',23),(378,'أتاكورا','Atakora','Atakora','08',23),(379,'ديفونشاير','Devonshire','Devonshire','01',24),(380,'باجيت','Paget','Paget','04',24),(381,'سانت جورج','Saint George\'s','Saint George\'s','07',24),(382,'الحدادون','Smiths','Smiths','09',24),(383,'هاميلتون','Hamilton','Hamilton','03',24),(384,'وارويك','Warwick','Warwick','11',24),(385,'سانديز','Sandys','Sandys','08',24),(386,'القديس جورج','Saint George','Saint George','06',24),(387,'هاميلتون','Hamilton','Hamilton','02',24),(389,'سانتا كروز','Santa Cruz','Santa Cruz','08',26),(390,'باندو','Pando','Pando','06',26),(391,'تاريخا','Tarija','Tarija','09',26),(392,'لاباز','La Paz','La paz','04',26),(393,'أورورو','Oruro','Oruro','05',26),(394,'كوتشابامبا','Cochabamba','Cochabamba','02',26),(395,'بوتوسي','Potosi','Potosi','07',26),(396,'شوكيساكا','Chuquisaca','Chuquisaca','01',26),(397,'البنى','El Beni','El Beni','03',26),(398,'سانتا كاتارينا','Santa Catarina','Santa Catarina','26',27),(399,'ماتو جروسو دو سول','Mato Grosso do Sul','Mato Grosso do Sul','11',27),(400,'ريو غراندي دو سول','Rio Grande do Sul','Rio Grande do Sul','23',27),(401,'اسبيريتو سانتو','Espirito Santo','Espirito Santo','08',27),(402,'باهيا','Bahia','Bahia','05',27),(403,'روندونيا','Rondonia','Rondonia','24',27),(404,'ميناس جيرايس','Minas Gerais','minas Gerais','15',27),(405,'بارايبا','Paraiba','Paraiba','17',27),(406,'أمابا','Amapa','Amapa','03',27),(407,'أمازوناس','Amazonas','Amazonas','04',27),(408,'الفقرة','Para','Para','16',27),(409,'سيارا','Ceara','Ceara','06',27),(410,'ريو دي جانيرو','Rio de Janeiro','Rio de Janeiro','21',27),(411,'غوياس','Goias','Goias','29',27),(412,'ساو باولو','Sao Paulo','Sao Paulo','27',27),(413,'بارانا','Parana','Parana','18',27),(414,'ريو غراندي دو نورتي','Rio Grande do Norte','Rio Grande do Norte','22',27),(415,'فدان','Acre','Acre','01',27),(416,'بياوي','Piaui','Piaui','20',27),(417,'بيرنامبوكو','Pernambuco','Pernambouc','30',27),(418,'ماتو جروسو','Mato Grosso','Mato Grosso','14',27),(419,'مارانهاو','Maranhao','Maranhao','13',27),(420,'توكانتينز','Tocantins','Tocantins','31',27),(421,'رورايما','Roraima','Roraima','25',27),(422,'ألاغواس','Alagoas','Alagoas','02',27),(423,'سيرغيبي','Sergipe','Sergipe','28',27),(424,'وفي مقاطعة الاتحادية','Distrito Federal','Distrito Federal','07',27),(425,'Acklins and Crooked Islands','Acklins and Crooked Islands','Acklins et les îles Crooked','24',28),(426,'ماياجيوانا','Mayaguana','Mayaguana','16',28),(427,'جزيرة طويلة','Long Island','Long Island','15',28),(428,'بروفيدانس الجديدة','New Providence','New Providence','23',28),(429,'اكسوما','Exuma','Exuma','10',28),(430,'بيميني','Bimini','Bimini','05',28),(431,'ميناء الحاكم','Governor\'s Harbour','Port du gouverneur','27',28),(432,'سان سلفادور وروم كاي','San Salvador and Rum Cay','San Salvador et Rum Cay','35',28),(433,'فريش كريك','Fresh Creek','Fresh Creek','26',28),(434,'جزيرة القط','Cat Island','Île de chat','06',28),(435,'Nichollstown و جزر بيري','Nichollstown and Berry Islands','Nichollstown et les îles Berry','32',28),(436,'كيمبس باي','Kemps Bay','Kemps Bay','30',28),(437,'ميناء حر','Freeport','Freeport','25',28),(438,'صوت صخري','Rock Sound','Son rock','33',28),(439,'جزيرة الميناء','Harbour Island','Harbour Island','22',28),(440,'هاي روك','High Rock','Haute roche','29',28),(441,'جرين تيرتل كاي','Green Turtle Cay','Green Turtle Cay','28',28),(442,'مارش هاربر','Marsh Harbour','Marsh Harbour','31',28),(443,'جزيرة راكد','Ragged Island','Ile déchiquetée','18',28),(444,'ساندي بوينت','Sandy Point','Sandy Point','34',28),(445,'من Inagua','Inagua','Inagua','13',28),(446,'وانجدي Phodrang','Wangdi Phodrang','Wangdi Phodrang','22',29),(447,'بارو','Paro','Paro','13',29),(448,'داغا','Daga','Daga','08',29),(449,'مونغار','Mongar','Mongar','12',29),(450,'Shemgang','Shemgang','Shemgang','18',29),(451,'تيمفو','Thimphu','Thimphu','20',29),(452,'Tashigang','Tashigang','Tashigang','19',29),(453,'شيرانغ','Chirang','Chirang','07',29),(454,'Geylegphug','Geylegphug','Geylegphug','09',29),(455,'سامدروب','Samdrup','Samdrup','17',29),(456,'بوم ثانج','Bumthang','Bumthang','05',29),(457,'Samchi','Samchi','Samchi','16',29),(458,'Tongsa','Tongsa','Tongsa','21',29),(459,'جوخا','Chhukha','Chhukha','06',29),(460,'Pemagatsel','Pemagatsel','Pemagatsel','14',29),(461,'ها','Ha','Ha','10',29),(462,'بونخا','Punakha','Punakha','15',29),(463,'Lhuntshi','Lhuntshi','Lhuntshi','11',29),(464,'وسط','Central','Central','01',30),(465,'الجنوب الشرقي','South-East','Sud-est','09',30),(466,'شمال شرق','North-East','Nord-est','08',30),(467,'الشمال الغربي','North-West','Nord Ouest','11',30),(468,'غانزي','Ghanzi','Ghanzi','03',30),(469,'كوينينج','Kweneng','Kweneng','06',30),(470,'كغالاغادي','Kgalagadi','Kgalagadi','04',30),(472,'جنوبي','Southern','Du sud','10',30),(473,'كجاتلينج','Kgatleng','Kgatleng','05',30),(474,'Homyel\'skaya Voblasts \"','Homyel\'skaya Voblasts\'','Homyel\'skaya Voblasts \'','02',31),(475,'مينسك','Minsk','Minsk','04',31),(476,'Brestskaya Voblasts \"','Brestskaya Voblasts\'','Brestskaya Voblasts \'','01',31),(477,'هيرودزينسكايا فوبلاست','Hrodzyenskaya Voblasts\'','Hrodzyenskaya Voblasts \'','03',31),(478,'Mahilyowskaya Voblasts \"','Mahilyowskaya Voblasts\'','Mahilyowskaya Voblasts \'','06',31),(479,'Vitsyebskaya Voblasts \"','Vitsyebskaya Voblasts\'','Vitsyebskaya Voblasts \'','07',31),(480,'توليدو','Toledo','Toledo','06',32),(481,'كايو','Cayo','Cayo','02',32),(482,'ستان كريك','Stann Creek','Stann Creek','05',32),(483,'كوروزال','Corozal','Corozal','03',32),(484,'أورانج ووك','Orange Walk','Orange Walk','04',32),(485,'بليز','Belize','Belize','01',32),(500,'خط الاستواء','Equateur','Équateur','02',35),(501,'الشرقية','Orientale','Orientale','09',35),(503,'شمال كيفو','Nord-Kivu','Nord-Kivu','11',35),(505,'مانيما','Maniema','Maniema','10',35),(506,'باندوندو','Bandundu','Bandundu','01',35),(508,'كاتانغا','Katanga','Katanga','05',35),(509,'جنوب كيفو','Sud-Kivu','Sud-Kivu','12',35),(510,'الكونغو السفلى','Bas-Congo','Bas-Congo','08',35),(511,'كاساي الشرقية','Kasai-Oriental','Kasai-Oriental','04',35),(512,'كينشاسا','Kinshasa','Kinshasa','06',35),(513,'نانا مامبيري','Nana-Mambere','Nana-Mambere','09',36),(514,'أواكا','Ouaka','Ouaka','11',36),(515,'كوتو العليا','Haute-Kotto','Haute-Kotto','03',36),(516,'سانغا مباري','Sangha-Mbaere','Sangha-Mbaere','16',36),(517,'بامينغي-بانغوران','Bamingui-Bangoran','Bamingui-Bangoran','01',36),(518,'مبومو','Mbomou','Mbomou','08',36),(519,'باس كوتو','Basse-Kotto','Basse-Kotto','02',36),(520,'كيمو','Kemo','Kemo','06',36),(521,'هوت مبومو','Haut-Mbomou','Haut-Mbomou','05',36),(522,'أوهام بندي','Ouham-Pende','Ouham-Pende','13',36),(523,'أوهام','Ouham','Ouham','12',36),(524,'أومبلا مبوكي','Ombella-Mpoko','Ombella-Mpoko','17',36),(525,'كفيت-كويست','Cuvette-Ouest','Cuvette-Ouest','14',36),(526,'مامبري كادي','Mambere-Kadei','Mambere-Kadei','04',36),(527,'وباي','Lobaye','Lobaye','07',36),(529,'نانا غريبيزي','Nana-Grebizi','Nana-Grebizi','15',36),(530,'بانغي','Bangui','Bangui','18',36),(532,'الهضاب','Plateaux','Plateaux','08',37),(533,'حوض السباحة','Pool','bassin','11',37),(534,'سانغا','Sangha','Sangha','10',37),(535,'يكومو','Lekoumou','Lekoumou','05',37),(536,'يكوالا','Likouala','Likouala','06',37),(537,'كويلو','Kouilou','Kouilou','04',37),(538,'نياري','Niari','Niari','07',37),(539,'بوينزا','Bouenza','Bouenza','01',37),(540,'برازافيل','Brazzaville','Brazzaville','12',37),(541,'كفيت-كويست','Cuvette-Ouest','Cuvette-Ouest','14',37),(542,'كفيت','Cuvette','Cuvette','13',37),(543,'ثورجو','Thurgau','Thurgovie','19',38),(544,'أرجاو','Aargau','Argovie','01',38),(545,'برن','Bern','Berne','05',38),(546,'زيوريخ','Zurich','Zurich','25',38),(547,'فريبورغ','Fribourg','Fribourg','06',38),(548,'Ausser-رودين','Ausser-Rhoden','Ausser-Rhoden','02',38),(549,'فاليه','Valais','Valais','22',38),(550,'أوري','Uri','Uri','21',38),(551,'غراوبوندن','Graubunden','Les Grisons','09',38),(552,'تيسان','Ticino','Tessin','20',38),(553,'لوزيرن','Luzern','Lucerne','11',38),(554,'أوبوالدن','Obwalden','Obwalden','14',38),(555,'سولوتورن','Solothurn','Soleure','18',38),(556,'بازل شتات','Basel-Stadt','Bâle-Ville','04',38),(557,'الداخلية-رودين','Inner-Rhoden','Rhodes-Intérieures','10',38),(558,'زوغ','Zug','Zoug','24',38),(559,'فو','Vaud','Vaud','23',38),(560,'العصر الجوارسي أو الجوري','Jura','Jura','26',38),(561,'كانتون ريف بازل','Basel-Landschaft','Bâle-Campagne','03',38),(562,'شفيتس','Schwyz','Schwyz','17',38),(563,'سانكت غالن','Sankt Gallen','Saint-Gall','15',38),(564,'شافهاوزن','Schaffhausen','Schaffhouse','16',38),(565,'جلاروس','Glarus','Glaris','08',38),(566,'جنيف','Geneve','Geneve','07',38),(567,'نيوشاتل','Neuchatel','Neuchâtel','12',38),(568,'نيدوالدن','Nidwalden','Nidwalden','13',38),(579,'فالي دو بانداما','Vallee du Bandama','Vallée du Bandama','90',39),(581,'N\'zi كومو','N\'zi-Comoe','N\'zi-Comoe','86',39),(585,'موين كومو','Moyen-Comoe','Moyen-Comoe','85',39),(587,'اجونيه','Lagunes','Lagunes','82',39),(588,'زانزان','Zanzan','Zanzan','92',39),(589,'سود كومو','Sud-Comoe','Sud-Comoe','89',39),(590,'البحيرات','Lacs','Lacs','81',39),(598,'فورماجر','Fromager','Fromager','79',39),(600,'Agneby','Agneby','Agneby','74',39),(601,'بس ساساندرا','Bas-Sassandra','Bas Sassandra','76',39),(603,'مراهو','Marahoue','Marahoue','83',39),(608,'بافنج','Bafing','Bafing','75',39),(614,'السافانا','Savanes','Savanes','87',39),(619,'سود بانداما','Sud-Bandama','Sud-Bandama','88',39),(620,'أوت ساساندرا','Haut-Sassandra','Haut-Sassandra','80',39),(621,'موين كافالي','Moyen-Cavally','Moyen-Cavally','84',39),(622,'ديكس - هويت مونتاجنيس','Dix-Huit Montagnes','Dix-Huit Montagnes','78',39),(623,'دانغيل','Denguele','Denguele','77',39),(624,'ورودوجو','Worodougou','Worodougou','91',39),(626,'بيو بيو','Bio-Bio','Bio-Bio','06',41),(627,'مولي','Maule','Maule','11',41),(628,'لوس لاغوس','Los Lagos','Los Lagos','09',41),(629,'تاراباكا','Tarapaca','Tarapaca','13',41),(630,'فالبارايسو','Valparaiso','Valparaiso','01',41),(631,'أتاكاما','Atacama','Atacama','05',41),(632,'كوكيمبو','Coquimbo','Coquimbo','07',41),(633,'Libertador General Bernardo O\'Higgins','Libertador General Bernardo O\'Higgins','Libertador Général Bernardo O\'Higgins','08',41),(634,'أنتوفاغاستا','Antofagasta','Antofagasta','03',41),(635,'أراوكاريا','Araucania','Araucanie','04',41),(636,'Aisen del General Carlos Ibanez del Campo','Aisen del General Carlos Ibanez del Campo','Aisen del General Carlos Ibanez del Campo','02',41),(637,'منطقة متروبوليتانا','Region Metropolitana','Région métropolitaine','12',41),(638,'Magallanes y de la Antartica Chilena','Magallanes y de la Antartica Chilena','Magallanes et de l\'Antarctique Chilena','10',41),(639,'EST','Est','Est','04',42),(640,'أداماوا','Adamaoua','Adamaoua','10',42),(641,'مركز','Centre','Centre','11',42),(642,'سود','Sud','Sud','14',42),(643,'الإقليم الشمالي الغربي','Nord-Ouest','Nord-Ouest','07',42),(644,'المتطرف نور','Extreme-Nord','Extreme-Nord','12',42),(645,'الإقليم الجنوبي الغربي','Sud-Ouest','Sud-Ouest','09',42),(646,'ساحلي','Littoral','Littoral','05',42),(647,'نورد','Nord','Nord','13',42),(648,'كويست','Ouest','Ouest','08',42),(649,'سيتشوان','Sichuan','Sichuan','32',43),(650,'شينجيانغ','Xinjiang','Xinjiang','13',43),(651,'ني المغول','Nei Mongol','Nei Mongol','20',43),(652,'يونان','Yunnan','Yunnan','29',43),(653,'قويتشو','Guizhou','Guizhou','18',43),(654,'هيلونغجيانغ','Heilongjiang','Heilongjiang','08',43),(655,'شاندونغ','Shandong','Shandong','25',43),(656,'لياونينغ','Liaoning','Liaoning','19',43),(657,'شنشى','Shaanxi','Shaanxi','26',43),(658,'تشينغهاي','Qinghai','Qinghai','06',43),(659,'قانسو','Gansu','Gansu','15',43),(660,'جيانغسو','Jiangsu','Jiangsu','04',43),(661,'فوجيان','Fujian','Fujian','07',43),(662,'هونان','Hunan','Hunan','11',43),(663,'جيانغشى','Jiangxi','Jiangxi','03',43),(664,'قوانغشى','Guangxi','Guangxi','16',43),(665,'تشجيانغ','Zhejiang','Zhejiang','02',43),(666,'خبى','Hebei','Hebei','10',43),(667,'هوبى','Hubei','Hubei','12',43),(668,'انهوى','Anhui','Anhui','01',43),(669,'تيانجين','Tianjin','Tianjin','28',43),(670,'هاينان','Hainan','Hainan','31',43),(671,'قوانغدونغ','Guangdong','Guangdong','30',43),(672,'زيزانغ','Xizang','Xizang','14',43),(673,'جيلين','Jilin','Jilin','05',43),(674,'تشونغتشينغ','Chongqing','Chongqing','33',43),(675,'بكين','Beijing','Pékin','22',43),(676,'شانشى','Shanxi','Shanxi','24',43),(677,'شنغهاي','Shanghai','Shanghai','23',43),(678,'خنان','Henan','Henan','09',43),(679,'نينغشيا','Ningxia','Ningxia','21',43),(680,'كونديناماركا','Cundinamarca','Cundinamarca','33',44),(681,'نورتي دي سانتاندر','Norte de Santander','Norte de Santander','21',44),(682,'نارينو','Narino','Narino','20',44),(684,'ريزارالدا','Risaralda','Risaralda','24',44),(685,'أنتيوكيا','Antioquia','Antioquia','02',44),(686,'أمازوناس','Amazonas','Amazonas','01',44),(687,'لا غواخيرا','La Guajira','La Guajira','17',44),(688,'شوكو','Choco','Choco','11',44),(689,'كاوكا','Cauca','Cauca','09',44),(690,'فالي ديل كاوكا','Valle del Cauca','Valle del Cauca','29',44),(691,'اروكا','Arauca','Arauca','03',44),(692,'ميتا','Meta','Meta','19',44),(693,'كاكويتا','Caqueta','Caqueta','08',44),(694,'كازاناري','Casanare','Casanare','32',44),(695,'فاوبيس','Vaupes','Vaupes','30',44),(696,'توليما','Tolima','Tolima','28',44),(697,'هويلا','Huila','Huila','16',44),(699,'اتلانتيكو','Atlantico','Atlantico','04',44),(700,'قرطبة','Cordoba','Cordoba','12',44),(701,'سانتاندر','Santander','Santander','26',44),(702,'سيزار','Cesar','Cesar','10',44),(703,'سوكري','Sucre','Sucre','27',44),(705,'بوتومايو','Putumayo','Putumayo','22',44),(707,'غوابياري','Guaviare','Guaviare','14',44),(708,'San Andres y Providencia','San Andres y Providencia','San Andres et Providencia','25',44),(709,'فيتشادا','Vichada','Vichada','31',44),(710,'كوينديو','Quindio','Quindio','23',44),(711,'غواينيا','Guainia','Guainia','15',44),(712,'Distrito Especial','Distrito Especial','Distrito Especial','34',44),(713,'غواناكاست','Guanacaste','Guanacaste','03',45),(714,'ليمون','Limon','Limon','06',45),(715,'بونتاريناس','Puntarenas','Puntarenas','07',45),(716,'ألاخويلا','Alajuela','Alajuela','01',45),(717,'هيريديا','Heredia','Heredia','04',45),(718,'سان خوسيه','San Jose','San Jose','08',45),(719,'قرطاج','Cartago','Cartago','02',45),(720,'سيينفويغوس','Cienfuegos','Cienfuegos','08',46),(721,'لا هافانا','La Habana','La Habana','11',46),(722,'سانتياغو دي كوبا','Santiago de Cuba','Santiago de Cuba','15',46),(723,'كاماغواي','Camaguey','Camaguey','05',46),(724,'سيوداد دي لا هافانا','Ciudad de la Habana','Ciudad de la Habana','02',46),(725,'فيلا كلارا','Villa Clara','Villa Clara','16',46),(726,'بينار ديل ريو','Pinar del Rio','Pinar del Rio','01',46),(727,'ماتانزاس','Matanzas','Matanzas','03',46),(728,'غوانتانامو','Guantanamo','Guantanamo','10',46),(729,'لاس توناس','Las Tunas','Las Tunas','13',46),(730,'سييغو دي أفيلا','Ciego de Avila','Ciego de Avila','07',46),(731,'سانكتي سبيريتوس','Sancti Spiritus','Sancti Spiritus','14',46),(732,'هولغوين','Holguin','Holguin','12',46),(733,'غرانما','Granma','Granma','09',46),(734,'جزيرة دي لا جوفينتود','Isla de la Juventud','Isla de la Juventud','04',46),(735,'ساو دومينغوس','Sao Domingos','Sao Domingos','17',47),(738,'ليماسول','Limassol','Limassol','05',49),(739,'نيقوسيا','Nicosia','Nicosie','04',49),(740,'بافوس','Paphos','Paphos','06',49),(741,'فاماغوستا','Famagusta','Famagusta','01',49),(742,'لارنكا','Larnaca','Larnaca','03',49),(743,'كيرينيا','Kyrenia','Kyrenia','02',49),(744,'كارلوفارسكي كراج','Karlovarsky kraj','Karlovarsky kraj','81',50),(745,'بردوبيكي كراج','Pardubicky kraj','Pardubicky kraj','86',50),(747,'Jihomoravsky كراج','Jihomoravsky kraj','Jihomoravsky kraj','78',50),(748,'Jihocesky kraj','Jihocesky kraj','Jihocesky kraj','79',50),(749,'أولوموكي كراج','Olomoucky kraj','Olomoucky kraj','84',50),(750,'Moravskoslezsky كراج','Moravskoslezsky kraj','Moravskoslezsky kraj','85',50),(752,'Kralovehradecky كراج','Kralovehradecky kraj','Kralovehradecky kraj','82',50),(753,'أوستيكي كراج','Ustecky kraj','Ustecky kraj','89',50),(754,'Stredocesky كراج','Stredocesky kraj','Stredocesky kraj','88',50),(755,'فيسوسينا','Vysocina','Vysocina','80',50),(756,'Plzensky كراج','Plzensky kraj','Kraj Plzensky','87',50),(760,'زلينسكي كراج','Zlinsky kraj','Zlinsky kraj','90',50),(761,'هلفني ميستو براها','Hlavni mesto Praha','Hlavni mesto Praha','52',50),(763,'Liberecky كراج','Liberecky kraj','Liberecky kraj','83',50),(773,'نوردراين فيستفالن','Nordrhein-Westfalen','Nordrhein-Westfalen','07',51),(774,'بادن فورتمبيرغ','Baden-Wurttemberg','Bade-Wurtemberg','01',51),(775,'بايرن ميونيخ','Bayern','Bayern','02',51),(776,'راينلاند-بفالز','Rheinland-Pfalz','Rheinland-Pfalz','08',51),(777,'Niedersachsen','Niedersachsen','Niedersachsen','06',51),(778,'شليسفيغ هولشتاين','Schleswig-Holstein','Schleswig-Holstein','10',51),(779,'براندنبورغ','Brandenburg','Brandebourg','11',51),(780,'سكسونيا أنهالت','Sachsen-Anhalt','Sachsen-Anhalt','14',51),(781,'ساكسن','Sachsen','Sachsen','13',51),(782,'THÜRINGEN','Thuringen','Thuringen','15',51),(783,'هيسن','Hessen','Hesse','05',51),(784,'مكلنبورغ-فوربومرن','Mecklenburg-Vorpommern','Mecklembourg-Poméranie-Occidentale','12',51),(785,'هامبورغ','Hamburg','Hambourg','04',51),(786,'البرلينية','Berlin','Berlin','16',51),(787,'سارلاند','Saarland','Sarre','09',51),(788,'بريمن','Bremen','Brême','03',51),(789,'علي صبيح','Ali Sabieh','Ali Sabieh','01',52),(790,'تاجورا','Tadjoura','Tadjoura','05',52),(792,'أوبوك','Obock','Obock','04',52),(794,'أرتا','Arta','Arta','08',52),(795,'دخيل','Dikhil','Dikhil','06',52),(796,'سيدانمارك','Syddanmark','Syddanmark','21',53),(797,'ميتجيلاند','Midtjylland','Midtjylland','18',53),(798,'نوردلاند','Nordjylland','Nordjylland','19',53),(799,'Sjelland','Sjelland','Sjelland','20',53),(800,'هوفدستادين','Hovedstaden','Hovedstaden','17',53),(801,'القديس أندرو','Saint Andrew','Saint andrew','02',54),(802,'القديس داود','Saint David','Saint David','03',54),(803,'القديس يوسف','Saint Joseph','Saint Joseph','06',54),(804,'القديس جورج','Saint George','Saint George','04',54),(805,'سانت باتريك','Saint Patrick','Saint Patrick','09',54),(806,'القديس بطرس','Saint Peter','Saint Pierre','11',54),(807,'القديس يوحنا','Saint John','Saint Jean','05',54),(808,'سان مارك','Saint Mark','Saint mark','08',54),(809,'القديس بول','Saint Paul','Saint Paul','10',54),(810,'القديس لوقا','Saint Luke','Saint Luc','07',54),(811,'سانشيز راميريز','Sanchez Ramirez','Sanchez Ramirez','21',55),(812,'إسبايلات','Espaillat','Espaillat','08',55),(813,'دوارتي','Duarte','Duarte','06',55),(814,'سمانا','Samana','Samana','20',55),(815,'ماريا ترينيداد سانشيز','Maria Trinidad Sanchez','Maria Trinidad Sanchez','14',55),(816,'لا رومانا','La Romana','La Romana','12',55),(817,'ازوا','Azua','Azua','01',55),(818,'سان كريستوبال','San Cristobal','San Cristobal','33',55),(819,'الصيبو','El Seibo','El Seibo','28',55),(820,'مونت بلاتا','Monte Plata','Monte Plata','32',55),(821,'Distrito Nacional','Distrito Nacional','Distrito Nacional','05',55),(822,'إلياس بينا','Elias Pina','Elias Pina','11',55),(823,'سانتياغو','Santiago','Santiago','25',55),(824,'سانتياغو رودريجيز','Santiago Rodriguez','Santiago Rodriguez','26',55),(825,'بيرافيا','Peravia','Peravia','17',55),(826,'مونت كريستي','Monte Cristi','Monte Cristi','15',55),(827,'سالسيدو','Salcedo','Salcedo','19',55),(828,'بويرتو بلاتا','Puerto Plata','Puerto Plata','18',55),(829,'سان بيدرو دي ماكوريس','San Pedro De Macoris','San Pedro De Macoris','24',55),(830,'بدرنالس','Pedernales','Pedernales','16',55),(831,'الاستقلال','Independencia','Independencia','09',55),(832,'لا فيغا','La Vega','La Vega','30',55),(833,'داجابون','Dajabon','Dajabon','04',55),(834,'حاتو العمدة','Hato Mayor','Hato Mayor','29',55),(835,'باراهونا','Barahona','Barahona','03',55),(836,'سان خوان','San Juan','San Juan','23',55),(837,'لا التاغراسيا','La Altagracia','La Altagracia','10',55),(838,'فالفيردي','Valverde','Valverde','27',55),(839,'Baoruco','Baoruco','Baoruco','02',55),(840,'مونسنور نويل','Monsenor Nouel','Mgr Nouel','31',55),(841,'عين تموشنت','Ain Temouchent','Ain Temouchent','36',56),(842,'وهران','Oran','Oran','09',56),(843,'المدية','Medea','Médée','06',56),(844,'الشلف','Chlef','Chlef','41',56),(845,'بشار','Bechar','Béchar','38',56),(846,'تمنراست','Tamanghasset','Tamanghasset','53',56),(847,'بجاية','Bejaia','Bejaia','18',56),(848,'تيزي وزو','Tizi Ouzou','Tizi Ouzou','14',56),(849,'بومرداس','Boumerdes','Boumerdes','40',56),(850,'عين الدفلة','Ain Defla','Ain Defla','35',56),(851,'عنابة','Annaba','Annaba','37',56),(852,'سطيف','Setif','Sétif','12',56),(853,'غليزان','Relizane','Relizane','51',56),(854,'ماسكارا','Mascara','Mascara','26',56),(855,'مستغانم','Mostaganem','Mostaganem','07',56),(856,'تيارت','Tiaret','Tiaret','13',56),(857,'برج بوعريريج','Bordj Bou Arreridj','Bordj Bou Arreridj','39',56),(858,'تيبازة','Tipaza','Tipaza','55',56),(860,'البويرة','Bouira','Bouira','21',56),(861,'تيسمسيلت','Tissemsilt','Tissemsilt','56',56),(862,'جيجل','Jijel','Jijel','24',56),(863,'صيدا','Saida','Saida','10',56),(864,'إليزي','Illizi','Illizi','46',56),(865,'تلمسان','Tlemcen','Tlemcen','15',56),(866,'أدرار','Adrar','Adrar','34',56),(867,'الأغواط','Laghouat','Laghouat','25',56),(868,'قسنطينة','Constantine','Constantine','04',56),(869,'خنشلة','Khenchela','Khenchela','47',56),(870,'باتنة','Batna','Batna','03',56),(871,'الجزائر','Alger','Alger','01',56),(872,'مسيلة','M\'sila','M\'sila','27',56),(873,'سكيكدة','Skikda','Skikda','31',56),(874,'ام البواقي','Oum el Bouaghi','Oum el Bouaghi','29',56),(875,'نعمة','Naama','Naama','49',56),(876,'سيدي بلعباس','Sidi Bel Abbes','Sidi Bel Abbes','30',56),(877,'ميلة','Mila','Mila','48',56),(878,'ورقلة','Ouargla','Ouargla','50',56),(879,'الجلفة','Djelfa','Djelfa','22',56),(880,'البيض','El Bayadh','El Bayadh','42',56),(881,'سوق أهراس','Souk Ahras','Souk Ahras','52',56),(882,'الواد','El Oued','El Oued','43',56),(883,'البليدة','Blida','Blida','20',56),(884,'بسكرة','Biskra','Biskra','19',56),(885,'تبسة','Tebessa','Tebessa','33',56),(886,'قالمة','Guelma','Guelma','23',56),(887,'تندوف','Tindouf','Tindouf','54',56),(888,'غرداية','Ghardaia','Ghardaia','45',56),(889,'مانابي','Manabi','Manabi','14',57),(890,'زامورا-شينشيب','Zamora-Chinchipe','Zamora-Chinchipe','20',57),(891,'مورونا سانتياغو','Morona-Santiago','Morona-Santiago','15',57),(892,'اورو','El Oro','El Oro','08',57),(893,'ازواي','Azuay','Azuay','02',57),(894,'سوكومبيوس','Sucumbios','Sucumbios','22',57),(895,'غواياس','Guayas','Guayas','10',57),(896,'لوس ريوس','Los Rios','Los Rios','13',57),(897,'وخا','Loja','Loja','12',57),(898,'شيمبورازو','Chimborazo','Chimborazo','06',57),(899,'تونغوراهوا','Tungurahua','Tungurahua','19',57),(900,'ازميرالدا','Esmeraldas','Esmeraldas','09',57),(901,'بيشينشا','Pichincha','Pichincha','18',57),(902,'إمبابورا','Imbabura','Imbabura','11',57),(903,'كوتوباكسي','Cotopaxi','Cotopaxi','07',57),(904,'كارشي','Carchi','Carchi','05',57),(905,'نابو','Napo','Napo','23',57),(906,'كنار','Canar','Canar','04',57),(907,'باستازا','Pastaza','Pastaza','17',57),(908,'أوريانا','Orellana','Orellana','24',57),(909,'بوليفار','Bolivar','Bolivar','03',57),(910,'غالاباغوس','Galapagos','Galapagos','01',57),(911,'Harjumaa','Harjumaa','Harjumaa','01',58),(912,'تارتوما','Tartumaa','Tartumaa','18',58),(913,'هيوما','Hiiumaa','Hiiumaa','02',58),(914,'رابلاما','Raplamaa','Raplamaa','13',58),(915,'فلغما','Valgamaa','Valgamaa','19',58),(916,'انيما','Laanemaa','Laanemaa','07',58),(917,'بولفاما','Polvamaa','Polvamaa','12',58),(918,'بارنوما','Parnumaa','Parnumaa','11',58),(919,'اني فيريوما','Laane-Virumaa','Laane-Virumaa','08',58),(920,'يارفا','Jarvamaa','Jarvamaa','04',58),(921,'فيلجاندي','Viljandimaa','Viljandimaa','20',58),(922,'ساريما','Saaremaa','Saaremaa','14',58),(923,'جوغفما','Jogevamaa','Jogevamaa','05',58),(924,'المؤسسة الدولية للتنمية فيروما','Ida-Virumaa','Ida-Virumaa','03',58),(925,'فوروما','Vorumaa','Vorumaa','21',58),(926,'الشرقية','Ash Sharqiyah','Ash Sharqiyah','14',59),(927,'الغربية','Al Gharbiyah','Al Gharbiyah','05',59),(928,'الدقهلية','Ad Daqahliyah','Ad Daqahliyah','01',59),(929,'الجيزة','Al Jizah','Al Jizah','08',59),(930,'المنيا','Al Minya','Al Minya','10',59),(931,'كفر الشيخ','Kafr ash Shaykh','Kafr ash Shaykh','21',59),(932,'البحيرة','Al Buhayrah','Al Buhayrah','03',59),(933,'قنا','Qina','Qina','23',59),(934,'القاهره','Al Qahirah','Al Qahirah','11',59),(935,'الاسكندرية','Al Iskandariyah','Al Iskandariyah','06',59),(936,'الفيوم','Al Fayyum','Al Fayyum','04',59),(937,'أسيوط','Asyut','Asyut','17',59),(938,'المنوفية','Al Minufiyah','Al Minufiyah','09',59),(939,'بني سويف','Bani Suwayf','Bani Suwayf','18',59),(940,'القليوبية','Al Qalyubiyah','Al Qalyubiyah','12',59),(941,'أسوان','Aswan','Assouan','16',59),(942,'شمال سينا','Shamal Sina\'','Shamal Sina \'','27',59),(943,'سوهاج','Suhaj','Suhaj','24',59),(944,'جنب سينا','Janub Sina\'','Janub Sina \'','26',59),(945,'البحر الاحمر','Al Bahr al Ahmar','Al Bahr al Ahmar','02',59),(946,'الاسماعيلية','Al Isma\'iliyah','Al Isma\'iliyah','07',59),(947,'دمياط','Dumyat','Dumyat','20',59),(948,'مطروح','Matruh','Matruh','22',59),(949,'كما سوايز','As Suways','Comme suways','15',59),(950,'الوادي الجديد','Al Wadi al Jadid','Al Wadi al Jadid','13',59),(951,'بور سعيد','Bur Sa\'id','Bur Sa\'id','19',59),(954,'أراغون','Aragon','Aragon','52',62),(955,'غاليسيا','Galicia','Galice','58',62),(956,'كاستيا ي ليون','Castilla y Leon','Castille et Leon','55',62),(957,'إكستريمادورا','Extremadura','Estrémadure','57',62),(958,'بايس فاسكو','Pais Vasco','Pais Vasco','59',62),(959,'كانتابريا','Cantabria','Cantabrie','39',62),(960,'نافارا','Navarra','Navarre','32',62),(961,'أستورياس','Asturias','Asturies','34',62),(962,'لا ريوخا','La Rioja','La Rioja','27',62),(963,'كاستيا لا مانشا','Castilla-La Mancha','Castilla-La Mancha','54',62),(964,'مورسيا','Murcia','Murcie','31',62),(965,'الأندلس','Andalucia','Andalousie','51',62),(966,'Comunidad فالنسيانا','Comunidad Valenciana','Comunidad Valenciana','60',62),(967,'كاتالونيا','Catalonia','Catalogne','56',62),(968,'جزر الكناري','Canarias','Canarias','53',62),(969,'مدريد','Madrid','Madrid','29',62),(970,'ايسلاس باليريس','Islas Baleares','Islas Baleares','07',62),(984,'أولو','Oulu','Oulu','08',64),(985,'فنلندا الغربية','Western Finland','Finlande occidentale','15',64),(986,'ابلاند','Lapland','Laponie','06',64),(987,'شرق فنلندا','Eastern Finland','Finlande orientale','14',64),(988,'جنوب فنلندا','Southern Finland','Finlande méridionale','13',64),(989,'أرض','Aland','Un terrain','01',64),(992,'شمالي','Northern','Nord','03',65),(993,'الغربي','Western','Occidental','05',65),(994,'وسط','Central','Central','01',65),(995,'الشرقية','Eastern','Est','02',65),(997,'ثرثرة','Yap','Japper','04',67),(998,'بوهنباي','Pohnpei','Pohnpei','02',67),(999,'شوك','Chuuk','Chuuk','03',67),(1000,'كوسراي','Kosrae','Kosrae','01',67),(1002,'آكيتن','Aquitaine','Aquitaine','97',69),(1003,'نور-با-دو-كاليه','Nord-Pas-de-Calais','Nord-Pas-de-Calais','B4',69),(1004,'لورين','Lorraine','Lorraine','B2',69),(1005,'هوت نورماندي','Haute-Normandie','Haute-Normandie','A7',69),(1006,'بيكاردي','Picardie','Picardie','B6',69),(1007,'فرانش-كونت','Franche-Comte','Franche-Comté','A6',69),(1008,'باي دو لا لوار','Pays de la Loire','Pays de la Loire','B5',69),(1009,'الشمبانيا اردين','Champagne-Ardenne','Champagne-Ardenne','A4',69),(1010,'مركز','Centre','Centre','A3',69),(1011,'لانغدوك روسيون','Languedoc-Roussillon','Languedoc-Roussillon','A9',69),(1012,'بواتو-شارانت','Poitou-Charentes','Poitou-Charentes','B7',69),(1013,'رون ألب','Rhone-Alpes','Rhône-Alpes','B9',69),(1014,'باس نورماندي','Basse-Normandie','Basse-Normandie','99',69),(1015,'إيل دو فرانس','Ile-de-France','Ile de France','A8',69),(1016,'بورغون','Bourgogne','Bourgogne','A1',69),(1017,'أوفيرني','Auvergne','Auvergne','98',69),(1018,'بروفانس ألب كوت دازور','Provence-Alpes-Cote d\'Azur','Provence-Alpes-Côte d\'Azur','B8',69),(1019,'كورس','Corse','Corse','A5',69),(1020,'الألزاس','Alsace','Alsace','C1',69),(1021,'بريتان','Bretagne','Bretagne','A2',69),(1022,'ميدي-بيرينيه','Midi-Pyrenees','Midi-Pyrénées','B3',69),(1023,'ليموزين','Limousin','Limousin','B1',69),(1024,'إيستوير','Estuaire','Estuaire','01',70),(1025,'ليو نتيم','Woleu-Ntem','Woleu-Ntem','09',70),(1026,'موين-أوغوي','Moyen-Ogooue','Moyen-Ogooué','03',70),(1027,'أوغوي البحرية','Ogooue-Maritime','Ogooue-Maritime','08',70),(1028,'أوغوي لولو','Ogooue-Lolo','Ogooué-Lolo','07',70),(1029,'أوجوي إيفندو','Ogooue-Ivindo','Ogooué-Ivindo','06',70),(1030,'أوت أوغوي','Haut-Ogooue','Haut-Ogooué','02',70),(1031,'نغوني','Ngounie','Ngounie','04',70),(1032,'النيانغا','Nyanga','Nyanga','05',70),(1033,'رسيستيرشاير','Worcestershire','Worcestershire','Q4',71),(1034,'هامبشاير','Hampshire','Hampshire','F2',71),(1035,'هرفوردشير','Herefordshire','Herefordshire','F7',71),(1036,'إسيكس','Essex','Essex','E4',71),(1037,'بوويز','Powys','Powys','Y8',71),(1038,'مونماوثشاير','Monmouthshire','Monmouthshire','Y4',71),(1039,'الحدود الاسكتلندية','Scottish Borders','Scottish Borders','T9',71),(1040,'كمبريا','Cumbria','Cumbria','C9',71),(1041,'ديفون','Devon','Devon','D4',71),(1042,'ستافوردشاير','Staffordshire','Staffordshire','M9',71),(1043,'دورست','Dorset','Dorset','D6',71),(1044,'هيرتفورد','Hertford','Hertford','F8',71),(1045,'كامبريدج','Cambridgeshire','Cambridgeshire','C3',71),(1046,'لانكشاير','Lancashire','Lancashire','H2',71),(1047,'كونوي','Conwy','Conwy','X8',71),(1048,'سرديجون','Ceredigion','Ceredigion','X6',71),(1049,'روندا سينون تاف','Rhondda Cynon Taff','Rhondda Cynon Taff','Y9',71),(1050,'هضبة','Highland','Montagnes','V3',71),(1051,'بيرث و كينروس','Perth and Kinross','Perth et Kinross','W1',71),(1052,'كيرفيلي','Caerphilly','Caerphilly','X4',71),(1053,'Blaenau Gwent','Blaenau Gwent','Blaenau Gwent','X2',71),(1054,'ميرثير تيدفيل','Merthyr Tydfil','Merthyr Tydfil','Y3',71),(1055,'بيمبروكشاير','Pembrokeshire','Pembrokeshire','Y7',71),(1056,'أبردينشاير','Aberdeenshire','Aberdeenshire','T6',71),(1057,'جويند','Gwynedd','Gwynedd','Y2',71),(1058,'مدينة أبردين','Aberdeen City','Aberdeen City','T5',71),(1059,'ناي آلة موسيقية','Fife','Fifre','V1',71),(1060,'نيث بورت تالبوت','Neath Port Talbot','Neath Port Talbot','Y5',71),(1061,'جزيرة انجلسي','Isle of Anglesey','Île d\'Anglesey','X1',71),(1062,'ووكينغهام','Wokingham','Wokingham','Q2',71),(1063,'يورك','York','York','Q5',71),(1064,'ستيرلينغ','Stirling','Stirling','W6',71),(1065,'كرمرثنشير','Carmarthenshire','Carmarthenshire','X7',71),(1066,'كارديف','Bridgend','Bridgend','X3',71),(1067,'شرق لوثيان','East Lothian','East Lothian','U6',71),(1068,'انجوس','Angus','Angus','T7',71),(1069,'موراي','Moray','Moray','V6',71),(1070,'تورفين','Torfaen','Torfaen','Z2',71),(1071,'سوانسي','Swansea','Swansea','Z1',71),(1072,'فيل غلامورغان','Vale of Glamorgan','Vallée de Glamorgan','Z3',71),(1073,'أوكسفوردشاير','Oxfordshire','Oxfordshire','K2',71),(1074,'سيارة بمقعدين','Surrey','Surrey','N7',71),(1075,'جنوب لاناركشاير','South Lanarkshire','Lanarkshire du sud','W5',71),(1076,'يسترشير','Leicestershire','Leicestershire','H5',71),(1077,'ويجان','Wigan','Wigan','P7',71),(1078,'نورثهامبتونشاير','Northamptonshire','Northamptonshire','J1',71),(1079,'لينكولنشاير','Lincolnshire','Lincolnshire','H7',71),(1080,'أرغيل وبوت','Argyll and Bute','Argyll et Bute','T8',71),(1081,'نورثمبرلاند','Northumberland','Northumberland','J6',71),(1082,'نورفولك','Norfolk','Norfolk','I9',71),(1083,'سوليهال','Solihull','Solihull','M2',71),(1084,'ريكسهام','Wrexham','Wrexham','Z4',71),(1085,'شيشاير','Cheshire','Cheshire','C5',71),(1086,'شروبشاير','Shropshire','Shropshire','L6',71),(1087,'بانبريدج','Banbridge','Banbridge','R2',71),(1088,'جنوب جلوسيسترشاير','South Gloucestershire','Gloucestershire du sud','M6',71),(1089,'لوثيان الغربية','West Lothian','West Lothian','W9',71),(1091,'كينت','Kent','Kent','G5',71),(1092,'ليدز','Leeds','Leeds','H3',71),(1093,'سومرست','Somerset','Somerset','M3',71),(1094,'جلوسيسترشاير','Gloucestershire','Gloucestershire','E6',71),(1095,'باكينجهامشير','Buckinghamshire','Buckinghamshire','B9',71),(1096,'كوليرين','Coleraine','Coleraine','R6',71),(1097,'كريجافون','Craigavon','Craigavon','R8',71),(1098,'أنتريم','Antrim','Antrim','Q6',71),(1099,'يمافادي','Limavady','Limavady','S4',71),(1100,'أرما','Armagh','Armagh','Q8',71),(1101,'بلايميندا','Ballymena','Ballymena','Q9',71),(1102,'شمال يوركشاير','North Yorkshire','Yorkshire du Nord','J7',71),(1103,'سيفتون','Sefton','Sefton','L8',71),(1104,'وارويكشاير','Warwickshire','Warwickshire','P3',71),(1105,'ديري','Derry','Derry','S6',71),(1106,'ايلين سيار','Eilean Siar','Eilean Siar','W8',71),(1107,'شمال لاناركشاير','North Lanarkshire','North Lanarkshire','V8',71),(1108,'فالكيرك','Falkirk','Falkirk','U9',71),(1109,'جزر شتلاند','Shetland Islands','Îles Shetland','W3',71),(1110,'ويلتشير','Wiltshire','Wiltshire','P8',71),(1111,'دورهام','Durham','Durham','D8',71),(1112,'دارلينجتون','Darlington','Darlington','D1',71),(1113,'سوفولك','Suffolk','Suffolk','N5',71),(1114,'ديربيشاير','Derbyshire','Derbyshire','D3',71),(1115,'والسال','Walsall','Walsall','O8',71),(1116,'روثرهام','Rotherham','Rotherham','L3',71),(1117,'غرب دنبارتنشير','West Dunbartonshire','West Dunbartonshire','W7',71),(1118,'شرق ساسكس','East Sussex','Sussex de l\'Est','E2',71),(1119,'كوفنتري','Coventry','Coventry','C7',71),(1120,'دربي','Derby','Derby','D2',71),(1121,'ساوثيند على البحر','Southend-on-Sea','Southend-on-Sea','M5',71),(1122,'كلاكمانشاير','Clackmannanshire','Clackmannanshire','U1',71),(1123,'كركليس','Kirklees','Kirklees','G8',71),(1124,'سانت هيلينز','St. Helens','St. Helens','N1',71),(1125,'أوما','Omagh','Omagh','T3',71),(1126,'كورنوال','Cornwall','Cornouailles','C6',71),(1127,'شمال لينكولنشاير','North Lincolnshire','Lincolnshire du Nord','J3',71),(1128,'نيوري ومورن','Newry and Mourne','Newry et Morne','S9',71),(1129,'جنوب ايرشاير','South Ayrshire','Ayrshire du sud','W4',71),(1130,'جزيرة وايت','Isle of Wight','l\'île de Wight','G2',71),(1132,'دومفريز وجالاوي','Dumfries and Galloway','Dumfries et Galloway','U2',71),(1133,'بيدفوردشير','Bedfordshire','Bedfordshire','A5',71),(1134,'أسفل','Down','Vers le bas','R9',71),(1135,'دونجانون','Dungannon','Dungannon','S1',71),(1136,'رينفروشاير','Renfrewshire','Renfrewshire','W2',71),(1137,'ليستر','Leicester','Leicester','H4',71),(1138,'مدينة غلاسكو','Glasgow City','Glasgow City','V2',71),(1139,'غرب ساسكس','West Sussex','West Sussex','P6',71),(1140,'وارينغتون','Warrington','Warrington','P2',71),(1141,'كوكستاون','Cookstown','Cookstown','R7',71),(1142,'شمال ايرشاير','North Ayrshire','Ayrshire du Nord','V7',71),(1143,'بارنسلي','Barnsley','Barnsley','A3',71),(1144,'استربان','Strabane','Strabane','T4',71),(1145,'دونكاستر','Doncaster','Doncaster','D5',71),(1146,'بلموني','Ballymoney','Ballymoney','R1',71),(1147,'فيرماناغ','Fermanagh','Fermanagh','S2',71),(1149,'نوتنغهام','Nottingham','Nottingham','J8',71),(1151,'تامسايد','Tameside','Tameside','O1',71),(1152,'روتلاند','Rutland','Rutland','L4',71),(1153,'نوتينغمشير','Nottinghamshire','Nottinghamshire','J9',71),(1154,'ميدلوثيان','Midlothian','Midlothian','V5',71),(1155,'شرق ايرشاير','East Ayrshire','East Ayrshire','U4',71),(1156,'ستوك أون ترينت','Stoke-on-Trent','Stoke-on-Trent','N4',71),(1157,'بريستول','Bristol','Bristol','B7',71),(1158,'فلينتشير','Flintshire','Flintshire','Y1',71),(1159,'بلاكبيرن مع داروين','Blackburn with Darwen','Blackburn avec Darwen','A8',71),(1160,'مويلي','Moyle','Moyle','S8',71),(1161,'كاريكفرجس','Carrickfergus','Carrickfergus','R4',71),(1162,'كاسلرا','Castlereagh','Castlereagh','R5',71),(1163,'ليرن','Larne','Larne','S3',71),(1164,'بلفاست','Belfast','Belfast','R3',71),(1165,'مايرافلت','Magherafelt','Magherafelt','S7',71),(1166,'شمال داون','North Down','Nord en bas','T2',71),(1167,'شمال سومرست','North Somerset','North Somerset','J4',71),(1168,'شرق رينفروشاير','East Renfrewshire','East Renfrewshire','U7',71),(1169,'نيوبورت','Newport','Newport','Y6',71),(1170,'باث وشمال شرق سومرست','Bath and North East Somerset','Bath et North East Somerset','A4',71),(1173,'نيوهام','Newham','Newham','I8',71),(1175,'دنبيشير','Denbighshire','Denbighshire','X9',71),(1176,'شرق ركوب يوركشاير','East Riding of Yorkshire','East Riding of Yorkshire','E1',71),(1177,'بيكسلي','Bexley','Bexley','A6',71),(1178,'بروملي','Bromley','Bromley','B8',71),(1179,'برادفورد','Bradford','Bradford','B4',71),(1180,'غابة براكنيل','Bracknell Forest','Forêt de Bracknell','B3',71),(1181,'كارديف','Cardiff','Cardiff','X5',71),(1182,'برمنغهام','Birmingham','Birmingham','A7',71),(1183,'أوركني','Orkney','Orkney','V9',71),(1184,'شرق دانبارتونشاير','East Dunbartonshire','East Dunbartonshire','U5',71),(1185,'بلاكبول','Blackpool','Blackpool','A9',71),(1186,'ساوثامبتون','Southampton','Southampton','M4',71),(1187,'نيوكاسل أبون تاين','Newcastle upon Tyne','Newcastle upon Tyne','I7',71),(1188,'بولتون','Bolton','Boulonner','B1',71),(1189,'ريدكار وكليفلاند','Redcar and Cleveland','Redcar et Cleveland','K9',71),(1190,'بورنموث','Bournemouth','Bournemouth','B2',71),(1191,'سويندون','Swindon','Swindon','N9',71),(1192,'ستوكبورت','Stockport','Stockport','N2',71),(1193,'وندسور ومايدنهيد','Windsor and Maidenhead','Windsor et Maidenhead','P9',71),(1194,'إنفركلايد','Inverclyde','Inverclyde','V4',71),(1195,'ميدواي','Medway','Medway','I3',71),(1196,'ميلتون كينز','Milton Keynes','Milton Keynes','I6',71),(1197,'دندي سيتي','Dundee City','Dundee City','U3',71),(1198,'تيلفورد وركين','Telford and Wrekin','Telford et Wrekin','O2',71),(1199,'قراءة','Reading','En train de lire','K7',71),(1200,'دفن','Bury','Enterrer','C1',71),(1201,'ولفرهامبتون','Wolverhampton','Wolverhampton','Q3',71),(1202,'ساوثوورك','Southwark','Southwark','M8',71),(1203,'كامدن','Camden','Camden','C4',71),(1204,'مستنقع','Slough','Bourbier','M1',71),(1205,'ميدلسبره','Middlesbrough','Middlesbrough','I5',71),(1206,'ستوكتون أون تيز','Stockton-on-Tees','Stockton-on-Tees','N3',71),(1207,'نيوتاونبي','Newtownabbey','Newtownabbey','T1',71),(1208,'يسبورن','Lisburn','Lisburn','S5',71),(1210,'ويشام','Lewisham','Lewisham','H6',71),(1211,'غرب بيركشاير','West Berkshire','West Berkshire','P4',71),(1212,'مانشستر','Manchester','Manchester','I2',71),(1213,'وستمنستر','Westminster','Westminster','P5',71),(1214,'أردز','Ards','Ards','Q7',71),(1215,'بليموث','Plymouth','Plymouth','K4',71),(1216,'كرويدون','Croydon','Croydon','C8',71),(1217,'باركينج وداجنهام','Barking and Dagenham','Barking et Dagenham','A1',71),(1218,'هارتلبول','Hartlepool','Hartlepool','F5',71),(1219,'شيفيلد','Sheffield','Sheffield','L9',71),(1220,'أولدهام','Oldham','Oldham','K1',71),(1221,'نوزلي','Knowsley','Knowsley','G9',71),(1222,'ليفربول','Liverpool','Liverpool','H8',71),(1223,'دادلي','Dudley','Dudley','D7',71),(1224,'غيتسهيد','Gateshead','Gateshead','E5',71),(1225,'إيلينغ','Ealing','Ealing','D9',71),(1226,'ادنبره','Edinburgh','Edinbourg','U8',71),(1227,'انفيلد','Enfield','Enfield','E3',71),(1228,'كلدردل','Calderdale','Calderdale','C2',71),(1229,'وقف على','Halton','Halton','E9',71),(1230,'شمال تينيسايد','North Tyneside','North Tyneside','J5',71),(1231,'ثوروك','Thurrock','Thurrock','O3',71),(1232,'شمال شرق لينكولنشاير','North East Lincolnshire','North East Lincolnshire','J2',71),(1233,'يرل','Wirral','Wirral','Q1',71),(1234,'بتذلل','Hackney','Hackney','E8',71),(1235,'هامرسميث وفولهام','Hammersmith and Fulham','Hammersmith et Fulham','F1',71),(1236,'هافرينج','Havering','Havering','F6',71),(1237,'مسلفة','Harrow','Herse','F4',71),(1238,'بارنيت','Barnet','Barnet','A2',71),(1239,'هونسلو','Hounslow','Hounslow','G1',71),(1240,'برايتون وهوف','Brighton and Hove','Brighton et Hove','B6',71),(1241,'كينغستون على هال','Kingston upon Hull','Kingston upon Hull','G6',71),(1242,'ريدبريدج','Redbridge','Redbridge','K8',71),(1243,'إزلينغتون','Islington','Islington','G3',71),(1244,'كنسينغتون وتشيلسي','Kensington and Chelsea','Kensington et Chelsea','G4',71),(1245,'كينغستون أبون تيمز','Kingston upon Thames','Kingston upon Thames','G7',71),(1246,'لامبث','Lambeth','Lambeth','H1',71),(1247,'لندن','London','Londres','H9',71),(1248,'لوتون','Luton','Luton','I1',71),(1249,'سندرلاند','Sunderland','Sunderland','N6',71),(1250,'ميرتون','Merton','Merton','I4',71),(1251,'ساندويل','Sandwell','Sandwell','L7',71),(1252,'سالفورد','Salford','Salford','L5',71),(1253,'بيتربورو','Peterborough','Peterborough','K3',71),(1254,'بول','Poole','Poole','K5',71),(1255,'برج هامليتس','Tower Hamlets','Tour des hameaux','O5',71),(1256,'بورتسموث','Portsmouth','Portsmouth','K6',71),(1257,'روتشديل','Rochdale','Rochdale','L2',71),(1258,'غرينتش','Greenwich','Greenwich','E7',71),(1259,'جنوب تينيسايد','South Tyneside','South Tyneside','M7',71),(1260,'ترافورد','Trafford','Trafford','O6',71),(1261,'ساتون','Sutton','Sutton','N8',71),(1262,'تورباي','Torbay','Torbay','O4',71),(1263,'ريتشموند على نهر التايمز','Richmond upon Thames','Richmond sur la Tamise','L1',71),(1264,'هيلينغدون','Hillingdon','Hillingdon','F9',71),(1265,'ويكفيلد','Wakefield','Wakefield','O7',71),(1266,'والثام فوريست','Waltham Forest','Waltham Forest','O9',71),(1267,'اندسوورث','Wandsworth','Wandsworth','P1',71),(1268,'برنت','Brent','Brent','B5',71),(1269,'هارينجي','Haringey','Haringey','F3',71),(1270,'القديس أندرو','Saint Andrew','Saint andrew','01',72),(1271,'القديس جورج','Saint George','Saint George','03',72),(1272,'القديس داود','Saint David','Saint David','02',72),(1273,'سانت باتريك','Saint Patrick','Saint Patrick','06',72),(1274,'سان مارك','Saint Mark','Saint mark','05',72),(1275,'القديس يوحنا','Saint John','Saint Jean','04',72),(1276,'أبخازيا','Abkhazia','Abkhazie','02',73),(1277,'Ninotsmindis Raioni','Ninotsmindis Raioni','Ninotsmindis Raioni','39',73),(1278,'P\'ot\'i','P\'ot\'i','P\'ot\'i','42',73),(1279,'Ambrolauris Raioni','Ambrolauris Raioni','Ambrolauris Raioni','09',73),(1280,'اباشي ريوني','Abashis Raioni','Abashis Raioni','01',73),(1281,'أخالتسميس ريوني','Akhalts\'ikhis Raioni','Akhalts\'ikhis Raioni','07',73),(1282,'زيستابونيس ريوني','Zestap\'onis Raioni','Zestap\'onis Raioni','62',73),(1283,'تسالينججيريس ريوني','Tsalenjikhis Raioni','Tsalenjikhis Raioni','58',73),(1284,'مارنوليس رايوني','Marneulis Raioni','Marneulis Raioni','35',73),(1285,'جوريس رايوني','Goris Raioni','Goris Raioni','22',73),(1286,'كاريسليز ريوني','K\'arelis Raioni','K\'arelis Raioni','25',73),(1287,'خاشوريس رايوني','Khashuris Raioni','Khashuris Raioni','28',73),(1288,'كاسبيس رايونى','Kaspis Raioni','Kaspis Raioni','26',73),(1289,'أجاريا','Ajaria','Ajaria','04',73),(1290,'متخيسيس ريوني','Mts\'khet\'is Raioni','Mts\'khet\'is Raioni','38',73),(1291,'Ch\'okhatauris Raioni','Ch\'okhatauris Raioni','Ch\'okhatauris Raioni','16',73),(1292,'Akhalk\'alak\'is Raioni','Akhalk\'alak\'is Raioni','Akhalk\'alak\'is Raioni','06',73),(1293,'Samtrediis Raioni','Samtrediis Raioni','Samtrediis Raioni','48',73),(1294,'Tqibuli','Tqibuli','Tqibuli','56',73),(1295,'Dushet\'is Raioni','Dushet\'is Raioni','Dushet\'is Raioni','19',73),(1296,'أونيس رايوني','Onis Raioni','Onis Raioni','40',73),(1297,'Lentekhis Raioni','Lentekhis Raioni','Lentekhis Raioni','34',73),(1298,'مارتفيليز ريوني','Martvilis Raioni','Martvilis Raioni','36',73),(1299,'K\'ut\'aisi','K\'ut\'aisi','K\'ut\'aisi','31',73),(1300,'أخالورجيس رايوني','Akhalgoris Raioni','Akhalgoris Raioni','05',73),(1301,'Aspindzis Raioni','Aspindzis Raioni','Aspindzis Raioni','10',73),(1302,'احمدى ريونى','Akhmetis Raioni','Akhmetis Raioni','08',73),(1303,'Lagodekhis Raioni','Lagodekhis Raioni','Lagodekhis Raioni','32',73),(1304,'Zugdidis Raioni','Zugdidis Raioni','Zugdidis Raioni','64',73),(1305,'بورجوميس رايوني','Borjomis Raioni','Borjomis Raioni','13',73),(1306,'T\'ianet\'is Raioni','T\'ianet\'is Raioni','T\'ianet\'is Raioni','55',73),(1307,'خبيص الريوني','Khobis Raioni','Khobis Raioni','29',73),(1308,'Kharagaulis Raioni','Kharagaulis Raioni','Kharagaulis Raioni','27',73),(1309,'فانيس ريوني','Vanis Raioni','Vanis Raioni','61',73),(1310,'تيلافيس ريوني','T\'elavis Raioni','T\'elavis Raioni','52',73),(1311,'تسالكيس رايوني','Tsalkis Raioni','Tsalkis Raioni','59',73),(1312,'قزبيجايز ريوني','Qazbegis Raioni','Qazbegis Raioni','43',73),(1313,'ساجاريجوس رايوني','Sagarejos Raioni','Sagarejos Raioni','47',73),(1314,'تيريتسقاروس ريوني','T\'et\'ritsqaros Raioni','T\'et\'ritsqaros Raioni','54',73),(1315,'Dedop\'listsqaros Raioni','Dedop\'listsqaros Raioni','Dedop\'listsqaros Raioni','17',73),(1316,'جافي ريوني','Javis Raioni','Javis Raioni','24',73),(1317,'Ch\'khorotsqus Raioni','Ch\'khorotsqus Raioni','Ch\'khorotsqus Raioni','15',73),(1318,'Tsqaltubo','Tsqaltubo','Tsqaltubo','60',73),(1319,'Rust\'avi','Rust\'avi','Rust\'avi','45',73),(1320,'تبليسي','T\'bilisi','T\'bilisi','51',73),(1321,'بغدايس الريوني','Baghdat\'is Raioni','Baghdat\'is Raioni','11',73),(1322,'Lanch\'khut\'is Raioni','Lanch\'khut\'is Raioni','Lanch\'khut\'is Raioni','33',73),(1323,'Chiat\'ura','Chiat\'ura','Chiat\'ura','14',73),(1324,'Ts\'ageris Raioni','Ts\'ageris Raioni','Ts\'ageris Raioni','57',73),(1327,'وسط','Central','Central','04',76),(1328,'الغربي','Western','Occidental','09',76),(1329,'أشانتي','Ashanti','Ashanti','02',76),(1330,'الشرق الأوسط','Upper East','Upper East','10',76),(1331,'فولتا','Volta','Volta','08',76),(1332,'برونغ أهافو','Brong-Ahafo','Brong-Ahafo','03',76),(1333,'شمالي','Northern','Nord','06',76),(1334,'أكبر أكرا','Greater Accra','Grand Accra','01',76),(1335,'أعالي الغرب','Upper West','Upper West','11',76),(1336,'الشرقية','Eastern','Est','05',76),(1338,'Vestgronland','Vestgronland','Vestgronland','03',78),(1339,'Nordgronland','Nordgronland','Nordgronland','01',78),(1340,'Ostgronland','Ostgronland','Ostgronland','02',78),(1341,'سنترال ريفر','Central River','Central River','03',79),(1342,'الغربي','Western','Occidental','05',79),(1343,'الضفة الشمالية','North Bank','La Banque du nord','07',79),(1344,'أعالي النهر','Upper River','Upper River','04',79),(1345,'نهر سفلي','Lower River','Lower River','02',79),(1346,'بانجول','Banjul','Banjul','01',79),(1347,'كوروسا','Kouroussa','Kouroussa','19',80),(1348,'بيلا','Beyla','Beyla','01',80),(1349,'كوندارا','Koundara','Koundara','18',80),(1350,'دنجواياري','Dinguiraye','Dinguiraye','07',80),(1351,'مالي','Mali','Mali','22',80),(1352,'ماكنتا','Macenta','Macenta','21',80),(1355,'كيسيدوغو','Kissidougou','Kissidougou','17',80),(1356,'فوريكاريا','Forecariah','Forecariah','10',80),(1357,'بيتا','Pita','Pita','25',80),(1361,'دابولا','Dabola','Dabola','05',80),(1362,'بوكي','Boke','Boke','03',80),(1363,'مامو','Mamou','Mamou','23',80),(1364,'فاراناه','Faranah','Faranah','09',80),(1365,'تليملي','Telimele','Telimele','27',80),(1366,'بوفا','Boffa','Boffa','02',80),(1367,'جوكيدو','Gueckedou','Gueckedou','13',80),(1368,'كنديا','Kindia','Kindia','16',80),(1369,'فريا','Fria','Fria','11',80),(1370,'تواج','Tougue','Tougue','28',80),(1371,'يومو','Yomou','Yomou','29',80),(1372,'جاوال','Gaoual','Gaoual','12',80),(1373,'كيروان','Kerouane','Kerouane','15',80),(1374,'دالابا','Dalaba','Dalaba','06',80),(1375,'كوناكري','Conakry','Conakry','04',80),(1376,'كويا','Coyah','Coyah','30',80),(1377,'دوبريكا','Dubreka','Dubreka','31',80),(1378,'كانكان','Kankan','Kankan','32',80),(1379,'كوبيا','Koubia','Koubia','33',80),(1380,'ابي','Labe','Labe','34',80),(1381,'يلوما','Lelouma','Lelouma','35',80),(1382,'لولا','Lola','Lola','36',80),(1383,'مانديانا','Mandiana','Mandiana','37',80),(1384,'نزيريكوري','Nzerekore','Nzerekore','38',80),(1385,'سيجويري','Siguiri','Siguiri','39',80),(1387,'سنترو سور','Centro Sur','Centro Sur','06',82),(1388,'ويلي-نزاس','Wele-Nzas','Wele-Nzas','09',82),(1389,'كي نتيم','Kie-Ntem','Kie-Ntem','07',82),(1390,'الساحلي','Litoral','Litoral','08',82),(1391,'أنوبون','Annobon','Annobon','03',82),(1392,'بيوكو نورتي','Bioko Norte','Bioko Norte','04',82),(1393,'بيوكو سور','Bioko Sur','Bioko Sur','05',82),(1395,'كيلكيس','Kilkis','Kilkis','06',83),(1396,'لاريسا','Larisa','Larisa','21',83),(1397,'أتيكي','Attiki','Attiki','35',83),(1398,'تريكالا','Trikala','Trikala','22',83),(1399,'بريفيزا','Preveza','Preveza','19',83),(1400,'Kerkira','Kerkira','Kerkira','25',83),(1401,'وانينا','Ioannina','Ioannina','17',83),(1402,'بيلا','Pella','Pella','07',83),(1403,'سالونيك','Thessaloniki','Thessalonique','13',83),(1404,'Voiotia','Voiotia','Voiotia','33',83),(1405,'Kikladhes','Kikladhes','Kikladhes','49',83),(1406,'كافالا','Kavala','Kavala','14',83),(1407,'أرغوليس','Argolis','Argolide','36',83),(1408,'Rethimni','Rethimni','Rethimni','44',83),(1409,'سيراي','Serrai','Serrai','05',83),(1410,'اكونيا','Lakonia','Lakonia','42',83),(1411,'ايراكليون','Iraklion','Iraklion','45',83),(1412,'اسيتي','Lasithi','Lasithi','46',83),(1413,'Rodhopi','Rodhopi','Rodhopi','02',83),(1414,'دراما','Drama','Drame','04',83),(1415,'ميسينيا','Messinia','Messinia','40',83),(1416,'إيفويا','Evvoia','Evia','34',83),(1417,'Akhaia','Akhaia','Akhaia','38',83),(1418,'ماغنيزيا','Magnisia','Magnisia','24',83),(1419,'خانيا','Khania','Khania','43',83),(1420,'Kardhitsa','Kardhitsa','Kardhitsa','23',83),(1421,'إفروس','Evros','Evros','01',83),(1422,'Arkadhia','Arkadhia','Arkadhia','41',83),(1423,'أيتوليا كاي Akarnania','Aitolia kai Akarnania','Aitolia kai Akarnania','31',83),(1424,'كوزاني','Kozani','Kozani','11',83),(1425,'ثريبروتيا','Thesprotia','Thesprotia','18',83),(1426,'يسفوس','Lesvos','Lesvos','51',83),(1427,'Dhodhekanisos','Dhodhekanisos','Dhodhekanisos','47',83),(1428,'كيفالونيا','Kefallinia','Kefallinia','27',83),(1429,'Khios','Khios','Khios','50',83),(1430,'أرتا','Arta','Arta','20',83),(1431,'غريفينا','Grevena','Grevena','10',83),(1432,'زاكينثوس','Zakinthos','Zakinthos','28',83),(1433,'Evritania','Evritania','Evritania','30',83),(1434,'فثيوتيس','Fthiotis','Fthiotis','29',83),(1435,'كاستوريا','Kastoria','Kastoria','09',83),(1436,'ساموس','Samos','Samos','48',83),(1437,'إيماثيا','Imathia','Imathia','12',83),(1438,'فلورينا','Florina','Florina','08',83),(1439,'بييريا','Pieria','Pieria','16',83),(1440,'Levkas','Levkas','Levkas','26',83),(1441,'فوكيس','Fokis','Fokis','32',83),(1442,'إليا','Ilia','Ilia','39',83),(1443,'كورينثيا','Korinthia','Korinthia','37',83),(1444,'كسانتي','Xanthi','Xanthi','03',83),(1445,'Khalkidhiki','Khalkidhiki','Khalkidhiki','15',83),(1448,'ايزابال','Izabal','Izabal','09',85),(1449,'ألتا فيراباس','Alta Verapaz','Alta Verapaz','01',85),(1450,'ريتالهوليو','Retalhuleu','Retalhuleu','15',85),(1451,'البروغريسو','El Progreso','El Progreso','05',85),(1452,'غواتيمالا','Guatemala','Guatemala','07',85),(1453,'جوتيابا','Jutiapa','Jutiapa','11',85),(1454,'تشيمالتنانغو','Chimaltenango','Chimaltenango','03',85),(1455,'شيكيمولا','Chiquimula','Chiquimula','04',85),(1456,'زاكابا','Zacapa','Zacapa','22',85),(1457,'جالابا','Jalapa','Jalapa','10',85),(1458,'سان ماركوس','San Marcos','San Marcos','17',85),(1459,'كيشي','Quiche','Quiche','14',85),(1460,'هوهوتنانغو','Huehuetenango','Huehuetenango','08',85),(1461,'كويتزالتنانغو','Quetzaltenango','Quetzaltenango','13',85),(1462,'باجا فيراباز','Baja Verapaz','Baja Verapaz','02',85),(1463,'سانتا روزا','Santa Rosa','Santa Rosa','18',85),(1464,'سولولا','Solola','Solola','19',85),(1465,'بيتين','Peten','Peten','12',85),(1466,'ايسكوينتلا','Escuintla','Escuintla','06',85),(1467,'سكاتيبيكيز','Sacatepequez','Sacatepequez','16',85),(1468,'توتونيكابان','Totonicapan','Totonicapan','21',85),(1469,'سوشيتبيكيز','Suchitepequez','Suchitepequez','20',85),(1470,'كاشيو','Cacheu','Cacheu','06',86),(1471,'بومبو','Biombo','Biombo','12',86),(1472,'أويو','Oio','Oio','04',86),(1473,'بيساو','Bissau','Bissau','11',86),(1474,'بافاتا','Bafata','Bafata','01',86),(1475,'تومبالي','Tombali','Tombali','07',86),(1476,'غابو','Gabu','Gabu','10',86),(1477,'بولاما','Bolama','Bolama','05',86),(1478,'كينارا','Quinara','Quinara','02',86),(1479,'ماهايكا بيبريس','Mahaica-Berbice','Mahaica-Berbice','15',87),(1480,'Upper Takutu-Upper Essequibo','Upper Takutu-Upper Essequibo','Upper Takutu-Upper Essequibo','19',87),(1481,'باريما وايني','Barima-Waini','Barima-Waini','10',87),(1482,'بومرون سوبينام','Pomeroon-Supenaam','Pomeroon-Supenaam','16',87),(1483,'ديميرارا ماهايكا','Demerara-Mahaica','Demerara-Mahaica','12',87),(1484,'جويوني مزروني','Cuyuni-Mazaruni','Cuyuni-Mazaruni','11',87),(1485,'شرق بيربيس-كورنتي','East Berbice-Corentyne','Berbice Est-Corentyne','13',87),(1486,'Essequibo Islands-West Demerara','Essequibo Islands-West Demerara','Essequibo Islands-West Demerara','14',87),(1487,'بوتارو سيباروني','Potaro-Siparuni','Potaro-Siparuni','17',87),(1488,'Upper Demerara-Berbice','Upper Demerara-Berbice','Upper Demerara-Berbice','18',87),(1490,'القولون','Colon','Côlon','03',89),(1491,'تشولوتيكا','Choluteca','Choluteca','02',89),(1492,'كوماياغوا','Comayagua','Comayagua','04',89),(1493,'فالي','Valle','Valle','17',89),(1494,'سانتا باربارا','Santa Barbara','Santa Barbara','16',89),(1495,'فرانسيسكو مورازان','Francisco Morazan','Francisco Morazan','08',89),(1496,'الباريسو','El Paraiso','El Paraiso','07',89),(1497,'هندوراسي','Lempira','Lempira','13',89),(1498,'كوبان','Copan','Copan','05',89),(1499,'اولانجو','Olancho','Olancho','15',89),(1500,'كورتيس','Cortes','Cortes','06',89),(1501,'يورو','Yoro','Yoro','18',89),(1502,'أتلانتيدا','Atlantida','Atlantida','01',89),(1503,'Intibuca','Intibuca','Intibuca','10',89),(1504,'لاباز','La Paz','La paz','12',89),(1505,'أوكوتبيك','Ocotepeque','Ocotepeque','14',89),(1506,'جراسياس ديوس','Gracias a Dios','Gracias a Dios','09',89),(1507,'ايسلاس دي لا باهيا','Islas de la Bahia','Islas de la Bahia','11',89),(1508,'بريمورسكو غورانسكا','Primorsko-Goranska','Primorsko-Goranska','12',90),(1509,'سبليتسكو دالماتينسكا','Splitsko-Dalmatinska','Splitsko-Dalmatinska','15',90),(1510,'Istarska','Istarska','Istarska','04',90),(1511,'أوسيجيكو','Osjecko-Baranjska','Osjecko-Baranjska','10',90),(1512,'فيروفيتيكو-بودرافسكا','Viroviticko-Podravska','Viroviticko-Podravska','17',90),(1513,'غراد زغرب','Grad Zagreb','Grad Zagreb','21',90),(1514,'سيساكو موسلافاكا','Sisacko-Moslavacka','Sisacko-Moslavacka','14',90),(1515,'ليكو سنجسكا','Licko-Senjska','Licko-Senjska','08',90),(1516,'برودسكو بوسافسكا','Brodsko-Posavska','Brodsko-Posavska','02',90),(1517,'دوبروفنيك نيريتفا','Dubrovacko-Neretvanska','Dubrovacko-Neretvanska','03',90),(1518,'بوزيسكو-سلافونسكا','Pozesko-Slavonska','Pozesko-Slavonska','11',90),(1519,'زاجريباكا','Zagrebacka','Zagrebacka','20',90),(1520,'بجيلوفارسكو بيلوجوورسكا','Bjelovarsko-Bilogorska','Bjelovarsko-Bilogorska','01',90),(1521,'فارازدينسكا','Varazdinska','Varazdinska','16',90),(1522,'فوكوفارسكو سريمسكا','Vukovarsko-Srijemska','Vukovarsko-Srijemska','18',90),(1523,'كاربينسكو زاجورسكا','Krapinsko-Zagorska','Krapinsko-Zagorska','07',90),(1524,'كوبرفنيكو كريزفاكا','Koprivnicko-Krizevacka','Koprivnicko-Krizevacka','06',90),(1525,'كارلوفاكا','Karlovacka','Karlovacka','05',90),(1526,'سيبينسكو كنينسكا','Sibensko-Kninska','Sibensko-Kninska','13',90),(1527,'ميديمرسكا','Medimurska','Medimurska','09',90),(1529,'سود','Sud','Sud','12',91),(1530,'مركز','Centre','Centre','07',91),(1532,'كويست','Ouest','Ouest','11',91),(1533,'نورد','Nord','Nord','09',91),(1534,'الإقليم الشمالي الغربي','Nord-Ouest','Nord-Ouest','03',91),(1535,'الشمال الشرقي','Nord-Est','Nord-Est','10',91),(1536,'الجنوب الشرقي','Sud-Est','Sud-Est','13',91),(1537,'أرتيبونيت','Artibonite','Artibonite','06',91),(1538,'كومارم إسترجم','Komarom-Esztergom','Komarom-Esztergom','12',92),(1539,'فيجر','Fejer','Fejer','08',92),(1540,'جاز ناجيكن سزولنوك','Jasz-Nagykun-Szolnok','Jasz-Nagykun-Szolnok','20',92),(1541,'بارانيا','Baranya','Baranya','02',92),(1542,'سزابولكس زاتمار بيريج','Szabolcs-Szatmar-Bereg','Szabolcs-Szatmar-Bereg','18',92),(1543,'هيفيز','Heves','Heves','11',92),(1544,'بورسود أباوج زمبلين','Borsod-Abauj-Zemplen','Borsod-Abauj-Zemplen','04',92),(1545,'جيور موسون سوبرون','Gyor-Moson-Sopron','Gyor-Moson-Sopron','09',92),(1546,'الآفات','Pest','Ravageur','16',92),(1547,'فيزبرم','Veszprem','Veszprem','23',92),(1548,'البكالوريا كيسكون','Bacs-Kiskun','Bacs-Kiskun','01',92),(1549,'خدمات القيمة المضافة','Vas','Vas','22',92),(1550,'هاجدو بيهار','Hajdu-Bihar','Hajdu-Bihar','10',92),(1551,'زالة','Zala','Zala','24',92),(1552,'سوموغي','Somogy','Somogy','17',92),(1553,'تولنا','Tolna','Tolna','21',92),(1554,'نوجراد','Nograd','Nograd','14',92),(1555,'بودابست','Budapest','Budapest','05',92),(1556,'ميشكولتس','Miskolc','Miskolc','13',92),(1557,'كسونجراد','Csongrad','Csongrad','06',92),(1558,'ديبريسين','Debrecen','Debrecen','07',92),(1559,'بيكيس','Bekes','Bekes','03',92),(1560,'سيجد','Szeged','Szeged','19',92),(1561,'بيكس','Pecs','Pécs','15',92),(1562,'جيور','Gyor','Gyor','25',92),(1563,'جاوا تيمور','Jawa Timur','Jawa Timur','08',93),(1565,'سولاويزي تينجارا','Sulawesi Tenggara','Sulawesi Tenggara','22',93),(1567,'نوسا تينجارا تيمور','Nusa Tenggara Timur','Nusa Tenggara Timur','18',93),(1568,'سولاويسي اوتارا','Sulawesi Utara','Sulawesi Utara','31',93),(1569,'سومطرة بارات','Sumatera Barat','Sumatera Barat','24',93),(1570,'اتشيه','Aceh','Aceh','01',93),(1571,'سولاويزي تنجاه','Sulawesi Tengah','Sulawesi Tengah','21',93),(1575,'جاوا تينغاه','Jawa Tengah','Jawa Tengah','07',93),(1576,'جاوا بارات','Jawa Barat','Jawa Barat','30',93),(1577,'بالي','Bali','Bali','02',93),(1579,'بانتين','Banten','Banten','33',93),(1580,'سومطرة اوتارا','Sumatera Utara','Sumatra Utara','26',93),(1581,'كاليمانتان تيمور','Kalimantan Timur','Kalimantan Timur','14',93),(1582,'لامبونج','Lampung','Lampung','15',93),(1583,'نوسا تينجارا بارات','Nusa Tenggara Barat','Nusa Tenggara Barat','17',93),(1584,'كاليمانتان بارات','Kalimantan Barat','Kalimantan Barat','11',93),(1585,'كاليمنتان Tengah','Kalimantan Tengah','Kalimantan Tengah','13',93),(1587,'بنجكولو','Bengkulu','Bengkulu','03',93),(1588,'جامبي','Jambi','Jambi','05',93),(1589,'كاليمانتان سيلاتان','Kalimantan Selatan','Kalimantan Selatan','12',93),(1590,'يوجياكرتا','Yogyakarta','Yogyakarta','10',93),(1591,'جاكرتا رايا','Jakarta Raya','Jakarta Raya','04',93),(1593,'مالوكو','Maluku','Maluku','28',93),(1594,'غالواي','Galway','Galway','10',94),(1595,'فلين','Cork','Liège','04',94),(1596,'كيري','Kerry','Kerry','11',94),(1597,'اللمريكية قصيدة خماسية فكاهية','Limerick','Limerick','16',94),(1598,'لونجفورد','Longford','Longford','18',94),(1599,'اويس','Laois','Laois','15',94),(1600,'وترفورد','Waterford','Waterford','27',94),(1601,'مايو','Mayo','Mayo','20',94),(1602,'سليغو','Sligo','Sligo','25',94),(1603,'كيلدير','Kildare','Kildare','12',94),(1604,'دبلن','Dublin','Dublin','07',94),(1605,'ويكلو','Wicklow','Wicklow','31',94),(1606,'كافان','Cavan','Cavan','02',94),(1607,'كيلكيني','Kilkenny','Kilkenny','13',94),(1608,'ويكسفورد','Wexford','Wexford','30',94),(1609,'كارلو','Carlow','Carlow','01',94),(1610,'أوفالي','Offaly','Offaly','23',94),(1611,'موناغان','Monaghan','Monaghan','22',94),(1612,'يتريم','Leitrim','Leitrim','14',94),(1613,'كلير','Clare','Clare','03',94),(1614,'دونيجال','Donegal','Donegal','06',94),(1615,'لاوث','Louth','Louth','19',94),(1616,'روسكومون','Roscommon','Roscommon','24',94),(1617,'تيبيراري','Tipperary','Tipperary','26',94),(1618,'ستميث','Westmeath','Westmeath','29',94),(1619,'ميث','Meath','Meath','21',94),(1627,'ولاية البنغال الغربية','West Bengal','Bengale de l\'ouest','28',96),(1628,'أوتار براديش','Uttar Pradesh','Uttar Pradesh','36',96),(1629,'البنجاب','Punjab','Punjab','23',96),(1630,'ماديا براديش','Madhya Pradesh','Madhya Pradesh','35',96),(1631,'كارناتاكا','Karnataka','Karnataka','19',96),(1632,'ماهاراشترا','Maharashtra','Maharashtra','16',96),(1633,'هاريانا','Haryana','Haryana','10',96),(1634,'أوتارانتشال','Uttarakhand','Uttarakhand','39',96),(1635,'ولاية اندرا براديش','Andhra Pradesh','Andhra Pradesh','02',96),(1636,'تريبورا','Tripura','Tripura','26',96),(1637,'تاميل نادو','Tamil Nadu','Tamil Nadu','25',96),(1638,'جامو وكشمير','Jammu and Kashmir','Jammu et Cachemire','12',96),(1639,'جزر أندامان ونيكوبار','Andaman and Nicobar Islands','Iles Andaman et Nicobar','01',96),(1640,'أسام','Assam','Assam','03',96),(1641,'تشهاتيسجاره','Chhattisgarh','Chhattisgarh','37',96),(1642,'راجستان','Rajasthan','Rajasthan','24',96),(1643,'غوا','Goa','Goa','33',96),(1644,'بودوتشيري','Puducherry','Puducherry','22',96),(1645,'غوجارات','Gujarat','Gujarat','09',96),(1646,'ولاية كيرالا','Kerala','Kerala','13',96),(1647,'اروناتشال براديش','Arunachal Pradesh','Arunachal Pradesh','30',96),(1648,'أوريسا','Orissa','Orissa','21',96),(1649,'هيماشال براديش','Himachal Pradesh','Himachal Pradesh','11',96),(1650,'بيهار','Bihar','Bihar','34',96),(1651,'ميغالايا','Meghalaya','Meghalaya','18',96),(1652,'ناجالاند','Nagaland','Nagaland','20',96),(1653,'مانيبور','Manipur','Manipur','17',96),(1654,'ميزورام','Mizoram','Mizoram','31',96),(1655,'جهارخاند','Jharkhand','Jharkhand','38',96),(1657,'دلهي','Delhi','Delhi','07',96),(1658,'دادرا وناغار هافيلي','Dadra and Nagar Haveli','Dadra et Nagar Haveli','06',96),(1660,'دامان وديو','Daman and Diu','Daman et Diu','32',96),(1661,'سيكيم','Sikkim','Sikkim','29',96),(1662,'شانديغار','Chandigarh','Chandigarh','05',96),(1663,'اكشادويب','Lakshadweep','Lakshadweep','14',96),(1664,'السليمانية','As Sulaymaniyah','Comme Sulaymaniyah','05',97),(1665,'ذي قار','Dhi Qar','Dhi Qar','09',97),(1666,'ميسان','Maysan','Maysan','14',97),(1667,'ديالى','Diyala','Diyala','10',97),(1668,'بغداد','Baghdad','Bagdad','07',97),(1669,'أكانت','Wasit','Était-ce','16',97),(1670,'صلاح الدين','Salah ad Din','Salah ad Din','18',97),(1671,'القادسية','Al Qadisiyah','Al Qadisiyah','04',97),(1672,'بابل','Babil','Babil','06',97),(1673,'كربلاء','Karbala\'','Karbala \'','12',97),(1674,'النجف','An Najaf','Un najaf','17',97),(1675,'المثنى','Al Muthanna','Al Muthanna','03',97),(1676,'الانبار','Al Anbar','Al anbar','01',97),(1677,'دهوك','Dahuk','Dahuk','08',97),(1678,'نينوى','Ninawa','Ninawa','15',97),(1679,'اربيل','Arbil','Arbil','11',97),(1680,'البصرة','Al Basrah','Al Basrah','02',97),(1681,'في التميم','At Ta\'mim','Chez ta\'mim','13',97),(1682,'زنجان','Zanjan','Zanjan','27',98),(1683,'أزربايجان بختاري','Azarbayjan-e Bakhtari','Azarbayjan-e Bakhtari','01',98),(1684,'يزد','Yazd','Yazd','31',98),(1685,'خوزستان','Khuzestan','Khuzestan','15',98),(1686,'أصفهان','Esfahan','Esfahan','28',98),(1687,'أردبيل','Ardabil','Ardabil','32',98),(1688,'طهران','Tehran','Téhéran','26',98),(1689,'شرق ازربايجان','East Azarbaijan','Azarbaijan Est','33',98),(1690,'بوشهر','Bushehr','Bushehr','22',98),(1691,'هرمزكان','Hormozgan','Hormozgan','11',98),(1692,'مازندران','Mazandaran','Mazandaran','17',98),(1693,'كرمان','Kerman','Kerman','29',98),(1694,'فارس','Fars','Fars','07',98),(1695,'Kohkiluyeh va Buyer Ahmadi','Kohkiluyeh va Buyer Ahmadi','Kohkiluyeh va Acheteur Ahmadi','05',98),(1696,'خراسان','Khorasan','Khorasan','30',98),(1697,'سيستان وبلوتشستان','Sistan va Baluchestan','Sistan va Baluchestan','04',98),(1698,'Chahar Mahall va Bakhtiari','Chahar Mahall va Bakhtiari','Chahar Mahall va Bakhtiari','03',98),(1699,'كرمان','Kerman','Kerman','12',98),(1700,'مازندران','Mazandaran','Mazandaran','35',98),(1701,'قزوين','Qazvin','Qazvin','38',98),(1702,'زنجان','Zanjan','Zanjan','36',98),(1703,'المركزي','Markazi','Markazi','24',98),(1704,'المركزي','Markazi','Markazi','19',98),(1705,'ورستان','Lorestan','Lorestan','23',98),(1706,'المركزي','Markazi','Markazi','34',98),(1707,'خراسان رضوي','Khorasan-e Razavi','Khorasan-e Razavi','42',98),(1708,'همدان','Hamadan','Hamadan','09',98),(1709,'سمنان','Semnan','Semnan','25',98),(1710,'جيلان','Gilan','Gilan','08',98),(1711,'كردستان','Kordestan','Kordestan','16',98),(1712,'Bakhtaran','Bakhtaran','Bakhtaran','13',98),(1713,'إيلام','Ilam','Ilam','10',98),(1714,'مقاطعة سمنان','Semnan Province','Province de Semnan','18',98),(1715,'كلستان','Golestan','Golestan','37',98),(1716,'قم','Qom','Qom','39',98),(1718,'زنجان','Zanjan','Zanjan','21',98),(1720,'Skagafjardarsysla','Skagafjardarsysla','Skagafjardarsysla','28',99),(1721,'Borgarfjardarsysla','Borgarfjardarsysla','Borgarfjardarsysla','07',99),(1722,'Myrasysla','Myrasysla','Myrasysla','17',99),(1723,'Rangarvallasysla','Rangarvallasysla','Rangarvallasysla','23',99),(1724,'Eyjafjardarsysla','Eyjafjardarsysla','Eyjafjardarsysla','09',99),(1725,'Kjosarsysla','Kjosarsysla','Kjosarsysla','15',99),(1726,'Vestur-Isafjardarsysla','Vestur-Isafjardarsysla','Vestur-Isafjardarsysla','36',99),(1728,'Strandasysla','Strandasysla','Strandasysla','30',99),(1729,'Gullbringusysla','Gullbringusysla','Gullbringusysla','10',99),(1730,'Austur-Hunavatnssysla','Austur-Hunavatnssysla','Austur-Hunavatnssysla','05',99),(1731,'Austur-Skaftafellssysla','Austur-Skaftafellssysla','Austur-Skaftafellssysla','06',99),(1732,'Nordur-Mulasysla','Nordur-Mulasysla','Nordur-Mulasysla','20',99),(1733,'Sudur-Mulasysla','Sudur-Mulasysla','Sudur-Mulasysla','31',99),(1734,'Vestur-Bardastrandarsysla','Vestur-Bardastrandarsysla','Vestur-Bardastrandarsysla','34',99),(1735,'Snafellsnes- og Hnappadalssysla','Snafellsnes- og Hnappadalssysla','Snafellsnes- og Hnappadalssysla','29',99),(1736,'Arnessysla','Arnessysla','Arnessysla','03',99),(1737,'Vestur-Hunavatnssysla','Vestur-Hunavatnssysla','Vestur-Hunavatnssysla','35',99),(1738,'Sudur-Tingeyjarsysla','Sudur-Tingeyjarsysla','Sudur-Tingeyjarsysla','32',99),(1740,'Vestur-Skaftafellssysla','Vestur-Skaftafellssysla','Vestur-Skaftafellssysla','37',99),(1742,'Nordur-Tingeyjarsysla','Nordur-Tingeyjarsysla','Nordur-Tingeyjarsysla','21',99),(1743,'توسكانا','Toscana','Toscana','16',100),(1744,'فينيتو','Veneto','Vénétie','20',100),(1745,'كامبانيا','Campania','Campanie','04',100),(1746,'مارتش','Marche','Marches','10',100),(1747,'بيمونتي','Piemonte','Piemonte','12',100),(1748,'لومبارديا','Lombardia','Lombardie','09',100),(1749,'ساردينيا','Sardegna','Sardegna','14',100),(1750,'أبروتسو','Abruzzi','Abruzzes','01',100),(1751,'إيميليا-رومانيا','Emilia-Romagna','Emilie-Romagne','05',100),(1752,'ترينتينو ألتو أديجي','Trentino-Alto Adige','Trentin-Haut-Adige','17',100),(1753,'أومبريا','Umbria','Ombrie','18',100),(1754,'باسيليكاتا','Basilicata','Basilicate','02',100),(1755,'بوليا','Puglia','Pouilles','13',100),(1756,'صقلية','Sicilia','Sicilia','15',100),(1757,'لاتسيو','Lazio','Lazio','07',100),(1758,'ليغوريا','Liguria','Ligurie','08',100),(1759,'كالابريا','Calabria','Calabre','03',100),(1760,'موليز','Molise','Molise','11',100),(1761,'فريولي فينيتسيا جوليا','Friuli-Venezia Giulia','Frioul-Vénétie Julienne','06',100),(1762,'فالي أوستا','Valle d\'Aosta','Valle d\'Aosta','19',100),(1764,'سانت آن','Saint Ann','Sainte ann','09',101),(1765,'سانت إليزابيث','Saint Elizabeth','Saint elizabeth','11',101),(1766,'هانوفر','Hanover','Hanovre','02',101),(1767,'يستمورلاند','Westmoreland','Westmoreland','16',101),(1768,'تريلاوني','Trelawny','Trelawny','15',101),(1769,'مانشستر','Manchester','Manchester','04',101),(1770,'جيمس قديس','Saint James','Saint James','12',101),(1771,'القديس أندرو','Saint Andrew','Saint andrew','08',101),(1772,'سانت توماس','Saint Thomas','Saint thomas','14',101),(1773,'القديس ماري','Saint Mary','Sainte Marie','13',101),(1774,'بورتلاند','Portland','Portland','07',101),(1775,'كلارندون','Clarendon','Clarendon','01',101),(1776,'سانت كاترين','Saint Catherine','Sainte catherine','10',101),(1777,'كينغستون','Kingston','Kingston','17',101),(1779,'في الطفيلة','At Tafilah','Chez tafilah','12',102),(1782,'الكرك','Al Karak','Al Karak','09',102),(1784,'البلقاء','Al Balqa\'','Al Balqa \'','02',102),(1786,'عمان','Amman','Amman','16',102),(1787,'العقبة','Al Aqabah','Al Aqabah','21',102),(1788,'أوكيناوا','Okinawa','Okinawa','47',103),(1789,'ناغازاكي','Nagasaki','Nagasaki','27',103),(1790,'هوكايدو','Hokkaido','Hokkaido','12',103),(1791,'توكوشيما','Tokushima','Tokushima','39',103),(1792,'مي','Mie','Mie','23',103),(1793,'كاناغاوا','Kanagawa','Kanagawa','19',103),(1794,'شيبا','Chiba','Chiba','04',103),(1795,'هيوغو','Hyogo','Hyogo','13',103),(1796,'ياماغوتشي','Yamaguchi','Yamaguchi','45',103),(1797,'أوموري','Aomori','Aomori','03',103),(1798,'ميازاكي','Miyazaki','Miyazaki','25',103),(1799,'شيزوكا','Shizuoka','Shizuoka','37',103),(1800,'شيمان','Shimane','Shimane','36',103),(1801,'فوكوشيما','Fukushima','Fukushima','08',103),(1802,'أوكاياما','Okayama','Okayama','31',103),(1803,'شيجا','Shiga','Shiga','35',103),(1804,'كاجوشيما','Kagoshima','Kagoshima','18',103),(1805,'هيروشيما','Hiroshima','Hiroshima','11',103),(1806,'توتوري','Tottori','Tottori','41',103),(1807,'اكيتا','Akita','Akita','02',103),(1808,'ناغانو','Nagano','Nagano','26',103),(1809,'فوكوي','Fukui','Fukui','06',103),(1810,'سايتاما','Saitama','Saitama','34',103),(1811,'واكاياما','Wakayama','Wakayama','43',103),(1812,'كوتشي','Kochi','Kochi','20',103),(1813,'ايواتي','Iwate','Iwate','16',103),(1814,'مياجي','Miyagi','Miyagi','24',103),(1815,'نيجاتا','Niigata','Niigata','29',103),(1816,'صمغة','Gumma','Gumma','10',103),(1817,'أيشي','Aichi','Aichi','01',103),(1818,'توياما','Toyama','Toyama','42',103),(1819,'كوماموتو','Kumamoto','Kumamoto','21',103),(1820,'كاغاوا','Kagawa','Kagawa','17',103),(1821,'ايمى','Ehime','Ehime','05',103),(1822,'طوكيو','Tokyo','Tokyo','40',103),(1823,'فوكوكا','Fukuoka','Fukuoka','07',103),(1824,'توتشيغي','Tochigi','Tochigi','38',103),(1825,'ياماغاتا','Yamagata','Yamagata','44',103),(1826,'قصة طويلة','Saga','Saga','33',103),(1827,'أويتا','Oita','Oita','30',103),(1828,'جيفو','Gifu','Gifu','09',103),(1829,'إيشيكاوا','Ishikawa','Ishikawa','15',103),(1830,'نارا','Nara','Nara','28',103),(1831,'ايباراكي','Ibaraki','Ibaraki','14',103),(1832,'كيوتو','Kyoto','Kyoto','22',103),(1833,'ياماناشي','Yamanashi','Yamanashi','46',103),(1834,'أوساكا','Osaka','Osaka','32',103),(1835,'ساحل','Coast','Côte','02',104),(1836,'نيانزا','Nyanza','Nyanza','07',104),(1837,'الوادي المتصدع','Rift Valley','La vallée du Rift','08',104),(1838,'الغربي','Western','Occidental','09',104),(1839,'شمال شرق','North-Eastern','Nord-est','06',104),(1840,'الشرقية','Eastern','Est','03',104),(1841,'منطقة نيروبي','Nairobi Area','Région de Nairobi','05',104),(1842,'وسط','Central','Central','01',104),(1843,'جلال آباد','Jalal-Abad','Jalal-Abad','03',105),(1844,'نارين','Naryn','Naryn','04',105),(1845,'أوش','Osh','Osh','05',105),(1846,'تشوي','Chuy','Chuy','02',105),(1847,'يسيك-كول','Ysyk-Kol','Ysyk-Kol','07',105),(1848,'بيشكيك','Bishkek','Bichkek','01',105),(1849,'تالاس','Talas','Talas','06',105),(1850,'باتكن','Batken','Batken','09',105),(1852,'سيم ريب','Siem Reap','Siem Reap','16',106),(1853,'كراتي','Kracheh','Kracheh','09',106),(1854,'كامبونغ ثوم','Kampong Thum','Kampong Thum','05',106),(1855,'كامبونج شنانج','Kampong Chhnang','Kampong Chhnang','03',106),(1857,'كامبونج تشام','Kampong Cham','Kampong Cham','02',106),(1858,'كامبونج سبيو','Kampong Speu','Kampong Speu','04',106),(1859,'اتخاذ س','Takeo','Takeo','19',106),(1860,'باتامبانغ','Batdambang','Batdambang','01',106),(1861,'بريى فنج','Prey Veng','Prey Veng','14',106),(1862,'راتاناكيري كيري','Ratanakiri Kiri','Ratanakiri Kiri','15',106),(1863,'سفاي رينج','Svay Rieng','Svay Rieng','18',106),(1864,'كوه كونغ','Koh Kong','Koh Kong','08',106),(1865,'بورسات','Pursat','Pursat','12',106),(1866,'بنوم بنه','Phnum Penh','Phnum Penh','11',106),(1867,'موندولكيري','Mondulkiri','Mondulkiri','10',106),(1868,'ستونغ ترينغ','Stung Treng','Stung Treng','17',106),(1869,'كامبوت','Kampot','Kampot','06',106),(1870,'بانتي ميانشي','Banteay Meanchey','Banteay Meanchey','25',106),(1871,'برياه فيهيار','Preah Vihear','Preah Vihear','13',106),(1872,'كاندال','Kandal','Kandal','07',106),(1874,'أنجوان','Anjouan','Anjouan','01',108),(1875,'موهيلي','Moheli','Moheli','03',108),(1876,'القمر الكبرى','Grande Comore','Grande Comore','02',108),(1877,'سانت جورج جينجيرلاند','Saint George Gingerland','Saint George Gingerland','04',109),(1878,'سانت جيمس ويندوارد','Saint James Windward','Saint James Windward','05',109),(1879,'سانت توماس لوولاند','Saint Thomas Lowland','Saint Thomas Lowland','12',109),(1880,'سانت جورج باسيتير','Saint George Basseterre','Saint George Basseterre','03',109),(1881,'القديس يوحنا فيجترى','Saint John Figtree','Saint John Figtree','07',109),(1882,'القديس بطرس باستير','Saint Peter Basseterre','Saint Peter Basseterre','11',109),(1883,'القديس يوحنا كابيستر','Saint John Capisterre','Saint Jean Capisterre','06',109),(1884,'كنيسة المسيح نيقولا تاون','Christ Church Nichola Town','Christ Church Nichola Town','01',109),(1885,'الثالوث بالميتو بوينت','Trinity Palmetto Point','Trinity Palmetto Point','15',109),(1886,'سانت آن ساندي بوينت','Saint Anne Sandy Point','Sainte Anne Sandy Point','02',109),(1887,'سانت ماري كايون','Saint Mary Cayon','Saint Mary Cayon','08',109),(1888,'جزيرة سانت توماس الوسطى','Saint Thomas Middle Island','Saint Thomas Middle Island','13',109),(1889,'سانت بول كابيستر','Saint Paul Capisterre','Saint Paul Capisterre','09',109),(1890,'P\'yongan-نامدو','P\'yongan-namdo','P\'yongan-namdo','15',110),(1891,'P\'yongan-bukto','P\'yongan-bukto','P\'yongan-bukto','11',110),(1892,'P\'yongyang-سي','P\'yongyang-si','P\'yongyang-si','12',110),(1893,'كانج وون دو','Kangwon-do','Kangwon-do','09',110),(1894,'هوانغهاي-bukto','Hwanghae-bukto','Hwanghae-bukto','07',110),(1895,'هامكيونغ-نامدو','Hamgyong-namdo','Hamgyong-namdo','03',110),(1896,'تشاغانغ دو','Chagang-do','Chagang-do','01',110),(1897,'هامكيونغ-bukto','Hamgyong-bukto','Hamgyong-bukto','17',110),(1898,'هوانغهاي-نامدو','Hwanghae-namdo','Hwanghae-namdo','06',110),(1899,'Namp\'o-سي','Namp\'o-si','Namp\'o-si','14',110),(1900,'كايسونج، الاشتراكية','Kaesong-si','Kaesong-si','08',110),(1901,'يانجانج دو','Yanggang-do','Yanggang-do','13',110),(1902,'ناجين سونبونج سي','Najin Sonbong-si','Najin Sonbong-si','18',110),(1903,'Ch\'ungch\'ong-bukto','Ch\'ungch\'ong-bukto','Ch\'ungch\'ong-bukto','05',111),(1904,'كانج وون دو','Kangwon-do','Kangwon-do','06',111),(1905,'Ch\'ungch\'ong-نامدو','Ch\'ungch\'ong-namdo','Ch\'ungch\'ong-namdo','17',111),(1906,'كيونجسانج-bukto','Kyongsang-bukto','Kyongsang-bukto','14',111),(1907,'تشولا-نامدو','Cholla-namdo','Cholla-namdo','16',111),(1908,'كيونجي دو','Kyonggi-do','Kyonggi-do','13',111),(1909,'تشيجو دو','Cheju-do','Cheju-do','01',111),(1910,'تشولا-bukto','Cholla-bukto','Cholla-bukto','03',111),(1911,'سول-t\'ukpyolsi','Seoul-t\'ukpyolsi','Séoul-t\'ukpyolsi','11',111),(1912,'كيونجسانج-نامدو','Kyongsang-namdo','Kyongsang-namdo','20',111),(1913,'تايجو-jikhalsi','Taegu-jikhalsi','Taegu-Jikhalsi','15',111),(1914,'بوسان-jikhalsi','Pusan-jikhalsi','Pusan-Jikhalsi','10',111),(1915,'كوانجو-jikhalsi','Kwangju-jikhalsi','Kwangju-jikhalsi','18',111),(1916,'أولسان-gwangyoksi','Ulsan-gwangyoksi','Ulsan-Gwangyoksi','21',111),(1917,'إنشون-jikhalsi','Inch\'on-jikhalsi','Inch\'on-jikhalsi','12',111),(1918,'تايجون-jikhalsi','Taejon-jikhalsi','Taejon-jikhalsi','19',111),(1919,'الكوييت','Al Kuwayt','Al Kuwayt','02',112),(1920,'الجهراء','Al Jahra','Al Jahra','05',112),(1923,'ألماتي','Almaty','Almaty','01',114),(1924,'جنوب كازاخستان','South Kazakhstan','Kazakhstan du sud','10',114),(1925,'شمال كازاخستان','North Kazakhstan','Kazakhstan du Nord','16',114),(1926,'بافلودار','Pavlodar','Pavlodar','11',114),(1927,'كاراجهاندي','Qaraghandy','Qaraghandy','12',114),(1928,'كيزيلورودا','Qyzylorda','Qyzylorda','14',114),(1929,'شرق كازاخستان','East Kazakhstan','Kazakhstan oriental','15',114),(1930,'أكمولا','Aqmola','Aqmola','03',114),(1931,'أكتوب','Aqtobe','Aqtobe','04',114),(1932,'كوستاناي','Qostanay','Qostanay','13',114),(1933,'غرب كازاخستان','West Kazakhstan','Kazakhstan occidental','07',114),(1934,'أتيراو','Atyrau','Atyrau','06',114),(1935,'Zhambyl','Zhambyl','Zhambyl','17',114),(1936,'أستانا','Astana','Astana','05',114),(1937,'مانجهيستاو','Mangghystau','Mangghystau','09',114),(1938,'مدينة ألماتي','Almaty City','Almaty City','02',114),(1939,'Bayqonyr','Bayqonyr','Bayqonyr','08',114),(1941,'سافاناخيت','Savannakhet','Savannakhet','10',115),(1942,'فونغسالي','Phongsali','Phongsali','08',115),(1943,'سروان','Saravan','Saravan','09',115),(1946,'هوافان','Houaphan','Houaphan','03',115),(1947,'أتابو','Attapu','Attapu','01',115),(1949,'تشامباساك','Champasak','Champasak','02',115),(1950,'وانجفرابانج','Louangphrabang','Louangphrabang','17',115),(1951,'أودومكساي','Oudomxai','Oudomxai','07',115),(1955,'زيانجكوانج','Xiangkhoang','Xiangkhoang','14',115),(1956,'فينتيان','Vientiane','Vientiane','11',115),(1960,'Xaignabouri','Xaignabouri','Xaignabouri','13',115),(1961,'خاموان','Khammouan','Khammouan','04',115),(1966,'شمال لبنان','Liban-Nord','Liban-Nord','03',116),(1967,'الجنوب','Al Janub','Al Janub','02',116),(1968,'بيروت','Beyrouth','Beyrouth','04',116),(1969,'جبل لبنان','Mont-Liban','Mont-Liban','05',116),(1970,'البقاع','Beqaa','Beqaa','01',116),(1971,'لبنان-سود','Liban-Sud','Liban-Sud','06',116),(1972,'ميكو','Micoud','Micoud','08',117),(1973,'لابوري','Laborie','Laborie','07',117),(1974,'دينيري','Dennery','Dennery','05',117),(1975,'آنس-لا-راي','Anse-la-Raye','Anse-la-Raye','01',117),(1976,'فيو فورت','Vieux-Fort','Vieux-Fort','10',117),(1977,'كاستري','Castries','Castries','03',117),(1978,'سوفرير','Soufriere','Soufrière','09',117),(1979,'جروس-جزيرة','Gros-Islet','Gros-Islet','06',117),(1980,'تشويسيول','Choiseul','Choiseul','04',117),(1981,'الدوفين الابن البكر لملك فرنسي','Dauphin','Dauphin','02',117),(1982,'براسلين','Praslin','Praslin','11',117),(1983,'بلزرس','Balzers','Balzers','01',118),(1984,'جمبرين','Gamprin','Gamprin','03',118),(1985,'بلانكن','Planken','Planken','05',118),(1986,'فادوز','Vaduz','Vaduz','11',118),(1987,'اشن','Eschen','Eschen','02',118),(1988,'تريسنبرغ','Triesenberg','Triesenberg','10',118),(1989,'شلينبرغ','Schellenberg','Schellenberg','08',118),(1990,'مورن','Mauren','Mauren','04',118),(1991,'روجل','Ruggell','Ruggell','06',118),(1992,'ستشان','Schaan','Schaan','07',118),(1993,'تريزين','Triesen','Triesen','09',118),(1994,'الشمال الغربي','North Western','Nord ouest','32',119),(1995,'جنوبي','Southern','Du sud','34',119),(1996,'وسط','Central','Central','29',119),(1997,'ساباراغاموا','Sabaragamuwa','Sabaragamuwa','33',119),(1998,'شمال وسط','North Central','Centre Nord','30',119),(2000,'الغربي','Western','Occidental','36',119),(2001,'أوفا','Uva','Uva','35',119),(2002,'نيمبا','Nimba','Nimba','09',120),(2003,'غراند باسا','Grand Bassa','Grand Bassa','11',120),(2004,'وفا','Lofa','Lofa','05',120),(2005,'بونغ','Bong','Bong','01',120),(2007,'مونتسيرادو','Montserrado','Montserrado','14',120),(2009,'مارغيبي','Margibi','Margibi','17',120),(2011,'الصينية','Sino','Sino','10',120),(2012,'نهر سيس','River Cess','Rivière cess','18',120),(2013,'غراند كيب ماونت','Grand Cape Mount','Mont Grand Cap','12',120),(2015,'ماريلاند','Maryland','Maryland','13',120),(2016,'غراند كيب ماونت','Grand Cape Mount','Mont Grand Cap','04',120),(2017,'غباربولو','Gbarpolu','Gbarpolu','21',120),(2018,'نهر جي','River Gee','River Gee','22',120),(2019,'جراند جيده','Grand Gedeh','Grand Gedeh','19',120),(2020,'وفا','Lofa','Lofa','20',120),(2021,'ماسيرو','Maseru','Maseru','14',121),(2022,'كوثينج','Quthing','Quthing','18',121),(2023,'مافتينج','Mafeteng','Mafeteng','13',121),(2024,'بيريا','Berea','Berea','10',121),(2025,'موهاليس هوك','Mohales Hoek','Mohales Hoek','15',121),(2026,'تابا تسيكا','Thaba-Tseka','Thaba-Tseka','19',121),(2027,'بوثا بوثي','Butha-Buthe','Butha-Buthe','11',121),(2028,'يرايب','Leribe','Leribe','12',121),(2029,'كاشاس نيك','Qachas Nek','Qachas Nek','17',121),(2030,'موكوتلونج','Mokhotlong','Mokhotlong','16',121),(2032,'بانيفزيو ابسكريتيس','Panevezio Apskritis','Panevezio Apskritis','60',122),(2033,'Telsiu Apskritis','Telsiu Apskritis','Telsiu Apskritis','63',122),(2034,'Klaipedos Apskritis','Klaipedos Apskritis','Klaipedos Apskritis','58',122),(2035,'Vilniaus Apskritis','Vilniaus Apskritis','Vilniaus Apskritis','65',122),(2036,'Siauliu Apskritis','Siauliu Apskritis','Siauliu Apskritis','61',122),(2037,'Taurages Apskritis','Taurages Apskritis','Taurages Apskritis','62',122),(2038,'Marijampoles Apskritis','Marijampoles Apskritis','Marijampoles Apskritis','59',122),(2040,'Utenos Apskritis','Utenos Apskritis','Utenos Apskritis','64',122),(2041,'عليتاوس ابسكريتيس','Alytaus Apskritis','Alytaus Apskritis','56',122),(2042,'كاونو ابسكريتيس','Kauno Apskritis','Kauno Apskrite','57',122),(2043,'لوكسمبورغ','Luxembourg','Luxembourg','03',123),(2044,'Grevenmacher','Grevenmacher','Grevenmacher','02',123),(2045,'Diekirch','Diekirch','Diekirch','01',123),(2046,'مادوناس','Madonas','Madonas','20',124),(2047,'كلديجاس','Kuldigas','Kuldigas','15',124),(2048,'داوجافبيلس','Daugavpils','Daugavpils','07',124),(2049,'تكما','Tukuma','Tukuma','29',124),(2050,'فنتسبيلز','Ventspils','Ventspils','33',124),(2051,'دوبيليز','Dobeles','Dobeles','08',124),(2052,'ليباجاس','Liepajas','Liepajas','17',124),(2053,'بالفو','Balvu','Balvu','03',124),(2054,'سالدوس','Saldus','Saldus','27',124),(2055,'باوسكا','Bauskas','Bauskas','04',124),(2056,'يمبازو','Limbazu','Limbazu','18',124),(2057,'لدزاس','Ludzas','Ludzas','19',124),(2058,'سيسو','Cesu','Cesu','05',124),(2059,'يكاب','Jekabpils','Jekabpils','10',124),(2060,'ألكسنيز','Aluksnes','Aluksnes','02',124),(2061,'ريزكنس','Rezeknes','Rezeknes','24',124),(2062,'ريغاس','Rigas','Rigas','26',124),(2063,'الغيلان','Ogres','Les ogres','21',124),(2064,'كراسلافاس','Kraslavas','Kraslavas','14',124),(2065,'جلبينيز','Gulbenes','Gulbènes','09',124),(2066,'ريغا','Riga','Riga','25',124),(2067,'بريلي','Preilu','Preilu','22',124),(2068,'أيزكروكليز','Aizkraukles','Aizkraukles','01',124),(2069,'تالسو','Talsu','Talsu','28',124),(2070,'جيلجافاس','Jelgavas','Jelgavas','12',124),(2071,'فالكاس','Valkas','Valkas','30',124),(2072,'فالميراس','Valmieras','Valmieras','31',124),(2073,'يابايا','Liepaja','Liepaja','16',124),(2074,'فنتسبيلز','Ventspils','Ventspils','32',124),(2075,'داوجافبيلس','Daugavpils','Daugavpils','06',124),(2076,'ريزكن','Rezekne','Rezekne','23',124),(2077,'يفرن','Yafran','Yafran','62',125),(2078,'طرابلس','Tarabulus','Tarabulus','61',125),(2079,'أحد فنادق الخمس','An Nuqat al Khams','Un nuqat al khams','51',125),(2080,'العزيزية','Al Aziziyah','Al Aziziyah','03',125),(2081,'الزاوية','Az Zawiyah','Az Zawiyah','53',125),(2082,'مصراتة','Misratah','Misratah','58',125),(2083,'غريان','Gharyan','Gharyan','57',125),(2084,'طبرق','Tubruq','Tubruq','42',125),(2085,'ترهونة','Tarhunah','Tarhunah','41',125),(2087,'الشطي','Ash Shati\'','Ash Shati \'','13',125),(2088,'اجدابيا','Ajdabiya','Ajdabiya','47',125),(2089,'مرزق','Murzuq','Murzuq','30',125),(2090,'الجبل الاخضر','Al Jabal al Akhdar','Al Jabal al Akhdar','49',125),(2093,'غدامس','Ghadamis','Ghadamis','56',125),(2096,'Awbari','Awbari','Awbari','52',125),(2097,'الخمص','Al Khums','Al Khums','50',125),(2099,'الكفرة','Al Kufrah','Al Kufrah','08',125),(2102,'الفاتح','Al Fatih','Al Fatih','48',125),(2103,'بنغازي','Banghazi','Banghazi','54',125),(2104,'زليتن','Zlitan','Zlitan','45',125),(2105,'الجفرة','Al Jufrah','Al Jufrah','05',125),(2108,'Sawfajjin','Sawfajjin','Sawfajjin','59',125),(2110,'درنة','Darnah','Darnah','55',125),(2111,'سبها','Sabha','Sabha','34',125),(2116,'سرت','Surt','Surt','60',125),(2166,'جاجوزيا','Gagauzia','Gagaouzie','51',128),(2175,'أنتاناناريفو','Antananarivo','Antananarivo','05',129),(2176,'ماهاجانغا','Mahajanga','Mahajanga','03',129),(2177,'توليارا','Toliara','Toliara','06',129),(2178,'فيانارانتسوا','Fianarantsoa','Fianarantsoa','02',129),(2179,'أنتسيرانانا','Antsiranana','Antsiranana','01',129),(2180,'تواماسينا','Toamasina','Toamasina','04',129),(2182,'بيتروفيتش','Petrovec','Petrovec','79',131),(2183,'بوجوفينيه','Bogovinje','Bogovinje','10',131),(2184,'وزوفو','Lozovo','Lozovo','60',131),(2185,'Rostusa','Rostusa','Rostusa','88',131),(2186,'ستارو ناجوريكان','Staro Nagoricane','Staro Nagoricane','97',131),(2187,'غيفيغليا','Gevgelija','Gevgelija','33',131),(2188,'Srbinovo','Srbinovo','Srbinovo','94',131),(2189,'أوراساك','Orasac','Orasac','75',131),(2190,'فالاندوفو','Valandovo','Valandovo','A8',131),(2191,'إيلندين','Ilinden','Ilinden','36',131),(2192,'أوهريد','Ohrid','Ohrid','74',131),(2193,'سفيتي نيكول','Sveti Nikole','Sveti Nikole','A4',131),(2194,'يبكوفو','Lipkovo','Lipkovo','59',131),(2195,'زيتوسي','Zitose','Zitose','C4',131),(2196,'ستدينيكاني','Studenicani','Studenicani','A2',131),(2197,'كريفوغاستاني','Krivogastani','Krivogastani','53',131),(2198,'رادوفيس','Radovis','Radovis','84',131),(2199,'Dobrusevo','Dobrusevo','Dobrusevo','26',131),(2200,'رانكوفس','Rankovce','Rankovce','85',131),(2201,'Topolcani','Topolcani','Topolcani','A7',131),(2202,'كريفا بالانكا','Kriva Palanka','Kriva Palanka','52',131),(2203,'زاجاس','Zajas','Zajas','C1',131),(2204,'فيتوليستي','Vitoliste','Vitoliste','B5',131),(2205,'حرم','Debar','Interdire','21',131),(2206,'بوزيلوفو','Bosilovo','Bosilovo','11',131),(2207,'Dzepciste','Dzepciste','Dzepciste','31',131),(2208,'فاسيليفو','Vasilevo','Vasilevo','A9',131),(2209,'ستار دوجران','Star Dojran','Star Dojran','96',131),(2210,'السراج','Saraj','Saraj','90',131),(2211,'آراسينوفو','Aracinovo','Aracinovo','01',131),(2212,'أوسلوميج','Oslomej','Oslomej','77',131),(2213,'Miravci','Miravci','Miravci','66',131),(2214,'بيلسيستا','Belcista','Belcista','03',131),(2215,'كاربينكي','Karbinci','Karbinci','40',131),(2216,'كروسيفو','Krusevo','Krusevo','54',131),(2217,'Kondovo','Kondovo','Kondovo','48',131),(2218,'رسن','Resen','Resen','86',131),(2219,'Lukovo','Lukovo','Lukovo','61',131),(2220,'فرانيستيكا','Vranestica','Vranestica','B6',131),(2221,'نيغوتينو-Polosko','Negotino-Polosko','Negotino-Polosko','70',131),(2222,'ستيب','Stip','Stip','98',131),(2223,'Sopotnica','Sopotnica','Sopotnica','93',131),(2224,'أوريزاري','Orizari','Orizari','76',131),(2225,'فيليس','Veles','Veles','B1',131),(2226,'البكالوريا','Bac','Bac','02',131),(2227,'زيلينيكوفو','Zelenikovo','Zelenikovo','C2',131),(2228,'نوفو سيلو','Novo Selo','Novo Selo','72',131),(2229,'ستروميكا','Strumica','Strumica','A1',131),(2230,'مافروفي أنوفي','Mavrovi Anovi','Mavrovi Anovi','64',131),(2231,'نوفا سي','Novaci','Novaci','71',131),(2232,'غوستيفار','Gostivar','Gostivar','34',131),(2233,'كسير-سانديفو','Cucer-Sandevo','Cucer-Sandevo','20',131),(2234,'ديمير كابيجا','Demir Kapija','Demir Kapija','25',131),(2235,'أولسيفو','Oblesevo','Oblesevo','73',131),(2236,'كاسكا','Caska','Caska','15',131),(2237,'Murtino','Murtino','Murtino','68',131),(2238,'دمير حصار','Demir Hisar','Demir Hisar','24',131),(2239,'Probistip','Probistip','Probistip','83',131),(2240,'Makedonski برود','Makedonski Brod','Makedonski Brod','63',131),(2241,'كاربوس','Karpos','Karpos','41',131),(2242,'بسترتشا','Bistrica','Bistrica','05',131),(2243,'سوبيست','Sopiste','Sopiste','92',131),(2244,'كومانوفو','Kumanovo','Kumanovo','57',131),(2245,'كافادارشي','Kavadarci','Kavadarci','42',131),(2246,'بريليب','Prilep','Prilep','82',131),(2247,'كوكاني','Kocani','Kocani','46',131),(2248,'ساموكوف','Samokov','Samokov','89',131),(2249,'Klecevce','Klecevce','Klecevce','45',131),(2250,'دولنيني','Dolneni','Dolneni','28',131),(2251,'دولنا بانجيكا','Dolna Banjica','Dolna Banjica','27',131),(2252,'فراتنيكا','Vratnica','Vratnica','B8',131),(2253,'موغيلا','Mogila','Mogila','67',131),(2254,'بيروفو','Berovo','Berovo','04',131),(2255,'بريفينيكا','Brvenica','Brvenica','12',131),(2256,'Makedonska Kamenica','Makedonska Kamenica','Makedonska Kamenica','62',131),(2257,'Sipkovica','Sipkovica','Sipkovica','91',131),(2258,'ديلوغوجدي','Delogozdi','Delogozdi','23',131),(2259,'ديلسيفو','Delcevo','Delcevo','22',131),(2260,'فينيكا','Vinica','Vinica','B4',131),(2261,'بوغوميلا','Bogomila','Bogomila','09',131),(2262,'بيتولا','Bitola','Bitola','06',131),(2263,'Blatec','Blatec','Blatec','07',131),(2264,'Cegrane','Cegrane','Cegrane','16',131),(2265,'كراتوفو','Kratovo','Kratovo','51',131),(2266,'بوجدانسي','Bogdanci','Bogdanci','08',131),(2267,'Konopiste','Konopiste','Konopiste','49',131),(2268,'زلينو','Zelino','Zelino','C3',131),(2269,'Labunista','Labunista','Labunista','58',131),(2270,'سوتو اوريزاري','Suto Orizari','Suto Orizari','A3',131),(2271,'تيرس','Tearce','Tearce','A5',131),(2272,'فروتوك','Vrutok','Vrutok','B9',131),(2273,'Staravina','Staravina','Staravina','95',131),(2274,'نيغوتينو','Negotino','Negotino','69',131),(2275,'درجوفو','Drugovo','Drugovo','30',131),(2276,'زليتوفو','Zletovo','Zletovo','C5',131),(2277,'بيسيفو','Pehcevo','Pehcevo','78',131),(2278,'سيسينوفو','Cesinovo','Cesinovo','19',131),(2279,'Capari','Capari','Capari','14',131),(2280,'Kukurecani','Kukurecani','Kukurecani','56',131),(2281,'فراب سيست','Vrapciste','Vrapciste','B7',131),(2282,'روسومان','Rosoman','Rosoman','87',131),(2283,'Velesta','Velesta','Velesta','B2',131),(2284,'كونس','Konce','Konce','47',131),(2285,'جرادسكو','Gradsko','Gradsko','35',131),(2286,'Kosel','Kosel','Kosel','50',131),(2287,'كيسيلا فودا','Kisela Voda','Kisela Voda','44',131),(2288,'جيجنوفسي','Jegunovce','Jegunovce','38',131),(2289,'بلاسنيكا','Plasnica','Plasnica','80',131),(2290,'Kamenjane','Kamenjane','Kamenjane','39',131),(2291,'في Izvor','Izvor','Izvor','37',131),(2292,'ستروغا','Struga','Struga','99',131),(2293,'Podares','Podares','Podares','81',131),(2294,'تيتوفو','Tetovo','Tetovo','A6',131),(2295,'Meseista','Meseista','Meseista','65',131),(2296,'فيفكاني','Vevcani','Vevcani','B3',131),(2297,'زرنوف سي','Zrnovci','Zrnovci','C6',131),(2298,'كيشيفو','Kicevo','Kicevo','43',131),(2299,'Kuklis','Kuklis','Kuklis','55',131),(2300,'كوليكورو','Koulikoro','Koulikoro','07',132),(2301,'موبتي','Mopti','Mopti','04',132),(2302,'كايس','Kayes','Kayes','03',132),(2305,'تمبكتو','Tombouctou','Tombouctou','08',132),(2306,'سيجو','Segou','Ségou','05',132),(2307,'سيكاسو','Sikasso','Sikasso','06',132),(2308,'باماكو','Bamako','Bamako','01',132),(2309,'قاو','Gao','Gao','09',132),(2310,'كيدال','Kidal','Kidal','10',132),(2311,'بيغو','Pegu','Pegu','09',133),(2312,'دولة مون','Mon State','Mon Etat','13',133),(2313,'ولاية كاشين','Kachin State','Etat Kachin','04',133),(2314,'ولاية راخين','Rakhine State','Etat Rakhine','01',133),(2315,'يانجون','Yangon','Yangon','17',133),(2316,'إيراوادي','Irrawaddy','Irrawaddy','03',133),(2317,'تيناسيريم','Tenasserim','Tenasserim','12',133),(2318,'ولاية كاران','Karan State','Etat Karan','05',133),(2319,'ساغانغ','Sagaing','Sagaing','10',133),(2320,'ماغوي','Magwe','Magwe','07',133),(2321,'ولاية تشين','Chin State','Etat Chin','02',133),(2322,'ولاية شان','Shan State','Etat Shan','11',133),(2323,'ماندالاي','Mandalay','Mandalay','08',133),(2326,'ولاية كاياه','Kayah State','État Kayah','06',133),(2328,'دورنوغوفي','Dornogovi','Dornogovi','07',134),(2329,'أومنجوفي','Omnogovi','Omnogovi','14',134),(2330,'دوندغوفي','Dundgovi','Dundgovi','08',134),(2331,'دزافهان','Dzavhan','Dzavhan','09',134),(2332,'توف','Tov','Tov','18',134),(2333,'ساهباتار','Suhbaatar','Suhbaatar','17',134),(2334,'بلغان','Bulgan','Bulgan','21',134),(2335,'آرهانجاي','Arhangay','Arhangay','01',134),(2336,'Govisumber','Govisumber','Govisumber','24',134),(2337,'هينتي','Hentiy','Hentiy','11',134),(2338,'بيان-أولجي','Bayan-Olgiy','Bayan-Olgiy','03',134),(2339,'دورنود','Dornod','Dornod','06',134),(2340,'هوفزجول','Hovsgol','Hovsgol','13',134),(2341,'غوفي ألتاي','Govi-Altay','Govi-Altay','10',134),(2342,'هوود','Hovd','Hovd','12',134),(2343,'سيلينجي','Selenge','Selenge','16',134),(2344,'بيانهونجور','Bayanhongor','Bayanhongor','02',134),(2345,'أولان باتور','Ulaanbaatar','Oulan-Bator','20',134),(2346,'أوفورهانجاي','Ovorhangay','Ovorhangay','15',134),(2347,'أوفس','Uvs','Uvs','19',134),(2348,'Darhan-Uul','Darhan-Uul','Darhan-Uul','23',134),(2349,'أورهون','Orhon','Orhon','25',134),(2350,'Ilhas','Ilhas','Ilhas','01',135),(2363,'براكنة','Brakna','Brakna','05',138),(2364,'هده الشوقي','Hodh Ech Chargui','Hodh Ech Chargui','01',138),(2365,'غورغول','Gorgol','Gorgol','04',138),(2366,'العصابة','Assaba','Assaba','03',138),(2367,'جواديماكا','Guidimaka','Guidimaka','10',138),(2368,'أدرار','Adrar','Adrar','07',138),(2369,'حوده الغربي','Hodh El Gharbi','Hodh El Gharbi','02',138),(2370,'تيرس زمور','Tiris Zemmour','Tiris Zemmour','11',138),(2371,'إنشيري','Inchiri','Inchiri','12',138),(2372,'ترارزة','Trarza','Trarza','06',138),(2373,'داخلة نواذيبو','Dakhlet Nouadhibou','Dakhlet Nouadhibou','08',138),(2375,'تاغانت','Tagant','Tagant','09',138),(2376,'سانت أنتوني','Saint Anthony','Saint Anthony','01',139),(2377,'القديس بطرس','Saint Peter','Saint Pierre','03',139),(2378,'سانت جورج','Saint Georges','Saint georges','02',139),(2380,'بورت لويس','Port Louis','Port Louis','18',141),(2381,'النهر الاسود','Black River','Rivière Noire','12',141),(2382,'موكا','Moka','Moka','15',141),(2383,'ريفير دو ريمبارت','Riviere du Rempart','Rivière du Rempart','19',141),(2384,'بامبليماوسيس','Pamplemousses','Pamplemousses','16',141),(2385,'رودريغز','Rodrigues','Rodrigues','23',141),(2386,'جراند بورت','Grand Port','Grand Port','14',141),(2387,'فلاك','Flacq','Flacq','13',141),(2388,'بلينز ويلهيمز','Plaines Wilhems','Plaines Wilhems','17',141),(2389,'سافان','Savanne','Savanne','20',141),(2392,'سينو','Seenu','Seenu','01',142),(2393,'معاليه','Maale','Maale','40',142),(2394,'نكوتاكوتا','Nkhotakota','Nkhotakota','18',143),(2395,'رومبي','Rumphi','Rumphi','21',143),(2396,'مزيمبا','Mzimba','Mzimba','15',143),(2397,'ليلونغوي','Lilongwe','Lilongwe','11',143),(2398,'نتشيسي','Ntchisi','Ntchisi','20',143),(2399,'سليمة','Salima','Salima','22',143),(2400,'مشينجي','Mchinji','Mchinji','13',143),(2401,'شيتيبا','Chitipa','Chitipa','04',143),(2402,'نتشيو','Ntcheu','Ntcheu','16',143),(2403,'الدوا','Dowa','Dowa','07',143),(2404,'كاسونغو','Kasungu','Kasungu','09',143),(2405,'زومبا','Zomba','Zomba','23',143),(2406,'نسانجي','Nsanje','Nsanje','19',143),(2407,'شيكواوا','Chikwawa','Chikwawa','02',143),(2408,'ثيولو','Thyolo','Thyolo','05',143),(2409,'ديدزا','Dedza','Dedza','06',143),(2410,'بالاكا','Balaka','Balaka','26',143),(2411,'مانغوتشي','Mangochi','Mangochi','12',143),(2412,'مشاينجا','Machinga','Machinga','28',143),(2413,'خليج نخاتا','Nkhata Bay','Nkhata Bay','17',143),(2414,'تشيرادزولو','Chiradzulu','Chiradzulu','03',143),(2415,'بلانتير','Blantyre','Blantyre','24',143),(2416,'كارونجا','Karonga','Karonga','08',143),(2417,'بالومبي','Phalombe','Phalombe','30',143),(2418,'موانزا','Mwanza','Mwanza','25',143),(2419,'مولانجي','Mulanje','Mulanje','29',143),(2420,'ميتشواكان دي أوكامبو','Michoacan de Ocampo','Michoacan de Ocampo','16',144),(2421,'تشيهواهوا','Chihuahua','Chihuahua','06',144),(2422,'فيراكروز-افى','Veracruz-Llave','Veracruz-Llave','30',144),(2423,'يوكاتان','Yucatan','Yucatan','31',144),(2424,'كوينتانا رو','Quintana Roo','Quintana Roo','23',144),(2425,'سونورا','Sonora','Sonora','26',144),(2426,'تلاكسكالا','Tlaxcala','Tlaxcala','29',144),(2427,'تشياباس','Chiapas','Chiapas','05',144),(2428,'كواهويلا دي سرقسطة','Coahuila de Zaragoza','Coahuila de Zaragoza','07',144),(2429,'دورانجو','Durango','Durango','10',144),(2430,'غواناخواتو','Guanajuato','Guanajuato','11',144),(2431,'نويفو ليون','Nuevo Leon','Nuevo Leon','19',144),(2432,'أواكساكا','Oaxaca','Oaxaca','20',144),(2433,'تاباسكو','Tabasco','Tabasco','27',144),(2434,'تاماوليباس','Tamaulipas','Tamaulipas','28',144),(2435,'غيريرو','Guerrero','Guerrero','12',144),(2436,'باجا كاليفورنيا','Baja California','Baja California','02',144),(2437,'كامبيتشي','Campeche','Campeche','04',144),(2438,'ناياريت','Nayarit','Nayarit','18',144),(2439,'بويبلا','Puebla','Puebla','21',144),(2440,'سينالوا','Sinaloa','Sinaloa','25',144),(2441,'اغواسكالينتيس','Aguascalientes','Aguascalientes','01',144),(2442,'سان لويس بوتوسي','San Luis Potosi','San Luis Potosi','24',144),(2443,'زاكاتيكاس','Zacatecas','Zacatecas','32',144),(2444,'المكسيك','Mexico','Mexique','15',144),(2445,'خاليسكو','Jalisco','Jalisco','14',144),(2446,'الهيدلج من نبلاء الأسبان','Hidalgo','Hidalgo','13',144),(2447,'موريلوس','Morelos','Morelos','17',144),(2448,'كوليما','Colima','Colima','08',144),(2449,'كويريتارو دي أرتياغا','Queretaro de Arteaga','Queretaro de Arteaga','22',144),(2450,'باجا كاليفورنيا سور','Baja California Sur','Baja California Sur','03',144),(2451,'وفي مقاطعة الاتحادية','Distrito Federal','Distrito Federal','09',144),(2452,'ساراواك','Sarawak','Sarawak','11',145),(2453,'صباح','Sabah','Sabah','16',145),(2454,'ملقا','Melaka','Melaka','04',145),(2455,'برليس','Perlis','Perlis','08',145),(2456,'نيجري سيمبيلان','Negeri Sembilan','Negeri Sembilan','05',145),(2457,'كيدا','Kedah','Kedah','02',145),(2458,'جوهور','Johor','Johor','01',145),(2459,'بيراك','Perak','Perak','07',145),(2460,'بولاو بينانج','Pulau Pinang','Pulau Pinang','09',145),(2461,'تيرينجانو','Terengganu','Terengganu','13',145),(2462,'كيلانتان','Kelantan','Kelantan','03',145),(2463,'باهانج','Pahang','Pahang','06',145),(2464,'كوالا لامبور','Kuala Lumpur','Kuala Lumpur','14',145),(2465,'سيلانغور','Selangor','Selangor','12',145),(2466,'لابوان','Labuan','Labuan','15',145),(2467,'مابوتو','Maputo','Maputo','04',146),(2468,'نامبولا','Nampula','Nampula','06',146),(2469,'زامبيزيا','Zambezia','Zambezia','09',146),(2470,'نياسا','Niassa','Niassa','07',146),(2471,'كابو دلغادو','Cabo Delgado','Cabo Delgado','01',146),(2472,'غزة','Gaza','Gaza','02',146),(2473,'إنهامبان','Inhambane','Inhambane','03',146),(2474,'مانيكا','Manica','Manica','10',146),(2475,'تيتي','Tete','Tete','08',146),(2476,'سوفالا','Sofala','Sofala','05',146),(2478,'هارداب','Hardap','Hardap','30',147),(2479,'أوتجوزوندتوبا','Otjozondjupa','Otjozondjupa','39',147),(2481,'كاراس','Karas','Karas','31',147),(2482,'أوموساتي','Omusati','Omusati','36',147),(2483,'أوشانا','Oshana','Oshana','37',147),(2484,'كونين','Kunene','Kunene','32',147),(2485,'إيرونغو','Erongo','Erongo','29',147),(2486,'أوشيكوتو','Oshikoto','Oshikoto','38',147),(2487,'أوماهيكي','Omaheke','Omaheke','35',147),(2488,'كابريفي','Caprivi','Caprivi','28',147),(2489,'أوكافانغو','Okavango','Okavango','34',147),(2490,'أوهانغوينا','Ohangwena','Ohangwena','33',147),(2491,'ويندهوك','Windhoek','Windhoek','21',147),(2493,'نيامي','Niamey','Niamey','05',149),(2494,'ديفا','Diffa','Diffa','02',149),(2496,'تاهوا','Tahoua','Tahoua','06',149),(2497,'أغاديز','Agadez','Agadez','01',149),(2498,'زيندر','Zinder','Zinder','07',149),(2499,'دوسو','Dosso','Dosso','03',149),(2500,'مرادي','Maradi','Maradi','04',149),(2501,'نيامي','Niamey','Niamey','08',149),(2504,'بينو','Benue','Benue','26',151),(2505,'ناساراوا','Nassarawa','Nassarawa','56',151),(2506,'كادونا','Kaduna','Kaduna','23',151),(2507,'أويو','Oyo','Oyo','32',151),(2508,'أداماوا','Adamawa','Adamawa','35',151),(2509,'أوسان','Osun','Osun','42',151),(2510,'بورنو','Borno','Borno','27',151),(2511,'بوتشي','Bauchi','Bauchi','46',151),(2513,'أوجون','Ogun','Ogun','16',151),(2514,'انامبرا','Anambra','Anambra','25',151),(2515,'يوبي','Yobe','Être','44',151),(2516,'لاغوس','Lagos','Lagos','05',151),(2517,'دلتا','Delta','Delta','36',151),(2518,'إينوغو','Enugu','Enugu','47',151),(2519,'إقليم العاصمة الفيدرالية','Federal Capital Territory','Territoire de la capitale fédérale','11',151),(2520,'كوجى','Kogi','Kogi','41',151),(2521,'تارابا','Taraba','Taraba','43',151),(2522,'أكوا إيبوم','Akwa Ibom','Akwa Ibom','21',151),(2523,'إيبوني','Ebonyi','Ebonyi','53',151),(2525,'المنظمة البحرية الدولية','Imo','Imo','28',151),(2526,'جيغاوا','Jigawa','Jigawa','39',151),(2528,'كوارا','Kwara','Kwara','30',151),(2529,'أبيا','Abia','Abia','45',151),(2530,'غومبي','Gombe','Gombe','55',151),(2531,'عبر نهر','Cross River','Cross River','22',151),(2532,'كاتسينا','Katsina','Katsina','24',151),(2533,'سوكوتو','Sokoto','Sokoto','51',151),(2534,'النيجر','Niger','Niger','31',151),(2535,'زامفارا','Zamfara','Zamfara','57',151),(2536,'ايدو','Edo','Edo','37',151),(2538,'كانو','Kano','Kano','29',151),(2539,'كيبي','Kebbi','Kebbi','40',151),(2540,'إكيتي','Ekiti','Ekiti','54',151),(2541,'بايلسا','Bayelsa','Bayelsa','52',151),(2542,'هضبة','Plateau','Plateau','49',151),(2543,'أوندو','Ondo','Ondo','48',151),(2544,'الأنهار','Rivers','Rivières','50',151),(2547,'ليون','Leon','Leon','08',152),(2548,'شونتالز','Chontales','Chontales','04',152),(2549,'ماناغوا','Managua','Managua','10',152),(2550,'أوتومونا أتلانتيكو نورتي','Autonoma Atlantico Norte','Autonoma Atlantico Norte','17',152),(2551,'غرناطة','Granada','Grenade','06',152),(2552,'ماتاغلبا','Matagalpa','Matagalpa','12',152),(2553,'بواكو','Boaco','Boaco','01',152),(2554,'كارازو','Carazo','Carazo','02',152),(2555,'تشينانديغا','Chinandega','Chinandega','03',152),(2556,'ريو سان خوان','Rio San Juan','Rio San Juan','14',152),(2557,'ريفاس','Rivas','Rivas','15',152),(2558,'مسايا','Masaya','Masaya','11',152),(2559,'خينوتيغا','Jinotega','Jinotega','07',152),(2560,'نويفا سيجوفيا','Nueva Segovia','Nueva Segovia','13',152),(2561,'منطقة الاستقلال الذاتي اتلانتيكو سور','Region Autonoma Atlantico Sur','Région Autonoma Atlantico Sur','18',152),(2562,'مادريز','Madriz','Madriz','09',152),(2563,'إستيلي','Esteli','Esteli','05',152),(2564,'درينثي','Drenthe','Drenthe','01',153),(2565,'زويد-هولندا','Zuid-Holland','Zuid-Holland','11',153),(2566,'أوفيريجسيل','Overijssel','Overijssel','15',153),(2567,'نورد هولاند','Noord-Holland','Noord-Holland','07',153),(2568,'زيلاند','Zeeland','Zélande','10',153),(2569,'ليمبورغ','Limburg','Limbourg','05',153),(2570,'نورد برابانت','Noord-Brabant','Noord-Brabant','06',153),(2571,'جيلديرلاند','Gelderland','Gueldre','03',153),(2572,'فريسلاند','Friesland','Frise','02',153),(2573,'جرونينجن','Groningen','Groningue','04',153),(2574,'أوتريخت','Utrecht','Utrecht','09',153),(2575,'فليفولاند','Flevoland','Flevoland','16',153),(2576,'نوردلاند','Nordland','Nordland','09',154),(2577,'تروندلاج','Sor-Trondelag','Sor-Trondelag','16',154),(2578,'ترومس','Troms','Troms','18',154),(2579,'فيستفولد','Vestfold','Vestfold','20',154),(2580,'هدمارك','Hedmark','Hedmark','06',154),(2581,'هوردالاند','Hordaland','Hordaland','07',154),(2582,'سترة-أغدر','Vest-Agder','Vest-Agder','19',154),(2583,'أكثر أوج رومسدال','More og Romsdal','Plus de Romsdal','08',154),(2584,'تيليمارك','Telemark','Télémark','17',154),(2585,'بوسكيرود','Buskerud','Buskerud','04',154),(2586,'روغالاند','Rogaland','Rogaland','14',154),(2587,'أوست-أغدر','Aust-Agder','Aust-Agder','02',154),(2588,'أوبلاند','Oppland','Oppland','11',154),(2589,'سوغن أوغ فيوردان','Sogn og Fjordane','Sogn og Fjordane','15',154),(2590,'آكيرشوس','Akershus','Akershus','01',154),(2591,'نور-ترونديلاغ','Nord-Trondelag','Nord-Trondelag','10',154),(2592,'أوستفولد','Ostfold','Ostfold','13',154),(2593,'فينمارك','Finnmark','Finnmark','05',154),(2594,'أوسلو','Oslo','Oslo','12',154),(2598,'ولينغتون','Wellington','Wellington','G2',158),(2599,'الساحل الغربي','West Coast','Côte ouest','G3',158),(2600,'كانتربري','Canterbury','Canterbury','E9',158),(2601,'أوتاجو','Otago','Otago','F7',158),(2602,'أوكلاند','Auckland','Auckland','E7',158),(2603,'جيسبورن','Gisborne','Gisborne','F1',158),(2604,'خليج هوكس','Hawke\'s Bay','Hawke\'s Bay','F2',158),(2605,'تاراناكي','Taranaki','Taranaki','F9',158),(2606,'مارلبورو','Marlborough','Marlborough','F4',158),(2607,'نيلسون','Nelson','Nelson','F5',158),(2608,'وايكاتو','Waikato','Waikato','G1',158),(2609,'ساوثلاند','Southland','Southland','F8',158),(2611,'خليج بلنتي','Bay of Plenty','Bay of Plenty','E8',158),(2613,'ماناواتو-وانجانوي','Manawatu-Wanganui','Manawatu-Wanganui','F3',158),(2614,'الباطنة','Al Batinah','Al Batinah','02',159),(2615,'الزاهرة','Az Zahirah','Az Zahirah','05',159),(2616,'الشرقية','Ash Sharqiyah','Ash Sharqiyah','04',159),(2617,'مسقط','Masqat','Masqat','06',159),(2618,'مسندم','Musandam','Musandam','07',159),(2619,'ظفار','Zufar','Zufar','08',159),(2621,'لوس سانتوس','Los Santos','Los Santos','07',160),(2622,'دارين','Darien','Darien','05',160),(2623,'شيريكي','Chiriqui','Chiriqui','02',160),(2624,'القولون','Colon','Côlon','04',160),(2625,'فيراغواس','Veraguas','Veraguas','10',160),(2626,'سان بلاس','San Blas','San Blas','09',160),(2627,'بوكاس ديل تورو','Bocas del Toro','Bocas del Toro','01',160),(2628,'هيريرا','Herrera','Herrera','06',160),(2629,'بناما','Panama','Panama','08',160),(2630,'كوكلي','Cocle','Cocle','03',160),(2631,'انكاش','Ancash','Ancash','02',161),(2632,'ابوريماك','Apurimac','Apurimac','03',161),(2633,'أريكويبا','Arequipa','Arequipa','04',161),(2634,'إيكا','Ica','I CA','11',161),(2635,'كوسكو','Cusco','Cusco','08',161),(2636,'امبايكي','Lambayeque','Lambayeque','14',161),(2637,'أوكايالي','Ucayali','Ucayali','25',161),(2638,'لا ليبرتاد','La Libertad','La Libertad','13',161),(2639,'اياكوتشو','Ayacucho','Ayacucho','05',161),(2640,'ليما','Lima','Lima','15',161),(2641,'بونو','Puno','Puno','21',161),(2642,'جونين','Junin','Junin','12',161),(2643,'أديس أبابا','Tumbes','Tumbes','24',161),(2644,'تاكنا','Tacna','Tacna','23',161),(2645,'كاخاماركا','Cajamarca','Cajamarca','06',161),(2646,'هوانكافليكا','Huancavelica','Huancavelica','09',161),(2647,'موكيجوا','Moquegua','Moquegua','18',161),(2648,'أمازوناس','Amazonas','Amazonas','01',161),(2649,'هوانوكو','Huanuco','Huanuco','10',161),(2650,'سان مارتن','San Martin','San Martin','22',161),(2651,'بيورا','Piura','Piura','20',161),(2652,'لوريتو','Loreto','Loreto','16',161),(2653,'باسكو','Pasco','Pasco','19',161),(2654,'مادري دي ديوس','Madre de Dios','Madre de Dios','17',161),(2655,'كالاو','Callao','Callao','07',161),(2657,'المرتفعات الشرقية','Eastern Highlands','Eastern Highlands','09',163),(2658,'مادانغ','Madang','Madang','12',163),(2659,'خليج ميلن','Milne Bay','Milne Bay','03',163),(2660,'الغربي','Western','Occidental','06',163),(2661,'وسط','Central','Central','01',163),(2662,'ساندون','Sandaun','Sandaun','18',163),(2663,'شرق سيبيك','East Sepik','Sepik Est','11',163),(2664,'غرب بريطانيا الجديدة','West New Britain','West New Britain','17',163),(2665,'المرتفعات الجنوبية','Southern Highlands','Southern Highlands','05',163),(2666,'شمالي','Northern','Nord','04',163),(2667,'خليج','Gulf','Golfe','02',163),(2668,'المرتفعات الغربية','Western Highlands','Western Highlands','16',163),(2669,'موروبى','Morobe','Morobe','14',163),(2670,'شيمبو','Chimbu','Chimbu','08',163),(2671,'شرق بريطانيا الجديدة','East New Britain','East New Britain','10',163),(2672,'شمال سولومونز','North Solomons','Solomons du Nord','07',163),(2673,'انجا','Enga','Enga','19',163),(2674,'اليد','Manus','Manus','13',163),(2675,'أيرلندا الجديدة','New Ireland','Nouvelle Irlande','15',163),(2676,'رأس المال الوطني','National Capital','Capitale nationale','20',163),(2677,'بانجاسينان','Pangasinan','Pangasinan','51',164),(2678,'سيبو','Cebu','Cebu','21',164),(2679,'سمر','Samar','Samar','55',164),(2680,'كامارينز سور','Camarines Sur','Camarines Sur','16',164),(2681,'لويلو','Iloilo','Iloilo','30',164),(2682,'ايلوكوس نورتي','Ilocos Norte','Ilocos Norte','28',164),(2683,'أثر قديم','Antique','Antique','06',164),(2684,'بوهول','Bohol','Bohol','11',164),(2685,'كاجايان','Cagayan','Cagayan','14',164),(2686,'سمر الشرقية','Eastern Samar','Samar oriental','23',164),(2687,'دافاو','Davao','Davao','24',164),(2688,'يتي','Leyte','Leyte','37',164),(2689,'ماسبات','Masbate','Masbate','39',164),(2690,'نيجروس اوكسيدنتال','Negros Occidental','Negros Occidental','45',164),(2691,'نويفا فيزكايا','Nueva Vizcaya','Nueva Vizcaya','48',164),(2692,'رومبلون','Romblon','Romblon','54',164),(2693,'جنوب كوتاباتو','South Cotabato','Cotabato Sud','70',164),(2694,'ايلوكوس سور','Ilocos Sur','Ilocos Sur','29',164),(2695,'كويزون','Quezon','Quezon','H2',164),(2696,'لاناو ديل نورتي','Lanao del Norte','Lanao del Norte','34',164),(2697,'شمال كوتاباتو','North Cotabato','Cotabato Nord','57',164),(2698,'سوريجاو ديل سور','Surigao del Sur','Surigao del Sur','62',164),(2699,'اليجان','Iligan','Iligan','C8',164),(2700,'جنوب ليتي','Southern Leyte','Southern Leyte','59',164),(2701,'تارلاك','Tarlac','Tarlac','63',164),(2702,'بوكيدنون','Bukidnon','Bukidnon','12',164),(2703,'ميندورو اوكسيدنتال','Mindoro Occidental','Mindoro Occidental','40',164),(2704,'بالاوان','Palawan','Palawan','49',164),(2705,'العبرة','Abra','Abra','01',164),(2706,'بولاكان','Bulacan','Bulacan','13',164),(2707,'كابيز','Capiz','Capiz','18',164),(2708,'Nueva Ecija','Nueva Ecija','Nueva Ecija','47',164),(2709,'سورسوجون','Sorsogon','Sorsogon','58',164),(2710,'بينجويت','Benguet','Benguet','10',164),(2711,'شمال سمر','Northern Samar','Samar du Nord','67',164),(2712,'كويرينو','Quirino','Quirino','68',164),(2713,'ايزابيلا','Isabela','Isabela','31',164),(2714,'كالينجا-أباياو','Kalinga-Apayao','Kalinga-Apayao','32',164),(2715,'جبل','Mountain','Montagne','44',164),(2716,'الباي','Albay','Albay','05',164),(2717,'باتانجاس','Batangas','Batangas','09',164),(2718,'كاتاندونيز','Catanduanes','Catanduanes','19',164),(2719,'نيجروس أورينتال','Negros Oriental','Negros Oriental','46',164),(2720,'إيفوغاو','Ifugao','Ifugao','27',164),(2721,'ميساميس اورينتال','Misamis Oriental','Misamis Oriental','43',164),(2722,'لاغونا','Laguna','Laguna','33',164),(2723,'زامبوانجا ديل سور','Zamboanga del Sur','Zamboanga del Sur','66',164),(2724,'كاميجوين','Camiguin','Camiguin','17',164),(2725,'نيجروس اوكسيدنتال','Negros Occidental','Negros Occidental','H3',164),(2726,'باتان','Bataan','Bataan','07',164),(2727,'لاناو ديل سور','Lanao del Sur','Lanao del Sur','35',164),(2728,'باسيلان','Basilan','Basilan','22',164),(2729,'لا يونيون','La Union','La union','36',164),(2730,'كامارينز نورتي','Camarines Norte','Camarines Norte','15',164),(2731,'كالوكان','Caloocan','Caloocan','B4',164),(2732,'يغاسبي','Legaspi','Legaspi','D5',164),(2733,'من Calbayog','Calbayog','Calbayog','B3',164),(2734,'أغوسان ديل نورتي','Agusan del Norte','Agusan del Norte','02',164),(2735,'بامبانجا','Pampanga','Pampanga','50',164),(2736,'ميندورو الشرقية','Mindoro Oriental','Mindoro Oriental','41',164),(2738,'سولو','Sulu','Sulu','60',164),(2739,'مدينة سيبو','Cebu City','Cebu City','B7',164),(2740,'روكساس','Roxas','Roxas','F3',164),(2741,'ميساميس اوكسيدنتال','Misamis Occidental','Misamis Occidental','42',164),(2742,'اكلان','Aklan','Aklan','04',164),(2743,'ماجوينداناو','Maguindanao','Maguindanao','56',164),(2744,'دوماغويتي','Dumaguete','Dumaguete','C5',164),(2745,'سوريجاو ديل نورتي','Surigao del Norte','Surigao del Norte','61',164),(2746,'اورموك','Ormoc','Ormoc','E4',164),(2747,'دافاو ديل سور','Davao del Sur','Davao del Sur','25',164),(2748,'زامباليس','Zambales','Zambales','64',164),(2749,'أغوسان ديل سور','Agusan del Sur','Agusan del Sur','03',164),(2751,'لابو لابو لابو','Lapu-Lapu','Lapu-Lapu','D4',164),(2752,'ماريندوك','Marinduque','Marinduque','38',164),(2753,'ريزال','Rizal','Rizal','53',164),(2754,'بوتوان','Butuan','Butuan','A8',164),(2755,'كاجايان دي أورو','Cagayan de Oro','Cagayan de Oro','B2',164),(2756,'باساي','Pasay','Pasay','E9',164),(2757,'سلطان كودارات','Sultan Kudarat','Sultan Kudarat','71',164),(2758,'مدينة دافاو','Davao City','la ville de Davao','C3',164),(2759,'كافيت','Cavite','Cavite','20',164),(2760,'مدينة ايلويلو','Iloilo City','Iloilo City','C9',164),(2761,'سيالي','Silay','Silay','F8',164),(2762,'باجاديان','Pagadian','Pagadian','E7',164),(2763,'تريسي مارتيرز','Trece Martires','Trece Martires','G6',164),(2764,'مدينة كويزون','Quezon City','ville de Quezon','F2',164),(2765,'سيكويجور','Siquijor','Siquijor','69',164),(2766,'كوتاباتو','Cotabato','Cotabato','B8',164),(2767,'لوس','Angeles','Angeles','A1',164),(2768,'توليدو','Toledo','Toledo','G5',164),(2769,'سان كارلوس','San Carlos','San Carlos','F4',164),(2770,'ليبا','Lipa','Lipa','D6',164),(2771,'دافاو اورينتال','Davao Oriental','Davao Oriental','26',164),(2772,'تاكلوبان','Tacloban','Tacloban','G1',164),(2773,'من Tawitawi','Tawitawi','Tawitawi','72',164),(2775,'Zamboanga del Norte','Zamboanga del Norte','Zamboanga del Norte','65',164),(2776,'زامبوانغا','Zamboanga','Zamboanga','G7',164),(2777,'باكولود','Bacolod','Bacolod','A2',164),(2778,'مراوي','Marawi','Marawi','E1',164),(2779,'فجر','Aurora','Aurore','G8',164),(2780,'من Ozamis','Ozamis','Ozamis','E6',164),(2781,'داناو','Danao','Danao','C1',164),(2782,'باجو','Bago','Bago','A3',164),(2783,'كاباناتوان','Cabanatuan','Cabanatuan','A9',164),(2785,'باجيو','Baguio','Baguio','A4',164),(2786,'تانجوب','Tangub','Tangub','G4',164),(2787,'النجا','Naga','Naga','E2',164),(2788,'اولونجابو','Olongapo','Olongapo','E3',164),(2789,'سان بابلو','San Pablo','San Pablo','F7',164),(2790,'Oroquieta','Oroquieta','Oroquieta','E5',164),(2791,'مانيلا','Manila','Manille','D9',164),(2792,'سان خوان','San Juan','San Juan','M6',164),(2793,'الجنرال سانتوس','General Santos','General Santos','C6',164),(2794,'Dapitan','Dapitan','Dapitan','C2',164),(2795,'Canlaon','Canlaon','Canlaon','B5',164),(2796,'داغوبان','Dagupan','Dagupan','B9',164),(2798,'باتانيس','Batanes','Batanes','08',164),(2799,'باتانجاس سيتي','Batangas City','Batangas City','A7',164),(2800,'من Dipolog','Dipolog','Dipolog','C4',164),(2802,'تاغبيلاران','Tagbilaran','Tagbilaran','G3',164),(2803,'كاديز','Cadiz','Cadix','B1',164),(2804,'مانداوي','Mandaue','Mandaue','D8',164),(2805,'مدينة كافيت','Cavite City','Cavite City','B6',164),(2806,'تاجايتاى','Tagaytay','Tagaytay','G2',164),(2807,'Gingoog','Gingoog','Gingoog','C7',164),(2808,'Iriga','Iriga','Iriga','D1',164),(2809,'Paranaque','Paranaque','Paranaque','L7',164),(2811,'لا كارلوتا','La Carlota','La Carlota','D2',164),(2812,'اواج','Laoag','Laoag','D3',164),(2813,'لوسينا','Lucena','Lucena','D7',164),(2814,'مالايبالاي','Malaybalay','Malaybalay','K6',164),(2815,'Palayan','Palayan','Palayan','E8',164),(2816,'بويرتو برنسيسا','Puerto Princesa','Puerto Princesa','F1',164),(2817,'سوريجاو','Surigao','Surigao','F9',164),(2818,'البنجاب','Punjab','Punjab','04',165),(2819,'السند','Sindh','Sindh','05',165),(2820,'بلوشستان','Balochistan','Balochistan','02',165),(2821,'الحدود الشمالية الغربية','North-West Frontier','Frontière Nord-Ouest','03',165),(2822,'المناطق الشمالية','Northern Areas','Régions du nord','07',165),(2823,'المناطق القبلية الخاضعة للإدارة الاتحادية','Federally Administered Tribal Areas','Zones tribales sous administration fédérale','01',165),(2824,'آزاد كشمير','Azad Kashmir','Azad Kashmir','06',165),(2825,'اسلام اباد','Islamabad','Islamabad','08',165),(2833,'زاخودنيبومورسكي','Zachodniopomorskie','Zachodniopomorskie','87',166),(2835,'سفيتوكرجيسكي','Swietokrzyskie','Swietokrzyskie','84',166),(2864,'ودزكي','Lodzkie','Lodzkie','74',166),(2866,'فارمينسكو مازورسكي','Warminsko-Mazurskie','Warminsko-Mazurskie','85',166),(2872,'مالوبولسكا','Malopolskie','Malopolskie','77',166),(2874,'مازوفيتسكي','Mazowieckie','Mazowieckie','78',166),(2876,'بودلاسكي','Podlaskie','Podlaskie','81',166),(2880,'بودكارباتسكي','Podkarpackie','Podkarpackie','80',166),(2881,'وبوسكي','Lubuskie','Lubuskie','76',166),(2882,'DOLNOSLASKIE','Dolnoslaskie','Dolnoslaskie','72',166),(2883,'وبليسكي','Lubelskie','Lubelskie','75',166),(2884,'بومورسكي','Pomorskie','Pomorskie','82',166),(2885,'كوجاوسكو بومورسكي','Kujawsko-Pomorskie','Kujawsko-Pomorskie','73',166),(2886,'فيلكوبولسكي','Wielkopolskie','Wielkopolskie','86',166),(2887,'سلاسكي','Slaskie','Slaskie','83',166),(2888,'أوبولسكي','Opolskie','Opolskie','79',166),(2893,'براغا','Braga','Braga','04',170),(2894,'فيلا ريال','Vila Real','Vila Real','21',170),(2895,'سانتاريم','Santarem','Santarem','18',170),(2896,'ليريا','Leiria','Leiria','13',170),(2897,'لشبونة','Lisboa','Lisboa','14',170),(2898,'براغانكا','Braganca','Braganca','05',170),(2899,'فيانا دو كاستيلو','Viana do Castelo','Viana do Castelo','20',170),(2900,'بورتاليجري','Portalegre','Portalegre','16',170),(2901,'سيتوبال','Setubal','Setubal','19',170),(2902,'الأزور','Azores','Açores','23',170),(2903,'فيسيو','Viseu','Viseu','22',170),(2904,'بورتو','Porto','Porto','17',170),(2905,'افيرو','Aveiro','Aveiro','02',170),(2906,'كاستيلو برانكو','Castelo Branco','Castelo Branco','06',170),(2907,'فارو','Faro','Faro','09',170),(2908,'كويمبرا','Coimbra','Coimbra','07',170),(2909,'الماديرا','Madeira','Madère','10',170),(2910,'باجة','Beja','Beja','03',170),(2911,'غواردا','Guarda','Guarda','11',170),(2912,'ايفورا','Evora','Evora','08',170),(2914,'كورديليرا','Cordillera','Cordillère','08',172),(2915,'ألتو بارانا','Alto Parana','Alto Parana','01',172),(2916,'كازابا','Caazapa','Caazapa','05',172),(2917,'بوكورون','Boqueron','Boqueron','24',172),(2918,'Paraguari','Paraguari','Paraguari','15',172),(2919,'أمامباي','Amambay','Amambay','02',172),(2920,'ألتو باراجواي','Alto Paraguay','Alto Paraguay','23',172),(2921,'كانينديو','Canindeyu','Canindeyu','19',172),(2922,'كونسيبسيون','Concepcion','Concepcion','07',172),(2923,'ميسيونيس','Misiones','Misiones','12',172),(2924,'كاغوازو','Caaguazu','Caaguazu','04',172),(2925,'نيمبوكو','Neembucu','Neembucu','13',172),(2926,'إيتابوا','Itapua','Itapua','11',172),(2927,'وسط','Central','Central','06',172),(2928,'حي سان بيدرو','San Pedro','San Pedro','17',172),(2929,'سيادة الرئيس هايز','Presidente Hayes','Président Hayes','16',172),(2930,'جويرا','Guaira','Guaira','10',172),(2931,'مدينة شمال شمالي','Madinat ach Shamal','Madinat ach Shamal','08',173),(2932,'الدوحة','Ad Dawhah','Ad Dawhah','01',173),(2933,'أم صلال','Umm Salal','Umm Salal','09',173),(2934,'الخور','Al Khawr','Al Khawr','04',173),(2935,'الجميلية','Al Jumaliyah','Al Jumaliyah','03',173),(2936,'بلدية الوكرة','Al Wakrah Municipality','Municipalité d\'Al Wakrah','05',173),(2938,'إيلفوف','Ilfov','Ilfov','43',175),(2939,'غيورغيو','Giurgiu','Giurgiu','42',175),(2940,'بيهور','Bihor','Bihor','05',175),(2941,'كاراس سيفيرين','Caras-Severin','Caras-Severin','12',175),(2942,'ميهيدينتي','Mehedinti','Mehedinti','26',175),(2943,'فاسلوي','Vaslui','Vaslui','38',175),(2944,'تولسيا','Tulcea','Tulcea','37',175),(2945,'كونستانتا','Constanta','Constanta','14',175),(2946,'موريس','Mures','Mures','27',175),(2947,'هارغيتا','Harghita','Harghita','20',175),(2948,'ألبا','Alba','Alba','01',175),(2949,'اراد','Arad','Arad','02',175),(2950,'هونيدوارا','Hunedoara','Hunedoara','21',175),(2951,'ساتو ماري','Satu Mare','Satu Mare','32',175),(2952,'سيبيو','Sibiu','Sibiu','33',175),(2953,'مارامريس','Maramures','Maramures','25',175),(2954,'براسوف','Brasov','Brasov','09',175),(2955,'كلوج','Cluj','Cluj','13',175),(2956,'تيليورمان','Teleorman','Teleorman','35',175),(2957,'دامبوفيتا','Dambovita','Dambovita','16',175),(2958,'دولج','Dolj','Dolj','17',175),(2959,'سوسيفا','Suceava','Suceava','34',175),(2960,'بوتوساني','Botosani','Botosani','07',175),(2961,'اياسي','Iasi','Iasi','23',175),(2962,'ارجيس','Arges','Arges','03',175),(2963,'بوزاو','Buzau','Buzau','11',175),(2964,'تيم هو','Timis','Timis','36',175),(2965,'نيمت','Neamt','Neamt','28',175),(2966,'باكاو','Bacau','Bacau','04',175),(2967,'برايلا','Braila','Braila','08',175),(2968,'سالاج','Salaj','Salaj','31',175),(2969,'كوفاسنا','Covasna','Covasna','15',175),(2970,'بيستريتا ناسود','Bistrita-Nasaud','Bistrita-Nasaud','06',175),(2971,'كالاراسي','Calarasi','Calarasi','41',175),(2972,'غورج','Gorj','Gorj','19',175),(2973,'ايالوميتا','Ialomita','Ialomita','22',175),(2974,'أولت','Olt','Olt','29',175),(2975,'فالسيا','Valcea','Valcea','39',175),(2976,'براهوفا','Prahova','Prahova','30',175),(2977,'فرانتشا','Vrancea','Vrancea','40',175),(2978,'بوخارست','Bucuresti','Bucuresti','10',175),(2979,'جالاتي','Galati','Galati','18',175),(2980,'\"فويفودينا\"','\"Vojvodina\"','\"Voïvodine\"','02',231),(2981,'\"كوسوفو\"','\"Kosovo\"','\"Kosovo\"','01',231),(2983,'موسكفا','Moskva','Moskva','47',176),(2984,'كاريليا','Karelia','Carélie','28',176),(2985,'سخا','Sakha','Sakha','63',176),(2987,'التيسكي كراي','Altaisky krai','Krai d\'Altaisky','04',176),(2988,'إيفانوفو','Ivanovo','Ivanovo','21',176),(2989,'كوستروما','Kostroma','Kostroma','37',176),(2990,'Nizhegorod','Nizhegorod','Nizhegorod','51',176),(2991,'تفير \"','Tver\'','Tver \'','77',176),(2992,'فلاديمير','Vladimir','Vladimir','83',176),(2993,'موج الشعر بإستمرار\'','Perm\'','Permanente\'','58',176),(2994,'أديغيا','Adygeya','Adygeya','01',176),(2995,'تشيتا','Chita','Chita','14',176),(2996,'Taymyr','Taymyr','Taymyr','74',176),(2997,'كيميروفو','Kemerovo','Kemerovo','29',176),(2998,'الأدمرت','Udmurt','Udmurt','80',176),(2999,'Khakass','Khakass','Khakass','31',176),(3000,'فولوغدا','Vologda','Vologda','85',176),(3001,'أومسك','Omsk','Omsk','54',176),(3002,'أورينبورغ','Orenburg','Orenburg','55',176),(3003,'إيركوتسك','Irkutsk','Irkoutsk','20',176),(3004,'كراسنويارسك','Krasnoyarsk','Krasnoyarsk','39',176),(3005,'سفيردلوفسك','Sverdlovsk','Sverdlovsk','71',176),(3006,'Tambovskaya أوبلاست','Tambovskaya oblast','Tambovskaya oblast','72',176),(3007,'Arkhangel\'sk','Arkhangel\'sk','Arkhangel\'sk','06',176),(3008,'نوفوسيبيرسك','Novosibirsk','Novosibirsk','53',176),(3009,'ريازان \"','Ryazan\'','Ryazan \'','62',176),(3010,'تولا','Tula','Tula','76',176),(3011,'روستوف','Rostov','Rostov','61',176),(3012,'ياروسلافل \"','Yaroslavl\'','Yaroslavl \'','88',176),(3013,'تتارستان','Tatarstan','Tatarstan','73',176),(3014,'تيومين \"','Tyumen\'','Tioumen \'','78',176),(3015,'بينزا','Penza','Penza','57',176),(3016,'ساراتوف','Saratov','Saratov','67',176),(3017,'تشوفاشيا','Chuvashia','Tchouvachie','16',176),(3018,'كومي','Komi','Komi','34',176),(3019,'بريانسك','Bryansk','Bryansk','10',176),(3020,'الثمرة الجناحية','Samara','Samara','65',176),(3022,'جمهورية ماري ايل','Mariy-El','Mariy-El','45',176),(3023,'لينينغراد','Leningrad','Leningrad','42',176),(3024,'كيروف','Kirov','Kirov','33',176),(3025,'غورنو ألتاي','Gorno-Altay','Gorno-Altay','03',176),(3026,'داغستان','Dagestan','Daghestan','17',176),(3027,'قبردينو بلقاريا','Kabardin-Balkar','Kabardin-Balkar','22',176),(3028,'آمور','Amur','Amour','05',176),(3029,'اوسيتيا الشمالية','North Ossetia','Ossétie du Nord','68',176),(3030,'كراشاي-الشركس','Karachay-Cherkess','Karachay-Cherkess','27',176),(3031,'كراسنودار','Krasnodar','Krasnodar','38',176),(3032,'ليبيتسك','Lipetsk','Lipetsk','43',176),(3033,'سمولينسك','Smolensk','Smolensk','69',176),(3034,'كالينينغراد','Kaliningrad','Kaliningrad','23',176),(3035,'باشكورتوستان','Bashkortostan','Bachkirie','08',176),(3036,'تشيليابينسك','Chelyabinsk','Tcheliabinsk','13',176),(3037,'Ul\'yanovsk','Ul\'yanovsk','Ul\'yanovsk','81',176),(3038,'ستافروبول \"','Stavropol\'','Stavropol \'','70',176),(3039,'كورغان','Kurgan','Kurgan','40',176),(3040,'أستراخان \"','Astrakhan\'','Astrakan\'','07',176),(3041,'فولغوغراد','Volgograd','Volgograd','84',176),(3042,'الكالميك','Kalmyk','Kalmouk','24',176),(3043,'كالوغا','Kaluga','Kalouga','25',176),(3044,'ماجادان','Magadan','Magadan','44',176),(3045,'بسكوف','Pskov','Pskov','60',176),(3046,'أوريل','Orel','Orel','56',176),(3047,'Primor\'ye','Primor\'ye','Primor\'ye','59',176),(3048,'بيلغورود','Belgorod','Belgorod','09',176),(3049,'بوريات','Buryat','Bouriatie','11',176),(3050,'تومسك','Tomsk','Tomsk','75',176),(3051,'مورمانسك','Murmansk','Mourmansk','49',176),(3053,'سخالين','Sakhalin','Sakhaline','64',176),(3054,'فورونيج','Voronezh','Voronezh','86',176),(3055,'نوفغورود','Novgorod','Novgorod','52',176),(3056,'موردوفيا','Mordovia','Mordovie','46',176),(3057,'كامتشاتكا','Kamchatka','Kamtchatka','26',176),(3058,'خاباروفسك','Khabarovsk','Khabarovsk','30',176),(3059,'كورياك','Koryak','Koryak','36',176),(3060,'Chukot','Chukot','Chukot','15',176),(3061,'خانتي-Mansiy','Khanty-Mansiy','Khanty-Mansiy','32',176),(3062,'كورسك','Kursk','Koursk','41',176),(3063,'Aginsky Buryatsky AO','Aginsky Buryatsky AO','Aginsky Buryatsky AO','02',176),(3064,'تو فا','Tuva','Tuva','79',176),(3065,'نينيتس','Nenets','Nenets','50',176),(3066,'Evenk','Evenk','Evenk','18',176),(3067,'Yevrey','Yevrey','Yevrey','89',176),(3069,'يامال نينيتس','Yamal-Nenets','Yamal-Nenets','87',176),(3070,'مدينة سانت بطرسبرغ','Saint Petersburg City','Saint-Pétersbourg','66',176),(3071,'مدينة موسكو','Moscow City','Ville de moscou','48',176),(3072,'كيغالي','Kigali','Kigali','09',177),(3073,'ولكن ل','Butare','Butare','01',177),(3077,'كيبيونغو','Kibungo','Kibungo','07',177),(3080,'غيتامارا','Gitarama','Gitarama','06',177),(3082,'مكه','Makkah','La Mecque','14',178),(3083,'الرياض','Ar Riyad','Ar Riyad','10',178),(3084,'وابل','Ha\'il','Saluer','13',178),(3085,'الحدود الشمالية','Al Hudud ash Shamaliyah','Al Hudud ash Shamaliyah','15',178),(3086,'جازان','Jizan','Jizan','17',178),(3087,'الشرقية','Ash Sharqiyah','Ash Sharqiyah','06',178),(3088,'المدينة','Al Madinah','Al Madinah','05',178),(3089,'القاسم','Al Qasim','Al Qasim','08',178),(3090,'الباحة','Al Bahah','Al Bahah','02',178),(3091,'تبوك','Tabuk','Tabuk','19',178),(3092,'الجوف','Al Jawf','Al Jawf','20',178),(3094,'ماكيرا','Makira','Makira','08',179),(3096,'بيو فالون','Beau Vallon','Beau Vallon','08',180),(3098,'بحر الغزال','Bahr al Ghazal','Bahr al Ghazal','32',181),(3100,'نهر النيل','River Nile','Nil','53',181),(3101,'دارفور','Darfur','Darfour','33',181),(3102,'كردفان','Kurdufan','Kurdufan','34',181),(3103,'الوسطى','Al Wusta','Al Wusta','27',181),(3104,'الرماد الشمالي','Ash Shamaliyah','Ash shamaliyah','30',181),(3105,'الشرقية','Ash Sharqiyah','Ash Sharqiyah','31',181),(3106,'الاستيوة','Al Istiwa\'iyah','Al Istiwa\'iyah','28',181),(3110,'الخرطوم','Al Khartum','Al Khartum','29',181),(3113,'شمال دارفور','Northern Darfur','Darfour Nord','55',181),(3119,'ولاية وسط الاستوائية','Central Equatoria State','État de l\'Équatoria central','44',181),(3120,'ولاية الوحده','Al Wahadah State','État d\'Al Wahadah','40',181),(3121,'كسلا','Kassala','Kassala','52',181),(3124,'جنوب كردفان','Southern Kordofan','Kordofan du Sud','50',181),(3126,'أعالي النيل','Upper Nile','Nil Supérieur','35',181),(3127,'جنوب دارفور','Southern Darfur','Darfour Sud','49',181),(3133,'Vasternorrlands لان','Vasternorrlands Lan','Vasternorrlands Lan','24',182),(3134,'فاسترا جوتلاند','Vastra Gotaland','Vastra Gotaland','28',182),(3135,'نوربوتنز لان','Norrbottens Lan','Norrbottens Lan','14',182),(3136,'فاستربوتينز لان','Vasterbottens Lan','Vasterbottens Lan','23',182),(3137,'سكين لان','Skane Lan','Skane Lan','27',182),(3138,'كالمار لان','Kalmar Lan','Kalmar Lan','09',182),(3139,'جامتلاندز لان','Jamtlands Lan','Pays des Jamtlands','07',182),(3140,'كرونوبيرز لان','Kronobergs Lan','Kronobergs Lan','12',182),(3141,'Ostergotlands لان','Ostergotlands Lan','Ostergotlands Lan','16',182),(3142,'ستوكهلم لان','Stockholms Lan','Stockholms Lan','26',182),(3143,'دالارناس لان','Dalarnas Lan','Dalarnas Lan','10',182),(3144,'بليكينج لان','Blekinge Lan','Blekinge Lan','02',182),(3145,'جافليبورجس لان','Gavleborgs Lan','Gavleborgs Lan','03',182),(3146,'سوديرمانلاندز لان','Sodermanlands Lan','Sodermanlands Lan','18',182),(3147,'فاستمانلاندس لان','Vastmanlands Lan','Vastmanlands Lan','25',182),(3148,'فارملاند لان','Varmlands Lan','Varmlands Lan','22',182),(3149,'هولاندز لان','Hallands Lan','Hallands Lan','06',182),(3150,'أوربرو لان','Orebro Lan','Orebro Lan','15',182),(3151,'أوبسالا لان','Uppsala Lan','Uppsala Lan','21',182),(3152,'جونكوبنج لان','Jonkopings Lan','Jonkopings Lan','08',182),(3153,'جوتلاندز لان','Gotlands Lan','Gotlands Lan','05',182),(3156,'بوهينج كوميون','Bohinj Commune','Commune de Bohinj','04',185),(3157,'Brezovica Commune','Brezovica Commune','Commune de Brezovica','09',185),(3160,'كوسيتش','Kosice','Kosice','03',187),(3161,'بانسكا بيستريكا','Banska Bystrica','Banska Bystrica','01',187),(3162,'نيترا','Nitra','Nitra','04',187),(3163,'ترنافا','Trnava','Trnava','07',187),(3164,'بريسوف','Presov','Presov','05',187),(3165,'زيلينا','Zilina','Zilina','08',187),(3166,'براتيسلافا','Bratislava','Bratislava','02',187),(3167,'ترينشن','Trencin','Trencin','06',187),(3169,'المنطقة الغربية','Western Area','Zone ouest','04',188),(3170,'شمالي','Northern','Nord','02',188),(3171,'الشرقية','Eastern','Est','01',188),(3172,'جنوبي','Southern','Du sud','03',188),(3173,'أكوافيفا','Acquaviva','Acquaviva','01',189),(3174,'كيسانيوفا','Chiesanuova','Chiesanuova','02',189),(3175,'سان مارينو','San Marino','Saint Marin','07',189),(3176,'سيرافالي','Serravalle','Serravalle','09',189),(3177,'داكار','Dakar','Dakar','01',190),(3179,'ديوربيل','Diourbel','Diourbel','03',190),(3181,'كولدا','Kolda','Kolda','11',190),(3182,'زيغينشور','Ziguinchor','Ziguinchor','12',190),(3183,'تييس','Thies','Thies','07',190),(3184,'فاتيك','Fatick','Fatick','09',190),(3185,'كاولاك','Kaolack','Kaolack','10',190),(3186,'تامباكوندا','Tambacounda','Tambacounda','05',190),(3187,'وغا','Louga','Louga','13',190),(3188,'ماتام','Matam','Matam','15',190),(3189,'سانت لويس','Saint-Louis','Saint Louis','14',190),(3191,'خليج','Bay','baie','04',191),(3192,'Shabeellaha Hoose','Shabeellaha Hoose','Shabeellaha Hoose','14',191),(3193,'باكول','Bakool','Bakool','01',191),(3194,'هيران','Hiiraan','Hiiraan','07',191),(3195,'جدو','Gedo','Gedo','06',191),(3196,'باري','Bari','Bari','03',191),(3197,'غالغودود','Galguduud','Galguduud','05',191),(3198,'مدق','Mudug','Mudug','10',191),(3199,'Woqooyi Galbeed','Woqooyi Galbeed','Woqooyi Galbeed','16',191),(3200,'جوبادا ديكسي','Jubbada Dhexe','Jubbada Dhexe','08',191),(3201,'Shabeellaha Dhexe','Shabeellaha Dhexe','Shabeellaha Dhexe','13',191),(3202,'جوبادا هووز','Jubbada Hoose','Jubbada Hoose','09',191),(3204,'نوغال','Nugaal','Nugaal','11',191),(3205,'سناج','Sanaag','Sanaag','12',191),(3206,'بنادر','Banaadir','Banaadir','02',191),(3208,'بروكوبوندو','Brokopondo','Brokopondo','10',192),(3209,'سيباليويني','Sipaliwini','Sipaliwini','18',192),(3210,'ماروويجني','Marowijne','Marowijne','13',192),(3211,'الفقرة','Para','Para','15',192),(3212,'كوميويجني','Commewijne','Commewijne','11',192),(3213,'سارامكا','Saramacca','Saramacca','17',192),(3214,'نيكيري','Nickerie','Nickerie','14',192),(3215,'كوروني','Coronie','Coronie','12',192),(3216,'وانيكا','Wanica','Wanica','19',192),(3217,'باراماريبو','Paramaribo','Paramaribo','16',192),(3218,'ساو تومي','Sao Tome','Sao Tomé','02',193),(3219,'برينسيبي','Principe','Principe','01',193),(3220,'سونسوناتي','Sonsonate','Sonsonate','13',194),(3221,'مورازان','Morazan','Morazan','08',194),(3222,'سان فيسينتي','San Vicente','San Vicente','12',194),(3223,'لا يونيون','La Union','La union','07',194),(3224,'سان سلفادور','San Salvador','San Salvador','10',194),(3225,'شالاتنانغو','Chalatenango','Chalatenango','03',194),(3226,'لا ليبرتاد','La Libertad','La Libertad','05',194),(3227,'كاباناس','Cabanas','Cabanas','02',194),(3228,'كوسكاتلان','Cuscatlan','Cuscatlan','04',194),(3229,'أوسولوتان','Usulutan','Usulutan','14',194),(3230,'اهواتشابان','Ahuachapan','Ahuachapan','01',194),(3231,'سانتا آنا','Santa Ana','Santa Ana','11',194),(3232,'سان ميغيل','San Miguel','San Miguel','09',194),(3233,'لاباز','La Paz','La paz','06',194),(3234,'الحسكة','Al Hasakah','Al Hasakah','01',195),(3235,'الرقة','Ar Raqqah','Ar Raqqah','04',195),(3236,'طرطوس','Tartus','Tartous','14',195),(3237,'ريف دمشق','Rif Dimashq','Rif Dimashq','08',195),(3238,'حمص','Hims','Hims','11',195),(3239,'إدلب','Idlib','Idlib','12',195),(3240,'حماه','Hamah','Hamah','10',195),(3241,'حلب','Halab','Halab','09',195),(3242,'القنيطرة','Al Qunaytirah','Al Qunaytirah','03',195),(3243,'دار','Dar','Dar','06',195),(3244,'كما السويداء','As Suwayda\'','Comme Suwayda \'','05',195),(3245,'اللاذقية','Al Ladhiqiyah','Al Ladhiqiyah','02',195),(3246,'دير الزور','Dayr az Zawr','Dayr Az Zawr','07',195),(3247,'دمشق','Dimashq','Dimashq','13',195),(3248,'وبومبو','Lubombo','Lubombo','02',196),(3249,'هوهو','Hhohho','Hhohho','01',196),(3250,'مانزيني','Manzini','Manzini','03',196),(3251,'شيزلويني','Shiselweni','Shiselweni','04',196),(3253,'واداي','Ouaddai','Ouaddai','12',198),(3254,'بيلتين','Biltine','Biltine','02',198),(3255,'البطحاء','Batha','Batha','01',198),(3256,'مايو-كيبي','Mayo-Kebbi','Mayo-Kebbi','10',198),(3257,'شاري باغيرمي','Chari-Baguirmi','Chari-Baguirmi','04',198),(3258,'غويرا','Guera','Guera','05',198),(3259,'سلامات','Salamat','Salamat','13',198),(3260,'كانم','Kanem','Kanem','06',198),(3261,'لوجون اوكسيدنتال','Logone Occidental','Logone Occidental','08',198),(3262,'لاك','Lac','Lac','07',198),(3263,'بوركو إندي تيبستي','Borkou-Ennedi-Tibesti','Borkou-Ennedi-Tibesti','03',198),(3264,'تانجيل','Tandjile','Tandjile','14',198),(3265,'موين شاري','Moyen-Chari','Moyen-Chari','11',198),(3266,'لوجوني اورينتال','Logone Oriental','Logone Oriental','09',198),(3268,'الهضاب','Plateaux','Plateaux','25',200),(3281,'كارا','Kara','Kara','23',200),(3289,'السافانا','Savanes','Savanes','26',200),(3290,'المركزية','Centrale','Centrale','22',200),(3292,'بحري','Maritime','Maritime','24',200),(3293,'ترات','Trat','Trat','49',201),(3294,'تشيانغ ماي','Chiang Mai','Chiang Mai','02',201),(3295,'نان','Nan','Nan','04',201),(3296,'براشين بوري','Prachin Buri','Prachin Buri','45',201),(3297,'كرابي','Krabi','Krabi','63',201),(3298,'ساكون ناخون','Sakon Nakhon','Sakon Nakhon','20',201),(3299,'ناخون فانوم','Nakhon Phanom','Nakhon Phanom','73',201),(3300,'أمنات تشاروين','Amnat Charoen','Amnat Charoen','77',201),(3301,'ساموت سونغخرام','Samut Songkhram','Samut Songkhram','54',201),(3302,'ناخون صوان','Nakhon Sawan','Nakhon Sawan','16',201),(3303,'كانشانابوري','Kanchanaburi','Kanchanaburi','50',201),(3304,'أوبون راتشاثاني','Ubon Ratchathani','Ubon Ratchathani','71',201),(3305,'شومفون','Chumphon','Chumphon','58',201),(3306,'شاشوينجساو','Chachoengsao','Chachoengsao','44',201),(3307,'سا كايو','Sa Kaeo','Sa Kaeo','80',201),(3308,'روي إت','Roi Et','Roi Et','25',201),(3309,'ناراثيوات','Narathiwat','Narathiwat','31',201),(3310,'باتاني','Pattani','Pattani','69',201),(3311,'تشايافوم','Chaiyaphum','Chaiyaphum','26',201),(3312,'كالاسين','Kalasin','Kalasin','23',201),(3313,'تشون بوري','Chon Buri','Chon Buri','46',201),(3314,'سوخوثاي','Sukhothai','Sukhothai','09',201),(3315,'سورة ثاني','Surat Thani','Surat Thani','60',201),(3317,'فرا ناخون سي أيوتثايا','Phra Nakhon Si Ayutthaya','Phra Nakhon Si Ayutthaya','36',201),(3318,'نونثابوري','Nonthaburi','Nonthaburi','38',201),(3319,'ساموت براكان','Samut Prakan','Samut Prakan','42',201),(3320,'آنج ثونغ','Ang Thong','Ang Thong','35',201),(3321,'كرونج ثيب','Krung Thep','Krung Thep','40',201),(3322,'فيتسانولوك','Phitsanulok','Phitsanulok','12',201),(3323,'ناخون باتوم','Nakhon Pathom','Nakhon Pathom','53',201),(3324,'فيشيت','Phichit','Phichit','13',201),(3325,'راتشابوري','Ratchaburi','Ratchaburi','52',201),(3326,'سوفان بوري','Suphan Buri','Suphan Buri','51',201),(3327,'الغناء بوري','Sing Buri','Chanter buri','33',201),(3328,'براشواب خيرى خان','Prachuap Khiri Khan','Prachuap Khiri Khan','57',201),(3329,'امفون','Lamphun','Lamphun','05',201),(3330,'رايونج','Rayong','Rayong','47',201),(3331,'أوبون راتشاثاني','Ubon Ratchathani','Ubon Ratchathani','75',201),(3332,'شاي نات','Chai Nat','Chai Nat','32',201),(3333,'بوريرام','Buriram','Buriram','28',201),(3334,'فيتشابوري','Phetchaburi','Phetchaburi','56',201),(3335,'تاك','Tak','Tak','08',201),(3336,'فاياو','Phayao','Phayao','41',201),(3337,'لوب بوري','Lop Buri','Lop Buri','34',201),(3338,'سارابوري','Saraburi','Saraburi','37',201),(3339,'ناخون نايوك','Nakhon Nayok','Nakhon Nayok','43',201),(3340,'يالا','Yala','Yala','70',201),(3341,'ناخون راتشاسيما','Nakhon Ratchasima','Nakhon Ratchasima','27',201),(3342,'ساموت ساخون','Samut Sakhon','Samut Sakhon','55',201),(3343,'خون كاين','Khon Kaen','Khon Kaen','22',201),(3344,'يوثاي ثاني','Uthai Thani','Uthai Thani','15',201),(3345,'نونغ خاي','Nong Khai','Nong Khai','17',201),(3346,'مها ساراخام','Maha Sarakham','Maha Sarakham','24',201),(3347,'امبانج','Lampang','Lampang','06',201),(3348,'سونغكلا','Songkhla','Songkhla','68',201),(3349,'ناخون سي ثامارات','Nakhon Si Thammarat','Nakhon Si Thammarat','64',201),(3350,'ويي','Loei','Loei','18',201),(3351,'شيانج راي','Chiang Rai','Chiang Rai','03',201),(3352,'سورين','Surin','Surin','29',201),(3353,'فيتشابون','Phetchabun','Phetchabun','14',201),(3354,'فراى','Phrae','Phrae','07',201),(3355,'فانغ نغا','Phangnga','Phangnga','61',201),(3356,'أوتاراديت','Uttaradit','Uttaradit','10',201),(3357,'سيساكيت','Sisaket','Sisaket','30',201),(3358,'ترانج','Trang','Trang','65',201),(3359,'كامبينغ فيت','Kamphaeng Phet','Kamphaeng Phet','11',201),(3360,'فوكيت','Phuket','Phuket','62',201),(3361,'موكداهان','Mukdahan','Mukdahan','78',201),(3362,'ياسوثون','Yasothon','Yasothon','72',201),(3363,'فاتهالونج','Phatthalung','Phatthalung','66',201),(3364,'باثوم ثاني','Pathum Thani','Pathum Thani','39',201),(3365,'شانثابوري','Chanthaburi','Chanthaburi','48',201),(3366,'ماي هونغ سون','Mae Hong Son','Mae Hong Son','01',201),(3367,'رانونج','Ranong','Ranong','59',201),(3368,'أودون ثاني','Udon Thani','Udon Thani','76',201),(3369,'ساتون','Satun','Satun','67',201),(3370,'نونغ بوا لامفو','Nong Bua Lamphu','Nong Bua Lamphu','79',201),(3371,'ناخون فانوم','Nakhon Phanom','Nakhon Phanom','21',201),(3372,'خاتلون','Khatlon','Khatlon','02',202),(3373,'صغد','Sughd','Sughd','03',202),(3374,'كوهستوني بدخشون','Kuhistoni Badakhshon','Kuhistoni Badakhshon','01',202),(3376,'يباب','Lebap','Lebap','04',204),(3377,'البلقان','Balkan','balkanique','02',204),(3378,'آهال','Ahal','Ahal','01',204),(3380,'مريم العذراء','Mary','Marie','05',204),(3381,'داشوغوز','Dashoguz','Dashoguz','03',204),(3382,'Madanin','Madanin','Madanin','28',205),(3383,'الكاف','El Kef','El Kef','14',205),(3384,'توزر','Tozeur','Tozeur','35',205),(3385,'سوسة','Sousse','Sousse','23',205),(3386,'قابس','Gabes','Gabes','29',205),(3387,'صفاقس','Sfax','Sfax','32',205),(3388,'بنزرت','Bizerte','Bizerte','18',205),(3389,'المنستير','Al Munastir','Al Munastir','16',205),(3390,'نابل','Nabeul','Nabeul','19',205),(3391,'القصرين','Kasserine','Kasserine','02',205),(3392,'تطاوين','Tataouine','Tataouine','34',205),(3393,'سيدي بوزيد','Sidi Bou Zid','Sidi Bou Zid','33',205),(3394,'المهدية','Al Mahdia','Al Mahdia','15',205),(3395,'جندوبة','Jendouba','Jendouba','06',205),(3396,'بن عروس','Ben Arous','Ben Arous','27',205),(3397,'القيروان','Kairouan','Kairouan','03',205),(3398,'زغوان','Zaghouan','Zaghouan','37',205),(3399,'قبلي','Kebili','Kebili','31',205),(3400,'باجه','Bajah','Bajah','17',205),(3402,'سليانة','Siliana','Siliana','22',205),(3404,'تونس','Tunis','Tunis','36',205),(3405,'تونجاتابو','Tongatapu','Tongatapu','02',206),(3406,'ها','Ha','Ha','01',206),(3407,'فافا','Vava','Vava','03',206),(3408,'أماسيا','Amasya','Amasya','05',207),(3409,'هاتاي','Hatay','Hatay','31',207),(3410,'ديار بكر','Diyarbakir','Diyarbakir','21',207),(3411,'أضنة','Adana','Adana','81',207),(3412,'بولو','Bolu','Bolu','14',207),(3413,'أنقرة','Ankara','Ankara','68',207),(3414,'قونية','Konya','Konya','71',207),(3415,'بيلجيك','Bilecik','Bilecik','11',207),(3416,'إزمير','Izmir','Izmir','35',207),(3417,'توكات','Tokat','Tokat','60',207),(3418,'أدرنة','Edirne','Edirne','22',207),(3419,'كيرسهير','Kirsehir','Kirsehir','40',207),(3420,'سيارة نقل','Van','Van','65',207),(3421,'كاستامونو','Kastamonu','Kastamonu','37',207),(3422,'سيفاس','Sivas','Sivas','58',207),(3423,'دنيزلي','Denizli','Denizli','20',207),(3424,'كوتاهيا','Kutahya','Kutahya','43',207),(3425,'بينغول','Bingol','Bingol','12',207),(3426,'كهرمان ماراس','Kahramanmaras','Kahramanmaras','46',207),(3427,'سانليورفا','Sanliurfa','Sanliurfa','63',207),(3428,'الزراعية','Agri','Agri','04',207),(3429,'اسكيسهير','Eskisehir','Eskisehir','26',207),(3430,'ملاطية','Malatya','Malatya','44',207),(3431,'أديامان','Adiyaman','Adiyaman','02',207),(3432,'جيرسون','Giresun','Giresun','28',207),(3433,'المصحف','Mus','Mus','49',207),(3434,'كوروم','Corum','Corum','19',207),(3435,'أرضروم','Erzurum','Erzurum','25',207),(3436,'مرسين','Mersin','Mersin','32',207),(3437,'أيدين','Aydin','Aydin','09',207),(3438,'نفسهير','Nevsehir','Nevsehir','50',207),(3439,'مانيسا','Manisa','Manisa','45',207),(3440,'كاناكالي','Canakkale','Canakkale','17',207),(3441,'أوردو','Ordu','Ordu','52',207),(3442,'يوزغات','Yozgat','Yozgat','66',207),(3443,'تونجلي','Tunceli','Tunceli','62',207),(3444,'ماردين','Mardin','Mardin','72',207),(3445,'سينوب','Sinop','Sinop','57',207),(3446,'أنطاليا','Antalya','Antalya','07',207),(3447,'ارزينجان','Erzincan','Erzincan','24',207),(3448,'أرتفين','Artvin','Artvin','08',207),(3449,'ساكاريا','Sakarya','Sakarya','54',207),(3450,'أفيون قره حصار','Afyonkarahisar','Afyonkarahisar','03',207),(3451,'بورصة','Bursa','Bursa','16',207),(3452,'طرابزون','Trabzon','Trabzon','61',207),(3453,'ستنعم','Tekirdag','Tekirdag','59',207),(3454,'كيليس','Kilis','Kilis','90',207),(3455,'غازي عنتاب','Gaziantep','Gaziantep','83',207),(3456,'سيرناك','Sirnak','Sirnak','80',207),(3457,'باليكسير','Balikesir','Balikesir','10',207),(3458,'إيلازيغ','Elazig','Elazig','23',207),(3459,'أردهان','Ardahan','Ardahan','86',207),(3460,'الرجل الوطواط','Batman','Homme chauve-souris','76',207),(3461,'قيصري','Kayseri','Kayseri','38',207),(3462,'قوجا','Kocaeli','Kocaeli','41',207),(3463,'سامسون','Samsun','Samsun','55',207),(3464,'اسبرطة','Isparta','Isparta','33',207),(3465,'موغلا','Mugla','Mugla','48',207),(3466,'بتليس','Bitlis','Bitlis','13',207),(3467,'ريزي','Rize','Rize','53',207),(3468,'هكاري','Hakkari','Hakkari','70',207),(3469,'اسطنبول','Istanbul','Istanbul','34',207),(3470,'كرمان','Karaman','Karaman','78',207),(3471,'اجدير','Igdir','Igdir','88',207),(3472,'نيغدة','Nigde','Nigde','73',207),(3473,'اوساك','Usak','Usak','64',207),(3474,'سيرت','Siirt','Siirt','74',207),(3475,'كيركلاريلي','Kirklareli','Kirklareli','39',207),(3476,'بوردور','Burdur','Burdur','15',207),(3477,'جوموشان','Gumushane','Gumushane','69',207),(3478,'عثمانية','Osmaniye','Osmaniye','91',207),(3479,'يالوفا','Yalova','Yalova','92',207),(3480,'كارس','Kars','Kars','84',207),(3481,'توباغو','Tobago','Tobago','11',208),(3482,'كاروني','Caroni','Caroni','02',208),(3483,'القديس داود','Saint David','Saint David','07',208),(3484,'اريما','Arima','Arima','01',208),(3485,'القديس جورج','Saint George','Saint George','08',208),(3486,'سانت باتريك','Saint Patrick','Saint Patrick','09',208),(3487,'فيكتوريا','Victoria','Victoria','12',208),(3488,'ناريفا','Nariva','Nariva','04',208),(3489,'ميناء اسبانيا','Port-of-Spain','Port d\'Espagne','05',208),(3490,'القديس أندرو','Saint Andrew','Saint andrew','06',208),(3491,'مايارو','Mayaro','Mayaro','03',208),(3492,'سان فرناندو','San Fernando','San Fernando','10',208),(3494,'تاي وان','T\'ai-wan','Taïwan','04',210),(3495,'تاي-بى','T\'ai-pei','T\'ai-pei','03',210),(3496,'فو شين','Fu-chien','Fu-chien','01',210),(3497,'كاو هسيونج،','Kao-hsiung','Kao-hsiung','02',210),(3499,'تابورا','Tabora','Tabora','17',211),(3500,'مانيارا','Manyara','Manyara','27',211),(3501,'متوارا','Mtwara','Mtwara','11',211),(3502,'ليندي','Lindi','Lindi','07',211),(3503,'روفوما','Ruvuma','Ruvuma','14',211),(3504,'إيرينغا','Iringa','Iringa','04',211),(3505,'طنجة','Tanga','Tanga','18',211),(3506,'بيمبا الجنوبية','Pemba South','Pemba Sud','20',211),(3507,'كاجيرا','Kagera','Kagera','19',211),(3508,'أروشا','Arusha','Arusha','26',211),(3509,'موانزا','Mwanza','Mwanza','12',211),(3510,'كليمنجارو','Kilimanjaro','Kilimandjaro','06',211),(3511,'بواني','Pwani','Pwani','02',211),(3512,'زنجبار الوسطى','Zanzibar Central','Zanzibar Central','21',211),(3513,'دودوما','Dodoma','Dodoma','03',211),(3514,'شينيانغا','Shinyanga','Shinyanga','15',211),(3515,'زنجبار الحضري','Zanzibar Urban','Zanzibar Urban','25',211),(3516,'بيمبا الشمالية','Pemba North','Pemba Nord','13',211),(3517,'مارا','Mara','Mara','08',211),(3518,'دار السلام','Dar es Salaam','Dar es Salaam','23',211),(3519,'زنجبار الشمالية','Zanzibar North','Zanzibar Nord','22',211),(3520,'مبيا','Mbeya','Mbeya','09',211),(3521,'سينغيدا','Singida','Singida','16',211),(3522,'كيغوما','Kigoma','Kigoma','05',211),(3523,'موروجورو','Morogoro','Morogoro','10',211),(3524,'روكوا','Rukwa','Rukwa','24',211),(3525,'KRYM','Krym','Krym','11',212),(3526,'أوديسكا أوبلاست','Odes\'ka Oblast\'','Odes\'ka Oblast \'','17',212),(3527,'خاركيفسكا أوبلاست','Kharkivs\'ka Oblast\'','Kharkivs\'ka Oblast \'','07',212),(3528,'بولتافسكا أوبلاست','Poltavs\'ka Oblast\'','Poltavs\'ka Oblast \'','18',212),(3529,'Kyyivs\'ka Oblast \'','Kyyivs\'ka Oblast\'','Kyyivs\'ka Oblast \'','13',212),(3530,'زاكارباتسكا أوبلاست','Zakarpats\'ka Oblast\'','Zakarpats\'ka Oblast \'','25',212),(3531,'سومسكا أوبلاست','Sums\'ka Oblast\'','Sums\'ka Oblast \'','21',212),(3532,'دونيتسك أوبلاست','Donets\'ka Oblast\'','Donets\'ka Oblast \'','05',212),(3533,'خيرسونسكا أوبلاست','Khersons\'ka Oblast\'','Khersons\'ka Oblast \'','08',212),(3534,'L\'vivs\'ka Oblast \'','L\'vivs\'ka Oblast\'','\'Vivs\'ka Oblast\'','15',212),(3535,'تشيركاشكا أوبلاست','Cherkas\'ka Oblast\'','Cherkas\'ka Oblast \'','01',212),(3536,'فينيتسكا أوبلاست','Vinnyts\'ka Oblast\'','Vinnyts\'ka Oblast \'','23',212),(3537,'ريفنينسكا أوبلاست','Rivnens\'ka Oblast\'','Rivnens\'ka Oblast \'','19',212),(3538,'خميلنيتسكا أوبلاست','Khmel\'nyts\'ka Oblast\'','Khmel\'nyts\'ka Oblast \'','09',212),(3539,'تشيرنيهيفسكا أوبلاست','Chernihivs\'ka Oblast\'','Tchernihivs\'ka Oblast \'','02',212),(3540,'دنيبروبيتروفسكا أوبلاست','Dnipropetrovs\'ka Oblast\'','Dnipropetrovs\'ka Oblast \'','04',212),(3541,'ميكولاييفسكا أوبلاست','Mykolayivs\'ka Oblast\'','Mykolayivs\'ka Oblast \'','16',212),(3542,'تيرنوبل أوكا أوبلاست','Ternopil\'s\'ka Oblast\'','Ternopil\'s\'ka Oblast \'','22',212),(3543,'زيتوميرسكا أوبلاست','Zhytomyrs\'ka Oblast\'','Zhytomyrs\'ka Oblast \'','27',212),(3544,'تشيرنيفتسكا أوبلاست','Chernivets\'ka Oblast\'','Tchernivets\'ka Oblast \'','03',212),(3545,'لوهانسكا أوبلاست','Luhans\'ka Oblast\'','Luhans\'ka Oblast \'','14',212),(3546,'سيفاستوبول \"','Sevastopol\'','Sébastopol \'','20',212),(3547,'كيروفوهرادسكا أوبلاست','Kirovohrads\'ka Oblast\'','Kirovohrads\'ka Oblast \'','10',212),(3548,'ايفانو فرانكيفسكا أوبلاست','Ivano-Frankivs\'ka Oblast\'','Ivano-Frankivs\'ka Oblast \'','06',212),(3549,'زابوريزكا أوبلاست','Zaporiz\'ka Oblast\'','Zaporiz\'ka Oblast \'','26',212),(3550,'فولينسكا أوبلاست','Volyns\'ka Oblast\'','Volyns\'ka Oblast \'','24',212),(3552,'نيبى','Nebbi','Nebbi','58',213),(3553,'كاتاكوي','Katakwi','Katakwi','69',213),(3554,'الليرة','Lira','Lire','47',213),(3555,'اباك','Apac','Apac','26',213),(3556,'كابيرامايدو','Kaberamaido','Kaberamaido','80',213),(3557,'أروا','Arua','Arua','77',213),(3558,'سوروتي','Soroti','Soroti','95',213),(3559,'تورورو','Tororo','Tororo','76',213),(3560,'غولو','Gulu','Gulu','30',213),(3561,'باليسا','Pallisa','Pallisa','60',213),(3562,'بادر','Pader','Pader','92',213),(3563,'كومي','Kumi','Kumi','46',213),(3564,'أدجومانى','Adjumani','Adjumani','65',213),(3565,'كوتيدو','Kotido','Kotido','45',213),(3566,'كيتجوم','Kitgum','Kitgum','84',213),(3567,'ماسيندى','Masindi','Masindi','50',213),(3568,'مبارارا','Mbarara','Mbarara','52',213),(3570,'بونديبوجيو','Bundibugyo','Bundibugyo','28',213),(3571,'ناكابيريبيريت','Nakapiripirit','Nakapiripirit','91',213),(3572,'موروتو','Moroto','Moroto','88',213),(3573,'مويو','Moyo','Moyo','72',213),(3574,'مبالي','Mbale','Mbale','87',213),(3575,'يومبى','Yumbe','Yumbe','97',213),(3576,'كابشوروا','Kapchorwa','Kapchorwa','39',213),(3577,'ناكاسونغولا','Nakasongola','Nakasongola','73',213),(3578,'موبيندي','Mubende','Mubende','56',213),(3579,'كيسورو','Kisoro','Kisoro','43',213),(3580,'إيغانغا','Iganga','Iganga','78',213),(3581,'كايونجا','Kayunga','Kayunga','83',213),(3582,'موكونو','Mukono','Mukono','90',213),(3583,'مبيجي','Mpigi','Mpigi','89',213),(3584,'كامولي','Kamuli','Kamuli','38',213),(3585,'ويرو','Luwero','Luwero','70',213),(3586,'ماساكا','Masaka','Masaka','71',213),(3587,'راكاي','Rakai','Rakai','61',213),(3588,'كالانغالا','Kalangala','Kalangala','36',213),(3589,'كيبالي','Kibale','Kibale','41',213),(3590,'بوجيرى','Bugiri','Bugiri','66',213),(3591,'اكيسو','Wakiso','Wakiso','96',213),(3592,'كيبوجا','Kiboga','Kiboga','42',213),(3593,'كمبالا','Kampala','Kampala','37',213),(3594,'مايوج','Mayuge','Mayuge','86',213),(3595,'كينجوجو','Kyenjojo','Kyenjojo','85',213),(3596,'روكونجيري','Rukungiri','Rukungiri','93',213),(3597,'بوشينى','Bushenyi','Bushenyi','29',213),(3598,'هويما','Hoima','Hoima','31',213),(3599,'كاموينج','Kamwenge','Kamwenge','81',213),(3600,'كابارولي','Kabarole','Kabarole','79',213),(3601,'سيرونكو','Sironko','Sironko','94',213),(3602,'كاسيس','Kasese','Kasese','40',213),(3603,'سيمبابول','Sembabule','Sembabule','74',213),(3605,'جينجا','Jinja','Jinja','33',213),(3606,'بوسيا','Busia','Busia','67',213),(3607,'نتنجامو','Ntungamo','Ntungamo','59',213),(3608,'كنونغ','Kanungu','Kanungu','82',213),(3610,'ألاباما','Alabama','Alabama','AL',230),(3611,'ألاسكا','Alaska','Alaska','AK',230),(3612,'ساموا الأمريكية','American Samoa','Samoa américaines','AS',230),(3613,'أريزونا','Arizona','Arizona','AZ',230),(3614,'أركنساس','Arkansas','Arkansas','AR',230),(3615,'كاليفورنيا','California','Californie','CA',230),(3616,'كولورادو','Colorado','Colorado','CO',230),(3617,'كونيتيكت','Connecticut','Connecticut','CT',230),(3618,'ديلاوير','Delaware','Delaware','DE',230),(3619,'مقاطعة كولومبيا','District of Columbia','District de Colombie','DC',230),(3620,'فلوريدا','Florida','Floride','FL',230),(3621,'جورجيا','Georgia','Géorgie','GA',230),(3622,'غوام','Guam','Guam','GU',230),(3623,'هاواي','Hawaii','Hawaii','HI',230),(3624,'ايداهو','Idaho','Idaho','ID',230),(3625,'إلينوي','Illinois','Illinois','IL',230),(3626,'إنديانا','Indiana','Indiana','IN',230),(3627,'أيوا','Iowa','Iowa','IA',230),(3628,'كانساس','Kansas','Kansas','KS',230),(3629,'كنتاكي','Kentucky','Kentucky','KY',230),(3630,'لويزيانا','Louisiana','Louisiane','LA',230),(3631,'مين','Maine','Maine','ME',230),(3632,'جزر مارشال','Marshall Islands','Iles Marshall','MH',230),(3633,'ماريلاند','Maryland','Maryland','MD',230),(3634,'ماساتشوستس','Massachusetts','Massachusetts','MA',230),(3635,'ميشيغان','Michigan','Michigan','MI',230),(3636,'ولايات ميكرونيزيا الموحدة','Federated States of Micronesia','États fédérés de Micronésie','FM',230),(3637,'مينيسوتا','Minnesota','Minnesota','MN',230),(3638,'ميسيسيبي','Mississippi','Mississippi','MS',230),(3639,'ميسوري','Missouri','Missouri','MO',230),(3640,'مونتانا','Montana','Montana','MT',230),(3641,'نبراسكا','Nebraska','Nebraska','NE',230),(3642,'نيفادا','Nevada','Nevada','NV',230),(3643,'نيو هامبشاير','New Hampshire','New Hampshire','NH',230),(3644,'نيو جيرسي','New Jersey','New Jersey','NJ',230),(3645,'المكسيك جديدة','New Mexico','Nouveau Mexique','NM',230),(3646,'نيويورك','New York','New York','NY',230),(3647,'شمال كارولينا','North Carolina','Caroline du Nord','NC',230),(3648,'شمال داكوتا','North Dakota','Dakota du nord','ND',230),(3649,'جزر مريانا الشمالية','Northern Mariana Islands','Îles Mariannes du Nord','MP',230),(3650,'أوهايو','Ohio','Ohio','OH',230),(3651,'أوكلاهوما','Oklahoma','Oklahoma','OK',230),(3652,'ولاية أوريغون','Oregon','Oregon','OR',230),(3653,'بالاو','Palau','Palau','PW',230),(3654,'بنسلفانيا','Pennsylvania','Pennsylvanie','PA',230),(3655,'بورتوريكو','Puerto Rico','Porto Rico','PR',230),(3656,'جزيرة رود','Rhode Island','Rhode Island','RI',230),(3657,'كارولينا الجنوبية','South Carolina','Caroline du Sud','SC',230),(3658,'جنوب داكوتا','South Dakota','Dakota du Sud','SD',230),(3659,'تينيسي','Tennessee','Tennessee','TN',230),(3660,'تكساس','Texas','Texas','TX',230),(3661,'يوتا','Utah','Utah','UT',230),(3662,'فيرمونت','Vermont','Vermont','VT',230),(3663,'جزر العذراء','Virgin Islands','Les iles vierges','VI',230),(3664,'فرجينيا','Virginia','Virginie','VA',230),(3665,'واشنطن','Washington','Washington','WA',230),(3666,'فرجينيا الغربية','West Virginia','Virginie Occidentale','WV',230),(3667,'ولاية ويسكونسن','Wisconsin','Wisconsin','WI',230),(3668,'وايومنغ','Wyoming','Wyoming','WY',230),(3669,'روشا','Rocha','Rocha','14',214),(3670,'فلوريدا','Florida','Floride','07',214),(3671,'مونتيفيديو','Montevideo','Montevideo','10',214),(3672,'ريفيرا','Rivera','Rivera','13',214),(3673,'سيرو لارجو','Cerro Largo','Cerro Largo','03',214),(3674,'تاكواريمبو','Tacuarembo','Tacuarembo','18',214),(3675,'افاييخا','Lavalleja','Lavalleja','08',214),(3676,'Treinta ذ تريس','Treinta y Tres','Treinta y Tres','19',214),(3677,'سوريانو','Soriano','Soriano','17',214),(3678,'دورازنو','Durazno','Durazno','05',214),(3679,'كانيلونز','Canelones','Canelones','02',214),(3680,'فلوريس','Flores','Flores','06',214),(3681,'مالدونادو','Maldonado','Maldonado','09',214),(3682,'سالتو','Salto','Salto','15',214),(3683,'ريو نيغرو','Rio Negro','Rio Negro','12',214),(3684,'أرتيجاس','Artigas','Artigas','01',214),(3685,'بايساندو','Paysandu','Paysandu','11',214),(3686,'كولونيا','Colonia','Colonia','04',214),(3687,'سان خوسيه','San Jose','San Jose','16',214),(3688,'Khorazm','Khorazm','Khorazm','05',215),(3689,'قاشقادري','Qashqadaryo','Qashqadaryo','08',215),(3690,'سمرقند','Samarqand','Samarqand','10',215),(3691,'أنديجان','Andijon','Andijon','01',215),(3692,'جيزاكس','Jizzax','Jizzax','15',215),(3693,'طشقند','Toshkent','Toshkent','14',215),(3694,'Surkhondaryo','Surkhondaryo','Surkhondaryo','12',215),(3695,'Qoraqalpoghiston','Qoraqalpoghiston','Qoraqalpoghiston','09',215),(3696,'Nawoiy','Nawoiy','Nawoiy','07',215),(3698,'نامانجان','Namangan','Namangan','06',215),(3699,'Farghona','Farghona','Farghona','03',215),(3700,'Bukhoro','Bukhoro','Bukhoro','02',215),(3701,'طشقند','Toshkent','Toshkent','13',215),(3703,'شارلوت','Charlotte','Charlotte','01',216),(3704,'القديس جورج','Saint George','Saint George','04',216),(3705,'غرينادين','Grenadines','Grenadines','06',216),(3706,'سانت باتريك','Saint Patrick','Saint Patrick','05',216),(3707,'القديس أندرو','Saint Andrew','Saint andrew','02',216),(3708,'القديس داود','Saint David','Saint David','03',216),(3709,'صقر','Falcon','Faucon','11',217),(3710,'محض','Apure','Apure','03',217),(3711,'بوليفار','Bolivar','Bolivar','06',217),(3712,'تاكيرا','Tachira','Tachira','20',217),(3713,'ميراندا','Miranda','Miranda','15',217),(3714,'غواريكو','Guarico','Guarico','12',217),(3715,'انزواتيجي','Anzoategui','Anzoategui','02',217),(3716,'نويفا اسبارتا','Nueva Esparta','Nueva Esparta','17',217),(3717,'بورتوغيزا','Portuguesa','Portuguesa','18',217),(3718,'سوكري','Sucre','Sucre','19',217),(3719,'باريناس','Barinas','Barinas','05',217),(3720,'لارا','Lara','Lara','13',217),(3721,'سوليا','Zulia','Zulia','23',217),(3722,'ميريدا','Merida','Mérida','14',217),(3723,'كارابوبو','Carabobo','Carabobo','07',217),(3724,'كوجيديس','Cojedes','Cojedes','08',217),(3725,'أراغوا','Aragua','Aragua','04',217),(3726,'ياراكوي','Yaracuy','Yaracuy','22',217),(3727,'أمازوناس','Amazonas','Amazonas','01',217),(3728,'موناجاس','Monagas','Monagas','16',217),(3729,'تروخيو','Trujillo','Trujillo','21',217),(3730,'فارغاس','Vargas','Vargas','26',217),(3732,'دلتا أماكورو','Delta Amacuro','Delta Amacuro','09',217),(3733,'وفي مقاطعة الاتحادية','Distrito Federal','Distrito Federal','25',217),(3734,'Dependencias Federales','Dependencias Federales','Dependencias Federales','24',217),(3742,'ثانه هوا','Thanh Hoa','Thanh Hoa','34',220),(3745,'كوانج نام','Quang Nam','Quang Nam','84',220),(3746,'الابن لا','Son La','Fils la','32',220),(3751,'تاي نينه','Tay Ninh','Tay Ninh','33',220),(3753,'التايلانديه بينه','Thai Binh','Thai Binh','35',220),(3754,'كين جيانج','Kien Giang','Kien Giang','21',220),(3755,'دونج ثاب','Dong Thap','Dong Thap','09',220),(3761,'سوك ترانج','Soc Trang','Soc Trang','65',220),(3764,'بن تري','Ben Tre','Ben Tre','03',220),(3765,'هوشي منه','Ho Chi Minh','Ho Chi Minh','20',220),(3766,'ترا فينه','Tra Vinh','Tra Vinh','67',220),(3767,'هاي فونج','Hai Phong','Hai Phong','13',220),(3768,'تساو بانج','Cao Bang','Cao Bang','05',220),(3769,'آن جيانج','An Giang','Un giang','01',220),(3772,'نجى آن','Nghe An','Nghe An','58',220),(3773,'جيا لاي','Gia Lai','Gia Lai','49',220),(3774,'لام دونغ','Lam Dong','Lam Dong','23',220),(3775,'بينه دنه','Binh Dinh','Binh Dinh','46',220),(3776,'بينه فووك','Binh Phuoc','Binh Phuoc','76',220),(3777,'لانج سون','Lang Son','Lang Son','39',220),(3778,'تيان جيانج','Tien Giang','Tien Giang','37',220),(3779,'طويل','Long An','Long an','24',220),(3780,'نينه ثوان','Ninh Thuan','Ninh Thuan','60',220),(3781,'كوانج نينه','Quang Ninh','Quang Ninh','30',220),(3782,'باك ليو','Bac Lieu','Bac Lieu','73',220),(3783,'كا ماو','Ca Mau','Ca mau','77',220),(3786,'بينه دونغ','Binh Duong','Binh Duong','75',220),(3787,'بينه ثوان','Binh Thuan','Binh Thuan','47',220),(3788,'فينه لونج','Vinh Long','Vinh Long','69',220),(3789,'دونج ناي','Dong Nai','Dong Nai','43',220),(3791,'باك اساسه','Bac Kan','Bac Kan','72',220),(3792,'باك جيانج','Bac Giang','Bac Giang','71',220),(3793,'ثوا ثين هوي','Thua Thien-Hue','Thua Thien-Hue','66',220),(3794,'باك نينه','Bac Ninh','Bac Ninh','74',220),(3795,'ها جيانج','Ha Giang','Ha Giang','50',220),(3796,'توين كوانج','Tuyen Quang','Tuyen Quang','68',220),(3797,'التايلاندية نغوين','Thai Nguyen','Thai Nguyen','85',220),(3798,'دا نانج','Da Nang','Da Nang','78',220),(3799,'خانه هوا','Khanh Hoa','Khanh Hoa','54',220),(3800,'با ريا فونج تاو','Ba Ria-Vung Tau','Ba Ria-Vung Tau','45',220),(3801,'كوانج نجاي','Quang Ngai','Quang Ngai','63',220),(3803,'ها نام','Ha Nam','Ha Nam','80',220),(3804,'فو ين','Phu Yen','Phu Yen','61',220),(3805,'كوانغ بينه','Quang Binh','Quang Binh','62',220),(3806,'فو ثو','Phu Tho','Phu Tho','83',220),(3807,'كوانغ تري','Quang Tri','Quang Tri','64',220),(3808,'ها تنه','Ha Tinh','Ha Tinh','52',220),(3809,'كون توم','Kon Tum','Kon Tum','55',220),(3811,'ين باي','Yen Bai','Yen Bai','70',220),(3812,'نينه بينه','Ninh Binh','Ninh Binh','59',220),(3813,'نام دينه','Nam Dinh','Nam Dinh','82',220),(3814,'هاي دونج','Hai Duong','Hai Duong','79',220),(3815,'ها نوي','Ha Noi','Ha Noi','44',220),(3816,'هوا بينه','Hoa Binh','Hoa Binh','53',220),(3817,'هونغ ين','Hung Yen','Hung Yen','81',220),(3818,'فينه فوك','Vinh Phuc','Vinh Phuc','86',220),(3819,'سانما','Sanma','Sanma','13',221),(3820,'أوبا','Aoba','Aoba','06',221),(3821,'الراعي','Shepherd','Berger','14',221),(3822,'Malakula','Malakula','Malakula','10',221),(3823,'Pentecote','Pentecote','Pentecôte','12',221),(3824,'توربا','Torba','Torba','07',221),(3825,'إيفات','Efate','Efaté','08',221),(3826,'تافيا','Tafea','Taféa','15',221),(3827,'Ambrym','Ambrym','Ambrym','05',221),(3828,'برنامج التحصين الموسع','Epi','Epi','09',221),(3829,'Paama في','Paama','Paama','11',221),(3832,'لحج','Lahij','Lahij','06',224),(3833,'صعدة','Sa\'dah','Sa\'dah','15',224),(3834,'الحديدة','Al Hudaydah','Al Hudaydah','08',224),(3835,'مأرب','Ma\'rib','Ma\'rib','14',224),(3836,'البيضاء','Al Bayda\'','Al Bayda \'','07',224),(3837,'ذمار','Dhamar','Dhamar','11',224),(3838,'صنعاء\'','San\'a\'','San\'a \'','16',224),(3839,'المهرة','Al Mahrah','Al Mahrah','03',224),(3840,'حضرموت','Hadramawt','Hadramawt','04',224),(3841,'تعز','Taizz','Taizz','17',224),(3842,'حجة','Hajjah','Hajjah','12',224),(3843,'أبين','Abyan','Abyan','01',224),(3844,'إب','Ibb','Ibb','13',224),(3845,'عدن','Adan','Adan','02',224),(3846,'المحويت','Al Mahwit','Al Mahwit','10',224),(3847,'الجوف','Al Jawf','Al Jawf','09',224),(3850,'الرأس الغربي','Western Cape','Cape de Western','11',226),(3851,'الرأس الشرقي','Eastern Cape','cap Oriental','05',226),(3852,'مبومالانغا','Mpumalanga','Mpumalanga','07',226),(3853,'دولة حرة','Free State','État libre','03',226),(3854,'الشمال الغربي','North-West','Nord Ouest','10',226),(3855,'ليمبوبو','Limpopo','Limpopo','09',226),(3856,'كوازولو ناتال','KwaZulu-Natal','KwaZulu-Natal','02',226),(3857,'المنطقة الشمالية الغربية','North-Western Province','Province du Nord-Ouest','01',226),(3858,'غوتنغ','Gauteng','Gauteng','06',226),(3859,'الرأس الشمالي','Northern Cape','Northern Cape','08',226),(3861,'جنوبي','Southern','Du sud','07',227),(3862,'الشمالية الغربية','North-Western','Nord-ouest','06',227),(3863,'شمالي','Northern','Nord','05',227),(3864,'الغربي','Western','Occidental','01',227),(3865,'الشرقية','Eastern','Est','03',227),(3866,'حزام النحاس','Copperbelt','Ceinture de cuivre','08',227),(3867,'وابولا','Luapula','Luapula','04',227),(3868,'وسط','Central','Central','02',227),(3869,'لوساكا','Lusaka','Lusaka','09',227),(3883,'ماتابيللاند الشمالية','Matabeleland North','Matabeleland Nord','06',229),(3884,'ماشونالاند الشرقية','Mashonaland East','Mashonaland Est','04',229),(3885,'ماشونالاند الوسطى','Mashonaland Central','Mashonaland Central','03',229),(3886,'ماتابيليلاند الجنوبية','Matabeleland South','Matabeleland Sud','07',229),(3888,'ماسفينغو','Masvingo','Masvingo','08',229);
+/*!40000 ALTER TABLE `cities` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `competition_messages`
+--
+
+DROP TABLE IF EXISTS `competition_messages`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `competition_messages` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `competition_id` bigint unsigned NOT NULL,
+  `details` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `competition_messages`
+--
+
+LOCK TABLES `competition_messages` WRITE;
+/*!40000 ALTER TABLE `competition_messages` DISABLE KEYS */;
+INSERT INTO `competition_messages` VALUES (2,'aa','aaa','222','karimohamed2002@gmail.com',1,'aaaaaaaaaaaaaaaaaaaaaccccccccccccccccccccccccc','2022-09-29 20:50:06','2022-09-29 20:50:06');
+/*!40000 ALTER TABLE `competition_messages` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `competitions`
 --
 
+DROP TABLE IF EXISTS `competitions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `competitions` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` decimal(8,2) NOT NULL,
   `time` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `finished` tinyint(1) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `competitions`
 --
 
-INSERT INTO `competitions` (`id`, `title`, `description`, `price`, `time`, `finished`, `created_at`, `updated_at`) VALUES
-(1, 'مسابقة 1', 'وصف', '50.00', 'يومين', 0, '2022-09-15 12:43:43', '2022-09-15 12:43:43');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `competition_messages`
---
-
-CREATE TABLE `competition_messages` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `first_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `last_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `competition_id` bigint(20) UNSIGNED NOT NULL,
-  `details` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
+LOCK TABLES `competitions` WRITE;
+/*!40000 ALTER TABLE `competitions` DISABLE KEYS */;
+INSERT INTO `competitions` VALUES (1,'مسابقة 19','وصف9',5990.00,'يومين9',0,'2022-09-15 12:43:43','2022-09-15 12:43:43');
+/*!40000 ALTER TABLE `competitions` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `countries`
 --
 
+DROP TABLE IF EXISTS `countries`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `countries` (
-  `country_code` varchar(2) NOT NULL DEFAULT '',
-  `country_enName` varchar(100) NOT NULL DEFAULT '',
-  `country_arName` varchar(100) NOT NULL DEFAULT '',
-  `country_enNationality` varchar(100) NOT NULL DEFAULT '',
-  `country_arNationality` varchar(100) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `name_ar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name_en` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name_fr` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `countries_code_unique` (`code`)
+) ENGINE=InnoDB AUTO_INCREMENT=232 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `countries`
 --
 
-INSERT INTO `countries` (`country_code`, `country_enName`, `country_arName`, `country_enNationality`, `country_arNationality`) VALUES
-('AF', 'Afghanistan', 'أفغانستان', 'Afghan', 'أفغانستاني'),
-('AL', 'Albania', 'ألبانيا', 'Albanian', 'ألباني'),
-('AX', 'Aland Islands', 'جزر آلاند', 'Aland Islander', 'آلاندي'),
-('DZ', 'Algeria', 'الجزائر', 'Algerian', 'جزائري'),
-('AS', 'American Samoa', 'ساموا-الأمريكي', 'American Samoan', 'أمريكي سامواني'),
-('AD', 'Andorra', 'أندورا', 'Andorran', 'أندوري'),
-('AO', 'Angola', 'أنغولا', 'Angolan', 'أنقولي'),
-('AI', 'Anguilla', 'أنغويلا', 'Anguillan', 'أنغويلي'),
-('AQ', 'Antarctica', 'أنتاركتيكا', 'Antarctican', 'أنتاركتيكي'),
-('AG', 'Antigua and Barbuda', 'أنتيغوا وبربودا', 'Antiguan', 'بربودي'),
-('AR', 'Argentina', 'الأرجنتين', 'Argentinian', 'أرجنتيني'),
-('AM', 'Armenia', 'أرمينيا', 'Armenian', 'أرميني'),
-('AW', 'Aruba', 'أروبه', 'Aruban', 'أوروبهيني'),
-('AU', 'Australia', 'أستراليا', 'Australian', 'أسترالي'),
-('AT', 'Austria', 'النمسا', 'Austrian', 'نمساوي'),
-('AZ', 'Azerbaijan', 'أذربيجان', 'Azerbaijani', 'أذربيجاني'),
-('BS', 'Bahamas', 'الباهاماس', 'Bahamian', 'باهاميسي'),
-('BH', 'Bahrain', 'البحرين', 'Bahraini', 'بحريني'),
-('BD', 'Bangladesh', 'بنغلاديش', 'Bangladeshi', 'بنغلاديشي'),
-('BB', 'Barbados', 'بربادوس', 'Barbadian', 'بربادوسي'),
-('BY', 'Belarus', 'روسيا البيضاء', 'Belarusian', 'روسي'),
-('BE', 'Belgium', 'بلجيكا', 'Belgian', 'بلجيكي'),
-('BZ', 'Belize', 'بيليز', 'Belizean', 'بيليزي'),
-('BJ', 'Benin', 'بنين', 'Beninese', 'بنيني'),
-('BL', 'Saint Barthelemy', 'سان بارتيلمي', 'Saint Barthelmian', 'سان بارتيلمي'),
-('BM', 'Bermuda', 'جزر برمودا', 'Bermudan', 'برمودي'),
-('BT', 'Bhutan', 'بوتان', 'Bhutanese', 'بوتاني'),
-('BO', 'Bolivia', 'بوليفيا', 'Bolivian', 'بوليفي'),
-('BA', 'Bosnia and Herzegovina', 'البوسنة و الهرسك', 'Bosnian / Herzegovinian', 'بوسني/هرسكي'),
-('BW', 'Botswana', 'بوتسوانا', 'Botswanan', 'بوتسواني'),
-('BV', 'Bouvet Island', 'جزيرة بوفيه', 'Bouvetian', 'بوفيهي'),
-('BR', 'Brazil', 'البرازيل', 'Brazilian', 'برازيلي'),
-('IO', 'British Indian Ocean Territory', 'إقليم المحيط الهندي البريطاني', 'British Indian Ocean Territory', 'إقليم المحيط الهندي البريطاني'),
-('BN', 'Brunei Darussalam', 'بروني', 'Bruneian', 'بروني'),
-('BG', 'Bulgaria', 'بلغاريا', 'Bulgarian', 'بلغاري'),
-('BF', 'Burkina Faso', 'بوركينا فاسو', 'Burkinabe', 'بوركيني'),
-('BI', 'Burundi', 'بوروندي', 'Burundian', 'بورونيدي'),
-('KH', 'Cambodia', 'كمبوديا', 'Cambodian', 'كمبودي'),
-('CM', 'Cameroon', 'كاميرون', 'Cameroonian', 'كاميروني'),
-('CA', 'Canada', 'كندا', 'Canadian', 'كندي'),
-('CV', 'Cape Verde', 'الرأس الأخضر', 'Cape Verdean', 'الرأس الأخضر'),
-('KY', 'Cayman Islands', 'جزر كايمان', 'Caymanian', 'كايماني'),
-('CF', 'Central African Republic', 'جمهورية أفريقيا الوسطى', 'Central African', 'أفريقي'),
-('TD', 'Chad', 'تشاد', 'Chadian', 'تشادي'),
-('CL', 'Chile', 'شيلي', 'Chilean', 'شيلي'),
-('CN', 'China', 'الصين', 'Chinese', 'صيني'),
-('CX', 'Christmas Island', 'جزيرة عيد الميلاد', 'Christmas Islander', 'جزيرة عيد الميلاد'),
-('CC', 'Cocos (Keeling) Islands', 'جزر كوكوس', 'Cocos Islander', 'جزر كوكوس'),
-('CO', 'Colombia', 'كولومبيا', 'Colombian', 'كولومبي'),
-('KM', 'Comoros', 'جزر القمر', 'Comorian', 'جزر القمر'),
-('CG', 'Congo', 'الكونغو', 'Congolese', 'كونغي'),
-('CK', 'Cook Islands', 'جزر كوك', 'Cook Islander', 'جزر كوك'),
-('CR', 'Costa Rica', 'كوستاريكا', 'Costa Rican', 'كوستاريكي'),
-('HR', 'Croatia', 'كرواتيا', 'Croatian', 'كوراتي'),
-('CU', 'Cuba', 'كوبا', 'Cuban', 'كوبي'),
-('CY', 'Cyprus', 'قبرص', 'Cypriot', 'قبرصي'),
-('CW', 'Curaçao', 'كوراساو', 'Curacian', 'كوراساوي'),
-('CZ', 'Czech Republic', 'الجمهورية التشيكية', 'Czech', 'تشيكي'),
-('DK', 'Denmark', 'الدانمارك', 'Danish', 'دنماركي'),
-('DJ', 'Djibouti', 'جيبوتي', 'Djiboutian', 'جيبوتي'),
-('DM', 'Dominica', 'دومينيكا', 'Dominican', 'دومينيكي'),
-('DO', 'Dominican Republic', 'الجمهورية الدومينيكية', 'Dominican', 'دومينيكي'),
-('EC', 'Ecuador', 'إكوادور', 'Ecuadorian', 'إكوادوري'),
-('EG', 'Egypt', 'مصر', 'Egyptian', 'مصري'),
-('SV', 'El Salvador', 'إلسلفادور', 'Salvadoran', 'سلفادوري'),
-('GQ', 'Equatorial Guinea', 'غينيا الاستوائي', 'Equatorial Guinean', 'غيني'),
-('ER', 'Eritrea', 'إريتريا', 'Eritrean', 'إريتيري'),
-('EE', 'Estonia', 'استونيا', 'Estonian', 'استوني'),
-('ET', 'Ethiopia', 'أثيوبيا', 'Ethiopian', 'أثيوبي'),
-('FK', 'Falkland Islands (Malvinas)', 'جزر فوكلاند', 'Falkland Islander', 'فوكلاندي'),
-('FO', 'Faroe Islands', 'جزر فارو', 'Faroese', 'جزر فارو'),
-('FJ', 'Fiji', 'فيجي', 'Fijian', 'فيجي'),
-('FI', 'Finland', 'فنلندا', 'Finnish', 'فنلندي'),
-('FR', 'France', 'فرنسا', 'French', 'فرنسي'),
-('GF', 'French Guiana', 'غويانا الفرنسية', 'French Guianese', 'غويانا الفرنسية'),
-('PF', 'French Polynesia', 'بولينيزيا الفرنسية', 'French Polynesian', 'بولينيزيي'),
-('TF', 'French Southern and Antarctic Lands', 'أراض فرنسية جنوبية وأنتارتيكية', 'French', 'أراض فرنسية جنوبية وأنتارتيكية'),
-('GA', 'Gabon', 'الغابون', 'Gabonese', 'غابوني'),
-('GM', 'Gambia', 'غامبيا', 'Gambian', 'غامبي'),
-('GE', 'Georgia', 'جيورجيا', 'Georgian', 'جيورجي'),
-('DE', 'Germany', 'ألمانيا', 'German', 'ألماني'),
-('GH', 'Ghana', 'غانا', 'Ghanaian', 'غاني'),
-('GI', 'Gibraltar', 'جبل طارق', 'Gibraltar', 'جبل طارق'),
-('GG', 'Guernsey', 'غيرنزي', 'Guernsian', 'غيرنزي'),
-('GR', 'Greece', 'اليونان', 'Greek', 'يوناني'),
-('GL', 'Greenland', 'جرينلاند', 'Greenlandic', 'جرينلاندي'),
-('GD', 'Grenada', 'غرينادا', 'Grenadian', 'غرينادي'),
-('GP', 'Guadeloupe', 'جزر جوادلوب', 'Guadeloupe', 'جزر جوادلوب'),
-('GU', 'Guam', 'جوام', 'Guamanian', 'جوامي'),
-('GT', 'Guatemala', 'غواتيمال', 'Guatemalan', 'غواتيمالي'),
-('GN', 'Guinea', 'غينيا', 'Guinean', 'غيني'),
-('GW', 'Guinea-Bissau', 'غينيا-بيساو', 'Guinea-Bissauan', 'غيني'),
-('GY', 'Guyana', 'غيانا', 'Guyanese', 'غياني'),
-('HT', 'Haiti', 'هايتي', 'Haitian', 'هايتي'),
-('HM', 'Heard and Mc Donald Islands', 'جزيرة هيرد وجزر ماكدونالد', 'Heard and Mc Donald Islanders', 'جزيرة هيرد وجزر ماكدونالد'),
-('HN', 'Honduras', 'هندوراس', 'Honduran', 'هندوراسي'),
-('HK', 'Hong Kong', 'هونغ كونغ', 'Hongkongese', 'هونغ كونغي'),
-('HU', 'Hungary', 'المجر', 'Hungarian', 'مجري'),
-('IS', 'Iceland', 'آيسلندا', 'Icelandic', 'آيسلندي'),
-('IN', 'India', 'الهند', 'Indian', 'هندي'),
-('IM', 'Isle of Man', 'جزيرة مان', 'Manx', 'ماني'),
-('ID', 'Indonesia', 'أندونيسيا', 'Indonesian', 'أندونيسيي'),
-('IR', 'Iran', 'إيران', 'Iranian', 'إيراني'),
-('IQ', 'Iraq', 'العراق', 'Iraqi', 'عراقي'),
-('IE', 'Ireland', 'إيرلندا', 'Irish', 'إيرلندي'),
-('IL', 'Israel', 'إسرائيل', 'Israeli', 'إسرائيلي'),
-('IT', 'Italy', 'إيطاليا', 'Italian', 'إيطالي'),
-('CI', 'Ivory Coast', 'ساحل العاج', 'Ivory Coastian', 'ساحل العاج'),
-('JE', 'Jersey', 'جيرزي', 'Jersian', 'جيرزي'),
-('JM', 'Jamaica', 'جمايكا', 'Jamaican', 'جمايكي'),
-('JP', 'Japan', 'اليابان', 'Japanese', 'ياباني'),
-('JO', 'Jordan', 'الأردن', 'Jordanian', 'أردني'),
-('KZ', 'Kazakhstan', 'كازاخستان', 'Kazakh', 'كازاخستاني'),
-('KE', 'Kenya', 'كينيا', 'Kenyan', 'كيني'),
-('KI', 'Kiribati', 'كيريباتي', 'I-Kiribati', 'كيريباتي'),
-('KP', 'Korea(North Korea)', 'كوريا الشمالية', 'North Korean', 'كوري'),
-('KR', 'Korea(South Korea)', 'كوريا الجنوبية', 'South Korean', 'كوري'),
-('XK', 'Kosovo', 'كوسوفو', 'Kosovar', 'كوسيفي'),
-('KW', 'Kuwait', 'الكويت', 'Kuwaiti', 'كويتي'),
-('KG', 'Kyrgyzstan', 'قيرغيزستان', 'Kyrgyzstani', 'قيرغيزستاني'),
-('LA', 'Lao PDR', 'لاوس', 'Laotian', 'لاوسي'),
-('LV', 'Latvia', 'لاتفيا', 'Latvian', 'لاتيفي'),
-('LB', 'Lebanon', 'لبنان', 'Lebanese', 'لبناني'),
-('LS', 'Lesotho', 'ليسوتو', 'Basotho', 'ليوسيتي'),
-('LR', 'Liberia', 'ليبيريا', 'Liberian', 'ليبيري'),
-('LY', 'Libya', 'ليبيا', 'Libyan', 'ليبي'),
-('LI', 'Liechtenstein', 'ليختنشتين', 'Liechtenstein', 'ليختنشتيني'),
-('LT', 'Lithuania', 'لتوانيا', 'Lithuanian', 'لتوانيي'),
-('LU', 'Luxembourg', 'لوكسمبورغ', 'Luxembourger', 'لوكسمبورغي'),
-('LK', 'Sri Lanka', 'سريلانكا', 'Sri Lankian', 'سريلانكي'),
-('MO', 'Macau', 'ماكاو', 'Macanese', 'ماكاوي'),
-('MK', 'Macedonia', 'مقدونيا', 'Macedonian', 'مقدوني'),
-('MG', 'Madagascar', 'مدغشقر', 'Malagasy', 'مدغشقري'),
-('MW', 'Malawi', 'مالاوي', 'Malawian', 'مالاوي'),
-('MY', 'Malaysia', 'ماليزيا', 'Malaysian', 'ماليزي'),
-('MV', 'Maldives', 'المالديف', 'Maldivian', 'مالديفي'),
-('ML', 'Mali', 'مالي', 'Malian', 'مالي'),
-('MT', 'Malta', 'مالطا', 'Maltese', 'مالطي'),
-('MH', 'Marshall Islands', 'جزر مارشال', 'Marshallese', 'مارشالي'),
-('MQ', 'Martinique', 'مارتينيك', 'Martiniquais', 'مارتينيكي'),
-('MR', 'Mauritania', 'موريتانيا', 'Mauritanian', 'موريتانيي'),
-('MU', 'Mauritius', 'موريشيوس', 'Mauritian', 'موريشيوسي'),
-('YT', 'Mayotte', 'مايوت', 'Mahoran', 'مايوتي'),
-('MX', 'Mexico', 'المكسيك', 'Mexican', 'مكسيكي'),
-('FM', 'Micronesia', 'مايكرونيزيا', 'Micronesian', 'مايكرونيزيي'),
-('MD', 'Moldova', 'مولدافيا', 'Moldovan', 'مولديفي'),
-('MC', 'Monaco', 'موناكو', 'Monacan', 'مونيكي'),
-('MN', 'Mongolia', 'منغوليا', 'Mongolian', 'منغولي'),
-('ME', 'Montenegro', 'الجبل الأسود', 'Montenegrin', 'الجبل الأسود'),
-('MS', 'Montserrat', 'مونتسيرات', 'Montserratian', 'مونتسيراتي'),
-('MA', 'Morocco', 'المغرب', 'Moroccan', 'مغربي'),
-('MZ', 'Mozambique', 'موزمبيق', 'Mozambican', 'موزمبيقي'),
-('MM', 'Myanmar', 'ميانمار', 'Myanmarian', 'ميانماري'),
-('NA', 'Namibia', 'ناميبيا', 'Namibian', 'ناميبي'),
-('NR', 'Nauru', 'نورو', 'Nauruan', 'نوري'),
-('NP', 'Nepal', 'نيبال', 'Nepalese', 'نيبالي'),
-('NL', 'Netherlands', 'هولندا', 'Dutch', 'هولندي'),
-('AN', 'Netherlands Antilles', 'جزر الأنتيل الهولندي', 'Dutch Antilier', 'هولندي'),
-('NC', 'New Caledonia', 'كاليدونيا الجديدة', 'New Caledonian', 'كاليدوني'),
-('NZ', 'New Zealand', 'نيوزيلندا', 'New Zealander', 'نيوزيلندي'),
-('NI', 'Nicaragua', 'نيكاراجوا', 'Nicaraguan', 'نيكاراجوي'),
-('NE', 'Niger', 'النيجر', 'Nigerien', 'نيجيري'),
-('NG', 'Nigeria', 'نيجيريا', 'Nigerian', 'نيجيري'),
-('NU', 'Niue', 'ني', 'Niuean', 'ني'),
-('NF', 'Norfolk Island', 'جزيرة نورفولك', 'Norfolk Islander', 'نورفوليكي'),
-('MP', 'Northern Mariana Islands', 'جزر ماريانا الشمالية', 'Northern Marianan', 'ماريني'),
-('NO', 'Norway', 'النرويج', 'Norwegian', 'نرويجي'),
-('OM', 'Oman', 'عمان', 'Omani', 'عماني'),
-('PK', 'Pakistan', 'باكستان', 'Pakistani', 'باكستاني'),
-('PW', 'Palau', 'بالاو', 'Palauan', 'بالاوي'),
-('PS', 'Palestine', 'فلسطين', 'Palestinian', 'فلسطيني'),
-('PA', 'Panama', 'بنما', 'Panamanian', 'بنمي'),
-('PG', 'Papua New Guinea', 'بابوا غينيا الجديدة', 'Papua New Guinean', 'بابوي'),
-('PY', 'Paraguay', 'باراغواي', 'Paraguayan', 'بارغاوي'),
-('PE', 'Peru', 'بيرو', 'Peruvian', 'بيري'),
-('PH', 'Philippines', 'الفليبين', 'Filipino', 'فلبيني'),
-('PN', 'Pitcairn', 'بيتكيرن', 'Pitcairn Islander', 'بيتكيرني'),
-('PL', 'Poland', 'بولندا', 'Polish', 'بولندي'),
-('PT', 'Portugal', 'البرتغال', 'Portuguese', 'برتغالي'),
-('PR', 'Puerto Rico', 'بورتو ريكو', 'Puerto Rican', 'بورتي'),
-('QA', 'Qatar', 'قطر', 'Qatari', 'قطري'),
-('RE', 'Reunion Island', 'ريونيون', 'Reunionese', 'ريونيوني'),
-('RO', 'Romania', 'رومانيا', 'Romanian', 'روماني'),
-('RU', 'Russian', 'روسيا', 'Russian', 'روسي'),
-('RW', 'Rwanda', 'رواندا', 'Rwandan', 'رواندا'),
-('KN', 'Saint Kitts and Nevis', 'سانت كيتس ونيفس,', 'Kittitian/Nevisian', 'سانت كيتس ونيفس'),
-('MF', 'Saint Martin (French part)', 'ساينت مارتن فرنسي', 'St. Martian(French)', 'ساينت مارتني فرنسي'),
-('SX', 'Sint Maarten (Dutch part)', 'ساينت مارتن هولندي', 'St. Martian(Dutch)', 'ساينت مارتني هولندي'),
-('LC', 'Saint Pierre and Miquelon', 'سان بيير وميكلون', 'St. Pierre and Miquelon', 'سان بيير وميكلوني'),
-('VC', 'Saint Vincent and the Grenadines', 'سانت فنسنت وجزر غرينادين', 'Saint Vincent and the Grenadines', 'سانت فنسنت وجزر غرينادين'),
-('WS', 'Samoa', 'ساموا', 'Samoan', 'ساموي'),
-('SM', 'San Marino', 'سان مارينو', 'Sammarinese', 'ماريني'),
-('ST', 'Sao Tome and Principe', 'ساو تومي وبرينسيبي', 'Sao Tomean', 'ساو تومي وبرينسيبي'),
-('SA', 'Saudi Arabia', 'المملكة العربية السعودية', 'Saudi Arabian', 'سعودي'),
-('SN', 'Senegal', 'السنغال', 'Senegalese', 'سنغالي'),
-('RS', 'Serbia', 'صربيا', 'Serbian', 'صربي'),
-('SC', 'Seychelles', 'سيشيل', 'Seychellois', 'سيشيلي'),
-('SL', 'Sierra Leone', 'سيراليون', 'Sierra Leonean', 'سيراليوني'),
-('SG', 'Singapore', 'سنغافورة', 'Singaporean', 'سنغافوري'),
-('SK', 'Slovakia', 'سلوفاكيا', 'Slovak', 'سولفاكي'),
-('SI', 'Slovenia', 'سلوفينيا', 'Slovenian', 'سولفيني'),
-('SB', 'Solomon Islands', 'جزر سليمان', 'Solomon Island', 'جزر سليمان'),
-('SO', 'Somalia', 'الصومال', 'Somali', 'صومالي'),
-('ZA', 'South Africa', 'جنوب أفريقيا', 'South African', 'أفريقي'),
-('GS', 'South Georgia and the South Sandwich', 'المنطقة القطبية الجنوبية', 'South Georgia and the South Sandwich', 'لمنطقة القطبية الجنوبية'),
-('SS', 'South Sudan', 'السودان الجنوبي', 'South Sudanese', 'سوادني جنوبي'),
-('ES', 'Spain', 'إسبانيا', 'Spanish', 'إسباني'),
-('SH', 'Saint Helena', 'سانت هيلانة', 'St. Helenian', 'هيلاني'),
-('SD', 'Sudan', 'السودان', 'Sudanese', 'سوداني'),
-('SR', 'Suriname', 'سورينام', 'Surinamese', 'سورينامي'),
-('SJ', 'Svalbard and Jan Mayen', 'سفالبارد ويان ماين', 'Svalbardian/Jan Mayenian', 'سفالبارد ويان ماين'),
-('SZ', 'Swaziland', 'سوازيلند', 'Swazi', 'سوازيلندي'),
-('SE', 'Sweden', 'السويد', 'Swedish', 'سويدي'),
-('CH', 'Switzerland', 'سويسرا', 'Swiss', 'سويسري'),
-('SY', 'Syria', 'سوريا', 'Syrian', 'سوري'),
-('TW', 'Taiwan', 'تايوان', 'Taiwanese', 'تايواني'),
-('TJ', 'Tajikistan', 'طاجيكستان', 'Tajikistani', 'طاجيكستاني'),
-('TZ', 'Tanzania', 'تنزانيا', 'Tanzanian', 'تنزانيي'),
-('TH', 'Thailand', 'تايلندا', 'Thai', 'تايلندي'),
-('TL', 'Timor-Leste', 'تيمور الشرقية', 'Timor-Lestian', 'تيموري'),
-('TG', 'Togo', 'توغو', 'Togolese', 'توغي'),
-('TK', 'Tokelau', 'توكيلاو', 'Tokelaian', 'توكيلاوي'),
-('TO', 'Tonga', 'تونغا', 'Tongan', 'تونغي'),
-('TT', 'Trinidad and Tobago', 'ترينيداد وتوباغو', 'Trinidadian/Tobagonian', 'ترينيداد وتوباغو'),
-('TN', 'Tunisia', 'تونس', 'Tunisian', 'تونسي'),
-('TR', 'Turkey', 'تركيا', 'Turkish', 'تركي'),
-('TM', 'Turkmenistan', 'تركمانستان', 'Turkmen', 'تركمانستاني'),
-('TC', 'Turks and Caicos Islands', 'جزر توركس وكايكوس', 'Turks and Caicos Islands', 'جزر توركس وكايكوس'),
-('TV', 'Tuvalu', 'توفالو', 'Tuvaluan', 'توفالي'),
-('UG', 'Uganda', 'أوغندا', 'Ugandan', 'أوغندي'),
-('UA', 'Ukraine', 'أوكرانيا', 'Ukrainian', 'أوكراني'),
-('AE', 'United Arab Emirates', 'الإمارات العربية المتحدة', 'Emirati', 'إماراتي'),
-('GB', 'United Kingdom', 'المملكة المتحدة', 'British', 'بريطاني'),
-('US', 'United States', 'الولايات المتحدة', 'American', 'أمريكي'),
-('UM', 'US Minor Outlying Islands', 'قائمة الولايات والمناطق الأمريكية', 'US Minor Outlying Islander', 'أمريكي'),
-('UY', 'Uruguay', 'أورغواي', 'Uruguayan', 'أورغواي'),
-('UZ', 'Uzbekistan', 'أوزباكستان', 'Uzbek', 'أوزباكستاني'),
-('VU', 'Vanuatu', 'فانواتو', 'Vanuatuan', 'فانواتي'),
-('VE', 'Venezuela', 'فنزويلا', 'Venezuelan', 'فنزويلي'),
-('VN', 'Vietnam', 'فيتنام', 'Vietnamese', 'فيتنامي'),
-('VI', 'Virgin Islands (U.S.)', 'الجزر العذراء الأمريكي', 'American Virgin Islander', 'أمريكي'),
-('VA', 'Vatican City', 'فنزويلا', 'Vatican', 'فاتيكاني'),
-('WF', 'Wallis and Futuna Islands', 'والس وفوتونا', 'Wallisian/Futunan', 'فوتوني'),
-('EH', 'Western Sahara', 'الصحراء الغربية', 'Sahrawian', 'صحراوي'),
-('YE', 'Yemen', 'اليمن', 'Yemeni', 'يمني'),
-('ZM', 'Zambia', 'زامبيا', 'Zambian', 'زامبياني'),
-('ZW', 'Zimbabwe', 'زمبابوي', 'Zimbabwean', 'زمبابوي');
-
--- --------------------------------------------------------
+LOCK TABLES `countries` WRITE;
+/*!40000 ALTER TABLE `countries` DISABLE KEYS */;
+INSERT INTO `countries` VALUES (1,'أندورا','Andorra','Andorre','ad'),(2,'الإمارات العربية المتحدة','United Arab Emirates','Emirats Arabes Unis','ae'),(3,'أفغانستان','Afghanistan','L\'Afghanistan','af'),(4,'أنتيغوا وبربودا','Antigua and Barbuda','Antigua-et-Barbuda','ag'),(5,'أنغيلا','Anguilla','Anguilla','ai'),(6,'ألبانيا','Albania','Albanie','al'),(7,'أرمينيا','Armenia','Arménie','am'),(8,'جزر الأنتيل الهولندية','Netherlands Antilles','Antilles néerlandaises','an'),(9,'أنغولا','Angola','Angola','ao'),(10,'الأرجنتين','Argentina','Argentine','ar'),(11,'النمسا','Austria','L\'Autriche','at'),(12,'أستراليا','Australia','Australie','au'),(13,'أروبا','Aruba','Aruba','aw'),(14,'أذربيجان','Azerbaijan','Azerbaïdjan','az'),(15,'البوسنة والهرسك','Bosnia and Herzegovina','Bosnie Herzégovine','ba'),(16,'بربادوس','Barbados','La Barbade','bb'),(17,'بنغلاديش','Bangladesh','Bangladesh','bd'),(18,'بلجيكا','Belgium','Belgique','be'),(19,'بوركينا فاسو','Burkina Faso','Burkina Faso','bf'),(20,'بلغاريا','Bulgaria','Bulgarie','bg'),(21,'البحرين','Bahrain','Bahreïn','bh'),(22,'بوروندي','Burundi','Burundi','bi'),(23,'بنين','Benin','Bénin','bj'),(24,'برمودا','Bermuda','Bermudes','bm'),(25,'بروناي دار السلام','Brunei Darussalam','Brunei Darussalam','bn'),(26,'بوليفيا','Bolivia','Bolivie','bo'),(27,'البرازيل','Brazil','Brésil','br'),(28,'الباهاما','Bahamas','Bahamas','bs'),(29,'بوتان','Bhutan','Bhoutan','bt'),(30,'بوتسوانا','Botswana','Botswana','bw'),(31,'روسيا البيضاء','Belarus','Biélorussie','by'),(32,'بليز','Belize','Belize','bz'),(33,'كندا','Canada','Canada','ca'),(34,'جزر كوكوس (كيلينغ)','Cocos (Keeling) Islands','Îles Cocos (Keeling)','cc'),(35,'جمهورية الكونغو الديموقراطية','Democratic Republic of the Congo','République Démocratique du Congo','cd'),(36,'جمهورية افريقيا الوسطى','Central African Republic','République centrafricaine','cf'),(37,'الكونغو','Congo','Congo','cg'),(38,'سويسرا','Switzerland','Suisse','ch'),(39,'ساحل العاج (ساحل العاج)','Cote D\'Ivoire (Ivory Coast)','Cote D\'Ivoire (Côte d\'Ivoire)','ci'),(40,'جزر كوك','Cook Islands','les Îles Cook','ck'),(41,'تشيلي','Chile','Chili','cl'),(42,'الكاميرون','Cameroon','Cameroun','cm'),(43,'الصين','China','Chine','cn'),(44,'كولومبيا','Colombia','Colombie','co'),(45,'كوستا ريكا','Costa Rica','Costa Rica','cr'),(46,'كوبا','Cuba','Cuba','cu'),(47,'الرأس الأخضر','Cape Verde','Cap-Vert','cv'),(48,'جزيرة الكريسماس','Christmas Island','L\'île de noël','cx'),(49,'قبرص','Cyprus','Chypre','cy'),(50,'جمهورية التشيك','Czech Republic','République Tchèque','cz'),(51,'ألمانيا','Germany','Allemagne','de'),(52,'جيبوتي','Djibouti','Djibouti','dj'),(53,'الدنمارك','Denmark','Danemark','dk'),(54,'دومينيكا','Dominica','Dominique','dm'),(55,'جمهورية الدومنيكان','Dominican Republic','République Dominicaine','do'),(56,'الجزائر','Algeria','Algérie','dz'),(57,'الإكوادور','Ecuador','L\'Équateur','ec'),(58,'استونيا','Estonia','Estonie','ee'),(59,'مصر','Egypt','Egypte','eg'),(60,'الصحراء الغربية','Western Sahara','Sahara occidental','eh'),(61,'إريتريا','Eritrea','Erythrée','er'),(62,'إسبانيا','Spain','Espagne','es'),(63,'أثيوبيا','Ethiopia','Ethiopie','et'),(64,'فنلندا','Finland','Finlande','fi'),(65,'فيجي','Fiji','Fidji','fj'),(66,'جزر فوكلاند (مالفيناس)','Falkland Islands (Malvinas)','Iles Malouines (Malouines)','fk'),(67,'ولايات ميكرونيزيا الموحدة','Federated States of Micronesia','États fédérés de Micronésie','fm'),(68,'جزر صناعية','Faroe Islands','Îles Féroé','fo'),(69,'فرنسا','France','France','fr'),(70,'الغابون','Gabon','Gabon','ga'),(71,'بريطانيا العظمى (المملكة المتحدة)','Great Britain (UK)','Grande-Bretagne (UK)','gb'),(72,'غرينادا','Grenada','Grenade','gd'),(73,'جورجيا','Georgia','Géorgie','ge'),(74,'غيانا الفرنسية','French Guiana','Guinée Française','gf'),(75,'لا شيء','NULL','NUL','gg'),(76,'غانا','Ghana','Ghana','gh'),(77,'جبل طارق','Gibraltar','Gibraltar','gi'),(78,'الأرض الخضراء','Greenland','Groenland','gl'),(79,'غامبيا','Gambia','Gambie','gm'),(80,'غينيا','Guinea','Guinée','gn'),(81,'جوادلوب','Guadeloupe','La guadeloupe','gp'),(82,'غينيا الإستوائية','Equatorial Guinea','Guinée Équatoriale','gq'),(83,'اليونان','Greece','Grèce','gr'),(84,'جورجيا وجزر ساندويتش','S. Georgia and S. Sandwich Islands','Géorgie du Sud et les îles Sandwich du Sud','gs'),(85,'غواتيمالا','Guatemala','Guatemala','gt'),(86,'غينيا بيساو','Guinea-Bissau','Guinée-Bissau','gw'),(87,'غيانا','Guyana','Guyane','gy'),(88,'هونغ كونغ','Hong Kong','Hong Kong','hk'),(89,'هندوراس','Honduras','Honduras','hn'),(90,'كرواتيا (هرفاتسكا)','Croatia (Hrvatska)','Croatie (Hrvatska)','hr'),(91,'هايتي','Haiti','Haïti','ht'),(92,'اليونان','Hungary','Hongrie','hu'),(93,'أندونيسيا','Indonesia','Indonésie','id'),(94,'أيرلندا','Ireland','Irlande','ie'),(96,'الهند','India','Inde','in'),(97,'العراق','Iraq','Irak','iq'),(98,'إيران','Iran','Iran','ir'),(99,'أيسلندا','Iceland','Islande','is'),(100,'إيطاليا','Italy','Italie','it'),(101,'جامايكا','Jamaica','Jamaïque','jm'),(102,'الأردن','Jordan','Jordan','jo'),(103,'اليابان','Japan','Japon','jp'),(104,'كينيا','Kenya','Kenya','ke'),(105,'قرغيزستان','Kyrgyzstan','Kirghizistan','kg'),(106,'كمبوديا','Cambodia','Cambodge','kh'),(107,'كيريباس','Kiribati','Kiribati','ki'),(108,'جزر القمر','Comoros','Comores','km'),(109,'سانت كيتس ونيفيس','Saint Kitts and Nevis','Saint-Christophe-et-Niévès','kn'),(110,'كوريا الشمالية','Korea (North)','Corée du Nord','kp'),(111,'كوريا، جنوب)','Korea (South)','COREE DU SUD)','kr'),(112,'الكويت','Kuwait','Koweit','kw'),(113,'جزر كايمان','Cayman Islands','Îles Caïmans','ky'),(114,'كازاخستان','Kazakhstan','Le kazakhstan','kz'),(115,'لاوس','Laos','Laos','la'),(116,'لبنان','Lebanon','Liban','lb'),(117,'القديسة لوسيا','Saint Lucia','Sainte-Lucie','lc'),(118,'ليختنشتاين','Liechtenstein','Le Liechtenstein','li'),(119,'سيريلانكا','Sri Lanka','Sri Lanka','lk'),(120,'ليبيريا','Liberia','Libéria','lr'),(121,'ليسوتو','Lesotho','Lesotho','ls'),(122,'ليتوانيا','Lithuania','Lituanie','lt'),(123,'لوكسمبورغ','Luxembourg','Luxembourg','lu'),(124,'لاتفيا','Latvia','Lettonie','lv'),(125,'ليبيا','Libya','Libye','ly'),(126,'المغرب','Morocco','Maroc','ma'),(127,'موناكو','Monaco','Monaco','mc'),(128,'مولدوفا','Moldova','La Moldavie','md'),(129,'مدغشقر','Madagascar','Madagascar','mg'),(130,'جزر مارشال','Marshall Islands','Iles Marshall','mh'),(131,'مقدونيا','Macedonia','Macédoine','mk'),(132,'مالي','Mali','Mali','ml'),(133,'ميانمار','Myanmar','Myanmar','mm'),(134,'منغوليا','Mongolia','Mongolie','mn'),(135,'ماكاو','Macao','Macao','mo'),(136,'جزر مريانا الشمالية','Northern Mariana Islands','Îles Mariannes du Nord','mp'),(137,'مارتينيك','Martinique','Martinique','mq'),(138,'موريتانيا','Mauritania','Mauritanie','mr'),(139,'مونتسيرات','Montserrat','Montserrat','ms'),(140,'مالطا','Malta','Malte','mt'),(141,'موريشيوس','Mauritius','Maurice','mu'),(142,'جزر المالديف','Maldives','Maldives','mv'),(143,'مالاوي','Malawi','Malawi','mw'),(144,'المكسيك','Mexico','Mexique','mx'),(145,'ماليزيا','Malaysia','Malaisie','my'),(146,'موزمبيق','Mozambique','Mozambique','mz'),(147,'ناميبيا','Namibia','Namibie','na'),(148,'كاليدونيا الجديدة','New Caledonia','Nouvelle Calédonie','nc'),(149,'النيجر','Niger','Niger','ne'),(150,'جزيرة نورفولك','Norfolk Island','l\'ile de Norfolk','nf'),(151,'نيجيريا','Nigeria','Nigeria','ng'),(152,'نيكاراغوا','Nicaragua','Nicaragua','ni'),(153,'هولندا','Netherlands','Pays-Bas','nl'),(154,'النرويج','Norway','Norvège','no'),(155,'نيبال','Nepal','Népal','np'),(156,'ناورو','Nauru','Nauru','nr'),(157,'نيوي','Niue','Niue','nu'),(158,'نيوزيلندا (اوتياروا)','New Zealand (Aotearoa)','Nouvelle-Zélande (Aotearoa)','nz'),(159,'سلطنة عمان','Oman','Oman','om'),(160,'بناما','Panama','Panama','pa'),(161,'بيرو','Peru','Pérou','pe'),(162,'بولينيزيا الفرنسية','French Polynesia','Polynésie française','pf'),(163,'بابوا غينيا الجديدة','Papua New Guinea','Papouasie Nouvelle Guinée','pg'),(164,'الفلبين','Philippines','Philippines','ph'),(165,'باكستان','Pakistan','Pakistan','pk'),(166,'بولندا','Poland','Pologne','pl'),(167,'سانت بيير وميكلون','Saint Pierre and Miquelon','Saint Pierre et Miquelon','pm'),(168,'بيتكيرن','Pitcairn','Pitcairn','pn'),(169,'الأراضي الفلسطينية','Palestinian Territory','Territoire Palestinien','ps'),(170,'البرتغال','Portugal','le Portugal','pt'),(171,'بالاو','Palau','Palau','pw'),(172,'باراغواي','Paraguay','Paraguay','py'),(173,'دولة قطر','Qatar','Qatar','qa'),(174,'جمع شمل','Reunion','Réunion','re'),(175,'رومانيا','Romania','Roumanie','ro'),(176,'الاتحاد الروسي','Russian Federation','Fédération Russe','ru'),(177,'رواندا','Rwanda','Rwanda','rw'),(178,'المملكة العربية السعودية','Saudi Arabia','Arabie Saoudite','sa'),(179,'جزر سليمان','Solomon Islands','Les îles Salomon','sb'),(180,'سيشيل','Seychelles','les Seychelles','sc'),(181,'سودان','Sudan','Soudan','sd'),(182,'السويد','Sweden','Suède','se'),(183,'سنغافورة','Singapore','Singapour','sg'),(184,'سانت هيلانة','Saint Helena','Sainte Hélène','sh'),(185,'سلوفينيا','Slovenia','La slovénie','si'),(186,'سفالبارد وجان مايان','Svalbard and Jan Mayen','Svalbard et Jan Mayen','sj'),(187,'سلوفاكيا','Slovakia','La slovaquie','sk'),(188,'سيرا ليون','Sierra Leone','Sierra Leone','sl'),(189,'سان مارينو','San Marino','Saint Marin','sm'),(190,'السنغال','Senegal','Sénégal','sn'),(191,'الصومال','Somalia','Somalie','so'),(192,'سورينام','Suriname','Suriname','sr'),(193,'ساو تومي وبرنسيبي','Sao Tome and Principe','Sao Tomé et Principe','st'),(194,'السلفادور','El Salvador','Le Salvador','sv'),(195,'سوريا','Syria','Syrie','sy'),(196,'سوازيلاند','Swaziland','Swaziland','sz'),(197,'جزر تركس وكايكوس','Turks and Caicos Islands','îles Turques-et-Caïques','tc'),(198,'تشاد','Chad','Le tchad','td'),(199,'المناطق الجنوبية لفرنسا','French Southern Territories','Terres australes françaises','tf'),(200,'ليذهب','Togo','Aller','tg'),(201,'تايلاند','Thailand','Thaïlande','th'),(202,'طاجيكستان','Tajikistan','Tadjikistan','tj'),(203,'توكيلاو','Tokelau','Tokelau','tk'),(204,'تركمانستان','Turkmenistan','Turkménistan','tm'),(205,'تونس','Tunisia','Tunisie','tn'),(206,'تونغا','Tonga','Tonga','to'),(207,'ديك رومي','Turkey','dinde','tr'),(208,'ترينداد وتوباغو','Trinidad and Tobago','Trinité-et-Tobago','tt'),(209,'توفالو','Tuvalu','Tuvalu','tv'),(210,'تايوان','Taiwan','Taïwan','tw'),(211,'تنزانيا','Tanzania','Tanzanie','tz'),(212,'أوكرانيا','Ukraine','Ukraine','ua'),(213,'أوغندا','Uganda','Ouganda','ug'),(214,'أوروغواي','Uruguay','Uruguay','uy'),(215,'أوزبكستان','Uzbekistan','Ouzbékistan','uz'),(216,'سانت فنسنت وجزر غرينادين','Saint Vincent and the Grenadines','Saint-Vincent-et-les-Grenadines','vc'),(217,'فنزويلا','Venezuela','Venezuela','ve'),(218,'جزر العذراء البريطانية)','Virgin Islands (British)','Îles vierges britanniques','vg'),(219,'جزر فيرجن (الولايات المتحدة)','Virgin Islands (U.S.)','Îles Vierges (États-Unis)','vi'),(220,'فيتنام','Viet Nam','Viet Nam','vn'),(221,'فانواتو','Vanuatu','Vanuatu','vu'),(222,'واليس وفوتونا','Wallis and Futuna','Wallis et Futuna','wf'),(223,'ساموا','Samoa','Samoa','ws'),(224,'اليمن','Yemen','Yémen','ye'),(225,'مايوت','Mayotte','Mayotte','yt'),(226,'جنوب أفريقيا','South Africa','Afrique du Sud','za'),(227,'زامبيا','Zambia','Zambie','zm'),(228,'زائير (سابقة)','Zaire (former)','Zaïre (ancien)','zr'),(229,'زيمبابوي','Zimbabwe','Zimbabwe','zw'),(230,'الولايات المتحدة','United States of America','les États-Unis d\'Amérique','us'),(231,'غير معروف','unknown','unknown','null');
+/*!40000 ALTER TABLE `countries` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `draws`
 --
 
+DROP TABLE IF EXISTS `draws`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `draws` (
-  `draw_id` bigint(20) NOT NULL,
+  `draw_id` bigint NOT NULL AUTO_INCREMENT,
   `draw_contact` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `draw_way` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `draw_amount` decimal(8,2) NOT NULL,
-  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint unsigned NOT NULL,
   `user_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `confirmed` tinyint(1) NOT NULL DEFAULT 0,
+  `confirmed` tinyint(1) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`draw_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `draws`
+--
+
+LOCK TABLES `draws` WRITE;
+/*!40000 ALTER TABLE `draws` DISABLE KEYS */;
+/*!40000 ALTER TABLE `draws` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `failed_jobs`
 --
 
+DROP TABLE IF EXISTS `failed_jobs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `failed_jobs` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- --------------------------------------------------------
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `failed_jobs`
+--
+
+LOCK TABLES `failed_jobs` WRITE;
+/*!40000 ALTER TABLE `failed_jobs` DISABLE KEYS */;
+/*!40000 ALTER TABLE `failed_jobs` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `images`
 --
 
+DROP TABLE IF EXISTS `images`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `images` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` double(8,2) NOT NULL,
-  `user_id` bigint(20) UNSIGNED NOT NULL,
-  `confirmed` tinyint(1) NOT NULL DEFAULT 0,
+  `user_id` bigint unsigned NOT NULL,
+  `confirmed` tinyint(1) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `images`
+--
+
+LOCK TABLES `images` WRITE;
+/*!40000 ALTER TABLE `images` DISABLE KEYS */;
+INSERT INTO `images` VALUES (1,'202209182042Capture.PNG','a',6.00,1,2,'2022-09-18 18:42:36','2022-09-20 15:29:50'),(2,'1.png','test',1.00,1,1,'2022-09-18 20:18:35','2022-09-20 15:26:12'),(3,'202209182218screencapture-127-0-0-1-8000-trading-2022-09-18-13_04_35 (1).png','test2',0.00,1,1,'2022-09-18 20:18:56','2022-09-21 20:51:29'),(4,'202209182219screencapture-127-0-0-1-8000-new-order-2022-09-18-17_19_21.png','test3',100.00,1,1,'2022-09-18 20:19:18','2022-09-21 20:51:28'),(6,'202209201803asdasd.PNG','test',6.00,1,1,'2022-09-20 16:03:50','2022-09-21 20:51:27'),(7,'202209290900Screenshot from 2022-09-27 14-24-53.png','aa',11.00,1,0,'2022-09-29 07:00:20','2022-09-29 07:00:20'),(8,'202209291707arpahak_logo.jpeg','NEW',100.00,3,1,'2022-09-29 15:07:09','2022-09-29 15:07:27'),(9,'202209292008Screenshot from 2022-09-25 11-40-07.png','esssss',55.00,3,0,'2022-09-29 18:08:30','2022-09-29 18:08:30'),(10,'202209301057arpahak_logo.jpeg','tst',0.00,3,1,'2022-09-30 08:57:58','2022-09-30 11:29:05'),(11,'202209301319vodafone.PNG','شش',0.00,3,1,'2022-09-30 11:19:46','2022-09-30 11:29:07');
+/*!40000 ALTER TABLE `images` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `links`
 --
 
+DROP TABLE IF EXISTS `links`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `links` (
-  `link_id` bigint(20) UNSIGNED NOT NULL,
+  `link_id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `link_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `link_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `link_price` decimal(8,2) NOT NULL,
   `link_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`link_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `links`
+--
+
+LOCK TABLES `links` WRITE;
+/*!40000 ALTER TABLE `links` DISABLE KEYS */;
+INSERT INTO `links` VALUES (1,'test','test',60.00,'youtube','2022-09-19 07:51:05','2022-09-19 07:51:05'),(2,'مشاهدة فيديو','https://www.youtube.com/watch?v=wt-REOpdXCg',10.00,'youtube','2022-09-21 08:26:39','2022-09-21 08:26:39'),(3,'عمل لايك لصفحة','https://www.facebook.com/walealsham',10.00,'facebook','2022-09-21 08:35:05','2022-09-21 08:35:05'),(4,'مشاهدة فيديو','https://www.tiktok.com/@joomosa/video/7144710630849711366?is_copy_url=1&is_from_webapp=v1',10.00,'tiktok','2022-09-21 08:57:14','2022-09-21 08:57:14'),(5,'مشاهدة فيديو','https://www.youtube.com/watch?v=wt-REOpdXCg',0.10,'youtube','2022-09-21 09:05:52','2022-09-21 09:05:52');
+/*!40000 ALTER TABLE `links` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `media`
+--
+
+DROP TABLE IF EXISTS `media`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `media` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `model_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_id` bigint unsigned NOT NULL,
+  `uuid` char(36) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `collection_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `file_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mime_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `disk` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `conversions_disk` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `size` bigint unsigned NOT NULL,
+  `manipulations` json NOT NULL,
+  `custom_properties` json NOT NULL,
+  `responsive_images` json NOT NULL,
+  `order_column` int unsigned DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `media_model_type_model_id_index` (`model_type`,`model_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `media`
+--
+
+LOCK TABLES `media` WRITE;
+/*!40000 ALTER TABLE `media` DISABLE KEYS */;
+INSERT INTO `media` VALUES (1,'1',1,'1','1','1','1','1','1','1',1,'1','1','1',1,NULL,NULL);
+/*!40000 ALTER TABLE `media` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `metals`
+--
+
+DROP TABLE IF EXISTS `metals`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `metals` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` text NOT NULL,
+  `buy_price` text NOT NULL,
+  `sell_price` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `metals`
+--
+
+LOCK TABLES `metals` WRITE;
+/*!40000 ALTER TABLE `metals` DISABLE KEYS */;
+INSERT INTO `metals` VALUES (1,'ذهب','12','15'),(2,'فضه','20','21'),(3,'الالمونيوم','11','15');
+/*!40000 ALTER TABLE `metals` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `migrations`
 --
 
+DROP TABLE IF EXISTS `migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `migrations` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `batch` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `migrations`
 --
 
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2019_08_19_000000_create_failed_jobs_table', 1),
-(4, '2022_08_20_191010_create_draws_table', 1),
-(5, '2022_08_20_191021_create_roles_table', 1),
-(6, '2022_08_20_210709_create_links_table', 1),
-(7, '2022_08_24_140013_create_share_us_table', 1),
-(8, '2022_08_27_001754_create_competitions_table', 1),
-(9, '2022_08_27_095223_create_competition_messages_table', 1),
-(10, '2022_08_28_203853_create_images_table', 1),
-(11, '2022_09_15_112740_create_services_table', 1),
-(12, '2022_09_15_112827_create_service_types_table', 1),
-(13, '2022_09_15_112851_create_service_categories_table', 1),
-(14, '2022_09_15_113054_create_user_services_table', 1);
-
--- --------------------------------------------------------
+LOCK TABLES `migrations` WRITE;
+/*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
+INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_resets_table',1),(3,'2019_08_19_000000_create_failed_jobs_table',1),(4,'2022_08_20_191010_create_draws_table',1),(5,'2022_08_20_191021_create_roles_table',1),(6,'2022_08_20_210709_create_links_table',1),(7,'2022_08_24_140013_create_share_us_table',1),(8,'2022_08_27_001754_create_competitions_table',1),(9,'2022_08_27_095223_create_competition_messages_table',1),(10,'2022_08_28_203853_create_images_table',1),(11,'2022_09_15_112740_create_services_table',1),(12,'2022_09_15_112827_create_service_types_table',1),(13,'2022_09_15_112851_create_service_categories_table',1),(14,'2022_09_15_113054_create_user_services_table',1),(15,'2022_09_26_111736_create_payments_table',1),(16,'2022_09_26_140506_create_postimages_table',1),(17,'2022_09_27_091739_create_countries_table',1),(18,'2022_09_27_091754_create_cities_table',1),(19,'2022_09_30_153813_create_media_table',2);
+/*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `password_resets`
 --
 
+DROP TABLE IF EXISTS `password_resets`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `password_resets` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `created_at` timestamp NULL DEFAULT NULL,
+  KEY `password_resets_email_index` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- --------------------------------------------------------
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `password_resets`
+--
+
+LOCK TABLES `password_resets` WRITE;
+/*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
+/*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `payments`
+--
+
+DROP TABLE IF EXISTS `payments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `payments` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `payment_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payer_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payer_email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `amount` double(10,2) NOT NULL,
+  `currency` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payment_status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `payments`
+--
+
+LOCK TABLES `payments` WRITE;
+/*!40000 ALTER TABLE `payments` DISABLE KEYS */;
+INSERT INTO `payments` VALUES (46,'f73f03e4-bcbc-4168-8346-d8a36042fb50','3','hassangomaa974@gmail.com',500.00,'EGP','Accepted','2022-09-29 20:04:39','2022-09-29 20:04:39'),(51,'0833d0da-5a3c-40a4-8173-d6509f2780af','3','hassangomaa974@gmail.com',500.00,'EGP','Accepted','2022-09-30 13:48:45','2022-09-30 13:48:45'),(52,'ce538c43-9afb-4a69-a46a-93efcf218b6f','3','hassangomaa974@gmail.com',500.00,'EGP','pending','2022-09-30 13:49:09','2022-09-30 13:49:09'),(53,'68dc0a5e-0723-4db7-bc95-349e96475354','3','hassangomaa974@gmail.com',500.00,'EGP','pending','2022-09-30 13:49:10','2022-09-30 13:49:10'),(54,'6a1f288d-33d7-4fb4-b238-342fb2d28263','3','hassangomaa974@gmail.com',10000.00,'EGP','pending','2022-09-30 13:49:14','2022-09-30 13:49:14'),(55,'822c1054-58b3-46f1-bdd7-ccf2cb6cba9a','3','hassangomaa974@gmail.com',10000.00,'EGP','pending','2022-09-30 13:49:15','2022-09-30 13:49:15'),(56,'09e13c31-d1d6-4e9b-b940-b97675f69382','3','hassangomaa974@gmail.com',10000.00,'EGP','pending','2022-09-30 13:49:15','2022-09-30 13:49:15'),(57,'7e830098-3155-4b31-9594-e7d67a9a8962','3','hassangomaa974@gmail.com',10000.00,'EGP','pending','2022-09-30 13:49:15','2022-09-30 13:49:15'),(58,'69668ab4-f967-4498-8466-62043f00c81a','3','hassangomaa974@gmail.com',10000.00,'EGP','pending','2022-09-30 13:49:16','2022-09-30 13:49:16'),(59,'3d8b9e70-8f9a-4b4e-b29a-4d85f2430820','3','hassangomaa974@gmail.com',10000.00,'EGP','pending','2022-09-30 13:49:16','2022-09-30 13:49:16'),(60,'9635a62b-7695-4685-bcc3-e8e0103bd369','3','hassangomaa974@gmail.com',10000.00,'EGP','pending','2022-09-30 13:49:17','2022-09-30 13:49:17'),(61,'b26526c7-1997-4927-8875-741bc90d07d0','3','hassangomaa974@gmail.com',10000.00,'EGP','pending','2022-09-30 13:49:17','2022-09-30 13:49:17'),(62,'a634985d-a097-4548-bf87-f9688c431847','3','hassangomaa974@gmail.com',10000.00,'EGP','pending','2022-09-30 13:49:17','2022-09-30 13:49:17'),(63,'f7d0f885-5224-4bd5-ac88-5e94f37f19dc','3','hassangomaa974@gmail.com',10000.00,'EGP','pending','2022-09-30 13:49:18','2022-09-30 13:49:18'),(64,'c0bcbb75-e566-4346-a267-9190fd3458d5','3','hassangomaa974@gmail.com',10000.00,'EGP','pending','2022-09-30 13:49:18','2022-09-30 13:49:18'),(65,'4a69fe4d-f1d6-4c74-9906-2664e95be466','3','hassangomaa974@gmail.com',10000.00,'EGP','pending','2022-09-30 13:49:19','2022-09-30 13:49:19'),(66,'15cdd101-244d-4cbf-8cf3-f255dcc36f96','3','hassangomaa974@gmail.com',10000.00,'EGP','pending','2022-09-30 13:49:19','2022-09-30 13:49:19'),(67,'f34ccb37-b86f-4102-a656-5d2752d71509','3','hassangomaa974@gmail.com',10000.00,'EGP','pending','2022-09-30 13:49:19','2022-09-30 13:49:19'),(68,'b031b4a0-80c2-40de-8957-e98de1ce411d','3','hassangomaa974@gmail.com',10000.00,'EGP','pending','2022-09-30 13:49:20','2022-09-30 13:49:20'),(69,'a9f77834-c549-4de0-af8c-7e48fb7b1198','3','hassangomaa974@gmail.com',10000.00,'EGP','pending','2022-09-30 13:49:20','2022-09-30 13:49:20'),(70,'eeb8b890-4c51-4cc0-b1a7-c2b9c0807b81','3','hassangomaa974@gmail.com',10000.00,'EGP','pending','2022-09-30 13:49:20','2022-09-30 13:49:20'),(71,'4d5fa14b-c1f3-4e17-95e1-a9707f0bc937','3','hassangomaa974@gmail.com',10000.00,'EGP','bag','2022-09-30 13:49:21','2022-09-30 13:49:21'),(72,'03c11c4b-1667-425b-a76b-2e9b48121959','3','hassangomaa974@gmail.com',10000.00,'EGP','bag','2022-09-30 13:49:21','2022-09-30 13:49:21'),(73,'f59f66d9-6070-4058-8d06-3e105c9748ab','3','hassangomaa974@gmail.com',10000.00,'EGP','bag','2022-09-30 13:49:22','2022-09-30 13:49:22'),(74,'91266a08-8b4c-4551-a950-8ac311be5b3d','3','hassangomaa974@gmail.com',10000.00,'EGP','bag','2022-09-30 13:49:22','2022-09-30 13:49:22'),(75,'49a18b93-8f54-4b93-bb21-0397c5b95587','3','hassangomaa974@gmail.com',10000.00,'EGP','bag','2022-09-30 13:49:23','2022-09-30 13:49:23'),(76,'44a954ca-aceb-4ae6-8727-41821fa63d22','3','hassangomaa974@gmail.com',10000.00,'EGP','bag','2022-09-30 13:49:23','2022-09-30 13:49:23'),(77,'8390c106-c00c-4592-bd79-9109d2adadd3','3','hassangomaa974@gmail.com',10000.00,'EGP','bag','2022-09-30 13:49:23','2022-09-30 13:49:23'),(78,'c161172a-3836-4a25-bd4c-5ef35ad4a87e','3','hassangomaa974@gmail.com',10000.00,'EGP','bag','2022-09-30 13:49:24','2022-09-30 13:49:24'),(79,'3e02d316-25b4-49e8-ad71-b8e5fa5b51dc','3','hassangomaa974@gmail.com',10000.00,'EGP','bag','2022-09-30 13:49:24','2022-09-30 13:49:24');
+/*!40000 ALTER TABLE `payments` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `postimages`
+--
+
+DROP TABLE IF EXISTS `postimages`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `postimages` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `path` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_by` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `updated_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `postimages`
+--
+
+LOCK TABLES `postimages` WRITE;
+/*!40000 ALTER TABLE `postimages` DISABLE KEYS */;
+INSERT INTO `postimages` VALUES (30,'فودافون كاش','202209301727vodafone_testWhatsApp Image 2018-08-01 at 10.07.jpg','/home/hassangomaa/Documents/Laravel_projects/hassan_Arpahak/arpahak/public/uploads/payment/202209301727vodafone_testWhatsApp Image 2018-08-01 at 10.07.jpg','Accepted','hassangomaa974@gmail.com',NULL,'2022-09-30 15:27:11','2022-09-30 15:27:11'),(31,'البنك QNB','202209301727QNB_test_DCMPbzlXoAEEbOq.jpg','/home/hassangomaa/Documents/Laravel_projects/hassan_Arpahak/arpahak/public/uploads/payment/202209301727QNB_test_DCMPbzlXoAEEbOq.jpg','pending','hassangomaa974@gmail.com',NULL,'2022-09-30 15:27:30','2022-09-30 15:27:30');
+/*!40000 ALTER TABLE `postimages` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `roles`
 --
 
+DROP TABLE IF EXISTS `roles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `roles` (
-  `role_id` bigint(20) UNSIGNED NOT NULL,
+  `role_id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `role_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`role_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- --------------------------------------------------------
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `services`
+-- Dumping data for table `roles`
 --
 
-CREATE TABLE `services` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `service_type_id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `net_price` decimal(8,2) NOT NULL,
-  `commission` decimal(8,2) NOT NULL,
-  `currency` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
+LOCK TABLES `roles` WRITE;
+/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `service_categories`
 --
 
+DROP TABLE IF EXISTS `service_categories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `service_categories` (
-  `category_id` bigint(20) UNSIGNED NOT NULL,
+  `category_id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`category_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `service_categories`
 --
 
-INSERT INTO `service_categories` (`category_id`, `name`, `created_at`, `updated_at`) VALUES
-(5, 'سوشيال ميديا', '2022-09-15 12:54:39', '2022-09-15 12:54:39');
-
--- --------------------------------------------------------
+LOCK TABLES `service_categories` WRITE;
+/*!40000 ALTER TABLE `service_categories` DISABLE KEYS */;
+INSERT INTO `service_categories` VALUES (5,'سوشيال ميديا','2022-09-15 12:54:39','2022-09-15 12:54:39'),(6,'social','2022-09-16 09:04:48','2022-09-16 09:04:48'),(8,'معادن','2022-09-19 11:06:59','2022-09-19 11:06:59'),(10,'New Dep','2022-09-29 20:54:25','2022-09-29 20:54:25');
+/*!40000 ALTER TABLE `service_categories` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `service_types`
 --
 
+DROP TABLE IF EXISTS `service_types`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `service_types` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `category_id` int(11) NOT NULL,
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `category_id` int NOT NULL,
   `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` tinyint(1) DEFAULT 0,
-  `home_page` tinyint(1) DEFAULT 0,
+  `status` tinyint(1) NOT NULL DEFAULT '0',
+  `home_page` tinyint(1) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `service_types`
 --
 
-INSERT INTO `service_types` (`id`, `category_id`, `type`, `status`, `home_page`, `created_at`, `updated_at`) VALUES
-(4, 5, 'فيسبوك', 1, 0, '2022-09-15 16:15:18', '2022-09-15 16:15:18'),
-(5, 5, 'يوتيوب', 1, 0, '2022-09-15 16:36:00', '2022-09-15 16:36:00');
+LOCK TABLES `service_types` WRITE;
+/*!40000 ALTER TABLE `service_types` DISABLE KEYS */;
+INSERT INTO `service_types` VALUES (4,5,'فيسبوك',1,0,'2022-09-15 16:15:18','2022-09-15 16:15:18'),(5,5,'يوتيوب',1,0,'2022-09-15 16:36:00','2022-09-15 16:36:00'),(6,5,'facebook',1,0,'2022-09-17 19:47:34','2022-09-17 19:47:34'),(7,8,'ذهب',1,1,'2022-09-19 11:08:07','2022-09-19 11:08:07'),(9,10,'subDep',1,0,'2022-09-29 20:55:00','2022-09-29 20:55:00');
+/*!40000 ALTER TABLE `service_types` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- --------------------------------------------------------
+--
+-- Table structure for table `services`
+--
+
+DROP TABLE IF EXISTS `services`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `services` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `service_type_id` int NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `quantity` int NOT NULL,
+  `net_price` decimal(8,2) NOT NULL,
+  `commission` decimal(8,2) NOT NULL,
+  `currency` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `services`
+--
+
+LOCK TABLES `services` WRITE;
+/*!40000 ALTER TABLE `services` DISABLE KEYS */;
+INSERT INTO `services` VALUES (2,5,'زيادة عدد المتابعين','زيادة عدد المتابعين','https://www.tiktok.com/en/',1000,50.00,10.00,'EGP','2022-09-16 10:56:04','2022-09-16 11:26:41');
+/*!40000 ALTER TABLE `services` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `share_us`
 --
 
+DROP TABLE IF EXISTS `share_us`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `share_us` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `guest_first_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `guest_last_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `guest_phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `guest_email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `message` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
-CREATE TABLE `users` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `role_id` bigint(20) UNSIGNED NOT NULL DEFAULT 2,
-  `gender` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `city` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `country` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `facebook_link` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `balance` decimal(8,2) DEFAULT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `share_us`
 --
 
-INSERT INTO `users` (`id`, `name`, `user_phone`, `email`, `email_verified_at`, `password`, `role_id`, `gender`, `city`, `country`, `facebook_link`, `balance`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'karim', '01115161360', 'karimohamed2002@gmail.com', '2022-09-15 12:14:42', '$2y$10$DG17sOtwjo1wZS9tO4/1fut7LlpIVp2xSo7CmZs5GAAQCcM4jjSv2', 1, 'Male', NULL, 'أذربيجان', NULL, NULL, NULL, '2022-09-15 12:13:59', '2022-09-15 12:14:42');
+LOCK TABLES `share_us` WRITE;
+/*!40000 ALTER TABLE `share_us` DISABLE KEYS */;
+/*!40000 ALTER TABLE `share_us` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- --------------------------------------------------------
+--
+-- Table structure for table `trade`
+--
+
+DROP TABLE IF EXISTS `trade`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `trade` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `description` text NOT NULL,
+  `link` text NOT NULL,
+  `quantity` text NOT NULL,
+  `commission` text NOT NULL,
+  `currency` text NOT NULL,
+  `metal_type` int NOT NULL,
+  `trade_type` int NOT NULL,
+  `status` int NOT NULL,
+  `user_id` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `trade`
+--
+
+LOCK TABLES `trade` WRITE;
+/*!40000 ALTER TABLE `trade` DISABLE KEYS */;
+INSERT INTO `trade` VALUES (2,'عملية بيع ذهب','https://www.facebook.com/','50','10','EGP',1,1,2,2),(3,'عملية بيع فضه','https://www.facebook.com/','1000','10','EGP',2,1,1,2),(5,'عملية بيع ذهب','https://www.facebook.com/','50','10','EGP',1,1,1,2);
+/*!40000 ALTER TABLE `trade` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `user_services`
 --
 
+DROP TABLE IF EXISTS `user_services`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user_services` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `service_id` int(11) NOT NULL,
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `service_id` int NOT NULL,
   `attachment` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `paid_money` double(8,2) NOT NULL,
-  `remain_money` double(8,2) NOT NULL DEFAULT 0.00,
+  `remain_money` double(8,2) NOT NULL DEFAULT '0.00',
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Indexes for dumped tables
+-- Dumping data for table `user_services`
 --
 
---
--- Indexes for table `competitions`
---
-ALTER TABLE `competitions`
-  ADD PRIMARY KEY (`id`);
+LOCK TABLES `user_services` WRITE;
+/*!40000 ALTER TABLE `user_services` DISABLE KEYS */;
+INSERT INTO `user_services` VALUES (1,1,2,'80',50.00,0.00,'Accepted','2022-09-16 12:06:43','2022-09-16 20:21:04'),(2,1,2,'900',50.00,0.00,'Accepted','2022-09-16 12:07:34','2022-09-16 20:20:56'),(3,1,2,'50',50.00,0.00,'Accepted','2022-09-16 12:32:01','2022-09-16 20:23:41'),(4,1,2,'50',50.00,0.00,'Accepted','2022-09-18 12:57:34','2022-09-18 12:57:34'),(6,1,2,'60',50.00,0.00,'pending','2022-09-18 13:40:27','2022-09-18 13:40:27'),(12,3,2,'33',50.00,38396.00,'Accepted','2022-09-29 19:24:14','2022-09-29 19:24:24'),(13,3,2,'66',50.00,38346.00,'Declined','2022-09-29 19:24:50','2022-09-29 19:24:58'),(14,3,2,'311',50.00,38296.00,'Accepted','2022-09-29 19:25:19','2022-09-29 19:25:27'),(15,3,2,'50',50.00,38246.00,'pending','2022-09-29 20:01:09','2022-09-29 20:01:09');
+/*!40000 ALTER TABLE `user_services` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Indexes for table `competition_messages`
---
-ALTER TABLE `competition_messages`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `countries`
---
-ALTER TABLE `countries`
-  ADD PRIMARY KEY (`country_code`);
-
---
--- Indexes for table `draws`
---
-ALTER TABLE `draws`
-  ADD PRIMARY KEY (`draw_id`);
-
---
--- Indexes for table `failed_jobs`
---
-ALTER TABLE `failed_jobs`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
-
---
--- Indexes for table `images`
---
-ALTER TABLE `images`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `links`
---
-ALTER TABLE `links`
-  ADD PRIMARY KEY (`link_id`);
-
---
--- Indexes for table `migrations`
---
-ALTER TABLE `migrations`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `password_resets`
---
-ALTER TABLE `password_resets`
-  ADD KEY `password_resets_email_index` (`email`);
-
---
--- Indexes for table `roles`
---
-ALTER TABLE `roles`
-  ADD PRIMARY KEY (`role_id`);
-
---
--- Indexes for table `services`
---
-ALTER TABLE `services`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `service_categories`
---
-ALTER TABLE `service_categories`
-  ADD PRIMARY KEY (`category_id`);
-
---
--- Indexes for table `service_types`
---
-ALTER TABLE `service_types`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `share_us`
---
-ALTER TABLE `share_us`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`);
-
---
--- Indexes for table `user_services`
---
-ALTER TABLE `user_services`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
+-- Table structure for table `users`
 --
 
---
--- AUTO_INCREMENT for table `competitions`
---
-ALTER TABLE `competitions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `users` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `role_id` bigint unsigned NOT NULL DEFAULT '2',
+  `gender` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `city` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `country` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `facebook_link` longtext COLLATE utf8mb4_unicode_ci,
+  `balance` decimal(8,2) DEFAULT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_email_unique` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- AUTO_INCREMENT for table `competition_messages`
+-- Dumping data for table `users`
 --
-ALTER TABLE `competition_messages`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT for table `draws`
---
-ALTER TABLE `draws`
-  MODIFY `draw_id` bigint(20) NOT NULL AUTO_INCREMENT;
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'karim','01115161360','karimohamed2002@gmail.com','2022-09-15 12:14:42','$2y$10$DG17sOtwjo1wZS9tO4/1fut7LlpIVp2xSo7CmZs5GAAQCcM4jjSv2',1,'Male',NULL,'أذربيجان',NULL,8499.00,NULL,'2022-09-15 12:13:59','2022-09-28 22:56:01'),(2,'Mahmoud Samy','samy','sami.sam22xx@gmail.com','2022-09-15 12:14:42','$2y$10$lFBNaanw.Mpl6KFz5D1bxOkayP5pgbsYSoZU2xQpujJP1tIo7g.kq',2,'Male',NULL,'أندورا',NULL,199.00,NULL,'2022-09-19 20:13:54','2022-09-28 17:18:45'),(3,'Hassan','01022133467','hassangomaa974@gmail.com','2022-09-15 12:14:42','$2y$10$lFBNaanw.Mpl6KFz5D1bxOkayP5pgbsYSoZU2xQpujJP1tIo7g.kq',2,'Male','',NULL,NULL,10140.00,NULL,NULL,'2022-09-30 13:50:20'),(4,'Ahmed','011111','user@gmail.com','2022-09-15 12:14:42','$2y$10$lFBNaanw.Mpl6KFz5D1bxOkayP5pgbsYSoZU2xQpujJP1tIo7g.kq',2,'Male',NULL,NULL,NULL,0.00,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
---
--- AUTO_INCREMENT for table `failed_jobs`
---
-ALTER TABLE `failed_jobs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `images`
---
-ALTER TABLE `images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `links`
---
-ALTER TABLE `links`
-  MODIFY `link_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `migrations`
---
-ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
--- AUTO_INCREMENT for table `roles`
---
-ALTER TABLE `roles`
-  MODIFY `role_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `services`
---
-ALTER TABLE `services`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `service_categories`
---
-ALTER TABLE `service_categories`
-  MODIFY `category_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `service_types`
---
-ALTER TABLE `service_types`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `share_us`
---
-ALTER TABLE `share_us`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `user_services`
---
-ALTER TABLE `user_services`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-COMMIT;
-
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2022-10-01  0:11:52

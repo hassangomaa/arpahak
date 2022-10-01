@@ -6,12 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\Image;
 use App\Models\Payment;
 use Illuminate\Http\Request;
- use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Illuminate\Support\Facades\Response;
+
 class ImageController extends Controller
 {
     /**

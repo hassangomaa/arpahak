@@ -58,7 +58,7 @@
     <!-- inject css end -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-   
+   @yield('css_file')
     @yield('body_style')
     <style>
         .cards-wrapper
