@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Metal;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class UserServiceController extends Controller
@@ -29,6 +30,18 @@ class UserServiceController extends Controller
         $services_type = ServiceType::all();
         $services = Service::all();
         return view('users.pages.orders.create',compact('services','categories_names','services_type'));
+    }
+    public function order_type($id)
+    {
+//        dd($id);
+        $cities = DB::table('service_types')->where('category_id', $id)->get();
+        return response()->json($cities);
+    }
+    public function order_service($id)
+    {
+//        dd($id);
+        $cities = DB::table('services')->where('service_type_id', $id)->get();
+        return response()->json($cities);
     }
 
 

@@ -41,9 +41,9 @@
                                 <label for="service" class="form-label">النوع <span class="text-danger"> *</span> </label>
                                 <select onblur="test()" class="form-control" name="service_id" id="service">
                                     <option selected value="0">أختر النوع</option>
-                                    @foreach($services_type as $service)
-                                        <option value="{{$service->id}}"> {{$service->type}} </option>
-                                    @endforeach
+{{--                                    @foreach($services_type as $service)--}}
+{{--                                        <option value="{{$service->id}}"> {{$service->type}} </option>--}}
+{{--                                    @endforeach--}}
                                 </select>
                             </div>
                         </div>
@@ -52,11 +52,11 @@
                         <div class="col-lg-6 col-12">
                             <div class="mb-3">
                                 <label for="club_id" class="form-label">الخدمه<span class="text-danger"> *</span> </label>
-                                <select class="form-control"  name="services_id" id="service_id">
+                                <select class="form-control"  name="services_all" id="club_id">
                                     <option selected value="0">أختر الخدمه</option>
-                                    @foreach($services as $service1)
-                                        <option value="{{$service1->id}}"> {{$service1->name}} </option>
-                                    @endforeach
+{{--                                    @foreach($services as $service1)--}}
+{{--                                        <option value="{{$service1->id}}"> {{$service1->name}} </option>--}}
+{{--                                    @endforeach--}}
                                 </select>
                             </div>
                         </div>
@@ -94,75 +94,159 @@
         @endif
     </div>
   </main>
-  <script>
-    function test()
-    {
-        var CatId = document.getElementById('category_id');
-        var selected = CatId.options[CatId.selectedIndex].value;
-        var types =  document.getElementById('type_id');
-        var url = "{{route('add.service.GetTypes',['CatId' => 11111])}} ";
-        url = url.replace('11111',selected);
-        $(document).ready(function()
-    {
-        $.ajax(
-            {
-                type: "GET",
-                url : url,
-                datatype: "json",
-                success: function(response)
-                { 
-                    types.innerHTML="<option value=''>أختر النوع</option>";
-                    for(var i = 0 ; i < response['types'].length ; i++)
-                    {
-                        var option = document.createElement("option");
-                        option.text = response['types'][i]['type'];
-                        option.value = response['types'][i]['id']
-                        types.add(option);
-                    }
-                    
+
+
+
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
+{{-- AJAX CDN --}}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#category_id').change(function(){
+            let id = $(this).val();
+            // alert(id);
+
+            $('select[name="service_id"]').empty();
+            // $('select[name="service_id"]').empty();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN':'{{csrf_token()}}'
                 }
-            }
-        )
-    })
-
-        
-    }
-    function test2()
-    {
-        var TypeId = document.getElementById('type_id');
-        var selected2 = TypeId.options[TypeId.selectedIndex].value;
-        var services =  document.getElementById('service_id');
-        console.log(selected2);
-        var url = "{{route('GetServices',['TypeId' => 11111])}} ";
-        url = url.replace('11111',selected2);
-        $(document).ready(function()
-
-    {
-        $.ajax(
-            {
+            });
+            // alert(id);
+            //call country on region selected
+            $.ajax({
+                dataType: "json",
+                url: "/order_type/"+id,
                 type: "GET",
-                url : url,
-                datatype: "json",
-                success: function(response)
-                { 
-                    services.innerHTML="<option value=''>أختر النوع</option>";
-                    for(var i = 0 ; i < response['services'].length ; i++)
-                    {
-                        var option = document.createElement("option");
-                        option.text = response['services'][i]['name'];
-                        option.value = response['services'][i]['id']
-                        services.add(option);
-                    }
-                    
-                    
+                {{--_token: '{{csrf_token()}}',--}}
+                success: function (data) {
+                    // alert(data);
+                    console.log(data);
+                    $('select[name="service_id"]').empty();
+                    $.each(data, function(key,data){
+                        $('select[name="service_id"]').append('<option value="'+ data.id +'">'+ data.type +'</option>');
+                    });
+                },
+                error: function(error) {
+                    console.log(error);
                 }
-            }
-        )
-    })
+            });
+        });
 
-        
-    }
+        $('#service').change(function(){
+            let id = $(this).val();
+            // alert(id);
+
+            $('select[name="services_all"]').empty();
+            // $('select[name="service_id"]').empty();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN':'{{csrf_token()}}'
+                }
+            });
+            // alert(id);
+            //call country on region selected
+            $.ajax({
+                dataType: "json",
+                url: "/order_service/"+id,
+                type: "GET",
+                {{--_token: '{{csrf_token()}}',--}}
+                success: function (data) {
+                    // alert(data);
+                    console.log(data);
+                    $('select[name="services_all"]').empty();
+                    $.each(data, function(key,data){
+                        $('select[name="services_all"]').append('<option value="'+ data.id +'">'+ data.name +'</option>');
+                    });
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        });
+    });
 </script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+#########
+{{--<script>--}}
+{{--    function test()--}}
+{{--    {--}}
+{{--        var CatId = document.getElementById('category_id');--}}
+{{--        var selected = CatId.options[CatId.selectedIndex].value;--}}
+{{--        var types =  document.getElementById('type_id');--}}
+{{--        var url = "{{route('add.service.GetTypes',['CatId' => 11111])}} ";--}}
+{{--        url = url.replace('11111',selected);--}}
+{{--        $(document).ready(function()--}}
+{{--    {--}}
+{{--        $.ajax(--}}
+{{--            {--}}
+{{--                type: "GET",--}}
+{{--                url : url,--}}
+{{--                datatype: "json",--}}
+{{--                success: function(response)--}}
+{{--                { --}}
+{{--                    types.innerHTML="<option value=''>أختر النوع</option>";--}}
+{{--                    for(var i = 0 ; i < response['types'].length ; i++)--}}
+{{--                    {--}}
+{{--                        var option = document.createElement("option");--}}
+{{--                        option.text = response['types'][i]['type'];--}}
+{{--                        option.value = response['types'][i]['id']--}}
+{{--                        types.add(option);--}}
+{{--                    }--}}
+{{--                    --}}
+{{--                }--}}
+{{--            }--}}
+{{--        )--}}
+{{--    })--}}
+
+{{--        --}}
+{{--    }--}}
+{{--    function test2()--}}
+{{--    {--}}
+{{--        var TypeId = document.getElementById('type_id');--}}
+{{--        var selected2 = TypeId.options[TypeId.selectedIndex].value;--}}
+{{--        var services =  document.getElementById('service_id');--}}
+{{--        console.log(selected2);--}}
+{{--        var url = "{{route('GetServices',['TypeId' => 11111])}} ";--}}
+{{--        url = url.replace('11111',selected2);--}}
+{{--        $(document).ready(function()--}}
+
+{{--    {--}}
+{{--        $.ajax(--}}
+{{--            {--}}
+{{--                type: "GET",--}}
+{{--                url : url,--}}
+{{--                datatype: "json",--}}
+{{--                success: function(response)--}}
+{{--                { --}}
+{{--                    services.innerHTML="<option value=''>أختر النوع</option>";--}}
+{{--                    for(var i = 0 ; i < response['services'].length ; i++)--}}
+{{--                    {--}}
+{{--                        var option = document.createElement("option");--}}
+{{--                        option.text = response['services'][i]['name'];--}}
+{{--                        option.value = response['services'][i]['id']--}}
+{{--                        services.add(option);--}}
+{{--                    }--}}
+{{--                    --}}
+{{--                    --}}
+{{--                }--}}
+{{--            }--}}
+{{--        )--}}
+{{--    })--}}
+
+{{--        --}}
+{{--    }--}}
+{{--</script>--}}
 
 
 @endsection

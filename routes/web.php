@@ -101,6 +101,8 @@ Route::group(['middleware'=> ['verified','auth','disable_back']],function(){
     Route::get('/my_tasks',[HomeController::class,'myTasks'])->name('user.tasks');
 
     Route::get('/new/order',[UserServiceController::class,'create'])->name('add.order');
+    Route::get('order_type/{id}',[UserServiceController::class,'order_type'])->name('order.type');
+    Route::get('order_service/{id}',[UserServiceController::class,'order_service'])->name('order.service');
     Route::post('/new/order',[UserServiceController::class,'store'])->name('store.order');
     Route::get('/get_services/{TypeId}',[UserServiceController::class,'GetServices'])->name('GetServices');
     Route::get('/orders',[UserServiceController::class,'index'])->name('MyOrders');
