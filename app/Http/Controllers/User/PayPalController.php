@@ -19,6 +19,9 @@ class PayPalController extends Controller
 //        return view('users.pages.payment.paypal');
         return view('users.pages.payment.transaction');
 
+//        encrypt()
+//            decrypt()
+
     }
 
 

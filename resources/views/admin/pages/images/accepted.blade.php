@@ -36,6 +36,7 @@
                             <td>{{$image->title}}</td>
                             <td>{{$image->price}}</td>
                             <td><a href="{{asset('public/Image/'.$image->image)}}" target="_blank">الرابط</a></td>
+
                             <td><a href="{{route('delete.image',$image->id)}}" class="btn btn-danger" name="edit" value="edit"><i class="bi bi-trash"></i></a></td>
                         </tr>
                             

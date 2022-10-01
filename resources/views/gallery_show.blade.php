@@ -123,20 +123,27 @@
                             <input readonly hidden name="email" value="{{Auth::user()->email}}">
                             <input readonly hidden name="balance" value="{{Auth::user()->balance}}">
 
-                                <button type="submit" class="btn btn-success" ><i class="fa fa-download" aria-hidden="true"></i> تحميل الصوره </button>
-                             </form>
+                                @if( $image->price == 0)
+                                    <a href="{{asset('public/Image/'.$image->image)}}" class="btn btn-sm btn-theme btn-primary" download>تحميل  مجاني</a>
+                                @else
+                                <button type="submit" class="btn btn-success" ><i class="fa fa-download" aria-hidden="true"></i> شراء </button>
+                                @endif
+                            </form>
+                            @if(\Session::has('download'))
+                                <a href="{{asset('public/Image/'.$image->image)}}" class="btn btn-sm btn-theme btn-primary" download>حفظ الصوره</a>
+                                {{ \Session::forget('download') }}
 
-                        @if(\Session::has('error'))
+                            @endif
+                            @if(\Session::has('error'))
                                 <div class="alert alert-danger">{{ \Session::get('error') }}
                                    <h6> {{Auth::user()->balance}}:EGP </h6> </div>
                                 {{ \Session::forget('error') }}
                             @endif
                             @if(\Session::has('success'))
                                 <div class="alert alert-success">{{ \Session::get('success') }} </div>
-                                <div class="alert alert-success">{{ \Session::get('proc_id') }} رقم العمليه : </div>
-                                <div class="btn btn-warning" type="submit">
-                                    <a href="{{route('bag')}}">الذهاب الي حقيبه المشتريات</a>
-                                </div>
+                                <div class="alert alert-success"> رقم العمليه : </div>
+                                <div class="alert alert-success"> {{ \Session::get('proc_id') }} </div>
+
                                 {{--    {{ \Session::forget('success') }}--}}
                             @endif
                         </div>

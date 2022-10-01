@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Image;
 use App\Models\Payment;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -88,6 +89,7 @@ class ImageController extends Controller
             $file= $request->file('image');
             $filename= date('YmdHi').$file->getClientOriginalName();
             $file-> move(public_path('public/Image'), $filename);
+
             $data['image']= $filename;
         }
         $data->save();
@@ -143,13 +145,14 @@ class ImageController extends Controller
                     'payer_email' => $request->email,
                     'amount' => $price,
                     'currency' => 'EGP',
-                    'payment_status' => "bag",
+                    'payment_status' => "صوره",
 
                 ]
             );
-            Session::put('proc_id', $proc_id);
+//            Session::put('proc_id', $proc_id);
+            Session::put('download', 1);
 //            return redirect()->back()->with('success', 'تم اضافه طلبكم بنجاح, سيقوم احد ممثلينا بالتواصل معكم. شكرا ﻻستخدامكم ارباحك');
-            return redirect()->back()->with('success', 'تم اضافه طلبكم الي حقيبة المشتريات, قم بتأكيد الشراء اوﻻ ');
+            return redirect()->back()->with('success', 'تم شراء الصوره بنجاح, اضغط علي حفظ الصوره لتتمكن من التحميل');
         }
 
 

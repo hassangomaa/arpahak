@@ -45,7 +45,9 @@
 
 {{--                                    </div>--}}
 {{--                                </div>--}}
-                                <li class="nav dropdown"> <a class="btn btn-theme rounded-right" href="#" data-bs-toggle="dropdown">مرحبا , {{Auth::user()->name}}</a>
+                                <li class="nav dropdown"> <a class="btn btn-theme rounded-right" href="#" data-bs-toggle="dropdown">رصيد  , {{Auth::user()->balance}}  </a>
+
+                                <li class="nav dropdown"> <a class="btn btn-theme rounded-right" href="#" data-bs-toggle="dropdown">مرحبا  , {{Auth::user()->name}}</a>
                                     <ul class="dropdown-menu">
 
                                         <li><a href="{{route('home')}}">لوحة التحكم</a>

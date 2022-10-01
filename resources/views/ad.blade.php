@@ -32,17 +32,17 @@
                         <div class="carousel-inner">
                             @if ($images->image1 != null)
                                 <div class="carousel-item active ">
-                                    <img src="{{asset('uploads/'.$images->image1)}}" height="468px" class="d-block w-100" alt="...">
+                                    <img src="{{asset('public/ads/'.$images->image1)}}" height="468px" class="d-block w-100" alt="...">
                                 </div>
                             @endif
                             @if ($images->image2 != null)
                                 <div class="carousel-item ">
-                                    <img src="{{asset('uploads/'.$images->image2)}}" height="468px" class="d-block w-100" alt="...">
+                                    <img src="{{asset('public/ads/'.$images->image2)}}" height="468px" class="d-block w-100" alt="...">
                                 </div>
                             @endif
                             @if ($images->image3 != null)
                                 <div class="carousel-item ">
-                                    <img src="{{asset('uploads/'.$images->image3)}}" height="468px" class="d-block w-100" alt="...">
+                                    <img src="{{asset('public/ads/'.$images->image3)}}" height="468px" class="d-block w-100" alt="...">
                                 </div>
                             @endif
                           
@@ -199,7 +199,7 @@
                 @endif
                 <div class="col-md-4 mb-3">
                     <div class="card" >
-                        <img src="{{asset('uploads/'.$related_ads[$i]->image)}}" class="card-img-top" alt="...">
+                        <img src="{{asset('public/ads/'.$related_ads[$i]->image)}}" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title" style="letter-spacing: 0">{{$related_ads[$i]->title}}</h5>
                           <h5 class="card-title">{{$related_ads[$i]->price}} EGP</h5>

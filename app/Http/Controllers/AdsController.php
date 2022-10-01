@@ -108,6 +108,8 @@ class AdsController extends Controller
     {
         $image_name = time().$image->getClientOriginalName();
         $image->move(public_path('uploads'), $image_name);
+//        $file-> move(public_path('public/Image'), $filename);
+
         return $image_name;
     }
 
