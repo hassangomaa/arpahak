@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-@include('layouts.header')
+    @include('layouts.header')
 
     <br>
     <br>
@@ -26,7 +26,7 @@
                                 <div class="bar bar-left"></div>
                             </div>
                             <h2>إنشاء حساب في ارباحك</h2>
-{{--                            <h4>Simple And Easy To Sign Up</h4>--}}
+                            {{--                            <h4>Simple And Easy To Sign Up</h4>--}}
                         </div>
                     </div>
                 </div>
@@ -43,12 +43,12 @@
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
-{{--                                    <div class="col-md-6">--}}
-{{--                                        <div class="form-group">--}}
-{{--                                            <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Last name" required="required" data-error="Lastname is required.">--}}
-{{--                                            <div class="help-block with-errors"></div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
+                                    {{--                                    <div class="col-md-6">--}}
+                                    {{--                                        <div class="form-group">--}}
+                                    {{--                                            <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Last name" required="required" data-error="Lastname is required.">--}}
+                                    {{--                                            <div class="help-block with-errors"></div>--}}
+                                    {{--                                        </div>--}}
+                                    {{--                                    </div>--}}
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <input id="email" type="text" name="email" class="form-control" placeholder="البريد الالكتروني" required="required" data-error="البريد الالكتروني مطلوب.">
@@ -97,29 +97,29 @@
                                             <select class="form-control" name="country" >
                                                 <option name="country" value="Country">اختر البلد...</option>
                                                 @foreach($countries as $country)
-                                                <option id="country" name="country" value="{{$country->country_arName}}">{{ $country->country_arName }}</option>
+                                                    <option id="country" name="country" value="{{$country->id}}">{{ $country->name_ar }}</option>
                                                 @endforeach
                                             </select>
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
                                 </div>
-{{--                                <div class="row mt-5">--}}
-{{--                                    <div class="col-md-12">--}}
-{{--                                        <div class="remember-checkbox d-inline-block mb-5">--}}
-{{--                                            <div class="form-check">--}}
-{{--                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">--}}
-{{--                                                <label class="form-check-label" for="flexCheckDefault">I agree to the term of use and privacy policy</label>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
+                                {{--                                <div class="row mt-5">--}}
+                                {{--                                    <div class="col-md-12">--}}
+                                {{--                                        <div class="remember-checkbox d-inline-block mb-5">--}}
+                                {{--                                            <div class="form-check">--}}
+                                {{--                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">--}}
+                                {{--                                                <label class="form-check-label" for="flexCheckDefault">I agree to the term of use and privacy policy</label>--}}
+                                {{--                                            </div>--}}
+                                {{--                                        </div>--}}
+                                {{--                                    </div>--}}
+                                {{--                                </div>--}}
                                 <div class="row">
                                     <div class="col-md-12">
                                         <button class="btn btn-theme btn-primary" name="register" type="submit">إنشاء الحساب</button>
-{{--                                            <span>C</span><span>r</span><span>e</span><span>a</span><span>t</span><span>e</span>--}}
-{{--                                            <span> </span><span>A</span><span>c</span><span>c</span><span>o</span><span>u</span><span>n</span><span>t</span></a>--}}
-{{--                                        <h5 class="mb-0 text-capitalize mt-4">Have An Account ? <a href="login.html"><i>Sign In!</i></a></h5>--}}
+                                        {{--                                            <span>C</span><span>r</span><span>e</span><span>a</span><span>t</span><span>e</span>--}}
+                                        {{--                                            <span> </span><span>A</span><span>c</span><span>c</span><span>o</span><span>u</span><span>n</span><span>t</span></a>--}}
+                                        {{--                                        <h5 class="mb-0 text-capitalize mt-4">Have An Account ? <a href="login.html"><i>Sign In!</i></a></h5>--}}
                                     </div>
                                 </div>
                             </form>
@@ -133,6 +133,6 @@
 
     </div>
 
-<!--body content end-->
+    <!--body content end-->
 
 @endsection
