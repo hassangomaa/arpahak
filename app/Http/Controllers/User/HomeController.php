@@ -31,7 +31,25 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
+    {//        $url= "https://www.kitco.com/texten/texten.html";
+////        $id = substr($url, strpos($url, '-ID')+3, (strpos($url, '.htm')-strpos($url, '-ID')-3));
+//        $html = file_get_html($url);
+//        dd($html);
+//        die();
+//
+//        $result=[];
+//        $result['title'] = trim($html->find('h1.brkword')[0]->plaintext);
+//        $result['user'] = trim($html->find('span.color-5')[0]->plaintext);
+//        $result['location'] = trim($html->find('strong.c2b')[0]->plaintext);
+//        try{
+//            $content = file_get_contents(OLXscraper::$ajaxPhone.$id);
+//            $result['phone'] = preg_replace('/[^0-9,]|,[0-9]*$/','', json_decode($content, true)['value']);
+//        }
+//        catch(Exception $e){
+//            $result['phone'] = null;
+//        }
+//
+
         $images = Image::where('user_id', Auth::id())->get()->count();
         $trades = trade::where('user_id', Auth::id())->get()->count();
         $payments = Payment::where('payment_status','bag')->get();
@@ -41,8 +59,10 @@ class HomeController extends Controller
 
     public function dashboard()
     {
-
-        return view('users.dashboard');
+        $images = Image::where('user_id',Auth::id()) ->count();
+        $payments = Payment::all();
+        $bag = 0;
+        return view('users.dashboard',compact('images','payments','bag'));
     }
   public function bag()
     {

@@ -64,5 +64,8 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'checkUserRole' => \App\Http\Middleware\CheckUserRole::class,
         'disable_back' => \App\Http\Middleware\DisableBackBtn::class,
+         'auth.guard' => AssignGuard::class,
+         ###
+        'XssSanitizer' => \App\Http\Middleware\XssSanitizer::class,
     ];
 }

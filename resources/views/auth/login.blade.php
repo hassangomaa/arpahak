@@ -47,7 +47,17 @@
                                 <a class="btn btn-black btn-block btn-circle" href="{{route('register')}}" name="register" type="submit">إنشاء حساب جديد</a>
                             </form>
 
-
+                            <br>
+                            <br>
+                            <br>
+                            <a href="{{ route('google.login') }}" class="btn btn-google btn-user btn-circle">
+                                <i class="fab fa-google fa-fw"></i> تسجيل باستخدام جوجل
+                            </a>
+                            <br>
+                            <br>
+                            <a href="{{ route('google.login') }}" class="btn btn- btn-user btn-circle">
+                                <i class="fab fa-facebook fa-fw"></i> تسجيل باستخدام فيسبوك
+                            </a>
 
 {{--                            <h5 class="mb-0 mt-4 text-capitalize"><a href="{{route('register')}}"></a></h5>--}}
 {{--                            <div class="social-icons fullwidth social-colored mt-4 text-center clearfix">--}}

@@ -35,6 +35,20 @@ use App\Http\Controllers\CompetitionMessageController;
 use Illuminate\Support\Facades\Route;
 
 
+
+
+//google
+Route::prefix('google')->name('google.')->group( function(){
+    Route::get('login', [\App\Http\Controllers\GoogleController::class, 'loginWithGoogle'])->name('login');
+    Route::get('logout', [\App\Http\Controllers\GoogleController::class, 'logoutFromGoogle'])->name('logout');
+    Route::any('callback', [\App\Http\Controllers\GoogleController::class, 'callbackFromGoogle'])->name('callback');
+});
+//facebook
+//Route::prefix('facebook')->name('facebook')->group( function(){
+//    Route::get('login', [ProfileController::class, 'redirectToFacebookProvider'])->name('login');
+//    Route::get('callback', [ProfileController::class, 'handleProviderFacebookCallback'])->name('callback');
+//});
+
 // Guests' Routes
 Route::group(['name'=>'guests'],function (){
     Route::get('/', [Controller::class,'index'])->name('index');

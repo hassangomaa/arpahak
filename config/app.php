@@ -178,6 +178,10 @@ return [
         //paypal provider
         Srmklive\PayPal\Providers\PayPalServiceProvider::class,
 
+        //Social Media Login
+        Laravel\Socialite\SocialiteServiceProvider::class,
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+
 
 
     ],
@@ -232,6 +236,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'PayPal' => Srmklive\PayPal\Facades\PayPal::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
 
     ],
