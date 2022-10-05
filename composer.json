@@ -21,7 +21,16 @@
         "srmklive/paypal": "~1.0",
         "omnipay/paypal": "^3.0",
         "roach-php/laravel": "*",
-        "spatie/laravel-medialibrary": "^8.0.0"
+        "spatie/laravel-medialibrary": "^8.0.0",
+        "fabpot/goutte": "^4.0",
+        "facebook/graph-sdk": "^5.1",
+        "facebook/php-sdk-v4": "^5.1",
+        "laravel/sanctum": "*",
+        "laravel/socialite": "^5.5",
+        "mews/purifier": "^3.3",
+        "mpdf/mpdf": "^8.1",
+        "php-open-source-saver/jwt-auth": "^2.0",
+        "tymon/jwt-auth": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",
