@@ -55,7 +55,7 @@
                             </a>
                             <br>
                             <br>
-                            <a href="{{ route('google.login') }}" class="btn btn- btn-user btn-circle">
+                            <a href="{{ route('facebook.login') }}" class="btn btn- btn-user btn-circle">
                                 <i class="fab fa-facebook fa-fw"></i> تسجيل باستخدام فيسبوك
                             </a>
 

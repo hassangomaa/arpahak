@@ -74,6 +74,7 @@ class HomeController extends Controller
 
     public function logout(Request $request)
     {
+//        dd($request);
         auth()->logout();
         return redirect()->route('index');
     }

@@ -44,10 +44,10 @@ Route::prefix('google')->name('google.')->group( function(){
     Route::any('callback', [\App\Http\Controllers\GoogleController::class, 'callbackFromGoogle'])->name('callback');
 });
 //facebook
-//Route::prefix('facebook')->name('facebook')->group( function(){
-//    Route::get('login', [ProfileController::class, 'redirectToFacebookProvider'])->name('login');
-//    Route::get('callback', [ProfileController::class, 'handleProviderFacebookCallback'])->name('callback');
-//});
+Route::prefix('facebook')->name('facebook.')->group( function(){
+    Route::get('login', [\App\Http\Controllers\FacebookController::class, 'loginUsingFacebook'])->name('login');
+    Route::get('callback', [\App\Http\Controllers\FacebookController::class, 'callbackFromFacebook'])->name('callback');
+});
 
 // Guests' Routes
 Route::group(['name'=>'guests'],function (){

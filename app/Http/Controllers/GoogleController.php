@@ -59,6 +59,7 @@ class GoogleController extends Controller
 
             $admin = Auth::guard('api-jwt')->user();
             $admin->api_token = $token;
+            Auth::login($saveUser);
 
 //            return $this->returnData("user",$admin);
             return redirect()->intended('homepage');
@@ -69,17 +70,18 @@ class GoogleController extends Controller
     }
     public function logoutFromGoogle(Request $request)
     {
-        $token = $request -> header('auth-token');
-        if($token){
-            try {
-
-                JWTAuth::setToken($token)->invalidate(); //logout
-            }catch (\Tymon\JWTAuth\Exceptions\TokenInvalidException $e){
-                return  $this -> returnError('','some thing went wrongs');
-            }
-            return $this->returnSuccessMessage('Logged out successfully');
-        }else{
-            $this -> returnError('','some thing went wrongs');
-        }
+        Auth::logout();
+//        $token = $request -> header('auth-token');
+//        if($token){
+//            try {
+//
+//                JWTAuth::setToken($token)->invalidate(); //logout
+//            }catch (\Tymon\JWTAuth\Exceptions\TokenInvalidException $e){
+//                return  $this -> returnError('','some thing went wrongs');
+//            }
+//            return $this->returnSuccessMessage('Logged out successfully');
+//        }else{
+//            $this -> returnError('','some thing went wrongs');
+//        }
     }
 }
