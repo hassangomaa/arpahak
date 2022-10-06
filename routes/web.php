@@ -35,6 +35,7 @@ use App\Http\Controllers\CompetitionMessageController;
 use Illuminate\Support\Facades\Route;
 
 
+use Laravel\Socialite\Facades\Socialite;
 
 
 //google
